@@ -9,9 +9,9 @@ using WinUIEx;
 
 using AppWindow = Microsoft.UI.Windowing.AppWindow;
 using AppWindowTitleBar = Microsoft.UI.Windowing.AppWindowTitleBar;
-using HyPlayer.App.Contract.Services;
 using Microsoft.UI.Xaml.Controls;
 using Windows.UI.WindowManagement;
+using HyPlayer.App.Interfaces.Views;
 
 
 namespace HyPlayer.App.Views.Window

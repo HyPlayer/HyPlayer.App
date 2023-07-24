@@ -1,18 +1,19 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using WinUIEx;
 using System;
-
-using HyPlayer.NeteaseApi;
-using HyPlayer.App.Contract.Services;
+using Depository.Abstraction.Interfaces;
+using Depository.Core;
+using Depository.Extensions;
+using HyPlayer.App.Extensions.DependencyInjectionExtensions;
+using HyPlayer.App.Interfaces.Views;
 using HyPlayer.App.Services;
+using HyPlayer.PlayCore;
+using HyPlayer.PlayCore.Abstraction;
+using Microsoft.UI.Dispatching;
+using DispatcherQueue = Windows.System.DispatcherQueue;
 using Window = HyPlayer.App.Views.Window;
 using Pages = HyPlayer.App.Views.Pages;
-using ViewModels.App;
-using HyPlayer.NeteaseApi.ApiContracts;
-using HyPlayer.NeteaseProvider;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -24,21 +25,31 @@ namespace HyPlayer.App
     /// </summary>
     public partial class App : Application
     {
-        public static Frame contentFrame;
+        public static Frame? contentFrame;
         public static WindowEx window;
-        public static NeteaseProvider.NeteaseProvider provider;
 
-        public IHost Host;
+        public IDepository Depository;
+        public DispatcherQueue DispatcherQueue;
 
         public static T GetService<T>()
             where T : class
         {
-            if ((App.Current as App)!.Host.Services.GetService(typeof(T)) is not T service)
+            if ((App.Current as App)!.Depository.ResolveDependency(typeof(T)) is not T service)
             {
                 throw new ArgumentException($"{typeof(T)} needs to be registered in ConfigureServices within App.xaml.cs.");
             }
 
             return service;
+        }
+
+        public static DispatcherQueue GetDispatcherQueue()
+        {
+            return (Current as App)!.DispatcherQueue;
+        }
+
+        public static IDepository GetDIContainer()
+        {
+            return (Current as App)!.Depository;
         }
 
         /// <summary>
@@ -57,31 +68,26 @@ namespace HyPlayer.App
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-
-            Host = Microsoft.Extensions.Hosting.Host.
-                CreateDefaultBuilder().
-                UseContentRoot(AppContext.BaseDirectory).
-                ConfigureServices((context, services) =>
-                {
-                    // services.AddSingleton<IInitializeService, InitializeService>();
-                    services.AddSingleton<INavigationService, NavigationService>();
-                    services.AddSingleton<IPageService, PageService>();
-
-                    services.AddTransient<HomeViewModel>();
-                }).Build();
-
-            // App.GetService<IInitializeService>().StartUpAsync();
-
+            Depository = DepositoryFactory.CreateNew();
+            ConfigureServices();
+            DispatcherQueue = DispatcherQueue.GetForCurrentThread();
             window = new Window.MainWindow();
             window.Activate();
         }
 
-        protected private void NavigationToRootPage(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
-        {   
-            App.GetService<INavigationService>().NavigateTo(typeof(Pages.HomePage));
-            
+        private void ConfigureServices()
+        {
+            Depository.AddMvvm();
+            Depository.AddSingleton<INavigationService, NavigationService>();
+            Depository.AddSingleton<IPageService, PageService>();
+            Depository.AddSingleton<PlayCoreBase, Chopin>();
+            Depository.Resolve<PlayCoreBase>().RegisterMusicProvider(typeof(NeteaseProvider.NeteaseProvider));
         }
 
-        
+        private void NavigationToRootPage(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+        {   
+            App.GetService<INavigationService>().NavigateTo(typeof(Pages.HomePage));
+        }
+       
     }
 }

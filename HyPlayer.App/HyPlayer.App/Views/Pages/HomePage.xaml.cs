@@ -1,3 +1,5 @@
+using Depository.Abstraction.Interfaces;
+using Depository.Core;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -11,9 +13,11 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
-using ViewModels.App;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Depository.Abstraction.Models.Options;
+using Depository.Extensions;
+using HomeViewModel = HyPlayer.App.ViewModels.HomeViewModel;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -26,17 +30,18 @@ namespace HyPlayer.App.Views.Pages
     public sealed partial class HomePage : Page
     {
         private Grid contentArea => ContentArea;
-        public HomeViewModel ViewModel
-        {
-            get;
-        }
+        public HomeViewModel ViewModel { get; }
+        private readonly IDepositoryResolveScope _scope;
 
         public HomePage()
         {
             this.InitializeComponent();
-            ViewModel = App.GetService<HomeViewModel>();
+            _scope = DepositoryResolveScope.Create();
+            ViewModel = App.GetDIContainer().Resolve<HomeViewModel>(new DependencyResolveOption()
+                                                       {
+                                                           Scope = _scope
+                                                       });
         }
-
 
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -52,7 +57,6 @@ namespace HyPlayer.App.Views.Pages
             await Task.Delay(1);
             PlayListView.ItemClick += ListItemClicked;
             LeaderboardView.ItemClick += ListItemClicked;
-            
         }
 
 
@@ -61,6 +65,5 @@ namespace HyPlayer.App.Views.Pages
             // ConnectedAnimationHelper.PrepareForwardAnimation(ViewModel, (ListViewBase)sender, e.ClickedItem);
         }
         // protected override void OnPageUnloaded(object sender, RoutedEventArgs e) => Bindings.StopTracking();
-
     }
 }

@@ -1,8 +1,8 @@
-﻿using HyPlayer.App.Contract.Services;
-using Microsoft.UI.Xaml.Controls;
+﻿using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
 using System;
+using HyPlayer.App.Interfaces.Views;
 
 namespace HyPlayer.App.Services
 {

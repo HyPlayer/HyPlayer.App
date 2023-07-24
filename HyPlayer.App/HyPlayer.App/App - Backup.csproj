@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net7.0-windows10.0.19041.0</TargetFramework>
@@ -25,7 +25,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Remove="Controls\App\SelectableTextBox.xaml" />
-    <Page Remove="Controls\App\PivotExtensions\PivotExHeaderView.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,8 +34,8 @@
     <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2" />
     <PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
     <PackageReference Include="Depository" Version="1.2.0" />
-    <PackageReference Include="HyPlayer.NeteaseProvider" Version="0.0.2.5" />
-    <PackageReference Include="HyPlayer.PlayCore" Version="0.0.13" />
+    <PackageReference Include="HyPlayer.NeteaseProvider" Version="0.0.2.2" />
+    <PackageReference Include="HyPlayer.PlayCore" Version="0.0.11" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.230628000-preview1" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.25387-preview" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
@@ -87,16 +86,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="App - Backup.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Contract\Services\IPageService.cs" />
-    <Compile Remove="Helpers\UIHelper.cs" />
-    <Compile Remove="Controls\App\PivotExtensions\PivotEx.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="ViewModels\Converters\" />
   </ItemGroup>
 </Project>
