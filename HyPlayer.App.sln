@@ -7,7 +7,7 @@ Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "HyPlayer.App.Package", "HyP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App", "HyPlayer.App\HyPlayer.App\App.csproj", "{EE10E35A-560A-4043-927D-8ECF76AF74F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HyPlayer.NAudioAudioService", "HyPlayer.NAudioAudioService\HyPlayer.NAudioAudioService.csproj", "{DC297C81-660C-4078-B207-FC25CDB0D272}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HyPlayer.NAudioAudioService", "HyPlayer.NAudioAudioService\HyPlayer.NAudioAudioService.csproj", "{DC297C81-660C-4078-B207-FC25CDB0D272}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,8 +80,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {945313F6-7D3E-4659-92CA-8FCD1373E542}

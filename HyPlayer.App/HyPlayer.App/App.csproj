@@ -34,9 +34,9 @@
     <PackageReference Include="CommunityToolkit.WinUI.Notifications" Version="7.1.2" />
     <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2" />
     <PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
-    <PackageReference Include="Depository" Version="1.2.1" />
-    <PackageReference Include="HyPlayer.NeteaseProvider" Version="0.0.2.5" />
-    <PackageReference Include="HyPlayer.PlayCore" Version="0.0.14" />
+    <PackageReference Include="Depository" Version="1.2.2" />
+    <PackageReference Include="HyPlayer.NeteaseProvider" Version="0.0.2.6" />
+    <PackageReference Include="HyPlayer.PlayCore" Version="0.0.15" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.230628000-preview1" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.25387-preview" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
