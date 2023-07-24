@@ -3,14 +3,16 @@
     x:Class="HyPlayer.App.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:HyPlayer.App">
+    xmlns:local="using:HyPlayer.App"
+    xmlns:converters="using:HyPlayer.App.Helpers.Converters">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
-                <!-- Other merged dictionaries here -->
+
+                <ResourceDictionary Source="./Styles/Styles.Overwrite.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <!-- Other app resources here -->
+            <converters:BrushToColorConverter x:Key="BrushToColorConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
