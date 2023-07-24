@@ -70,6 +70,7 @@ namespace HyPlayer.App
         {
             Depository = DepositoryFactory.CreateNew();
             ConfigureServices();
+            ConfigurePlayCore();
             DispatcherQueue = DispatcherQueue.GetForCurrentThread();
             window = new Window.MainWindow();
             window.Activate();
@@ -80,8 +81,13 @@ namespace HyPlayer.App
             Depository.AddMvvm();
             Depository.AddSingleton<INavigationService, NavigationService>();
             Depository.AddSingleton<IPageService, PageService>();
+        }
+
+        private void ConfigurePlayCore()
+        {
             Depository.AddSingleton<PlayCoreBase, Chopin>();
-            Depository.Resolve<PlayCoreBase>().RegisterMusicProvider(typeof(NeteaseProvider.NeteaseProvider));
+            var playCore = Depository.Resolve<PlayCoreBase>();
+            playCore.RegisterMusicProvider(typeof(NeteaseProvider.NeteaseProvider));
         }
 
         private void NavigationToRootPage(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
