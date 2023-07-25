@@ -34,7 +34,7 @@ public partial class HomeViewModel
     {
         _provider = provider;
         _currentPlaying = currentPlaying;
-        GetSongsAsync().SafeFireAndForget();
+        // GetSongsAsync().SafeFireAndForget();
     }
 
     [RelayCommand]

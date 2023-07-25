@@ -55,8 +55,42 @@ namespace HyPlayer.App.Views.Pages
             {
                 Scope = _scope
             });
+
+            Loaded += OnLoaded;
+            Unloaded += OnUnloaded;
+            SizeChanged += OnSizeChanged;
         }
 
         public override object GetViewModel() => ViewModel;
+
+        /// <summary>
+        /// 在页面加载完成后调用.
+        /// </summary>
+        protected virtual void OnPageLoaded()
+        {
+        }
+
+        /// <summary>
+        /// 在页面卸载完成后调用.
+        /// </summary>
+        protected virtual void OnPageUnloaded()
+        {
+        }
+
+        /// <summary>
+        /// 当页面大小变化时调用.
+        /// </summary>
+        protected virtual void OnPageSizeChanged(SizeChangedEventArgs args)
+        {
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+            => OnPageLoaded();
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+            => OnPageUnloaded();
+
+        private void OnSizeChanged(object sender, SizeChangedEventArgs e)
+            => OnPageSizeChanged(e);
     }
 }

@@ -18,6 +18,7 @@ using Windows.Foundation.Collections;
 using Depository.Abstraction.Models.Options;
 using Depository.Extensions;
 using HomeViewModel = HyPlayer.App.ViewModels.HomeViewModel;
+using AsyncAwaitBestPractices;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -62,6 +63,12 @@ namespace HyPlayer.App.Views.Pages
             // ConnectedAnimationHelper.PrepareForwardAnimation(ViewModel, (ListViewBase)sender, e.ClickedItem);
         }
         // protected override void OnPageUnloaded(object sender, RoutedEventArgs e) => Bindings.StopTracking();
+
+        protected override void OnPageLoaded()
+        {
+            ViewModel.GetSongsAsync().SafeFireAndForget();
+        }
+        
     }
 
     public class HomePageBase : AppPage<HomeViewModel>
