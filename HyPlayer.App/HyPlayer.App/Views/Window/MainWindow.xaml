@@ -78,8 +78,8 @@
 
             <NavigationView
                 x:Name="NavView"
-                BackRequested="NavView_BackRequested"
-                IsBackEnabled="{x:Bind contentFrame.CanGoBack}"
+                BackRequested="{x:Bind _shellViewModel.GoBack}"
+                IsBackEnabled="{x:Bind _shellViewModel.CanBack}"
                 IsPaneToggleButtonVisible="False"
                 ItemInvoked="NavView_ItemInvoked"
                 Style="{StaticResource LeftNavViewDefaultStyle}">

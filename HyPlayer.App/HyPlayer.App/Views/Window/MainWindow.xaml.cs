@@ -12,7 +12,12 @@ using AppWindowTitleBar = Microsoft.UI.Windowing.AppWindowTitleBar;
 using Microsoft.UI.Xaml.Controls;
 using Windows.UI.WindowManagement;
 using HyPlayer.App.Interfaces.Views;
-
+using HyPlayer.App.ViewModels;
+using Depository.Abstraction.Interfaces;
+using Depository.Abstraction.Models.Options;
+using Depository.Core;
+using Depository.Extensions;
+using HyPlayer.App.Interfaces.ViewModels;
 
 namespace HyPlayer.App.Views.Window
 {
@@ -21,10 +26,18 @@ namespace HyPlayer.App.Views.Window
     /// </summary>
     public sealed partial class MainWindow : WindowEx
     {
+        private ShellViewModel _shellViewModel;
+        private readonly IDepositoryResolveScope _scope;
+
         public MainWindow()
         {
             this.InitializeComponent();
 
+            _scope = DepositoryResolveScope.Create();
+            _shellViewModel = App.GetDIContainer().Resolve<ShellViewModel>(new DependencyResolveOption()
+            {
+                Scope = _scope
+            });
 
             // Customize the Title Bar.
             var titleBar = this.AppWindow.TitleBar;
