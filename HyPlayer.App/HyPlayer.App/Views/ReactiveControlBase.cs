@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml;
 
-namespace Bili.App.Controls
+namespace HyPlayer.App.Views.Controls
 {
     /// <summary>
     /// 响应式用户控件基类.
