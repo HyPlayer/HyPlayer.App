@@ -27,20 +27,17 @@ namespace HyPlayer.App.Views.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class HomePage : Page
+    public sealed partial class HomePage : HomePageBase
     {
         private Grid contentArea => ContentArea;
-        public HomeViewModel ViewModel { get; }
+        
         private readonly IDepositoryResolveScope _scope;
 
         public HomePage()
         {
             this.InitializeComponent();
             _scope = DepositoryResolveScope.Create();
-            ViewModel = App.GetDIContainer().Resolve<HomeViewModel>(new DependencyResolveOption()
-                                                       {
-                                                           Scope = _scope
-                                                       });
+            
         }
 
 
@@ -65,5 +62,10 @@ namespace HyPlayer.App.Views.Pages
             // ConnectedAnimationHelper.PrepareForwardAnimation(ViewModel, (ListViewBase)sender, e.ClickedItem);
         }
         // protected override void OnPageUnloaded(object sender, RoutedEventArgs e) => Bindings.StopTracking();
+    }
+
+    public class HomePageBase : AppPage<HomeViewModel>
+    {
+
     }
 }
