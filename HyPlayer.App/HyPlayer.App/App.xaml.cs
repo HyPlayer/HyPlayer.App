@@ -14,6 +14,7 @@ using Microsoft.UI.Dispatching;
 using DispatcherQueue = Windows.System.DispatcherQueue;
 using Window = HyPlayer.App.Views.Window;
 using Pages = HyPlayer.App.Views.Pages;
+using HyPlayer.App.ViewModels;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -81,6 +82,8 @@ namespace HyPlayer.App
             Depository.AddMvvm();
             Depository.AddSingleton<INavigationService, NavigationService>();
             Depository.AddSingleton<IPageService, PageService>();
+
+            // Depository.AddTransient<ShellViewModel>();
         }
 
         private void ConfigurePlayCore()

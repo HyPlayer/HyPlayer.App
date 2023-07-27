@@ -9,6 +9,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -18,6 +19,9 @@ using Windows.Foundation.Collections;
 using Depository.Abstraction.Models.Options;
 using Depository.Extensions;
 using HomeViewModel = HyPlayer.App.ViewModels.HomeViewModel;
+using AsyncAwaitBestPractices;
+using HyPlayer.App.Interfaces.Views;
+using HyPlayer.PlayCore.Abstraction.Models;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -27,43 +31,29 @@ namespace HyPlayer.App.Views.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class HomePage : Page
+    public sealed partial class HomePage : HomePageBase
     {
-        private Grid contentArea => ContentArea;
-        public HomeViewModel ViewModel { get; }
-        private readonly IDepositoryResolveScope _scope;
-
+       
         public HomePage()
         {
-            this.InitializeComponent();
-            _scope = DepositoryResolveScope.Create();
-            ViewModel = App.GetDIContainer().Resolve<HomeViewModel>(new DependencyResolveOption()
-                                                       {
-                                                           Scope = _scope
-                                                       });
+            InitializeComponent();
         }
 
-
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
-        {
-            base.OnNavigatedFrom(e);
-            PlayListView.ItemClick -= ListItemClicked;
-            LeaderboardView.ItemClick -= ListItemClicked;
-        }
-
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            await Task.Delay(1);
-            PlayListView.ItemClick += ListItemClicked;
-            LeaderboardView.ItemClick += ListItemClicked;
+            ViewModel.GetSongsAsync().SafeFireAndForget();
         }
 
 
-        private void ListItemClicked(object sender, ItemClickEventArgs e)
+        private void OnPlaylistItemClicked(object sender, ItemClickEventArgs e)
         {
-            // ConnectedAnimationHelper.PrepareForwardAnimation(ViewModel, (ListViewBase)sender, e.ClickedItem);
+            Debug.WriteLine($"Clicking on {(e.ClickedItem as ProvidableItemBase)?.Name}");
         }
-        // protected override void OnPageUnloaded(object sender, RoutedEventArgs e) => Bindings.StopTracking();
+    }
+
+    public class HomePageBase : AppPageBase<HomeViewModel>
+    {
+
     }
 }
