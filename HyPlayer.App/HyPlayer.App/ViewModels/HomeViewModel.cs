@@ -10,6 +10,7 @@ using HyPlayer.NeteaseApi;
 using HyPlayer.NeteaseApi.ApiContracts;
 using HyPlayer.NeteaseProvider.Mappers;
 using HyPlayer.NeteaseProvider.Models;
+using HyPlayer.PlayCore.Abstraction;
 using HyPlayer.PlayCore.Abstraction.Models.Resources;
 
 //using HyPlayer.NeteaseProvider.Mappers;
@@ -32,7 +33,7 @@ public partial class HomeViewModel
 
     public HomeViewModel(NeteaseProvider.NeteaseProvider provider, CurrentPlayingViewModel currentPlaying)
     {
-        _provider = provider;
+        _provider = (NeteaseProvider.NeteaseProvider) App.GetService<PlayCoreBase>().MusicProviders.FirstOrDefault();
         _currentPlaying = currentPlaying;
         // GetSongsAsync().SafeFireAndForget();
     }
