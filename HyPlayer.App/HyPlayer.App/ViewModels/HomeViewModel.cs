@@ -31,9 +31,9 @@ public partial class HomeViewModel
 
     private readonly NeteaseProvider.NeteaseProvider _provider;
 
-    public HomeViewModel(NeteaseProvider.NeteaseProvider provider, CurrentPlayingViewModel currentPlaying)
+    public HomeViewModel(NeteaseProvider.NeteaseProvider provider,CurrentPlayingViewModel currentPlaying)
     {
-        _provider = (NeteaseProvider.NeteaseProvider) App.GetService<PlayCoreBase>().MusicProviders.FirstOrDefault();
+        _provider = provider;
         _currentPlaying = currentPlaying;
         // GetSongsAsync().SafeFireAndForget();
     }
