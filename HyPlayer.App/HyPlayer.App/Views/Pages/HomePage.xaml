@@ -8,6 +8,7 @@
     xmlns:local="using:HyPlayer.App.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="using:HyPlayer.NeteaseProvider.Models"
+    xmlns:ui="using:CommunityToolkit.WinUI.UI"
     mc:Ignorable="d">
 
     <local:HomePageBase.Resources>
@@ -54,10 +55,11 @@
         </DataTemplate>
         <DataTemplate x:Key="PlayListTemplate" x:DataType="models:NeteasePlaylist">
             <Border
-                Margin="2,4,2,0"
+                Margin="4"
                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                CornerRadius="8">
+                CornerRadius="8"
+                ui:Effects.Shadow="{StaticResource CardShadow}">
                 <Grid>
                     <StackPanel
                         Margin="16,0,0,0"
