@@ -243,7 +243,7 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="推荐歌曲" />
-                    <HyperlinkButton HorizontalAlignment="Right" Content="查看更多" />
+                    <HyperlinkButton Grid.Row="0" HorizontalAlignment="Right" Content="查看更多" />
 
                     <controls:AdaptiveGridView
                         Grid.Row="1"
@@ -263,11 +263,12 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="推荐歌单" />
-                    <HyperlinkButton HorizontalAlignment="Right" Content="查看更多" />
+                    <HyperlinkButton Grid.Row="0" HorizontalAlignment="Right" Content="查看更多" />
 
                     <controls:AdaptiveGridView
                         x:Name="PlayListView"
                         Grid.Row="1"
+                        ItemClick="OnPlaylistItemClicked"
                         DesiredWidth="256"
                         IsItemClickEnabled="True"
                         ItemHeight="100"
@@ -285,10 +286,11 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="排行榜" />
-                    <HyperlinkButton HorizontalAlignment="Right" Content="查看更多" />
+                    <HyperlinkButton Grid.Row="0" HorizontalAlignment="Right" Content="查看更多" />
 
                     <controls:AdaptiveGridView
                         x:Name="LeaderboardView"
+                        ItemClick="OnPlaylistItemClicked"
                         Grid.Row="1"
                         MaxHeight="500"
                         DesiredWidth="240"

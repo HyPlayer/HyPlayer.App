@@ -34,10 +34,7 @@ namespace HyPlayer.App.Views.Window
             this.InitializeComponent();
 
             _scope = DepositoryResolveScope.Create();
-            _shellViewModel = App.GetDIContainer().Resolve<ShellViewModel>(new DependencyResolveOption()
-            {
-                Scope = _scope
-            });
+            _shellViewModel = App.GetDIContainer().ResolveInScope<ShellViewModel>(_scope);
 
             // Customize the Title Bar.
             var titleBar = this.AppWindow.TitleBar;
