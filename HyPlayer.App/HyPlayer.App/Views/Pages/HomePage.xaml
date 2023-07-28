@@ -56,10 +56,10 @@
         <DataTemplate x:Key="PlayListTemplate" x:DataType="models:NeteasePlaylist">
             <Border
                 Margin="4"
+                ui:Effects.Shadow="{StaticResource CardShadow}"
                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                CornerRadius="8"
-                ui:Effects.Shadow="{StaticResource CardShadow}">
+                
+                CornerRadius="8">
                 <Grid>
                     <StackPanel
                         Margin="16,0,0,0"
@@ -101,8 +101,10 @@
             <Border
                 Margin="0,0,0,0"
                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                BorderThickness="1"
+                BorderBrush="{ThemeResource ButtonRevealBorderBrush}"
+                BorderThickness="{ThemeResource ButtonRevealBorderThemeThickness}"
+                UseSystemFocusVisuals="True"
+                FocusVisualMargin="-3"
                 CornerRadius="4">
                 <Grid>
                     <Image
@@ -112,21 +114,23 @@
                         Stretch="Fill" />
                     <Grid Background="{ThemeResource SystemControlAcrylicElementBrush}">
                         <controls:ImageEx
-                            Width="84"
-                            Height="84"
-                            Margin="16"
-                            CornerRadius="{ThemeResource ControlCornerRadius}"
+                            Width="96"
+                            Height="96"
+                            Margin="12"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
+                            CornerRadius="6"
                             Source="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=125}"
+                            BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
+                            BorderThickness="1"
                             Stretch="UniformToFill" />
                         <TextBlock
+                            MaxWidth="80"
+                            MaxHeight="80"
                             Margin="16"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Top"
                             FontSize="14"
-                            MaxWidth="80"
-                            MaxHeight="80"
                             Style="{ThemeResource SubtitleTextBlockStyle}"
                             Text="{x:Bind Name}" />
                         <TextBlock
