@@ -249,7 +249,8 @@
                 <Grid
                     x:Name="ContentArea"
                     Grid.Row="2"
-                    RowSpacing="8">
+                    RowSpacing="8"
+                    Visibility="{x:Bind Path=ViewModel.IsSignIn, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}">
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
@@ -272,7 +273,7 @@
                         SelectionMode="None" />
 
                 </Grid>
-                <Grid Grid.Row="3" RowSpacing="8">
+                <Grid Grid.Row="3" RowSpacing="8" Visibility="{x:Bind Path=ViewModel.IsSignIn, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}">
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
@@ -298,19 +299,23 @@
                 <Grid
                     Grid.Row="4"
                     Margin="0,12,0,0"
-                    RowSpacing="8">
+                    RowSpacing="8"
+                    Background="{ThemeResource LayerOnMicaBaseAltFillColorSecondaryBrush}"
+                    CornerRadius="{ThemeResource OverlayCornerRadius}">
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="排行榜" />
+                    <TextBlock Margin="12,8" Style="{StaticResource SubtitleTextBlockStyle}" Text="排行榜" />
                     <HyperlinkButton
                         Grid.Row="0"
                         HorizontalAlignment="Right"
-                        Content="查看更多" />
+                        Content="查看更多"
+                        Margin="12,4" />
 
                     <controls:AdaptiveGridView
                         x:Name="LeaderboardView"
+                        Margin="12,4" 
                         Grid.Row="1"
                         MaxHeight="240"
                         DesiredWidth="240"
