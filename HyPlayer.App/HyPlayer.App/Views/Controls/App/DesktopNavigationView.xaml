@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<base:NavigationViewBase
+    x:Class="HyPlayer.App.Views.Controls.App.DesktopNavigationView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:base="using:HyPlayer.App.Views.Controls.Base"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:HyPlayer.App.Views.Controls.App"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid>
+        <NavigationView
+            x:Name="NavView"
+            BackRequested="{x:Bind ViewModel.GoBack}"
+            IsBackEnabled="{x:Bind ViewModel.CanBack}"
+            IsPaneToggleButtonVisible="True"
+            ItemInvoked="{x:Bind NavView_ItemInvoked}"
+            Loaded="NavView_Loaded"
+            Style="{StaticResource LeftNavViewDefaultStyle}">
+
+            <Frame x:Name="contentFrame" />
+
+            <NavigationView.MenuItems>
+                <NavigationViewItem
+                    x:Name="Home"
+                    Content="主页"
+                    Icon="Home"
+                    Tag="HomePage" />
+            </NavigationView.MenuItems>
+        </NavigationView>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="641" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="NavView.IsPaneToggleButtonVisible" Value="True" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1008" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="NavView.IsPaneToggleButtonVisible" Value="False" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</base:NavigationViewBase>

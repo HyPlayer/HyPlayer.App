@@ -28,6 +28,7 @@ namespace HyPlayer.App
     {
         public static Frame? contentFrame;
         public static WindowEx window;
+        public static XamlRoot AppXamlRoot;
 
         public IDepository Depository;
         public DispatcherQueue DispatcherQueue;
@@ -74,6 +75,8 @@ namespace HyPlayer.App
             ConfigurePlayCore();
             DispatcherQueue = DispatcherQueue.GetForCurrentThread();
             window = new Window.MainWindow();
+            AppXamlRoot = window.Content.XamlRoot;
+            NavigationToRootPage(args);
             window.Activate();
         }
 

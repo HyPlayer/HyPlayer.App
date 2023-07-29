@@ -18,8 +18,10 @@
   <ItemGroup>
     <None Remove="Controls\Dialogs\SignInDialog.xaml" />
     <None Remove="Styles\Styles.Overwrite.xaml" />
+    <None Remove="Views\Controls\App\DesktopNavigationView.xaml" />
     <None Remove="Views\Pages\ErrorPage.xaml" />
     <None Remove="Views\Pages\HomePage.xaml" />
+    <None Remove="Views\Pages\MePage.xaml" />
     <None Remove="Views\Window\MainWindow.xaml" />
     <None Remove="Views\Window\SmallWindow.xaml" />
   </ItemGroup>
@@ -84,6 +86,12 @@
     <None Update="Controls\App\SelectableTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <Page Update="Views\Controls\App\DesktopNavigationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\Pages\MePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>
