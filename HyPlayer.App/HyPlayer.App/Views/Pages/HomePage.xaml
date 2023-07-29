@@ -164,7 +164,7 @@
                     FontSize="24"
                     Foreground="White"
                     Style="{StaticResource TitleTextBlockStyle}"
-                    Text="正在播放" />
+                    Text="主页" />
                 <Grid
                     Grid.Row="0"
                     Height="420"
@@ -192,24 +192,25 @@
                 <StackPanel
                     VerticalAlignment="Center"
                     Spacing="2"
-                    Visibility="Collapsed">
+                    Visibility="Visible">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             HorizontalAlignment="Left"
                             FontSize="32"
+                            Foreground="White"
                             Style="{StaticResource TitleTextBlockStyle}"
                             Text="欢迎，" />
                         <TextBlock
                             Margin="-10,-1,0,0"
                             FontSize="34"
                             FontWeight="Bold"
-                            Foreground="{StaticResource SystemAccentColorLight2}"
+                            Foreground="{StaticResource AccentAAFillColorDefaultBrush}"
                             Style="{StaticResource TitleTextBlockStyle}"
-                            Text="Betta_Fish" />
+                            Text="{x:Bind ViewModel.UsrName}" />
                     </StackPanel>
                     <TextBlock
                         FontSize="16"
-                        Foreground="{StaticResource SystemControlForegroundBaseMediumBrush}"
+                        Foreground="White"
                         Text="用音乐开启新的一天吧" />
                 </StackPanel>
                 <StackPanel

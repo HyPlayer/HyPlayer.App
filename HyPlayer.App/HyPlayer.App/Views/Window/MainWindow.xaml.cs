@@ -18,6 +18,8 @@ using Depository.Abstraction.Models.Options;
 using Depository.Core;
 using Depository.Extensions;
 using HyPlayer.App.Interfaces.ViewModels;
+using HyPlayer.App.Views.Controls.Dialogs;
+using HyPlayer.App.Views.Pages;
 
 namespace HyPlayer.App.Views.Window
 {
@@ -27,6 +29,7 @@ namespace HyPlayer.App.Views.Window
     public sealed partial class MainWindow : WindowEx
     {
         private ShellViewModel _shellViewModel;
+        private AccountViewModel _accountViewModel;
         private readonly IDepositoryResolveScope _scope;
 
         public MainWindow()
@@ -35,6 +38,7 @@ namespace HyPlayer.App.Views.Window
 
             _scope = DepositoryResolveScope.Create();
             _shellViewModel = App.GetDIContainer().ResolveInScope<ShellViewModel>(_scope);
+            _accountViewModel = App.GetDIContainer().ResolveInScope<AccountViewModel>(_scope);
 
             // Customize the Title Bar.
             var titleBar = this.AppWindow.TitleBar;
@@ -89,7 +93,7 @@ namespace HyPlayer.App.Views.Window
             }
 
             // Set the rootFrame of the MainWindow as App.rootFrame.
-            App.contentFrame = contentFrame;
+            App.contentFrame = NavView.ContentFrame;
 
             this.AppWindow.Changed += AppWindow_Changed;
         }
@@ -233,19 +237,26 @@ namespace HyPlayer.App.Views.Window
             App.GetService<INavigationService>().GoBack();
         }
 
-        private void NavView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
-        {
-            var invokedItemTag = App.GetService<IPageService>().GetPageType((args.InvokedItemContainer as NavigationViewItem)?.Tag?.ToString());
-            var invokedItemName = (args.InvokedItemContainer as NavigationViewItem)?.Content?.ToString();
-
-
-            App.GetService<INavigationService>().NavigateTo(invokedItemTag);
-            // NavView.Header = invokedItemName;        
-        }
 
         private void GlobalTeachingTip_CloseButtonClick(TeachingTip sender, object args)
         {
             globalTeachingTip.IsOpen = false;
         }
+
+        private async void UserButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(_accountViewModel._provider.LoginedUser == null)
+            {
+                var signin_dialog = new SignInDialog();
+                signin_dialog.XamlRoot = this.Content.XamlRoot;
+                var result = await signin_dialog.ShowAsync();
+            }
+            else
+            {
+                App.GetService<INavigationService>().NavigateTo(typeof(MePage));
+            }
+        }
+
+        
     }
 }
