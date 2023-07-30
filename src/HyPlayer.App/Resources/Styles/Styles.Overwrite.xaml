@@ -5,7 +5,7 @@
     xmlns:ui="using:CommunityToolkit.WinUI.UI">
 
     <Thickness x:Key="NavigationViewHeaderMargin">0,0,0,0</Thickness>
-    <Thickness x:Key="NavigationViewContentMargin">0,44,0,96</Thickness>
+    <Thickness x:Key="NavigationViewContentMargin">0,48,0,96</Thickness>
     <Thickness x:Key="NavigationViewContentGridBorderThickness">1,1,0,0</Thickness>
     <CornerRadius x:Key="NavigationViewContentGridCornerRadius">8,0,0,8</CornerRadius>
     <SolidColorBrush x:Key="NavigationViewTopPaneBackground" Color="Transparent"/>
@@ -16,7 +16,7 @@
             <Setter Property="IsPaneOpen" Value="True"/>
             <Setter Property="PaneDisplayMode" Value="Auto"/>
             <Setter Property="IsPaneToggleButtonVisible" Value="True"/>
-            <Setter Property="OpenPaneLength" Value="256"/>
+            <Setter Property="OpenPaneLength" Value="225"/>
             <Setter Property="IsSettingsVisible" Value="False"/>
             <Setter Property="IsTitleBarAutoPaddingEnabled" Value="True"/>
         </Style.Setters>

@@ -124,5 +124,6 @@
   <ItemGroup>
     <Folder Include="Assets\" />
     <Folder Include="Resources\" />
+    <Folder Include="Toolkit\" />
   </ItemGroup>
 </Project>

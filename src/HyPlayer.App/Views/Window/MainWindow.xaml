@@ -8,6 +8,7 @@
     xmlns:local="using:HyPlayer.App.Views.Window"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:HyPlayer.App.Views.Controls.App"
+    xmlns:search="using:HyPlayer.App.Views.Controls.Search"
     Title="HyPlayer"
     MinWidth="500"
     MinHeight="300"
@@ -27,7 +28,7 @@
 
             <Border
                 x:Name="AppTitleBar"
-                Height="44"
+                Height="48"
                 Margin="48,0,0,0"
                 VerticalAlignment="Top">
                 <Grid x:Name="TitleBarContainer" Height="48">
@@ -56,24 +57,24 @@
                         FontSize="14"
                         Style="{StaticResource CaptionTextBlockStyle}"
                         Text="{x:Bind Title}" />
-                    <AutoSuggestBox
-                        x:Name="SearchBox"
-                        Grid.Column="4"
-                        Width="400"
-                        Height="32"
-                        MinWidth="250"
-                        MaxWidth="550"
-                        VerticalAlignment="Center"
-                        BorderThickness="0"
-                        PlaceholderText="搜索..."
-                        QueryIcon="Find" />
+                    <search:SearchBox x:Name="SearchBox"
+                                      Grid.Column="4"
+                                      Width="400"
+                                      Height="36"
+                                      MinWidth="250"
+                                      MaxWidth="550"
+                                      VerticalAlignment="Center"
+                                      BorderThickness="0"/>
                     <Button
                         x:Name="UserButton"
                         Grid.Column="6"
                         VerticalAlignment="Center"
                         Style="{ThemeResource TitleBarButtonStyle}"
-                        Click="UserButton_Click">
-                        <PersonPicture Width="32" Height="32"/>
+                        Click="UserButton_Click"
+                        Height="36"
+                        Width="36"
+                        Margin="0,0,10,0">
+                        <PersonPicture Width="30" Height="30"/>
                     </Button>
                 </Grid>
             </Border>
