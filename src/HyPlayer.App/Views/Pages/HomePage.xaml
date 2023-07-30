@@ -168,7 +168,7 @@
                     VerticalAlignment="Top">
                     <controls:ImageEx
                         Canvas.ZIndex="0"
-                        Source="https://flarum.csur.fun/2022-12-25/1671970508-774457-image.png"
+                        Source="ms-appx:///Assets/Images/BackgroundImage.png"
                         Stretch="UniformToFill" />
                     <StackPanel
                         Margin="36"

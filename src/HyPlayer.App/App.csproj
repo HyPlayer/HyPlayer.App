@@ -19,14 +19,14 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Controls\Dialogs\SignInDialog.xaml" />
-    <None Remove="Images\BackgroundImage.png" />
-    <None Remove="Images\LockScreenLogo.scale-200.png" />
-    <None Remove="Images\SplashScreen.scale-200.png" />
-    <None Remove="Images\Square150x150Logo.scale-200.png" />
-    <None Remove="Images\Square44x44Logo.scale-200.png" />
-    <None Remove="Images\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <None Remove="Images\StoreLogo.png" />
-    <None Remove="Images\Wide310x150Logo.scale-200.png" />
+    <None Remove="Assets\Images\BackgroundImage.png" />
+    <None Remove="Assets\Images\LockScreenLogo.scale-200.png" />
+    <None Remove="Assets\Images\SplashScreen.scale-200.png" />
+    <None Remove="Assets\Images\Square150x150Logo.scale-200.png" />
+    <None Remove="Assets\Images\Square44x44Logo.scale-200.png" />
+    <None Remove="Assets\Images\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <None Remove="Assets\Images\StoreLogo.png" />
+    <None Remove="Assets\Images\Wide310x150Logo.scale-200.png" />
     <None Remove="Package.appxmanifest" />
     <None Remove="Styles\Styles.Overwrite.xaml" />
     <None Remove="Views\Controls\App\DesktopNavigationView.xaml" />
@@ -122,17 +122,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Images\BackgroundImage.png" />
-    <Content Include="Images\LockScreenLogo.scale-200.png" />
-    <Content Include="Images\SplashScreen.scale-200.png" />
-    <Content Include="Images\Square150x150Logo.scale-200.png" />
-    <Content Include="Images\Square44x44Logo.scale-200.png" />
-    <Content Include="Images\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Images\StoreLogo.png" />
-    <Content Include="Images\Wide310x150Logo.scale-200.png" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Folder Include="Assets\" />
     <Folder Include="Resources\" />
   </ItemGroup>
 </Project>
