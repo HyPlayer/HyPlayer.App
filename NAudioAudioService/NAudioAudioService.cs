@@ -2,7 +2,7 @@
 using HyPlayer.PlayCore.Abstraction.Models.AudioServiceComponents;
 using HyPlayer.PlayCore.Abstraction.Models.Resources;
 
-namespace HyPlayer.NAudioAudioService;
+namespace NAudioAudioService;
 
 public class NAudioAudioService : AudioServiceBase
 {
