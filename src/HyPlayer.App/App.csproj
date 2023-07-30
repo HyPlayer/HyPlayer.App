@@ -30,6 +30,7 @@
     <None Remove="Package.appxmanifest" />
     <None Remove="Styles\Styles.Overwrite.xaml" />
     <None Remove="Views\Controls\App\DesktopNavigationView.xaml" />
+    <None Remove="Views\Controls\App\HomePageHeaderImage.xaml" />
     <None Remove="Views\Controls\Search\SearchBox.xaml" />
     <None Remove="Views\Pages\ErrorPage.xaml" />
     <None Remove="Views\Pages\HomePage.xaml" />
@@ -40,6 +41,9 @@
   <ItemGroup>
     <Page Remove="Controls\App\SelectableTextBox.xaml" />
     <Page Remove="Controls\App\PivotExtensions\PivotExHeaderView.xaml" />
+    <Page Remove="resources\Dark.xaml" />
+    <Page Remove="resources\Light.xaml" />
+    <Page Remove="resources\Theme.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,6 +51,7 @@
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
     <PackageReference Include="CommunityToolkit.WinUI.Notifications" Version="7.1.2" />
     <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2" />
+    <PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.1.2" />
     <PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
     <PackageReference Include="Depository" Version="1.2.2.1" />
     <PackageReference Include="HyPlayer.NeteaseProvider" Version="0.0.4.1" />
@@ -98,6 +103,18 @@
     <None Update="Controls\App\SelectableTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <None Update="Resources\Dark.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Resources\Light.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Resources\Theme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <Page Update="Views\Controls\App\HomePageHeaderImage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Views\Controls\Search\SearchBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -134,5 +151,6 @@
 
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Themes\" />
   </ItemGroup>
 </Project>

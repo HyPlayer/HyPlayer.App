@@ -13,7 +13,7 @@
     MinHeight="300"
     mc:Ignorable="d">
     <ex:WindowEx.SystemBackdrop>
-        <MicaBackdrop Kind="BaseAlt"/>
+        <MicaBackdrop />
     </ex:WindowEx.SystemBackdrop>
 
     <ex:WindowEx.WindowContent>

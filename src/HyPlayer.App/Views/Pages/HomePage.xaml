@@ -8,7 +8,8 @@
     xmlns:local="using:HyPlayer.App.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="using:HyPlayer.NeteaseProvider.Models"
-    xmlns:ui="using:CommunityToolkit.WinUI.UI"
+    xmlns:ui="using:CommunityToolkit.WinUI.UI" 
+    xmlns:controls1="using:HyPlayer.App.Views.Controls.App"
     mc:Ignorable="d">
 
     <local:HomePageBase.Resources>
@@ -163,13 +164,13 @@
                     Text="主页" />
                 <Grid
                     Grid.Row="0"
-                    Height="420"
+                    Height="500"
                     Margin="-36,-36,-36,0"
                     VerticalAlignment="Top">
-                    <controls:ImageEx
-                        Canvas.ZIndex="0"
-                        Source="https://flarum.csur.fun/2022-12-25/1671970508-774457-image.png"
-                        Stretch="UniformToFill" />
+                    <controls1:HomePageHeaderImage
+                        Grid.RowSpan="2"
+                        Height="440"
+                        VerticalAlignment="Top" />
                     <StackPanel
                         Margin="36"
                         VerticalAlignment="Center"
@@ -212,33 +213,33 @@
                 <StackPanel
                     x:Name="ActionPanel"
                     Grid.Row="0"
-                    Margin="0,0,0,0"
+                    Margin="0,0,0,20"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
                     Canvas.ZIndex="1"
                     Orientation="Horizontal"
                     Spacing="12">
-                    <Button Padding="16" CornerRadius="8" Height="150" Width="125">
-                        <StackPanel Orientation="Vertical" Spacing="12">
-                            <FontIcon FontSize="24" Glyph="&#xE006;" />
-                            <TextBlock FontSize="16" Text="我的喜欢" />
+                    <Button Padding="16" CornerRadius="6" Height="60" Width="125">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <FontIcon FontSize="22" Glyph="&#xE006;" />
+                            <TextBlock FontSize="14" Text="我的喜欢" />
                         </StackPanel>
                     </Button>
                     <Button
                         Padding="16"
                         Command="{x:Bind ViewModel.GetSongsCommand, Mode=OneWay}"
-                        CornerRadius="8"
-                         Height="150" Width="125">
-                        <StackPanel Orientation="Vertical" Spacing="12">
-                            <FontIcon FontSize="24" Glyph="&#xE163;" />
-                            <TextBlock FontSize="16" Text="每日推荐" />
+                        CornerRadius="6"
+                         Height="60" Width="125">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <FontIcon FontSize="22" Glyph="&#xE163;" />
+                            <TextBlock FontSize="14" Text="每日推荐" />
 
                         </StackPanel>
                     </Button>
-                    <Button Padding="16" CornerRadius="8" Height="150" Width="125">
-                        <StackPanel Orientation="Vertical" Spacing="12">
-                            <FontIcon FontSize="24" Glyph="&#xEFA9;" />
-                            <TextBlock FontSize="16" Text="私人FM" />
+                    <Button Padding="16" CornerRadius="6" Height="60" Width="125">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <FontIcon FontSize="22" Glyph="&#xEFA9;" />
+                            <TextBlock FontSize="14" Text="私人FM" />
 
                         </StackPanel>
                     </Button>
