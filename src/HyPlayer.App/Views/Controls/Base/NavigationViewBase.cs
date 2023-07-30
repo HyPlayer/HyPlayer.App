@@ -1,4 +1,5 @@
 ﻿using HyPlayer.App.ViewModels;
+using HyPlayer.App.Interfaces.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
