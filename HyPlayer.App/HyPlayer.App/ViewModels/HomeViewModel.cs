@@ -66,22 +66,22 @@ public partial class HomeViewModel
         // ÍÆ¼ö¸èµ¥
         if (_provider.LoginedUser != null)
         {
-            /*
+            
             RecommendPlaylistsApi recommendPlaylistsApi = new RecommendPlaylistsApi();
-            var recommend_playlists_result = await _provider.RequestAsync(NeteaseApis.RecommendPlaylistsApi, recommendPlaylistsApi);
+            var recommend_playlists_result = await _provider.RequestAsync(NeteaseApis.RecommendPlaylistsApi, new RecommendPlaylistsRequest());
             recommend_playlists_result.Match<List<NeteasePlaylist>>(
                 success =>
-                    PlayLists = success.List?.Select(t => t.MapToNeteasePlaylist()).ToList() ??
+                    PlayLists = success.Recommends?.Select(t => t.MapToNeteasePlaylist()).ToList() ??
                                    new List<NeteasePlaylist>(),
                 error => throw error);
-
-            var recommend_song_result = await _provider.RequestAsync(NeteaseApis.ToplistApi, new ToplistRequest());
-            recommend_song_result.Match<List<NeteasePlaylist>>(
+ 
+            var recommend_song_result = await _provider.RequestAsync(NeteaseApis.RecommendSongsApi, new RecommendSongsRequest());
+            recommend_song_result.Match<List<NeteaseSong>>(
                 success =>
-                    TopLists = success.List?.Select(t => t.MapToNeteasePlaylist()).ToList() ??
-                                   new List<NeteasePlaylist>(),
+                    RecommendedSongs = success.Data.DailySongs?.Select(t => t.MapToNeteaseMusic()).ToList() ?? 
+                    new List<NeteaseSong>(),
                 error => throw error);
-            */
+           
         }
         
         // ÍÆ¼ö¸èÇú

@@ -75,6 +75,7 @@ namespace HyPlayer.App
             ConfigurePlayCore();
             DispatcherQueue = DispatcherQueue.GetForCurrentThread();
             window = new Window.MainWindow();
+            new Window.SmallWindow().Activate();
             AppXamlRoot = window.Content.XamlRoot;
             NavigationToRootPage(args);
             window.Activate();

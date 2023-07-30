@@ -17,6 +17,7 @@
                 Margin="2,4,2,0"
                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
                 CornerRadius="8">
                 <Grid>
                     <StackPanel
@@ -48,54 +49,54 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
                         Foreground="{StaticResource SystemControlForegroundBaseMediumBrush}"
-                        Text="{x:Bind CdName}" />
+                        Text="{x:Bind TrackNumber}" />
 
                 </Grid>
             </Border>
         </DataTemplate>
         <DataTemplate x:Key="PlayListTemplate" x:DataType="models:NeteasePlaylist">
             <Border
-                Margin="4"
-                ui:Effects.Shadow="{StaticResource CardShadow}"
+                Margin="0,0,0,0"
                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                
+                BorderBrush="{ThemeResource ButtonRevealBorderBrush}"
+                BorderThickness="{ThemeResource ButtonRevealBorderThemeThickness}"
+                UseSystemFocusVisuals="True"
+                FocusVisualMargin="-3"
                 CornerRadius="8">
                 <Grid>
-                    <StackPanel
-                        Margin="16,0,0,0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Orientation="Horizontal"
-                        Spacing="12">
-                        <Border
-                            Width="64"
-                            Height="64"
+                    <Grid>
+                        <controls:ImageEx
+                            Width="84"
+                            Height="84"
+                            Margin="6"
+                            HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                            CornerRadius="4">
-                            <FontIcon FontSize="24" Glyph="&#xE142;" />
-                        </Border>
-                        <StackPanel VerticalAlignment="Center">
-                            <TextBlock
-                                FontSize="20"
-                                FontWeight="SemiBold"
-                                Text="{x:Bind Name, Mode=OneWay}" />
-                            <TextBlock
-                                Foreground="{StaticResource SystemControlForegroundBaseMediumBrush}"
-                                Text="{x:Bind Creator.Name, Mode=OneWay}"
-                                TextTrimming="WordEllipsis" />
-                        </StackPanel>
-                    </StackPanel>
-                    <TextBlock
-                        Margin="16"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Bottom"
-                        Foreground="{StaticResource SystemControlForegroundBaseMediumBrush}"
-                        Text="10W" />
-
+                            CornerRadius="6"
+                            Source="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=125}"
+                            BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
+                            BorderThickness="1"
+                            Stretch="UniformToFill" />
+                        <TextBlock
+                            MaxWidth="144"
+                            MaxHeight="80"
+                            Margin="16"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            FontSize="14"
+                            Style="{ThemeResource SubtitleTextBlockStyle}"
+                            Text="{x:Bind Name}" />
+                        <TextBlock
+                            Margin="16"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            FontSize="10"
+                            Foreground="{StaticResource SystemControlForegroundBaseMediumBrush}">
+                            <Run>播放数</Run>
+                            <Run Text="{x:Bind PlayCount}" />
+                        </TextBlock>
+                    </Grid>
                 </Grid>
             </Border>
-
         </DataTemplate>
         <DataTemplate x:Key="LeaderboardTemplate" x:DataType="models:NeteasePlaylist">
             <Border
@@ -105,14 +106,9 @@
                 BorderThickness="{ThemeResource ButtonRevealBorderThemeThickness}"
                 UseSystemFocusVisuals="True"
                 FocusVisualMargin="-3"
-                CornerRadius="4">
+                CornerRadius="8">
                 <Grid>
-                    <Image
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        Source="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=125}"
-                        Stretch="Fill" />
-                    <Grid Background="{ThemeResource SystemControlAcrylicElementBrush}">
+                    <Grid>
                         <controls:ImageEx
                             Width="96"
                             Height="96"
@@ -125,7 +121,7 @@
                             BorderThickness="1"
                             Stretch="UniformToFill" />
                         <TextBlock
-                            MaxWidth="80"
+                            MaxWidth="144"
                             MaxHeight="80"
                             Margin="16"
                             HorizontalAlignment="Right"
@@ -222,8 +218,8 @@
                     Canvas.ZIndex="1"
                     Orientation="Horizontal"
                     Spacing="12">
-                    <Button Padding="16" CornerRadius="12">
-                        <StackPanel Orientation="Horizontal" Spacing="12">
+                    <Button Padding="16" CornerRadius="8" Height="150" Width="125">
+                        <StackPanel Orientation="Vertical" Spacing="12">
                             <FontIcon FontSize="24" Glyph="&#xE006;" />
                             <TextBlock FontSize="16" Text="我的喜欢" />
                         </StackPanel>
@@ -231,15 +227,16 @@
                     <Button
                         Padding="16"
                         Command="{x:Bind ViewModel.GetSongsCommand, Mode=OneWay}"
-                        CornerRadius="12">
-                        <StackPanel Orientation="Horizontal" Spacing="12">
+                        CornerRadius="8"
+                         Height="150" Width="125">
+                        <StackPanel Orientation="Vertical" Spacing="12">
                             <FontIcon FontSize="24" Glyph="&#xE163;" />
                             <TextBlock FontSize="16" Text="每日推荐" />
 
                         </StackPanel>
                     </Button>
-                    <Button Padding="16" CornerRadius="12">
-                        <StackPanel Orientation="Horizontal" Spacing="12">
+                    <Button Padding="16" CornerRadius="8" Height="150" Width="125">
+                        <StackPanel Orientation="Vertical" Spacing="12">
                             <FontIcon FontSize="24" Glyph="&#xEFA9;" />
                             <TextBlock FontSize="16" Text="私人FM" />
 
