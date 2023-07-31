@@ -12,10 +12,8 @@
     Title="HyPlayer"
     MinWidth="500"
     MinHeight="300"
+    SystemBackdrop="{ThemeResource DefaultMicaSystemBackdrop}"
     mc:Ignorable="d">
-    <ex:WindowEx.SystemBackdrop>
-        <MicaBackdrop Kind="BaseAlt"/>
-    </ex:WindowEx.SystemBackdrop>
 
     <ex:WindowEx.WindowContent>
         <Grid>
@@ -25,12 +23,14 @@
                 CloseButtonClick="GlobalTeachingTip_CloseButtonClick"
                 IsLightDismissEnabled="False"
                 PreferredPlacement="TopRight" />
+            <controls:AppTitleBar/>
 
             <Border
                 x:Name="AppTitleBar"
                 Height="48"
                 Margin="48,0,0,0"
-                VerticalAlignment="Top">
+                VerticalAlignment="Top"
+                Visibility="Collapsed">
                 <Grid x:Name="TitleBarContainer" Height="48">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition x:Name="LeftPaddingColumn" Width="0" />

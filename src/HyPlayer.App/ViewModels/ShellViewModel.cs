@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using HyPlayer.App.Interfaces.ViewModels;
 using HyPlayer.App.Interfaces.Views;
 using HyPlayer.App.Views.Controls.Dialogs;
+using HyPlayer.App.Views.Pages;
 using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Threading.Tasks;
@@ -11,6 +12,8 @@ namespace HyPlayer.App.ViewModels
 {
     public partial class ShellViewModel : ObservableObject, IScopedViewModel
     {
+
+
         public ShellViewModel() 
         { 
 
@@ -25,14 +28,7 @@ namespace HyPlayer.App.ViewModels
                 App.GetService<INavigationService>().GoBack();
             }
         }
-
-        [RelayCommand]
-        public async Task OnUserButtonClickedAsync()
-        {
-            var signin_dialog = new SignInDialog();
-            signin_dialog.XamlRoot = App.AppXamlRoot;
-            var result = await signin_dialog.ShowAsync();
-        }
+       
 
         
 

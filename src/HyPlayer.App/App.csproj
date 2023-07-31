@@ -29,6 +29,7 @@
     <None Remove="Assets\Images\Wide310x150Logo.scale-200.png" />
     <None Remove="Package.appxmanifest" />
     <None Remove="Styles\Styles.Overwrite.xaml" />
+    <None Remove="Views\Controls\App\AppTitleBar.xaml" />
     <None Remove="Views\Controls\App\DesktopNavigationView.xaml" />
     <None Remove="Views\Controls\Search\SearchBox.xaml" />
     <None Remove="Views\Pages\ErrorPage.xaml" />
@@ -98,6 +99,9 @@
     <None Update="Controls\App\SelectableTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <Page Update="Views\Controls\App\AppTitleBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Views\Controls\Search\SearchBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -124,6 +128,5 @@
   <ItemGroup>
     <Folder Include="Assets\" />
     <Folder Include="Resources\" />
-    <Folder Include="Toolkit\" />
   </ItemGroup>
 </Project>
