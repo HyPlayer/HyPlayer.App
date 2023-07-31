@@ -29,18 +29,19 @@
     <None Remove="Assets\Images\Wide310x150Logo.scale-200.png" />
     <None Remove="Package.appxmanifest" />
     <None Remove="Styles\Styles.Overwrite.xaml" />
-    <None Remove="Views\Controls\App\AppTitleBar.xaml" />
     <None Remove="Views\Controls\App\DesktopNavigationView.xaml" />
     <None Remove="Views\Controls\Search\SearchBox.xaml" />
     <None Remove="Views\Pages\ErrorPage.xaml" />
     <None Remove="Views\Pages\HomePage.xaml" />
     <None Remove="Views\Pages\MePage.xaml" />
+    <None Remove="Views\Pages\ShellPage.xaml" />
     <None Remove="Views\Window\MainWindow.xaml" />
     <None Remove="Views\Window\SmallWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Page Remove="Controls\App\SelectableTextBox.xaml" />
     <Page Remove="Controls\App\PivotExtensions\PivotExHeaderView.xaml" />
+    <Page Remove="Resources\Styles\Style.Dimensions.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -99,7 +100,10 @@
     <None Update="Controls\App\SelectableTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
-    <Page Update="Views\Controls\App\AppTitleBar.xaml">
+    <None Update="Resources\Styles\Style.Dimensions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <Page Update="Views\Pages\ShellPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="Views\Controls\Search\SearchBox.xaml">
@@ -127,6 +131,5 @@
 
   <ItemGroup>
     <Folder Include="Assets\" />
-    <Folder Include="Resources\" />
   </ItemGroup>
 </Project>

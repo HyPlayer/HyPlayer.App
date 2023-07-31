@@ -20,6 +20,7 @@ using Depository.Extensions;
 using HyPlayer.App.Interfaces.ViewModels;
 using HyPlayer.App.Views.Controls.Dialogs;
 using HyPlayer.App.Views.Pages;
+using HyPlayer.App.Views.Controls.App;
 
 namespace HyPlayer.App.Views.Window
 {
@@ -35,8 +36,6 @@ namespace HyPlayer.App.Views.Window
         public MainWindow()
         {
             this.InitializeComponent();
-
-            Activated += MainWindow_Activated;
 
             _scope = DepositoryResolveScope.Create();
             _shellViewModel = App.GetDIContainer().ResolveInScope<ShellViewModel>(_scope);
@@ -95,14 +94,9 @@ namespace HyPlayer.App.Views.Window
             }
 
             // Set the rootFrame of the MainWindow as App.rootFrame.
-            
+            rootFrame.Navigate(typeof(ShellPage));
 
             this.AppWindow.Changed += AppWindow_Changed;
-        }
-
-        private void MainWindow_Activated(object sender, WindowActivatedEventArgs args)
-        {
-            rootFrame.Navigate(typeof(Controls.App.DesktopNavigationView));
         }
 
         private void AppWindow_Changed(AppWindow sender, Microsoft.UI.Windowing.AppWindowChangedEventArgs args)
@@ -236,6 +230,22 @@ namespace HyPlayer.App.Views.Window
                 Windows.Graphics.RectInt32[] dragRects = dragRectsList.ToArray();
 
                 appWindow.TitleBar.SetDragRectangles(dragRects);
+            }
+        }
+
+       
+
+        private async void UserButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(_accountViewModel._provider.LoginedUser == null)
+            {
+                var signin_dialog = new SignInDialog();
+                signin_dialog.XamlRoot = this.Content.XamlRoot;
+                var result = await signin_dialog.ShowAsync();
+            }
+            else
+            {
+                App.GetService<INavigationService>().NavigateTo(typeof(MePage));
             }
         }
 

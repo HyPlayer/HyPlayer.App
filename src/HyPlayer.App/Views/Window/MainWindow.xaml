@@ -20,17 +20,13 @@
             <TeachingTip
                 x:Name="globalTeachingTip"
                 Title="一个弹窗, 两个弹窗, 三个弹窗, 四个弹窗...zzzzzz"
-                CloseButtonClick="GlobalTeachingTip_CloseButtonClick"
                 IsLightDismissEnabled="False"
                 PreferredPlacement="TopRight" />
-            <controls:AppTitleBar/>
-
             <Border
                 x:Name="AppTitleBar"
                 Height="48"
                 Margin="48,0,0,0"
-                VerticalAlignment="Top"
-                Visibility="Collapsed">
+                VerticalAlignment="Top">
                 <Grid x:Name="TitleBarContainer" Height="48">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition x:Name="LeftPaddingColumn" Width="0" />
@@ -79,7 +75,7 @@
                 </Grid>
             </Border>
 
-            <controls:DesktopNavigationView x:Name="NavView"/>
+            <Frame x:Name="rootFrame" />
 
         </Grid>
     </ex:WindowEx.WindowContent>
