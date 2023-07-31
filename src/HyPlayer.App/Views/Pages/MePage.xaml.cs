@@ -31,7 +31,7 @@ namespace HyPlayer.App.Views.Pages
         }
     }
 
-    public class MePageBase : AppPageBase<AccountViewModel>
+    public class MePageBase : AppPageWithSingletonViewModelBase<AccountViewModel>
     {
 
     }

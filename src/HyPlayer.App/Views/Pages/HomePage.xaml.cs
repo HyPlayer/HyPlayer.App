@@ -52,7 +52,7 @@ namespace HyPlayer.App.Views.Pages
         }
     }
 
-    public class HomePageBase : AppPageBase<HomeViewModel>
+    public class HomePageBase : AppPageWithScopedViewModelBase<HomeViewModel>
     {
 
     }

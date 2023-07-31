@@ -32,7 +32,7 @@ namespace HyPlayer.App.Views.Controls.Dialogs
 
         private async Task ContentDialog_PrimaryButtonClickAsync(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            var result = await ViewModel.SignInAsync(TextBoxAccount.Text, TextBoxPassword.Password);
+            await ViewModel.SignInAsync(TextBoxAccount.Text, TextBoxPassword.Password);
             HyPlayer.App.App.GetService<INavigationService>().NavigateTo(typeof(Pages.HomePage));
         }
     }

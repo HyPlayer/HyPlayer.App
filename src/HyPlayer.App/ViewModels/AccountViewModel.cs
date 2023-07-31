@@ -6,55 +6,37 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 using HyPlayer.App.Interfaces.ViewModels;
+using HyPlayer.NeteaseProvider.Models;
+using HyPlayer.PlayCore.Abstraction.Models.Containers;
 
 
 namespace HyPlayer.App.ViewModels
 {
-    public partial class AccountViewModel : ObservableObject, IScopedViewModel
+    public partial class AccountViewModel : ObservableObject, ISingletonViewModel
     {
 
-        public readonly NeteaseProvider.NeteaseProvider _provider;
+        private readonly NeteaseProvider.NeteaseProvider _provider;
         public AccountViewModel(NeteaseProvider.NeteaseProvider provider)
         { 
             _provider = provider;
         }
 
-        public string UsrName
-        {
-            get
-            {
-                if (_provider.LoginedUser != null)
-                {
-                    return _provider.LoginedUser.Name;
-                }
-                else return "";
-            }
-        }
+        [ObservableProperty] private bool _isLogin;
+        [ObservableProperty] private NeteaseUser? _user;
 
-        public string description
-        {
-            get
-            {
-                if (_provider.LoginedUser != null)
-                {
-                    return _provider.LoginedUser.Description;
-                }
-                else return "";
-            }
-        }
 
-        public async Task<bool> SignInAsync(string usr,  string pwd)
+        public async Task SignInAsync(string usr,  string pwd)
         {
             bool isPhone = Regex.Match(usr, "^[0-9]+$").Success;
             if (isPhone)
             {
-                var result = await _provider.LoginCellphone(usr, pwd);
-                return result;
+                IsLogin = await _provider.LoginCellphone(usr, pwd);
+                User = _provider.LoginedUser;
             }
             else
             {
-                var result = await _provider.LoginEmail(usr, pwd);
-                return result;
+                IsLogin = await _provider.LoginEmail(usr, pwd);
+                User = _provider.LoginedUser;
             }
         }
     }

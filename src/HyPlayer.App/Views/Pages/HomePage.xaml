@@ -27,22 +27,24 @@
                         VerticalAlignment="Center"
                         Orientation="Horizontal"
                         Spacing="12">
-                        <Border
-                            x:Name="ItemThumbnail"
-                            Width="64"
-                            Height="64"
+                        <controls:ImageEx
+                            Width="84"
+                            Height="84"
+                            Margin="6"
+                            HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                            CornerRadius="4">
-                            <FontIcon FontSize="24" Glyph="&#xEC4F;" />
-                        </Border>
+                            CornerRadius="6"
+                            Source="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=64}"
+                            BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
+                            BorderThickness="1"
+                            Stretch="UniformToFill" />
                         <StackPanel VerticalAlignment="Center">
                             <TextBlock
                                 FontSize="20"
                                 FontWeight="SemiBold"
                                 Text="{x:Bind Name}" />
-                            <TextBlock Foreground="{StaticResource SystemControlForegroundBaseMediumBrush}" Text="{x:Bind Artists}" />
-                            <TextBlock Foreground="{StaticResource SystemControlForegroundBaseMediumBrush}" Text="{x:Bind Album}" />
+                            <TextBlock Foreground="{StaticResource SystemControlForegroundBaseMediumBrush}" Text="{x:Bind CreatorList, Converter={StaticResource StringListToStringConverter}}" />
+                            <TextBlock Foreground="{StaticResource SystemControlForegroundBaseMediumBrush}" Text="{x:Bind Album.Name}" />
                         </StackPanel>
                     </StackPanel>
                     <TextBlock
@@ -73,7 +75,7 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             CornerRadius="6"
-                            Source="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=125}"
+                            Source="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=84}"
                             BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
                             BorderThickness="1"
                             Stretch="UniformToFill" />
@@ -117,7 +119,7 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             CornerRadius="6"
-                            Source="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=125}"
+                            Source="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=96}"
                             BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
                             BorderThickness="1"
                             Stretch="UniformToFill" />
@@ -203,7 +205,7 @@
                             FontWeight="Bold"
                             Foreground="{StaticResource AccentAAFillColorDefaultBrush}"
                             Style="{StaticResource TitleTextBlockStyle}"
-                            Text="{x:Bind ViewModel.UsrName}" />
+                            Text="{x:Bind ViewModel.AccountViewModel.User.Name}" />
                     </StackPanel>
                     <TextBlock
                         FontSize="16"
@@ -249,7 +251,7 @@
                     x:Name="ContentArea"
                     Grid.Row="2"
                     RowSpacing="8"
-                    Visibility="{x:Bind Path=ViewModel.IsSignIn, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}">
+                    Visibility="{x:Bind Path=ViewModel.AccountViewModel.IsLogin, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}">
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
@@ -272,7 +274,7 @@
                         SelectionMode="None" />
 
                 </Grid>
-                <Grid Grid.Row="3" RowSpacing="8" Visibility="{x:Bind Path=ViewModel.IsSignIn, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}">
+                <Grid Grid.Row="3" RowSpacing="8" Visibility="{x:Bind Path=ViewModel.AccountViewModel.IsLogin, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}">
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
@@ -286,10 +288,10 @@
                     <controls:AdaptiveGridView
                         x:Name="PlayListView"
                         Grid.Row="1"
-                        DesiredWidth="256"
+                        DesiredWidth="295"
                         IsItemClickEnabled="True"
                         ItemClick="OnPlaylistItemClicked"
-                        ItemHeight="100"
+                        ItemHeight="112"
                         ItemTemplate="{StaticResource PlayListTemplate}"
                         ItemsSource="{x:Bind ViewModel.PlayLists, Mode=OneWay}"
                         SelectionMode="None" />

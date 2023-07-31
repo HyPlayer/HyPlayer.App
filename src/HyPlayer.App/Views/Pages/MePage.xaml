@@ -17,8 +17,8 @@
                 <TextBlock
                     
                     Style="{ThemeResource TitleTextBlockStyle}"
-                    Text="{x:Bind ViewModel.UsrName}" />
-                <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="{x:Bind ViewModel.description}" />
+                    Text="{x:Bind ViewModel.User.Name}" />
+                <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="{x:Bind ViewModel.User.Description}" />
                 <StackPanel Orientation="Horizontal">
                     <TextBlock>
                         <Run Text=""/>

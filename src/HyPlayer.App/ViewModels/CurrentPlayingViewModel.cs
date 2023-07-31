@@ -7,7 +7,7 @@ using HyPlayer.App.Interfaces.ViewModels;
 using HyPlayer.NeteaseProvider.Models;
 using HyPlayer.PlayCore.Abstraction;
 using HyPlayer.PlayCore.Abstraction.Models.Notifications;
-using HyPlayer.PlayCore.Abstraction.Models.Songs;
+using HyPlayer.PlayCore.Abstraction.Models.SingleItems;
 
 namespace HyPlayer.App.ViewModels;
 

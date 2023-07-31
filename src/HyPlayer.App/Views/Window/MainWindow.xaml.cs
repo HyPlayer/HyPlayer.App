@@ -237,7 +237,7 @@ namespace HyPlayer.App.Views.Window
 
         private async void UserButton_Click(object sender, RoutedEventArgs e)
         {
-            if(_accountViewModel._provider.LoginedUser == null)
+            if(!_accountViewModel.IsLogin)
             {
                 var signin_dialog = new SignInDialog();
                 signin_dialog.XamlRoot = this.Content.XamlRoot;

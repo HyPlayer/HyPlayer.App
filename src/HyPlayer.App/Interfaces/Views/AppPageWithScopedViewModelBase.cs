@@ -8,11 +8,12 @@ using Microsoft.UI.Xaml.Controls;
 
 namespace HyPlayer.App.Interfaces.Views;
 
-public abstract class AppPageBase<TViewModel> : Page, IDisposable
+public abstract class AppPageWithScopedViewModelBase<TViewModel> : Page, IDisposable
     where TViewModel : class, IScopedViewModel
 {
     public static readonly DependencyProperty ViewModelProperty =
-        DependencyProperty.Register(nameof(ViewModel), typeof(TViewModel), typeof(TViewModel), new PropertyMetadata(default));
+        DependencyProperty.Register(nameof(ViewModel), typeof(TViewModel), typeof(TViewModel),
+                                    new PropertyMetadata(default));
 
     public TViewModel ViewModel
     {
@@ -22,8 +23,8 @@ public abstract class AppPageBase<TViewModel> : Page, IDisposable
 
     private readonly IDepositoryResolveScope _scope;
 
-        
-    protected AppPageBase()
+
+    protected AppPageWithScopedViewModelBase()
     {
         _scope = DepositoryResolveScope.Create();
         ViewModel = App.GetDIContainer().ResolveInScope<TViewModel>(_scope);
@@ -42,5 +43,26 @@ public abstract class AppPageBase<TViewModel> : Page, IDisposable
     {
         Dispose(true);
         GC.SuppressFinalize(this);
+    }
+}
+
+public abstract class AppPageWithSingletonViewModelBase<TViewModel> : Page
+    where TViewModel : class, ISingletonViewModel
+{
+    public static readonly DependencyProperty ViewModelProperty =
+        DependencyProperty.Register(nameof(ViewModel), typeof(TViewModel), typeof(TViewModel),
+                                    new PropertyMetadata(default));
+
+    public TViewModel ViewModel
+    {
+        get => (TViewModel)GetValue(ViewModelProperty);
+        set => SetValue(ViewModelProperty, value);
+    }
+
+
+    protected AppPageWithSingletonViewModelBase()
+    {
+        ViewModel = App.GetDIContainer().Resolve<TViewModel>();
+        DataContext = ViewModel;
     }
 }

@@ -7,4 +7,6 @@
     xmlns:ToolkitConverters="using:CommunityToolkit.WinUI.UI.Converters">
     <converters:CoverToImageSourceConverter x:Key="CoverToImageSourceConverter" />
     <ToolkitConverters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    <converters:StringListToStringConverter x:Key="StringListToStringConverter" />
+    <converters:TransparentColorConverter x:Key="TransparentColorConverter" />
 </ResourceDictionary>
