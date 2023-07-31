@@ -26,7 +26,8 @@
                 x:Name="AppTitleBar"
                 Height="48"
                 Margin="48,0,0,0"
-                VerticalAlignment="Top">
+                VerticalAlignment="Top"
+                Canvas.ZIndex="1">
                 <Grid x:Name="TitleBarContainer" Height="48">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition x:Name="LeftPaddingColumn" Width="0" />
@@ -75,7 +76,7 @@
                 </Grid>
             </Border>
 
-            <Frame x:Name="rootFrame" />
+            <Frame x:Name="rootFrame" Margin="0,0,0,0" Canvas.ZIndex="0"/>
 
         </Grid>
     </ex:WindowEx.WindowContent>
