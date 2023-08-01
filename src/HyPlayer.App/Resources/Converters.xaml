@@ -9,4 +9,5 @@
     <ToolkitConverters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     <converters:StringListToStringConverter x:Key="StringListToStringConverter" />
     <converters:TransparentColorConverter x:Key="TransparentColorConverter" />
+    <converters:CountHumanizerConverter x:Key="CountHumanizerConverter" />
 </ResourceDictionary>
