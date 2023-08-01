@@ -29,15 +29,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Controls\Dialogs\SignInDialog.xaml" />
-    <None Remove="Assets\Images\BackgroundImage.png" />
-    <None Remove="Assets\Images\LockScreenLogo.scale-200.png" />
-    <None Remove="Assets\Images\SplashScreen.scale-200.png" />
-    <None Remove="Assets\Images\Square150x150Logo.scale-200.png" />
-    <None Remove="Assets\Images\Square44x44Logo.scale-200.png" />
-    <None Remove="Assets\Images\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <None Remove="Assets\Images\StoreLogo.png" />
-    <None Remove="Assets\Images\Wide310x150Logo.scale-200.png" />
-    <None Remove="Package.appxmanifest" />
     <None Remove="Styles\Styles.Overwrite.xaml" />
     <None Remove="Views\Controls\App\DesktopNavigationView.xaml" />
     <None Remove="Views\Controls\App\HomePageHeaderImage.xaml" />
@@ -144,20 +135,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AppxManifest Include="Package.appxmanifest">
-      <SubType>Designer</SubType>
-    </AppxManifest>
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Resources\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PRIResource Remove="Images\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PRIResource Remove="Themes\**" />
   </ItemGroup>
 </Project>
