@@ -23,8 +23,8 @@ public class CountHumanizerConverter : IValueConverter
         return value switch
                {
                    < 10000                  => value.ToString("D"),
-                   >= 10000 and < 100000000 => (value / 10000).ToString() + "万",
-                   > 100000000              => (value / 10000000).ToString() + "亿",
+                   >= 10000 and < 100000000 => (value / 10000).ToString() + " 万",
+                   > 100000000              => (value / 10000000).ToString() + " 亿",
                    _                        => value.ToString()
                };
     }
@@ -34,8 +34,8 @@ public class CountHumanizerConverter : IValueConverter
         return value switch
                {
                    < 10000                  => value.ToString("D"),
-                   >= 10000 and < 100000000 => (value / 10000).ToString() + "万",
-                   > 100000000              => (value / 10000000).ToString() + "亿",
+                   >= 10000 and < 100000000 => (value / 10000).ToString() + " 万",
+                   > 100000000              => (value / 10000000).ToString() + " 亿",
                    _                        => value.ToString()
                };
     }
@@ -46,8 +46,8 @@ public class CountHumanizerConverter : IValueConverter
         return value switch
                {
                    < 10000                  => value.ToString("D"),
-                   >= 10000 and < 100000000 => (value / 10000).ToString() + "万",
-                   > 100000000              => (value / 10000000).ToString() + "亿",
+                   >= 10000 and < 100000000 => (value / 10000).ToString() + " 万",
+                   > 100000000              => (value / 10000000).ToString() + " 亿",
                    _                        => value.ToString()
                };
     }
