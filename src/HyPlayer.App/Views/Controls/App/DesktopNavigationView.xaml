@@ -27,6 +27,27 @@
                     Content="主页"
                     Icon="Home"
                     Tag="HomePage" />
+                <NavigationViewItem
+                    x:Name="Recommend"
+                    Content="每日推荐"
+                    Icon="Calendar"
+                    Tag="RecommendPage" />
+                <NavigationViewItem
+                    x:Name="PrivateFM"
+                    Content="私人FM"
+                    Tag="PrivateFMPage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xF8B2;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem
+                    Content="心动模式"
+                    SelectsOnInvoked="False"
+                    Tag="HeartBeat">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xEB4F;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
             </NavigationView.MenuItems>
         </NavigationView>
 

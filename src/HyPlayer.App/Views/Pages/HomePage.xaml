@@ -21,7 +21,7 @@
                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                 BorderThickness="1"
-                CornerRadius="4">
+                CornerRadius="8">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition
                         Width="84" />
@@ -81,7 +81,7 @@
                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                 BorderThickness="1"
-                CornerRadius="4">
+                CornerRadius="8">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition
                         Width="84" />
@@ -134,7 +134,7 @@
                 BorderThickness="{ThemeResource ButtonRevealBorderThemeThickness}"
                 ToolTipService.ToolTip="{x:Bind Name}"
                 UseSystemFocusVisuals="True"
-                CornerRadius="10"
+                CornerRadius="8"
                 FocusVisualMargin="-3">
                 <controls:ImageEx
                             VerticalAlignment="Center"
