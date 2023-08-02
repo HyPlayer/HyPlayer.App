@@ -106,10 +106,10 @@
     <None Update="Controls\App\SelectableTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
-    <None Update="Resources\Dark.xaml">
+    <None Update="Resources\Styles\Themes.Dark.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
-    <None Update="Resources\Light.xaml">
+    <None Update="Resources\Styles\Themes.Light.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
     <None Update="Resources\Theme.xaml">
@@ -133,9 +133,5 @@
     <Compile Remove="Contract\Services\IPageService.cs" />
     <Compile Remove="Helpers\UIHelper.cs" />
     <Compile Remove="Controls\App\PivotExtensions\PivotEx.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Resources\" />
   </ItemGroup>
 </Project>
