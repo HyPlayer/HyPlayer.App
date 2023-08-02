@@ -9,9 +9,162 @@
     xmlns:models="using:HyPlayer.NeteaseProvider.Models"
     xmlns:controls1="using:HyPlayer.App.Views.Controls.App"
     xmlns:viewmodels="using:HyPlayer.App.ViewModels"
+    xmlns:media="using:CommunityToolkit.WinUI.UI.Media"
     d:DataContext="{d:DesignInstance Type=viewmodels:HomeViewModel}"
     mc:Ignorable="d">
     <local:HomePageBase.Resources>
+        <Style x:Key="DefaultTopChartButtonStyle" TargetType="controls1:TopChartButton">
+            <Setter Property="Background" Value="{ThemeResource ButtonBackground}" />
+            <Setter Property="BackgroundSizing" Value="InnerBorderEdge" />
+            <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}" />
+            <Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderBrush}" />
+            <Setter Property="BorderThickness" Value="{ThemeResource ButtonBorderThemeThickness}" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
+            <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
+            <Setter Property="FocusVisualMargin" Value="-3" />
+            <Setter Property="CornerRadius" Value="{ThemeResource ControlCornerRadius}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="controls1:TopChartButton">
+                        <ContentPresenter x:Name="ContentPresenter" Background="{TemplateBinding Background}"
+                                          Foreground="{TemplateBinding Foreground}"
+                                          BackgroundSizing="{TemplateBinding BackgroundSizing}"
+                                          BorderBrush="{TemplateBinding BorderBrush}"
+                                          BorderThickness="{TemplateBinding BorderThickness}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          ContentTransitions="{TemplateBinding ContentTransitions}"
+                                          CornerRadius="{TemplateBinding CornerRadius}"
+                                          Padding="{TemplateBinding Padding}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          AutomationProperties.AccessibilityView="Raw"
+                                          local:AnimatedIcon.State="Normal"
+                                          xmlns:local="using:Microsoft.UI.Xaml.Controls">
+                            <ContentPresenter.BackgroundTransition>
+                                <BrushTransition Duration="0:0:0.083" />
+                            </ContentPresenter.BackgroundTransition>
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <FadeOutThemeAnimation FillBehavior="HoldEnd" TargetName="TopChartShadow"
+                                                                   Duration="0:00:0.3" />
+                                        </Storyboard>
+                                    </VisualState>
+
+                                    <VisualState x:Name="PointerOver">
+
+                                        <Storyboard>
+                                            <FadeInThemeAnimation FillBehavior="HoldEnd" TargetName="TopChartShadow"
+                                                                  Duration="0:00:0.3" />
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ButtonBackgroundPointerOver}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ButtonBorderBrushPointerOver}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ButtonForegroundPointerOver}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+
+                                    <VisualState x:Name="Pressed">
+
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ButtonBackgroundPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ButtonBorderBrushPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ButtonForegroundPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+
+                                    <VisualState x:Name="Disabled">
+
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ButtonBackgroundDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ButtonBorderBrushDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ButtonForegroundDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+
+                            </VisualStateManager.VisualStateGroups>
+
+                            <Grid>
+                                <controls:ImageEx
+                                    VerticalAlignment="Center"
+                                    CornerRadius="8"
+                                    Source="{TemplateBinding Cover}"
+                                    Stretch="UniformToFill" />
+                                <Grid Canvas.ZIndex="2"
+                                      x:Name="TopChartShadow">
+                                    <Grid.Background>
+                                        <media:BackdropBlurBrush Amount="10" />
+                                    </Grid.Background>
+                                    <Grid Padding="0,22,18,22" Background="#88000000">
+
+                                        <Grid VerticalAlignment="Center" HorizontalAlignment="Right" RowSpacing="6">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Grid.Row="0" FontSize="18" FontWeight="Bold"
+                                                       Text="{TemplateBinding LeaderBoardName}" />
+                                            <Grid Grid.Row="1" ColumnSpacing="4">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <FontIcon HorizontalAlignment="Right" Grid.Column="0" FontSize="12" Glyph="&#xF5B0;" />
+                                                <TextBlock FontSize="12" Grid.Column="1"
+                                                           Text="{TemplateBinding PlayCount}" />
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </ContentPresenter>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <DataTemplate
             x:Key="HomePageRecommendSongItemTemplate"
             x:DataType="models:NeteaseSong">
@@ -74,7 +227,7 @@
             </Grid>
         </DataTemplate>
         <DataTemplate
-            x:Key="PlayListTemplate"
+            x:Key="HomePagePlaylistTemplate"
             x:DataType="models:NeteasePlaylist">
             <Grid
                 HorizontalAlignment="Stretch"
@@ -104,9 +257,7 @@
                     RowSpacing="4">
                     <Grid.RowDefinitions>
                         <RowDefinition
-                            Height="*" />
-                        <RowDefinition
-                            Height="*" />
+                            Height="2*" />
                         <RowDefinition
                             Height="*" />
                     </Grid.RowDefinitions>
@@ -114,7 +265,8 @@
                         Grid.Row="0"
                         FontSize="14"
                         FontWeight="SemiBold"
-                        MaxLines="1"
+                        MaxLines="2"
+                        TextWrapping="Wrap"
                         TextTrimming="CharacterEllipsis"
                         Text="{x:Bind Name}" />
                     <TextBlock
@@ -128,31 +280,19 @@
             </Grid>
         </DataTemplate>
         <DataTemplate
-            x:Key="LeaderboardTemplate"
+            x:Key="HomePageTopChartTemplate"
             x:DataType="models:NeteasePlaylist">
-            <Grid                
+            <controls1:TopChartButton
+                Style="{ThemeResource DefaultTopChartButtonStyle}"
                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                 BorderBrush="{ThemeResource ButtonRevealBorderBrush}"
                 BorderThickness="{ThemeResource ButtonRevealBorderThemeThickness}"
-                ToolTipService.ToolTip="{x:Bind Name}"
                 UseSystemFocusVisuals="True"
-                CornerRadius="8"
-                FocusVisualMargin="-3">
-                <controls:ImageEx
-                            VerticalAlignment="Center"
-                    CornerRadius="8"
-                            Source="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=96}"
-                            Stretch="UniformToFill" />
-                <TextBlock
-                            Margin="12"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Bottom"
-                    FontSize="10"
-                            Foreground="White">
-                            <Run FontSize="9"  FontFamily="{ThemeResource SymbolThemeFontFamily}">&#xE102;</Run>
-                            <Run Text="{x:Bind PlayCount, Converter={StaticResource CountHumanizerConverter}}" />
-                </TextBlock>
-            </Grid>
+                Cover="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=96}"
+                PlayCount="{x:Bind PlayCount, Converter={StaticResource CountHumanizerConverter}}"
+                LeaderBoardName="{x:Bind Name}"
+                CornerRadius="8">
+            </controls1:TopChartButton>
 
 
         </DataTemplate>
@@ -298,24 +438,24 @@
                     RowSpacing="8"
                     Visibility="{x:Bind Path=ViewModel.AccountViewModel.IsLogin, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}">
                     <Grid.RowDefinitions>
-                        <RowDefinition  Height="auto"/>
+                        <RowDefinition Height="auto" />
                         <RowDefinition />
-                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
-                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="300" />
                     </Grid.ColumnDefinitions>
-                    <StackPanel Orientation="Horizontal" Margin="12,8" >
+                    <StackPanel Orientation="Horizontal" Margin="12,8">
                         <TextBlock
-                        Style="{StaticResource SubtitleTextBlockStyle}"
-                        Text="推荐歌曲" />
+                            Style="{StaticResource SubtitleTextBlockStyle}"
+                            Text="推荐歌曲" />
                         <FontIcon
-                        Margin="4,2,0,0"
-                        HorizontalAlignment="Left"
-                        Foreground="{ThemeResource SystemAccentColorLight1}"
-                        Glyph="&#xE970;"/>
+                            Margin="4,2,0,0"
+                            HorizontalAlignment="Left"
+                            Foreground="{ThemeResource SystemAccentColorLight1}"
+                            Glyph="&#xE970;" />
                     </StackPanel>
 
                     <Button
@@ -343,13 +483,13 @@
 
                     <StackPanel Orientation="Horizontal" Margin="12,8" Grid.Row="2">
                         <TextBlock
-                        Style="{StaticResource SubtitleTextBlockStyle}"
-                        Text="推荐歌单" />
+                            Style="{StaticResource SubtitleTextBlockStyle}"
+                            Text="推荐歌单" />
                         <FontIcon
-                        Margin="4,2,0,0"
-                        HorizontalAlignment="Left"
-                        Foreground="{ThemeResource SystemAccentColorLight1}"
-                        Glyph="&#xE970;"/>
+                            Margin="4,2,0,0"
+                            HorizontalAlignment="Left"
+                            Foreground="{ThemeResource SystemAccentColorLight1}"
+                            Glyph="&#xE970;" />
                     </StackPanel>
 
                     <HyperlinkButton
@@ -368,19 +508,19 @@
                         OneRowModeEnabled="True"
                         ScrollViewer.HorizontalScrollMode="Disabled"
                         ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                        ItemTemplate="{StaticResource PlayListTemplate}"
+                        ItemTemplate="{StaticResource HomePagePlaylistTemplate}"
                         ItemsSource="{x:Bind ViewModel.PlayLists, Mode=OneWay}"
                         SelectionMode="None" />
 
                     <StackPanel Orientation="Horizontal" Margin="12,8" Grid.Column="1">
                         <TextBlock
-                        Style="{StaticResource SubtitleTextBlockStyle}"
-                        Text="私人雷达" />
+                            Style="{StaticResource SubtitleTextBlockStyle}"
+                            Text="私人雷达" />
                         <FontIcon
-                        Margin="4,2,0,0"
-                        HorizontalAlignment="Left"
-                        Foreground="{ThemeResource SystemAccentColorLight1}"
-                        Glyph="&#xE970;"/>
+                            Margin="4,2,0,0"
+                            HorizontalAlignment="Left"
+                            Foreground="{ThemeResource SystemAccentColorLight1}"
+                            Glyph="&#xE970;" />
                     </StackPanel>
 
                     <Grid
@@ -398,19 +538,19 @@
                             Width="240"
                             Height="180"
                             CornerRadius="4"
-                            Background="Gray"/>
+                            Background="Gray" />
                         <TextBlock
-                        FontSize="14"
-                        FontWeight="SemiBold"
-                        TextTrimming="CharacterEllipsis"
-                         TextWrapping="Wrap"
-                        Text="歌单名歌单名歌单名歌单名歌单名歌单名歌单名歌单名歌单名(替换)" 
-                            Margin="15,210,15,0"/>
+                            FontSize="14"
+                            FontWeight="SemiBold"
+                            TextTrimming="CharacterEllipsis"
+                            TextWrapping="Wrap"
+                            Text="歌单名歌单名歌单名歌单名歌单名歌单名歌单名歌单名歌单名(替换)"
+                            Margin="15,210,15,0" />
                         <TextBlock
-                        FontSize="14" VerticalAlignment="Bottom" Margin="15"
-                        TextTrimming="CharacterEllipsis"
-                        Foreground="{StaticResource SystemControlForegroundBaseMediumBrush}"
-                        Text="云音乐私人雷达" />
+                            FontSize="14" VerticalAlignment="Bottom" Margin="15"
+                            TextTrimming="CharacterEllipsis"
+                            Foreground="{StaticResource SystemControlForegroundBaseMediumBrush}"
+                            Text="云音乐私人雷达" />
                     </Grid>
                 </Grid>
                 <Grid
@@ -432,15 +572,15 @@
                         <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <StackPanel Orientation="Horizontal" Margin="12,8" >
+                    <StackPanel Orientation="Horizontal" Margin="12,8">
                         <TextBlock
-                        Style="{StaticResource SubtitleTextBlockStyle}"
-                        Text="排行榜" />
+                            Style="{StaticResource SubtitleTextBlockStyle}"
+                            Text="排行榜" />
                         <FontIcon
-                        Margin="4,2,0,0"
-                        HorizontalAlignment="Left"
-                        Foreground="{ThemeResource SystemAccentColorLight1}"
-                        Glyph="&#xE970;"/>
+                            Margin="4,2,0,0"
+                            HorizontalAlignment="Left"
+                            Foreground="{ThemeResource SystemAccentColorLight1}"
+                            Glyph="&#xE970;" />
                     </StackPanel>
                     <HyperlinkButton
                         Grid.Row="0"
@@ -454,7 +594,7 @@
                         Grid.Row="1"
                         MinHeight="130"
                         MaxHeight="390"
-                        DesiredWidth="240"                      
+                        DesiredWidth="240"
                         OneRowModeEnabled="True"
                         IsItemClickEnabled="True"
                         ItemClick="OnPlaylistItemClicked"
@@ -462,13 +602,8 @@
                         ScrollViewer.HorizontalScrollMode="Disabled"
                         ItemHeight="128"
                         SelectionMode="None"
-                        ItemTemplate="{StaticResource LeaderboardTemplate}"
+                        ItemTemplate="{StaticResource HomePageTopChartTemplate}"
                         ItemsSource="{x:Bind ViewModel.TopLists, Mode=OneWay}">
-                        <controls:AdaptiveGridView.Resources>
-                            <Style TargetType="GridViewItem">
-                                <Setter Property="Padding" Value="4"/>
-                            </Style>
-                        </controls:AdaptiveGridView.Resources>
                     </controls:AdaptiveGridView>
                 </Grid>
             </Grid>
