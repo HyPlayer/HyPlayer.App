@@ -5,7 +5,7 @@
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RootNamespace>HyPlayer.App</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <Platforms>x86;x64;ARM64</Platforms>
+    <Platforms>x64;ARM64</Platforms>
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
     <UseWinUI>true</UseWinUI>
 	<EnableMsixTooling>true</EnableMsixTooling>
@@ -17,16 +17,7 @@
     <Company>HyPlayer Team</Company>
     <Product>HyPlayer</Product>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="Images\**" />
-    <Compile Remove="Themes\**" />
-    <EmbeddedResource Remove="Images\**" />
-    <EmbeddedResource Remove="Themes\**" />
-    <None Remove="Images\**" />
-    <None Remove="Themes\**" />
-    <Page Remove="Images\**" />
-    <Page Remove="Themes\**" />
-  </ItemGroup>
+  
   <ItemGroup>
     <None Remove="Controls\Dialogs\SignInDialog.xaml" />
     <None Remove="Styles\Styles.Overwrite.xaml" />
@@ -46,6 +37,7 @@
     <Page Remove="resources\Dark.xaml" />
     <Page Remove="resources\Light.xaml" />
     <Page Remove="resources\Theme.xaml" />
+    <Page Remove="Views\Controls\App\RedirectVisualView.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -61,6 +53,7 @@
     <PackageReference Include="HyPlayer.PlayCore" Version="0.0.16" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.230628000-preview1" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.25387-preview" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="WinUIEx" Version="2.2.0" />
     <Manifest Include="$(ApplicationManifest)" />
@@ -113,6 +106,9 @@
       <Generator>MSBuild:Compile</Generator>
     </None>
     <None Update="Resources\Theme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\Controls\App\RedirectVisualView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
     <Page Update="Views\Controls\App\HomePageHeaderImage.xaml">
