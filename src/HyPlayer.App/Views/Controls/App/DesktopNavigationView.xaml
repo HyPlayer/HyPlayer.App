@@ -22,16 +22,24 @@
             <Frame x:Name="contentFrame" />
 
             <NavigationView.MenuItems>
+                <NavigationViewItemHeader Margin="0,3,3,3" Content="发现" />
                 <NavigationViewItem
                     x:Name="Home"
                     Content="主页"
-                    Icon="Home"
-                    Tag="HomePage" />
+                    Tag="HomePage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xEA8A;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
                 <NavigationViewItem
-                    x:Name="Recommend"
+                    x:Name="NavItemDailyRcmd"
+                    x:FieldModifier="public"
                     Content="每日推荐"
-                    Icon="Calendar"
-                    Tag="RecommendPage" />
+                    Tag="DailyRcmd">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xEA89;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
                 <NavigationViewItem
                     x:Name="PrivateFM"
                     Content="私人FM"
