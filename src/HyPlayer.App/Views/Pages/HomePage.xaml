@@ -122,49 +122,30 @@
         <DataTemplate
             x:Key="LeaderboardTemplate"
             x:DataType="models:NeteasePlaylist">
-            <Border
-                Margin="0,0,0,0"
+            <Grid                
                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                 BorderBrush="{ThemeResource ButtonRevealBorderBrush}"
                 BorderThickness="{ThemeResource ButtonRevealBorderThemeThickness}"
+                ToolTipService.ToolTip="{x:Bind Name}"
                 UseSystemFocusVisuals="True"
-                FocusVisualMargin="-3"
-                CornerRadius="8">
-                <Grid>
-                    <Grid>
-                        <controls:ImageEx
-                            Width="96"
-                            Height="96"
-                            Margin="12"
-                            HorizontalAlignment="Left"
+                CornerRadius="10"
+                FocusVisualMargin="-3">
+                <controls:ImageEx
                             VerticalAlignment="Center"
-                            CornerRadius="6"
+                    CornerRadius="8"
                             Source="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=96}"
-                            BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
-                            BorderThickness="1"
                             Stretch="UniformToFill" />
-                        <TextBlock
-                            MaxWidth="144"
-                            MaxHeight="80"
-                            Margin="16"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Top"
-                            FontSize="14"
-                            Style="{ThemeResource SubtitleTextBlockStyle}"
-                            Text="{x:Bind Name}" />
-                        <TextBlock
-                            Margin="16"
+                <TextBlock
+                            Margin="12"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Bottom"
-                            FontSize="10"
-                            Foreground="{StaticResource SystemControlForegroundBaseMediumBrush}">
-                            <Run>播放数</Run>
-                            <Run
-                                Text="{x:Bind PlayCount, Converter={StaticResource CountHumanizerConverter}}" />
-                        </TextBlock>
-                    </Grid>
-                </Grid>
-            </Border>
+                    FontSize="10"
+                            Foreground="White">
+                            <Run FontSize="9"  FontFamily="{ThemeResource SymbolThemeFontFamily}">&#xE102;</Run>
+                            <Run Text="{x:Bind PlayCount, Converter={StaticResource CountHumanizerConverter}}" />
+                </TextBlock>
+            </Grid>
+
 
         </DataTemplate>
     </local:HomePageBase.Resources>
@@ -365,7 +346,6 @@
                     Grid.Row="4"
                     Margin="0,12,0,0"
                     RowSpacing="8"
-                    Background="{ThemeResource LayerOnMicaBaseAltFillColorSecondaryBrush}"
                     CornerRadius="{ThemeResource OverlayCornerRadius}">
                     <Grid.RowDefinitions>
                         <RowDefinition />
@@ -386,13 +366,22 @@
                         Margin="12,4"
                         Grid.Row="1"
                         MaxHeight="240"
-                        DesiredWidth="240"
+                        DesiredWidth="240"                      
+                        OneRowModeEnabled="True"
                         IsItemClickEnabled="True"
                         ItemClick="OnPlaylistItemClicked"
+                        ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                        ScrollViewer.HorizontalScrollMode="Disabled"
                         ItemHeight="128"
+                        SelectionMode="None"
                         ItemTemplate="{StaticResource LeaderboardTemplate}"
-                        ItemsSource="{x:Bind ViewModel.TopLists, Mode=OneWay}"
-                        SelectionMode="Extended" />
+                        ItemsSource="{x:Bind ViewModel.TopLists, Mode=OneWay}">
+                        <controls:AdaptiveGridView.Resources>
+                            <Style TargetType="GridViewItem">
+                                <Setter Property="Padding" Value="4"/>
+                            </Style>
+                        </controls:AdaptiveGridView.Resources>
+                    </controls:AdaptiveGridView>
                 </Grid>
             </Grid>
         </ScrollViewer>
