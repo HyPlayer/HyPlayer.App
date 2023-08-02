@@ -21,7 +21,7 @@
                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                 BorderThickness="1"
-                CornerRadius="8">
+                CornerRadius="4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition
                         Width="84" />
@@ -81,7 +81,7 @@
                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                 BorderThickness="1"
-                CornerRadius="8">
+                CornerRadius="4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition
                         Width="84" />
@@ -118,7 +118,7 @@
                     <TextBlock
                         Grid.Row="1"
                         MaxLines="1"
-                        FontSize="14"
+                        FontSize="14" VerticalAlignment="Bottom"
                         TextTrimming="CharacterEllipsis"
                         Foreground="{StaticResource SystemControlForegroundBaseMediumBrush}"
                         Text="{x:Bind CreatorList, Converter={StaticResource StringListToStringConverter}}" />
@@ -372,7 +372,8 @@
                         x:Name="LeaderboardView"
                         Margin="12,4"
                         Grid.Row="1"
-                        MaxHeight="370"
+                        MinHeight="240"
+                        MaxHeight="390"
                         DesiredWidth="240"                      
                         OneRowModeEnabled="True"
                         IsItemClickEnabled="True"
