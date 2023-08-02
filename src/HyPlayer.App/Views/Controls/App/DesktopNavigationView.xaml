@@ -56,6 +56,43 @@
                         <FontIcon Glyph="&#xEB4F;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
+                <NavigationViewItem
+                    Content="我的收藏"
+                    SelectsOnInvoked="False"
+                    Tag="PageFavorite">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE113;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItemHeader Margin="0,3,3,3" Content="歌单" />
+                <NavigationViewItem
+                    x:Name="NavItemsAddPlaylist"
+                    Content="创建歌单"
+                    Icon="Add"
+                    SelectsOnInvoked="False"
+                    Tag="SonglistCreate"/>
+                <NavigationViewItem
+                    x:Name="NavItemsMyLovedPlaylist"
+                    x:FieldModifier="public"
+                    Content="我喜欢的音乐"
+                    Tag="SonglistMyLike">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE006;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem
+                    x:Name="NavItemsMyList"
+                    x:FieldModifier="public"
+                    Content="我创建的歌单"
+                    Icon="List"
+                    IsExpanded="True"/>
+                <NavigationViewItem
+                    x:Name="NavItemsLikeList"
+                    x:FieldModifier="public"
+                    Content="我收藏的歌单"
+                    Icon="List"
+                    IsExpanded="True" />
+
             </NavigationView.MenuItems>
         </NavigationView>
 
