@@ -37,6 +37,7 @@
     <Page Remove="resources\Dark.xaml" />
     <Page Remove="resources\Light.xaml" />
     <Page Remove="resources\Theme.xaml" />
+    <Page Remove="Views\Controls\App\RedirectVisualView.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,6 +53,7 @@
     <PackageReference Include="HyPlayer.PlayCore" Version="0.0.16" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.230628000-preview1" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.25387-preview" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="WinUIEx" Version="2.2.0" />
     <Manifest Include="$(ApplicationManifest)" />
@@ -104,6 +106,9 @@
       <Generator>MSBuild:Compile</Generator>
     </None>
     <None Update="Resources\Theme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\Controls\App\RedirectVisualView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
     <Page Update="Views\Controls\App\HomePageHeaderImage.xaml">
