@@ -36,6 +36,7 @@
                         <ColumnDefinition x:Name="LeftDragColumn" Width="*" />
                         <ColumnDefinition x:Name="SearchColumn" Width="Auto" />
                         <ColumnDefinition x:Name="RightDragColumn" Width="*" />
+                        <ColumnDefinition x:Name="SettingColumn" Width="Auto" />
                         <ColumnDefinition x:Name="PersonPictureButton" Width="Auto" />
                         <ColumnDefinition x:Name="RightPaddingColumn" Width="0" />
                     </Grid.ColumnDefinitions>
@@ -63,13 +64,26 @@
                                       VerticalAlignment="Center"
                                       BorderThickness="0"/>
                     <Button
-                        x:Name="UserButton"
+                        x:Name="SettingButton"
                         Grid.Column="6"
+                        VerticalAlignment="Center"
+                        Style="{ThemeResource TitleBarButtonStyle}"
+                        Height="40"
+                        Width="40"
+                        CornerRadius="20"
+                        Margin="0,0,10,0">
+                        <FontIcon Width="30" Height="30" Glyph="&#xE713;" FontSize="16"/>
+                    </Button>
+
+                    <Button
+                        x:Name="UserButton"
+                        Grid.Column="7"
                         VerticalAlignment="Center"
                         Style="{ThemeResource TitleBarButtonStyle}"
                         Click="UserButton_Click"
                         Height="40"
                         Width="40"
+                        CornerRadius="20"
                         Margin="0,0,10,0">
                         <PersonPicture Width="30" Height="30"/>
                     </Button>
