@@ -21,7 +21,8 @@
                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                 BorderThickness="1"
-                CornerRadius="8">
+                CornerRadius="8"
+                ToolTipService.ToolTip="{x:Bind Name}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition
                         Width="84" />
@@ -81,7 +82,8 @@
                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                 BorderThickness="1"
-                CornerRadius="8">
+                CornerRadius="8"
+                ToolTipService.ToolTip="{x:Bind Name}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition
                         Width="84" />
@@ -163,7 +165,7 @@
                 RowSpacing="12">
                 <Grid.RowDefinitions>
                     <RowDefinition
-                        Height="400" />
+                        Height="300" />
                     <RowDefinition
                         Height="Auto" />
                     <RowDefinition
@@ -186,7 +188,7 @@
                     VerticalAlignment="Top">
                     <controls1:HomePageHeaderImage
                         Grid.RowSpan="2"
-                        Height="440"
+                        Height="340"
                         VerticalAlignment="Top" />
                     <StackPanel
                         Margin="36"
@@ -231,7 +233,7 @@
                 <StackPanel
                     x:Name="ActionPanel"
                     Grid.Row="0"
-                    Margin="0,0,0,20"
+                    Margin="0,40,0,0"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
                     Canvas.ZIndex="1"
@@ -321,7 +323,7 @@
                         Grid.Row="0"
                         HorizontalAlignment="Right">
                         <StackPanel Orientation="Horizontal">
-                            <FontIcon Glyph="&#xEDDA;" FontSize="14" Margin="0,0,6,0"/>
+                            <FontIcon Glyph="&#xE102;" FontSize="14" Margin="0,0,6,0"/>
                             <TextBlock Text="播放全部" />
                         </StackPanel>
                     </Button>
