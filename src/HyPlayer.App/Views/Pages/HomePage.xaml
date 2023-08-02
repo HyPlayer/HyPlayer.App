@@ -33,7 +33,7 @@
                     Height="84"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
-                    CornerRadius="4"
+                    CornerRadius="8"
                     Source="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=84}"
                     Stretch="UniformToFill" />
                 <Grid
@@ -93,7 +93,7 @@
                     Height="84"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
-                    CornerRadius="4"
+                    CornerRadius="8"
                     Source="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=84}"
                     Stretch="UniformToFill" />
                 <Grid
@@ -296,16 +296,35 @@
                     RowSpacing="8"
                     Visibility="{x:Bind Path=ViewModel.AccountViewModel.IsLogin, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}">
                     <Grid.RowDefinitions>
+                        <RowDefinition  Height="auto"/>
                         <RowDefinition />
+                        <RowDefinition Height="auto"/>
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <TextBlock
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="300"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal" Margin="12,8" >
+                        <TextBlock
                         Style="{StaticResource SubtitleTextBlockStyle}"
                         Text="推荐歌曲" />
-                    <HyperlinkButton
+                        <FontIcon
+                        Margin="4,2,0,0"
+                        HorizontalAlignment="Left"
+                        Foreground="{ThemeResource SystemAccentColorLight1}"
+                        Glyph="&#xE970;"/>
+                    </StackPanel>
+
+                    <Button
+                        Margin="0,0,6,0"
                         Grid.Row="0"
-                        HorizontalAlignment="Right"
-                        Content="查看更多" />
+                        HorizontalAlignment="Right">
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon Glyph="&#xEDDA;" FontSize="14" Margin="0,0,6,0"/>
+                            <TextBlock Text="播放全部" />
+                        </StackPanel>
+                    </Button>
 
                     <controls:AdaptiveGridView
                         Grid.Row="1"
@@ -316,9 +335,81 @@
                         ItemTemplate="{StaticResource HomePageRecommendSongItemTemplate}"
                         ItemsSource="{x:Bind ViewModel.RecommendedSongs, Mode=OneWay}"
                         OneRowModeEnabled="True"
-                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                        ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                        ScrollViewer.HorizontalScrollMode="Disabled"
                         SelectionMode="None" />
 
+                    <StackPanel Orientation="Horizontal" Margin="12,8" Grid.Row="2">
+                        <TextBlock
+                        Style="{StaticResource SubtitleTextBlockStyle}"
+                        Text="推荐歌单" />
+                        <FontIcon
+                        Margin="4,2,0,0"
+                        HorizontalAlignment="Left"
+                        Foreground="{ThemeResource SystemAccentColorLight1}"
+                        Glyph="&#xE970;"/>
+                    </StackPanel>
+
+                    <HyperlinkButton
+                        Grid.Row="2"
+                        HorizontalAlignment="Right"
+                        Content="查看更多" />
+
+                    <controls:AdaptiveGridView
+                        x:Name="PlayListView"
+                        Grid.Row="3"
+                        DesiredWidth="295"
+                        MaxHeight="370"
+                        IsItemClickEnabled="True"
+                        ItemClick="OnPlaylistItemClicked"
+                        ItemHeight="112"
+                        OneRowModeEnabled="True"
+                        ScrollViewer.HorizontalScrollMode="Disabled"
+                        ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                        ItemTemplate="{StaticResource PlayListTemplate}"
+                        ItemsSource="{x:Bind ViewModel.PlayLists, Mode=OneWay}"
+                        SelectionMode="None" />
+
+                    <StackPanel Orientation="Horizontal" Margin="12,8" Grid.Column="1">
+                        <TextBlock
+                        Style="{StaticResource SubtitleTextBlockStyle}"
+                        Text="私人雷达" />
+                        <FontIcon
+                        Margin="4,2,0,0"
+                        HorizontalAlignment="Left"
+                        Foreground="{ThemeResource SystemAccentColorLight1}"
+                        Glyph="&#xE970;"/>
+                    </StackPanel>
+
+                    <Grid
+                        Margin="14,50,14,14"
+                        Grid.Column="1"
+                        Grid.RowSpan="4"
+                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                        BorderThickness="1"
+                        CornerRadius="4">
+                        <controls:ImageEx
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center"
+                            Margin="0,15,0,0"
+                            Width="240"
+                            Height="180"
+                            CornerRadius="4"
+                            Background="Gray"/>
+                        <TextBlock
+                        FontSize="14"
+                        FontWeight="SemiBold"
+                        TextTrimming="CharacterEllipsis"
+                         TextWrapping="Wrap"
+                        Text="歌单名歌单名歌单名歌单名歌单名歌单名歌单名歌单名歌单名(替换)" 
+                            Margin="15,210,15,0"/>
+                        <TextBlock
+                        FontSize="14" VerticalAlignment="Bottom" Margin="15"
+                        TextTrimming="CharacterEllipsis"
+                        Foreground="{StaticResource SystemControlForegroundBaseMediumBrush}"
+                        Text="云音乐私人雷达" />
+                    </Grid>
                 </Grid>
                 <Grid
                     Grid.Row="3"
@@ -328,25 +419,6 @@
                         <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <TextBlock
-                        Style="{StaticResource SubtitleTextBlockStyle}"
-                        Text="推荐歌单" />
-                    <HyperlinkButton
-                        Grid.Row="0"
-                        HorizontalAlignment="Right"
-                        Content="查看更多" />
-
-                    <controls:AdaptiveGridView
-                        x:Name="PlayListView"
-                        Grid.Row="1"
-                        DesiredWidth="295"
-                        MaxHeight="370"
-                        IsItemClickEnabled="True"
-                        ItemClick="OnPlaylistItemClicked"
-                        ItemHeight="112"
-                        ItemTemplate="{StaticResource PlayListTemplate}"
-                        ItemsSource="{x:Bind ViewModel.PlayLists, Mode=OneWay}"
-                        SelectionMode="None" />
 
                 </Grid>
                 <Grid
@@ -358,10 +430,16 @@
                         <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <TextBlock
-                        Margin="12,8"
+                    <StackPanel Orientation="Horizontal" Margin="12,8" >
+                        <TextBlock
                         Style="{StaticResource SubtitleTextBlockStyle}"
                         Text="排行榜" />
+                        <FontIcon
+                        Margin="4,2,0,0"
+                        HorizontalAlignment="Left"
+                        Foreground="{ThemeResource SystemAccentColorLight1}"
+                        Glyph="&#xE970;"/>
+                    </StackPanel>
                     <HyperlinkButton
                         Grid.Row="0"
                         HorizontalAlignment="Right"
@@ -372,7 +450,7 @@
                         x:Name="LeaderboardView"
                         Margin="12,4"
                         Grid.Row="1"
-                        MinHeight="240"
+                        MinHeight="130"
                         MaxHeight="390"
                         DesiredWidth="240"                      
                         OneRowModeEnabled="True"
