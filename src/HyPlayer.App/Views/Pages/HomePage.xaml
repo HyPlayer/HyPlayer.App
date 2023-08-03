@@ -485,7 +485,7 @@
                         <ColumnDefinition Width="300" />
                     </Grid.ColumnDefinitions>
 
-                    <Button Margin="12,8">
+                    <HyperlinkButton Margin="12,8">
                         <behaviors:Interaction.Behaviors>
                             <controls2:ButtonContentSnapBehavior SnapType="Left" />
                         </behaviors:Interaction.Behaviors>
@@ -497,7 +497,7 @@
                                 Foreground="{ThemeResource SystemAccentColorLight1}"
                                 Glyph="&#xE970;" />
                         </StackPanel>
-                    </Button>
+                    </HyperlinkButton>
 
                     <Button
                         Grid.Row="0"
@@ -525,22 +525,22 @@
                         ScrollViewer.HorizontalScrollMode="Disabled"
                         SelectionMode="None" />
 
-                    <StackPanel
-                        Grid.Row="2"
-                        Margin="12,8"
-                        Orientation="Horizontal">
-                        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="推荐歌单" />
-                        <FontIcon
-                            Margin="4,2,0,0"
-                            HorizontalAlignment="Left"
-                            Foreground="{ThemeResource SystemAccentColorLight1}"
-                            Glyph="&#xE970;" />
-                    </StackPanel>
+                    <HyperlinkButton Grid.Row="2" Margin="12,8">
+                        <behaviors:Interaction.Behaviors>
+                            <controls2:ButtonContentSnapBehavior SnapType="Left" />
+                        </behaviors:Interaction.Behaviors>
 
-                    <HyperlinkButton
-                        Grid.Row="2"
-                        HorizontalAlignment="Right"
-                        Content="查看更多" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="推荐歌单" />
+                            <FontIcon
+                                Margin="4,2,0,0"
+                                HorizontalAlignment="Left"
+                                Foreground="{ThemeResource SystemAccentColorLight1}"
+                                Glyph="&#xE970;" />
+                        </StackPanel>
+                    </HyperlinkButton>
+
+                    
 
                     <controls:AdaptiveGridView
                         x:Name="PlayListView"
@@ -557,17 +557,19 @@
                         ScrollViewer.HorizontalScrollMode="Disabled"
                         SelectionMode="None" />
 
-                    <StackPanel
-                        Grid.Column="1"
-                        Margin="12,8"
-                        Orientation="Horizontal">
-                        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="私人雷达" />
-                        <FontIcon
-                            Margin="4,2,0,0"
-                            HorizontalAlignment="Left"
-                            Foreground="{ThemeResource SystemAccentColorLight1}"
-                            Glyph="&#xE970;" />
-                    </StackPanel>
+                    <HyperlinkButton Grid.Column="1" Margin="12,8">
+                        <behaviors:Interaction.Behaviors>
+                            <controls2:ButtonContentSnapBehavior SnapType="Left" />
+                        </behaviors:Interaction.Behaviors>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="私人雷达" />
+                            <FontIcon
+                                Margin="4,2,0,0"
+                                HorizontalAlignment="Left"
+                                Foreground="{ThemeResource SystemAccentColorLight1}"
+                                Glyph="&#xE970;" />
+                        </StackPanel>
+                    </HyperlinkButton>
 
                     <Grid
                         Grid.RowSpan="4"
@@ -620,11 +622,11 @@
                         <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <Button>
+                    <HyperlinkButton Margin="12,8">
                         <behaviors:Interaction.Behaviors>
                             <controls2:ButtonContentSnapBehavior SnapType="Left" />
                         </behaviors:Interaction.Behaviors>
-                        <StackPanel Margin="12,8" Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal">
                             <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="排行榜" />
                             <FontIcon
                                 Margin="4,2,0,0"
@@ -632,12 +634,8 @@
                                 Foreground="{ThemeResource SystemAccentColorLight1}"
                                 Glyph="&#xE970;" />
                         </StackPanel>
-                    </Button>
-                    <HyperlinkButton
-                        Grid.Row="0"
-                        Margin="12,4"
-                        HorizontalAlignment="Right"
-                        Content="查看更多" />
+                    </HyperlinkButton>
+                    
 
                     <controls:AdaptiveGridView
                         x:Name="LeaderboardView"

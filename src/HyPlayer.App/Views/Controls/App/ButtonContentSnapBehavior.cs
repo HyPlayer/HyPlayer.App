@@ -68,7 +68,7 @@ namespace CoolControls.WinUI3.Controls
 
         private void AssociatedObject_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadContent();
+            TryLoadContent((ButtonBase)sender);
         }
 
         private void AssociatedObject_Unloaded(object sender, RoutedEventArgs e)
@@ -76,12 +76,37 @@ namespace CoolControls.WinUI3.Controls
             UnloadContent((ButtonBase)sender);
         }
 
-        private void LoadContent()
+        private void AssociatedObject_LayoutUpdated(object? sender, object e)
+        {
+            TryLoadContent(AssociatedObject);
+        }
+
+        private void TryLoadContent(ButtonBase? button)
+        {
+            if (button == null) return;
+
+            button.LayoutUpdated -= AssociatedObject_LayoutUpdated;
+
+            if (button.IsLoaded)
+            {
+                if (VisualTreeHelper.GetChildrenCount(button) > 0)
+                {
+                    LoadContent(button);
+                }
+                else
+                {
+                    button.LayoutUpdated += AssociatedObject_LayoutUpdated;
+                }
+            }
+            else
+            {
+                UnloadContent(button);
+            }
+        }
+
+        private void LoadContent(ButtonBase button)
         {
             if (attached) return;
-
-            if (AssociatedObject?.IsLoaded is not true) return;
-            var button = AssociatedObject;
 
             paddingChangedEventToken = button.RegisterPropertyChangedCallback(Control.PaddingProperty, OnPaddingPropertyChanged);
             visualStateGroup = VisualStateManager.GetVisualStateGroups((FrameworkElement)VisualTreeHelper.GetChild(button, 0)).FirstOrDefault(c => c.Name == "CommonStates");
@@ -116,6 +141,8 @@ namespace CoolControls.WinUI3.Controls
 
             attached = false;
 
+            button.LayoutUpdated += AssociatedObject_LayoutUpdated;
+
             button.UnregisterPropertyChangedCallback(Control.PaddingProperty, paddingChangedEventToken);
             paddingChangedEventToken = 0;
 
@@ -148,7 +175,7 @@ namespace CoolControls.WinUI3.Controls
             AssociatedObject.Loaded += AssociatedObject_Loaded;
             AssociatedObject.Unloaded += AssociatedObject_Unloaded;
 
-            LoadContent();
+            TryLoadContent(AssociatedObject);
         }
 
         protected override void OnDetaching()
