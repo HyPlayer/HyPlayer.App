@@ -400,22 +400,28 @@
                     VerticalAlignment="Center"
                     Spacing="2"
                     Visibility="Visible">
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Spacing="4">
                         <TextBlock
+                            Margin="0,0,4,0"
+                            FontSize="32"
+                            FontWeight="Bold"
+                            Foreground="White"
+                            Visibility="{x:Bind Path=ViewModel.AccountViewModel.IsLogin, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}"
+                            Style="{StaticResource TitleTextBlockStyle}" >
+                            <Run Text="{x:Bind ViewModel.AccountViewModel.User.Name}"/>
+                            <Run Text=","/>
+                        </TextBlock>
+                        <TextBlock
+                            Margin="-4,0,0,0"
+                            x:Name="Greetings"
                             HorizontalAlignment="Left"
                             FontSize="32"
                             Foreground="White"
                             Style="{StaticResource TitleTextBlockStyle}"
                             Text="欢迎，" />
-                        <TextBlock
-                            Margin="-10,-1,0,0"
-                            FontSize="32"
-                            FontWeight="Bold"
-                            Foreground="White"
-                            Style="{StaticResource TitleTextBlockStyle}"
-                            Text="{x:Bind ViewModel.AccountViewModel.User.Name}" />
                     </StackPanel>
                     <TextBlock
+                        x:Name="GreetingsText"
                         FontSize="16"
                         Foreground="White"
                         Text="用音乐开启新的一天吧" />
@@ -423,7 +429,7 @@
                 <StackPanel
                     x:Name="ActionPanel"
                     Grid.Row="0"
-                    Margin="0,40,0,0"
+                    Margin="0,40,20,0"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
                     Canvas.ZIndex="1"
@@ -581,7 +587,7 @@
                         Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                         BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                         BorderThickness="1"
-                        CornerRadius="4">
+                        CornerRadius="7">
                         <controls:ImageEx
                             Width="240"
                             Height="180"
@@ -589,7 +595,7 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Top"
                             Background="Gray"
-                            CornerRadius="4" />
+                            CornerRadius="7" />
                         <TextBlock
                             Margin="15,210,15,0"
                             FontSize="14"
