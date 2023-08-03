@@ -438,12 +438,9 @@
                                 FontSize="14"
                                 Text="我的喜欢" />
                         </StackPanel>
-                        <Button.Background>
+                        <!--<Button.Background>
                             <media:BackdropBlurBrush Amount="30"/>
-                        </Button.Background>
-                        <Button.Foreground>
-                            <media:BackdropBlurBrush Amount="30"/>
-                        </Button.Foreground>
+                        </Button.Background>-->
                     </Button>
                     <Button
                         Padding="16"
@@ -461,12 +458,9 @@
                                 FontSize="14"
                                 Text="每日推荐" />
                         </StackPanel>
-                        <Button.Background>
+                        <!--<Button.Background>
                             <media:BackdropBlurBrush Amount="30"/>
-                        </Button.Background>
-                        <Button.Foreground>
-                            <media:BackdropBlurBrush Amount="30"/>
-                        </Button.Foreground>
+                        </Button.Background>-->
                     </Button>
                     <Button
                         Padding="16"
@@ -483,12 +477,9 @@
                                 FontSize="14"
                                 Text="私人FM" />
                         </StackPanel>
-                        <Button.Background>
+                        <!--<Button.Background>
                             <media:BackdropBlurBrush Amount="30"/>
-                        </Button.Background>
-                        <Button.Foreground>
-                            <media:BackdropBlurBrush Amount="30"/>
-                        </Button.Foreground>
+                        </Button.Background>-->
                     </Button>
                 </StackPanel>
                 <Grid
