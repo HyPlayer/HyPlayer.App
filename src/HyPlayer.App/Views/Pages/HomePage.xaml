@@ -377,6 +377,7 @@
                     Margin="-36,-36,-36,0"
                     VerticalAlignment="Top">
                     <controls1:HomePageHeaderImage
+                        x:Name="HeroImage"
                         Grid.RowSpan="2"
                         Height="340"
                         VerticalAlignment="Top" />
@@ -666,5 +667,28 @@
                 </Grid>
             </Grid>
         </ScrollViewer>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="641" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="HeroImage.Height" Value="680" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1008" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="HeroImage.Height" Value="340" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </Grid>
 </local:HomePageBase>
