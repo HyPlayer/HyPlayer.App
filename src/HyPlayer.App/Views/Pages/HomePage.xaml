@@ -360,6 +360,7 @@
                         Height="Auto" />
                 </Grid.RowDefinitions>
                 <TextBlock
+                    Margin="10,0,0,0"
                     Canvas.ZIndex="1"
                     FontSize="24"
                     Foreground="White"
@@ -390,6 +391,7 @@
                     </StackPanel>
                 </Grid>
                 <StackPanel
+                    Margin="10,0,0,0"
                     VerticalAlignment="Center"
                     Spacing="2"
                     Visibility="Visible">
@@ -405,7 +407,6 @@
                             Margin="-10,-1,0,0"
                             FontSize="34"
                             FontWeight="Bold"
-                            Foreground="{StaticResource AccentAAFillColorDefaultBrush}"
                             Style="{StaticResource TitleTextBlockStyle}"
                             Text="{x:Bind ViewModel.AccountViewModel.User.Name}" />
                     </StackPanel>
