@@ -36,7 +36,7 @@
                         <ColumnDefinition x:Name="SearchColumn" Width="Auto" />
                         <ColumnDefinition x:Name="RightDragColumn" Width="*" />
                         <ColumnDefinition x:Name="SettingColumn" Width="Auto" />
-                        <!--<ColumnDefinition x:Name="PersonPictureButton" Width="Auto" />-->
+                        <ColumnDefinition x:Name="PersonPictureButton" Width="Auto" />
                         <ColumnDefinition x:Name="RightPaddingColumn" Width="0" />
                     </Grid.ColumnDefinitions>
                     <Image
@@ -63,29 +63,29 @@
                                       VerticalAlignment="Center"
                                       BorderThickness="0"/>
                     <Button
-                        Grid.Column="5"
-                        x:Name="UserButton"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Style="{ThemeResource TitleBarButtonStyle}"
-                        Click="UserButton_Click"
-                        Height="40"
-                        Width="40"
-                        CornerRadius="20">
-                        <PersonPicture Width="30" Height="30"/>
-                    </Button>
-
-                    <Button
                         x:Name="SettingButton"
                         Grid.Column="6"
                         VerticalAlignment="Center"
                         Style="{ThemeResource TitleBarButtonStyle}"
                         Height="40"
                         Width="40"
-                        CornerRadius="20">
-                            <FontIcon Width="30" Height="30" Glyph="&#xE713;" FontSize="16"/>
-                        </Button>
+                        CornerRadius="20"
+                        Margin="0,0,10,0">
+                        <FontIcon Width="30" Height="30" Glyph="&#xE713;" FontSize="16"/>
+                    </Button>
 
+                    <Button
+                        x:Name="UserButton"
+                        Grid.Column="7"
+                        VerticalAlignment="Center"
+                        Style="{ThemeResource TitleBarButtonStyle}"
+                        Click="UserButton_Click"
+                        Height="40"
+                        Width="40"
+                        CornerRadius="20"
+                        Margin="0,0,10,0">
+                        <PersonPicture Width="30" Height="30"/>
+                    </Button>
                 </Grid>
             </Border>
 
