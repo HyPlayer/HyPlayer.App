@@ -340,7 +340,7 @@
         </DataTemplate>
         <DataTemplate x:Key="HomePageTopChartTemplate" x:DataType="models:NeteasePlaylist">
             <controls1:TopChartButton
-                Margin="4"
+                Margin="0,0,4,0"
                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                 BorderBrush="{ThemeResource ButtonRevealBorderBrush}"
                 BorderThickness="{ThemeResource ButtonRevealBorderThemeThickness}"
@@ -409,8 +409,9 @@
                             Text="欢迎，" />
                         <TextBlock
                             Margin="-10,-1,0,0"
-                            FontSize="34"
+                            FontSize="32"
                             FontWeight="Bold"
+                            Foreground="White"
                             Style="{StaticResource TitleTextBlockStyle}"
                             Text="{x:Bind ViewModel.AccountViewModel.User.Name}" />
                     </StackPanel>
@@ -485,7 +486,7 @@
                         <ColumnDefinition Width="300" />
                     </Grid.ColumnDefinitions>
 
-                    <HyperlinkButton Margin="12,8">
+                    <HyperlinkButton Margin="12,8" Foreground="{ThemeResource TextFillColorPrimary}">
                         <behaviors:Interaction.Behaviors>
                             <controls2:ButtonContentSnapBehavior SnapType="Left" />
                         </behaviors:Interaction.Behaviors>
@@ -494,7 +495,7 @@
                             <FontIcon
                                 Margin="4,2,0,0"
                                 HorizontalAlignment="Left"
-                                Foreground="{ThemeResource SystemAccentColorLight1}"
+                                Foreground="{ThemeResource SystemAccentColorLight2}"
                                 Glyph="&#xE970;" />
                         </StackPanel>
                     </HyperlinkButton>
@@ -513,6 +514,7 @@
                     </Button>
 
                     <controls:AdaptiveGridView
+                        Margin="10,0,0,0"
                         Grid.Row="1"
                         CanBeScrollAnchor="True"
                         DesiredWidth="295"
@@ -525,7 +527,7 @@
                         ScrollViewer.HorizontalScrollMode="Disabled"
                         SelectionMode="None" />
 
-                    <HyperlinkButton Grid.Row="2" Margin="12,8">
+                    <HyperlinkButton Grid.Row="2" Margin="12,8" Foreground="{ThemeResource TextFillColorPrimary}">
                         <behaviors:Interaction.Behaviors>
                             <controls2:ButtonContentSnapBehavior SnapType="Left" />
                         </behaviors:Interaction.Behaviors>
@@ -535,7 +537,7 @@
                             <FontIcon
                                 Margin="4,2,0,0"
                                 HorizontalAlignment="Left"
-                                Foreground="{ThemeResource SystemAccentColorLight1}"
+                                Foreground="{ThemeResource SystemAccentColorLight2}"
                                 Glyph="&#xE970;" />
                         </StackPanel>
                     </HyperlinkButton>
@@ -544,6 +546,7 @@
 
                     <controls:AdaptiveGridView
                         x:Name="PlayListView"
+                        Margin="10,0,0,0"
                         Grid.Row="3"
                         MaxHeight="370"
                         DesiredWidth="295"
@@ -557,7 +560,7 @@
                         ScrollViewer.HorizontalScrollMode="Disabled"
                         SelectionMode="None" />
 
-                    <HyperlinkButton Grid.Column="1" Margin="12,8">
+                    <HyperlinkButton Grid.Column="1" Margin="15,8" Foreground="{ThemeResource TextFillColorPrimary}">
                         <behaviors:Interaction.Behaviors>
                             <controls2:ButtonContentSnapBehavior SnapType="Left" />
                         </behaviors:Interaction.Behaviors>
@@ -566,7 +569,7 @@
                             <FontIcon
                                 Margin="4,2,0,0"
                                 HorizontalAlignment="Left"
-                                Foreground="{ThemeResource SystemAccentColorLight1}"
+                                Foreground="{ThemeResource SystemAccentColorLight2}"
                                 Glyph="&#xE970;" />
                         </StackPanel>
                     </HyperlinkButton>
@@ -622,7 +625,7 @@
                         <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <HyperlinkButton Margin="12,8">
+                    <HyperlinkButton Margin="12,8" Foreground="{ThemeResource TextFillColorPrimary}">
                         <behaviors:Interaction.Behaviors>
                             <controls2:ButtonContentSnapBehavior SnapType="Left" />
                         </behaviors:Interaction.Behaviors>
@@ -631,7 +634,7 @@
                             <FontIcon
                                 Margin="4,2,0,0"
                                 HorizontalAlignment="Left"
-                                Foreground="{ThemeResource SystemAccentColorLight1}"
+                                Foreground="{ThemeResource SystemAccentColorLight2}"
                                 Glyph="&#xE970;" />
                         </StackPanel>
                     </HyperlinkButton>
