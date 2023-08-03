@@ -572,7 +572,7 @@
                             <controls2:ButtonContentSnapBehavior SnapType="Left" />
                         </behaviors:Interaction.Behaviors>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="私人雷达" />
+                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="官方歌单" />
                             <FontIcon
                                 Margin="4,2,0,0"
                                 HorizontalAlignment="Left"
@@ -588,7 +588,7 @@
                         Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                         BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                         BorderThickness="1"
-                        CornerRadius="7">
+                        CornerRadius="8">
                         <controls:ImageEx
                             Width="240"
                             Height="180"
@@ -596,7 +596,7 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Top"
                             Background="Gray"
-                            CornerRadius="7" />
+                            CornerRadius="4" />
                         <TextBlock
                             Margin="15,210,15,0"
                             FontSize="14"
