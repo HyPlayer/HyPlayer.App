@@ -563,7 +563,7 @@
                         ItemsSource="{x:Bind ViewModel.PlayLists, Mode=OneWay}"
                         SelectionMode="None" />
 
-                    <StackPanel Orientation="Horizontal" Margin="12,8" Grid.Column="1">
+                    <StackPanel Orientation="Horizontal" Margin="15,8" Grid.Column="1">
                         <TextBlock
                             Style="{StaticResource SubtitleTextBlockStyle}"
                             Text="私人雷达" />
@@ -575,7 +575,7 @@
                     </StackPanel>
 
                     <Grid
-                        Margin="14,50,14,14"
+                        Margin="15,50,14,14"
                         Grid.Column="1"
                         Grid.RowSpan="4"
                         Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
