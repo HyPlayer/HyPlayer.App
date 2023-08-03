@@ -640,8 +640,9 @@
                     <controls:AdaptiveGridView
                         x:Name="LeaderboardView"
                         Grid.Row="1"
-                        MinHeight="130"
-                        MaxHeight="390"
+                        MinHeight="248"
+                        Height="276"
+                        MaxHeight="590"
                         Margin="12,4"
                         DesiredWidth="240"
                         IsItemClickEnabled="True"
