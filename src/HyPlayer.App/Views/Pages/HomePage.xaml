@@ -55,6 +55,24 @@
                                         <Storyboard>
                                             <FadeOutThemeAnimation FillBehavior="HoldEnd" TargetName="TopChartShadow"
                                                                    Duration="0:00:0.3" />
+                                            <DoubleAnimation Storyboard.TargetName="TopChartCoverScale" Storyboard.TargetProperty="ScaleX"
+                                                             From="1.1" To="1"  Duration="0:00:0.3" >
+                                                <DoubleAnimation.EasingFunction>
+                                                    <CircleEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation Storyboard.TargetName="TopChartCoverScale" Storyboard.TargetProperty="ScaleY"
+                                                             From="1.1" To="1"  Duration="0:00:0.3" >
+                                                <DoubleAnimation.EasingFunction>
+                                                    <CircleEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation Storyboard.TargetName="LeaderBoardDetailTrans" Storyboard.TargetProperty="X"
+                                                             From="0" To="20"  Duration="0:00:0.3" >
+                                                <DoubleAnimation.EasingFunction>
+                                                    <CircleEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
                                         </Storyboard>
                                     </VisualState>
 
@@ -63,6 +81,24 @@
                                         <Storyboard>
                                             <FadeInThemeAnimation FillBehavior="HoldEnd" TargetName="TopChartShadow"
                                                                   Duration="0:00:0.3" />
+                                            <DoubleAnimation Storyboard.TargetName="TopChartCoverScale" Storyboard.TargetProperty="ScaleX"
+                                                             From="1" To="1.1"  Duration="0:00:0.3" >
+                                                <DoubleAnimation.EasingFunction>
+                                                    <CircleEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation Storyboard.TargetName="TopChartCoverScale" Storyboard.TargetProperty="ScaleY"
+                                                             From="1" To="1.1"  Duration="0:00:0.3" >
+                                                <DoubleAnimation.EasingFunction>
+                                                    <CircleEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation Storyboard.TargetName="LeaderBoardDetailTrans" Storyboard.TargetProperty="X"
+                                                             From="20" To="0"  Duration="0:00:0.3" >
+                                                <DoubleAnimation.EasingFunction>
+                                                    <CircleEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
                                                                            Storyboard.TargetProperty="Background">
                                                 <DiscreteObjectKeyFrame KeyTime="0"
@@ -131,19 +167,26 @@
                                     VerticalAlignment="Center"
                                     CornerRadius="8"
                                     Source="{TemplateBinding Cover}"
-                                    Stretch="UniformToFill" />
+                                    Stretch="UniformToFill" >
+                                    <controls:ImageEx.RenderTransform>
+                                        <ScaleTransform x:Name="TopChartCoverScale" CenterX="80" CenterY="30"/>
+                                    </controls:ImageEx.RenderTransform>
+                                </controls:ImageEx>
                                 <Grid Canvas.ZIndex="2"
-                                      x:Name="TopChartShadow">
+                                      x:Name="TopChartShadow" Margin="-3">
                                     <Grid.Background>
                                         <media:BackdropBlurBrush Amount="10" />
                                     </Grid.Background>
                                     <Grid Padding="0,22,18,22" Background="#88000000">
 
-                                        <Grid VerticalAlignment="Center" HorizontalAlignment="Right" RowSpacing="6">
+                                        <Grid VerticalAlignment="Center" HorizontalAlignment="Right" RowSpacing="6" >
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
+                                            <Grid.RenderTransform>
+                                                <TranslateTransform x:Name="LeaderBoardDetailTrans"/>
+                                            </Grid.RenderTransform>
                                             <TextBlock Grid.Row="0" FontSize="18" FontWeight="Bold"
                                                        Text="{TemplateBinding LeaderBoardName}" />
                                             <Grid Grid.Row="1" ColumnSpacing="4">
@@ -291,7 +334,8 @@
                 Cover="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=96}"
                 PlayCount="{x:Bind PlayCount, Converter={StaticResource CountHumanizerConverter}}"
                 LeaderBoardName="{x:Bind Name}"
-                CornerRadius="8">
+                CornerRadius="8"
+                Margin="4">
             </controls1:TopChartButton>
 
 
@@ -394,6 +438,12 @@
                                 FontSize="14"
                                 Text="我的喜欢" />
                         </StackPanel>
+                        <Button.Background>
+                            <media:BackdropBlurBrush Amount="30"/>
+                        </Button.Background>
+                        <Button.Foreground>
+                            <media:BackdropBlurBrush Amount="30"/>
+                        </Button.Foreground>
                     </Button>
                     <Button
                         Padding="16"
@@ -410,8 +460,13 @@
                             <TextBlock
                                 FontSize="14"
                                 Text="每日推荐" />
-
                         </StackPanel>
+                        <Button.Background>
+                            <media:BackdropBlurBrush Amount="30"/>
+                        </Button.Background>
+                        <Button.Foreground>
+                            <media:BackdropBlurBrush Amount="30"/>
+                        </Button.Foreground>
                     </Button>
                     <Button
                         Padding="16"
@@ -427,10 +482,14 @@
                             <TextBlock
                                 FontSize="14"
                                 Text="私人FM" />
-
                         </StackPanel>
+                        <Button.Background>
+                            <media:BackdropBlurBrush Amount="30"/>
+                        </Button.Background>
+                        <Button.Foreground>
+                            <media:BackdropBlurBrush Amount="30"/>
+                        </Button.Foreground>
                     </Button>
-
                 </StackPanel>
                 <Grid
                     x:Name="ContentArea"
