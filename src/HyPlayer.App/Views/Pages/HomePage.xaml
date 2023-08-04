@@ -54,22 +54,20 @@
                                     </Grid.Background>
                                     <Grid Padding="0,22,18,22" Background="#88000000">
 
-                                        <Grid
+                                        <StackPanel
                                             HorizontalAlignment="Right"
                                             VerticalAlignment="Center"
-                                            RowSpacing="6">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.RenderTransform>
+                                            Orientation="Vertical"
+                                            Spacing="8">
+                                            <StackPanel.RenderTransform>                                                
                                                 <TranslateTransform x:Name="LeaderBoardDetailTrans" />
-                                            </Grid.RenderTransform>
+                                            </StackPanel.RenderTransform>
                                             <TextBlock
                                                 Grid.Row="0"
                                                 FontSize="18"
                                                 FontWeight="Bold"
-                                                Text="{TemplateBinding LeaderBoardName}" />
+                                                Text="{TemplateBinding LeaderBoardName}"
+                                                TextTrimming="CharacterEllipsis"/>
                                             <Grid Grid.Row="1" ColumnSpacing="4">
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*" />
@@ -85,7 +83,7 @@
                                                     FontSize="12"
                                                     Text="{TemplateBinding PlayCount}" />
                                             </Grid>
-                                        </Grid>
+                                        </StackPanel>
                                     </Grid>
                                 </Grid>
                             </Grid>
@@ -241,12 +239,12 @@
                     Stretch="UniformToFill" />
                 <Grid
                     Grid.Column="1"
-                    Margin="16,9,0,9"
+                    Margin="16,4,0,4"
                     RowSpacing="4">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="2*" />
                     </Grid.RowDefinitions>
                     <TextBlock
                         Grid.Row="0"
@@ -563,37 +561,39 @@
                         </StackPanel>
                     </HyperlinkButton>
 
-                    <Grid
+                    <Button
                         Grid.RowSpan="4"
                         Grid.Column="1"
-                        Margin="14,50,14,14"
+                        Margin="14,22,0,-25"
+                        Height="310"
                         Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                         BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                         BorderThickness="1"
                         CornerRadius="8">
-                        <controls:ImageEx
+                        <Grid Height="300">
+                            <controls:ImageEx
                             Width="240"
                             Height="180"
-                            Margin="0,15,0,0"
-                            HorizontalAlignment="Center"
+                             Margin="0,14,0,0"
                             VerticalAlignment="Top"
                             Background="Gray"
                             CornerRadius="4" />
-                        <TextBlock
-                            Margin="15,210,15,0"
+                            <StackPanel VerticalAlignment="Bottom" Spacing="16" Margin="10,0,10,14">
+                                <TextBlock
                             FontSize="14"
                             FontWeight="SemiBold"
                             Text="歌单名歌单名歌单名歌单名歌单名歌单名歌单名歌单名歌单名(替换)"
                             TextTrimming="CharacterEllipsis"
                             TextWrapping="Wrap" />
-                        <TextBlock
-                            Margin="15"
+                                <TextBlock
                             VerticalAlignment="Bottom"
                             FontSize="14"
                             Foreground="{StaticResource SystemControlForegroundBaseMediumBrush}"
                             Text="云音乐私人雷达"
                             TextTrimming="CharacterEllipsis" />
-                    </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </Button>
                 </Grid>
                 <Grid
                     Grid.Row="3"
