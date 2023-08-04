@@ -11,6 +11,7 @@ using HyPlayer.NeteaseApi.ApiContracts;
 using HyPlayer.NeteaseProvider.Mappers;
 using HyPlayer.NeteaseProvider.Models;
 using HyPlayer.PlayCore.Abstraction;
+using HyPlayer.PlayCore.Abstraction.Models;
 using HyPlayer.PlayCore.Abstraction.Models.Containers;
 using HyPlayer.PlayCore.Abstraction.Models.Resources;
 
@@ -29,6 +30,8 @@ public partial class HomeViewModel
     [ObservableProperty] private List<NeteaseSong>? _recommendedSongs;
     [ObservableProperty] private List<NeteasePlaylist>? _playLists;
     [ObservableProperty] private List<NeteasePlaylist>? _topLists;
+    [ObservableProperty] private List<NeteaseSong>? _personalFM;
+
     [ObservableProperty] private CurrentPlayingViewModel _currentPlaying;
 
     private readonly NeteaseProvider.NeteaseProvider _provider;
@@ -54,6 +57,12 @@ public partial class HomeViewModel
             RecommendedSongs =
                 (await ((await _provider.GetRecommendation("sg")) as NeteaseActionGettableContainer)?.GetAllItems())
                 .Select(t => (NeteaseSong)t).ToList();
+
+            PersonalFM =
+                (await _provider.RequestAsync(NeteaseApis.PersonalFmApi, new PersonalFmRequest())).Match(success => success.Items?.Select(
+                                      t => (ProvidableItemBase)
+                                          t.MapToNeteaseMusic()).ToList() ?? new List<ProvidableItemBase>(),
+                                  error => throw error);
         }
 
 
