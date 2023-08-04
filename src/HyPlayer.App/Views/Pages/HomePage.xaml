@@ -15,48 +15,30 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:HomeViewModel}"
     mc:Ignorable="d">
     <local:HomePageBase.Resources>
-        <Style x:Key="DefaultTopChartButtonStyle" TargetType="controls1:TopChartButton">
-            <Setter Property="Background" Value="{ThemeResource ButtonBackground}" />
-            <Setter Property="BackgroundSizing" Value="InnerBorderEdge" />
-            <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}" />
-            <Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderBrush}" />
-            <Setter Property="BorderThickness" Value="{ThemeResource ButtonBorderThemeThickness}" />
+        <Style x:Key="DefaultTopChartButtonStyle" TargetType="controls1:TopChartButton" BasedOn="{StaticResource DefaultButtonStyle}">
+            <Setter Property="BorderThickness" Value="0" />
             <Setter Property="Padding" Value="0" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
-            <Setter Property="FontWeight" Value="Normal" />
-            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
-            <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
-            <Setter Property="FocusVisualMargin" Value="-3" />
-            <Setter Property="CornerRadius" Value="{ThemeResource ControlCornerRadius}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="controls1:TopChartButton">
                         <ContentPresenter
                             xmlns:local="using:Microsoft.UI.Xaml.Controls"
                             x:Name="ContentPresenter"
-                            Padding="{TemplateBinding Padding}"
+                            Padding="0"
                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                             local:AnimatedIcon.State="Normal"
                             AutomationProperties.AccessibilityView="Raw"
                             Background="{TemplateBinding Background}"
                             BackgroundSizing="{TemplateBinding BackgroundSizing}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
                             ContentTemplate="{TemplateBinding ContentTemplate}"
                             ContentTransitions="{TemplateBinding ContentTransitions}"
                             CornerRadius="{TemplateBinding CornerRadius}"
                             Foreground="{TemplateBinding Foreground}">
-                            <ContentPresenter.BackgroundTransition>
-                                <BrushTransition Duration="0:0:0.083" />
-                            </ContentPresenter.BackgroundTransition>
 
                             <Grid>
                                 <controls:ImageEx
                                     VerticalAlignment="Center"
-                                    CornerRadius="8"
                                     Source="{TemplateBinding Cover}"
                                     Stretch="UniformToFill">
                                     <controls:ImageEx.RenderTransform>
@@ -72,22 +54,20 @@
                                     </Grid.Background>
                                     <Grid Padding="0,22,18,22" Background="#88000000">
 
-                                        <Grid
+                                        <StackPanel
                                             HorizontalAlignment="Right"
                                             VerticalAlignment="Center"
-                                            RowSpacing="6">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.RenderTransform>
+                                            Orientation="Vertical"
+                                            Spacing="8">
+                                            <StackPanel.RenderTransform>                                                
                                                 <TranslateTransform x:Name="LeaderBoardDetailTrans" />
-                                            </Grid.RenderTransform>
+                                            </StackPanel.RenderTransform>
                                             <TextBlock
                                                 Grid.Row="0"
                                                 FontSize="18"
                                                 FontWeight="Bold"
-                                                Text="{TemplateBinding LeaderBoardName}" />
+                                                Text="{TemplateBinding LeaderBoardName}"
+                                                TextTrimming="CharacterEllipsis"/>
                                             <Grid Grid.Row="1" ColumnSpacing="4">
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*" />
@@ -103,7 +83,7 @@
                                                     FontSize="12"
                                                     Text="{TemplateBinding PlayCount}" />
                                             </Grid>
-                                        </Grid>
+                                        </StackPanel>
                                     </Grid>
                                 </Grid>
                             </Grid>
@@ -259,12 +239,12 @@
                     Stretch="UniformToFill" />
                 <Grid
                     Grid.Column="1"
-                    Margin="16,9,0,9"
+                    Margin="16,4,0,4"
                     RowSpacing="4">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="2*" />
                     </Grid.RowDefinitions>
                     <TextBlock
                         Grid.Row="0"
@@ -401,22 +381,28 @@
                     VerticalAlignment="Center"
                     Spacing="2"
                     Visibility="Visible">
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Spacing="4">
                         <TextBlock
+                            Margin="0,0,4,0"
+                            FontSize="32"
+                            FontWeight="Bold"
+                            Foreground="White"
+                            Visibility="{x:Bind Path=ViewModel.AccountViewModel.IsLogin, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}"
+                            Style="{StaticResource TitleTextBlockStyle}" >
+                            <Run Text="{x:Bind ViewModel.AccountViewModel.User.Name}"/>
+                            <Run Text=","/>
+                        </TextBlock>
+                        <TextBlock
+                            Margin="-4,0,0,0"
+                            x:Name="Greetings"
                             HorizontalAlignment="Left"
                             FontSize="32"
                             Foreground="White"
                             Style="{StaticResource TitleTextBlockStyle}"
                             Text="欢迎，" />
-                        <TextBlock
-                            Margin="-10,-1,0,0"
-                            FontSize="32"
-                            FontWeight="Bold"
-                            Foreground="White"
-                            Style="{StaticResource TitleTextBlockStyle}"
-                            Text="{x:Bind ViewModel.AccountViewModel.User.Name}" />
                     </StackPanel>
                     <TextBlock
+                        x:Name="GreetingsText"
                         FontSize="16"
                         Foreground="White"
                         Text="用音乐开启新的一天吧" />
@@ -424,7 +410,7 @@
                 <StackPanel
                     x:Name="ActionPanel"
                     Grid.Row="0"
-                    Margin="0,40,0,0"
+                    Margin="0,40,20,0"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
                     Canvas.ZIndex="1"
@@ -566,7 +552,7 @@
                             <controls2:ButtonContentSnapBehavior SnapType="Left" />
                         </behaviors:Interaction.Behaviors>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="私人雷达" />
+                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="官方歌单" />
                             <FontIcon
                                 Margin="4,2,0,0"
                                 HorizontalAlignment="Left"
@@ -575,37 +561,39 @@
                         </StackPanel>
                     </HyperlinkButton>
 
-                    <Grid
+                    <Button
                         Grid.RowSpan="4"
                         Grid.Column="1"
-                        Margin="14,50,14,14"
+                        Margin="14,22,0,-25"
+                        Height="310"
                         Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                         BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                         BorderThickness="1"
-                        CornerRadius="4">
-                        <controls:ImageEx
+                        CornerRadius="8">
+                        <Grid Height="300">
+                            <controls:ImageEx
                             Width="240"
                             Height="180"
-                            Margin="0,15,0,0"
-                            HorizontalAlignment="Center"
+                             Margin="0,14,0,0"
                             VerticalAlignment="Top"
                             Background="Gray"
                             CornerRadius="4" />
-                        <TextBlock
-                            Margin="15,210,15,0"
+                            <StackPanel VerticalAlignment="Bottom" Spacing="16" Margin="10,0,10,14">
+                                <TextBlock
                             FontSize="14"
                             FontWeight="SemiBold"
                             Text="歌单名歌单名歌单名歌单名歌单名歌单名歌单名歌单名歌单名(替换)"
                             TextTrimming="CharacterEllipsis"
                             TextWrapping="Wrap" />
-                        <TextBlock
-                            Margin="15"
+                                <TextBlock
                             VerticalAlignment="Bottom"
                             FontSize="14"
                             Foreground="{StaticResource SystemControlForegroundBaseMediumBrush}"
                             Text="云音乐私人雷达"
                             TextTrimming="CharacterEllipsis" />
-                    </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </Button>
                 </Grid>
                 <Grid
                     Grid.Row="3"
@@ -644,9 +632,7 @@
                     <controls:AdaptiveGridView
                         x:Name="LeaderboardView"
                         Grid.Row="1"
-                        MinHeight="248"
-                        Height="276"
-                        MaxHeight="590"
+                        Height="140"
                         Margin="12,4"
                         DesiredWidth="240"
                         IsItemClickEnabled="True"

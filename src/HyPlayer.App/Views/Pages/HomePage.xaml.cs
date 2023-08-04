@@ -43,6 +43,33 @@ namespace HyPlayer.App.Views.Pages
         {
             base.OnNavigatedTo(e);
             ViewModel.GetSongsAsync().SafeFireAndForget();
+            DateTime currentTime = DateTime.Now;
+            int hour = currentTime.Hour;
+            if (hour < 11 && hour>=6)
+            {
+                Greetings.Text="早上好！";
+                GreetingsText.Text = "用音乐开启新的一天吧";
+            }
+            else if(hour>=11 && hour<13)
+            {
+                Greetings.Text = "中午好！";
+                GreetingsText.Text = "听听音乐放松下心情吧";
+            }
+            else if (hour >= 13 && hour < 17)
+            {
+                Greetings.Text = "下午好！";
+                GreetingsText.Text = "沉浸在动听的旋律当中吧";
+            }
+            else if (hour >= 17 && hour < 23)
+            {
+                Greetings.Text = "晚上好！";
+                GreetingsText.Text = "来首音乐缓解一天的疲劳吧";
+            }
+            else
+            {
+                Greetings.Text = "夜深了。";
+                GreetingsText.Text = "愿美妙的音乐伴你进入梦乡";
+            }
         }
 
 
