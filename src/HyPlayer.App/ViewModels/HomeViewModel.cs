@@ -57,12 +57,12 @@ public partial class HomeViewModel
             RecommendedSongs =
                 (await ((await _provider.GetRecommendation("sg")) as NeteaseActionGettableContainer)?.GetAllItems())
                 .Select(t => (NeteaseSong)t).ToList();
-
+            /*
             PersonalFM =
                 (await _provider.RequestAsync(NeteaseApis.PersonalFmApi, new PersonalFmRequest())).Match(success => success.Items?.Select(
                                       t => (ProvidableItemBase)
                                           t.MapToNeteaseMusic()).ToList() ?? new List<ProvidableItemBase>(),
-                                  error => throw error);
+                                  error => throw error);*/
         }
 
 
