@@ -50,12 +50,12 @@ public partial class HomeViewModel
         {
             // ÍÆ¼ö¸èµ¥
             PlayLists =
-                (await ((await _provider.GetRecommendation("pl")) as NeteaseActionGettableContainer)?.GetAllItems())
+                (await ((await _provider.GetRecommendationAsync("pl")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
                 .Select(t => (NeteasePlaylist)t).ToList();
 
             // ÍÆ¼ö¸èÇú
             RecommendedSongs =
-                (await ((await _provider.GetRecommendation("sg")) as NeteaseActionGettableContainer)?.GetAllItems())
+                (await ((await _provider.GetRecommendationAsync("sg")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
                 .Select(t => (NeteaseSong)t).ToList();
             /*
             PersonalFM =
@@ -68,7 +68,7 @@ public partial class HomeViewModel
 
         // ÅÅĞĞ°ñ
         TopLists =
-            (await ((await _provider.GetRecommendation("ct")) as NeteaseActionGettableContainer)?.GetAllItems())
+            (await ((await _provider.GetRecommendationAsync("ct")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
             .Select(t => (NeteasePlaylist)t).ToList();
     }
 }

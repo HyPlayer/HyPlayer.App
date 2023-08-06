@@ -1,4 +1,5 @@
 using System;
+using HyPlayer.App.Extensions;
 using HyPlayer.PlayCore.Abstraction.Interfaces.ProvidableItem;
 using HyPlayer.PlayCore.Abstraction.Models.Resources;
 using Microsoft.UI.Xaml.Data;
@@ -19,9 +20,9 @@ public class CoverToImageSourceConverter : IValueConverter
             if (parameter is not string sizeStr)
                 sizeStr = "250";
             var size = System.Convert.ToInt32(sizeStr);
-            var result = hasCover.GetCover().GetAwaiter().GetResult()?.GetResource(new ImageResourceQualityTag(size,size), typeof(string)).GetAwaiter().GetResult();
-            if (result is string url)
-                return new BitmapImage(new Uri(url));
+            var result = hasCover.GetCoverUrl(size, size);
+            if (result is not null)
+                return new BitmapImage(new Uri(result));
         }
 
         // TODO: Change the default Image Here

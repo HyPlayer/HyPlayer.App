@@ -2,6 +2,7 @@
 using Microsoft.UI.Xaml.Controls;
 using WinUIEx;
 using System;
+using System.Threading.Tasks;
 using Depository.Abstraction.Interfaces;
 using Depository.Core;
 using Depository.Extensions;
@@ -68,15 +69,15 @@ namespace HyPlayer.App
         /// Invoked when the application is launched.
         /// </summary>
         /// <param name="args">Details about the launch request and process.</param>
-        protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+        protected override async void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
+            DispatcherQueue = DispatcherQueue.GetForCurrentThread();
             Depository = DepositoryFactory.CreateNew();
             ConfigureServices();
-            ConfigurePlayCore();
-            DispatcherQueue = DispatcherQueue.GetForCurrentThread();
+            await ConfigurePlayCore();
             window = new Window.MainWindow();
             AppXamlRoot = window.Content.XamlRoot;
-            NavigationToRootPage(args);
+            NavigateToRootPage(args);
             window.Activate();
         }
 
@@ -89,14 +90,14 @@ namespace HyPlayer.App
             // Depository.AddTransient<ShellViewModel>();
         }
 
-        private void ConfigurePlayCore()
+        private async Task ConfigurePlayCore()
         {
             Depository.AddSingleton<PlayCoreBase, Chopin>();
             var playCore = Depository.Resolve<PlayCoreBase>();
-            playCore.RegisterMusicProvider(typeof(NeteaseProvider.NeteaseProvider));
+            await playCore.RegisterMusicProviderAsync(typeof(NeteaseProvider.NeteaseProvider));
         }
 
-        private void NavigationToRootPage(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+        private void NavigateToRootPage(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {   
             App.GetService<INavigationService>().NavigateTo(typeof(Pages.HomePage));
         }
