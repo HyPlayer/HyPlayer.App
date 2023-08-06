@@ -31,13 +31,12 @@ namespace HyPlayer.App.ViewModels
             if (isPhone)
             {
                 IsLogin = await _provider.LoginCellphoneAsync(usr, pwd);
-                User = _provider.LoginedUser;
             }
             else
             {
                 IsLogin = await _provider.LoginEmailAsync(usr, pwd);
-                User = _provider.LoginedUser;
             }
+            User = _provider.LoginedUser;
         }
     }
 }
