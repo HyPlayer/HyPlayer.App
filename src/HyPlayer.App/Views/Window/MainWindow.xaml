@@ -6,7 +6,6 @@
     xmlns:ex="using:WinUIEx"
     xmlns:local="using:HyPlayer.App.Views.Window"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:HyPlayer.App.Views.Controls.App"
     xmlns:search="using:HyPlayer.App.Views.Controls.Search"
     Title="HyPlayer"
     MinWidth="500"

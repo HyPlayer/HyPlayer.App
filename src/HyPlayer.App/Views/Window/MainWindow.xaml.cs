@@ -21,6 +21,7 @@ using HyPlayer.App.Interfaces.ViewModels;
 using HyPlayer.App.Views.Controls.Dialogs;
 using HyPlayer.App.Views.Pages;
 using HyPlayer.App.Views.Controls.App;
+using System.Runtime.CompilerServices;
 
 namespace HyPlayer.App.Views.Window
 {
@@ -32,6 +33,7 @@ namespace HyPlayer.App.Views.Window
         private ShellViewModel _shellViewModel;
         private AccountViewModel _accountViewModel;
         private readonly IDepositoryResolveScope _scope;
+        private readonly AppWindowTitleBar titleBar;
 
         public MainWindow()
         {
@@ -42,12 +44,13 @@ namespace HyPlayer.App.Views.Window
             _accountViewModel = App.GetDIContainer().ResolveInScope<AccountViewModel>(_scope);
 
             // Customize the Title Bar.
-            var titleBar = this.AppWindow.TitleBar;
+            titleBar = this.AppWindow.TitleBar;
             titleBar.BackgroundColor = Colors.Transparent;
             titleBar.ButtonBackgroundColor = Colors .Transparent;
             titleBar.InactiveBackgroundColor = Colors .Transparent;
             titleBar.ButtonInactiveBackgroundColor = Colors .Transparent;
             titleBar.IconShowOptions = IconShowOptions.HideIconAndSystemMenu;
+            
 
             // Get caption button occlusion information.
             int CaptionButtonOcclusionWidthRight = titleBar.RightInset;

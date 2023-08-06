@@ -6,6 +6,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HyPlayer.App.Interfaces;
 using HyPlayer.App.Interfaces.ViewModels;
+using HyPlayer.App.Extensions.Mappers;
 using HyPlayer.NeteaseApi;
 using HyPlayer.NeteaseApi.ApiContracts;
 using HyPlayer.NeteaseProvider.Mappers;
@@ -14,6 +15,7 @@ using HyPlayer.PlayCore.Abstraction;
 using HyPlayer.PlayCore.Abstraction.Models;
 using HyPlayer.PlayCore.Abstraction.Models.Containers;
 using HyPlayer.PlayCore.Abstraction.Models.Resources;
+using HyPlayer.NeteaseApi.Models.ResponseModels;
 
 namespace HyPlayer.App.ViewModels;
 
@@ -46,6 +48,7 @@ public partial class HomeViewModel
     [RelayCommand]
     public async Task GetSongsAsync()
     {
+        // 仅在登录后加载
         if (AccountViewModel.IsLogin)
         {
             // 推荐歌单
@@ -57,14 +60,16 @@ public partial class HomeViewModel
             RecommendedSongs =
                 (await ((await _provider.GetRecommendation("sg")) as NeteaseActionGettableContainer)?.GetAllItems())
                 .Select(t => (NeteaseSong)t).ToList();
-            /*
+            
+            // 私人雷达
             PersonalFM =
                 (await _provider.RequestAsync(NeteaseApis.PersonalFmApi, new PersonalFmRequest())).Match(success => success.Items?.Select(
-                                      t => (ProvidableItemBase)
-                                          t.MapToNeteaseMusic()).ToList() ?? new List<ProvidableItemBase>(),
-                                  error => throw error);*/
+                                      t => (NeteaseSong)
+                                          t.MapToNeteaseMusic()).ToList() ?? new List<NeteaseSong>(),
+                                  error => throw error);
         }
 
+        // 不登录加载
 
         // 排行榜
         TopLists =

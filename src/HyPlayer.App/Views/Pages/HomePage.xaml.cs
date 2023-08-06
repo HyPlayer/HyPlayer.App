@@ -23,8 +23,6 @@ using AsyncAwaitBestPractices;
 using HyPlayer.App.Interfaces.Views;
 using HyPlayer.PlayCore.Abstraction.Models;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace HyPlayer.App.Views.Pages
 {
@@ -33,6 +31,7 @@ namespace HyPlayer.App.Views.Pages
     /// </summary>
     public sealed partial class HomePage : HomePageBase
     {
+        private int selectedIndex;
        
         public HomePage()
         {
