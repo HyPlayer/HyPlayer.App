@@ -53,12 +53,12 @@ public partial class HomeViewModel
         {
             // 推荐歌单
             PlayLists =
-                (await ((await _provider.GetRecommendation("pl")) as NeteaseActionGettableContainer)?.GetAllItems())
+                (await ((await _provider.GetRecommendationAsync("pl")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
                 .Select(t => (NeteasePlaylist)t).ToList();
 
             // 推荐歌曲
             RecommendedSongs =
-                (await ((await _provider.GetRecommendation("sg")) as NeteaseActionGettableContainer)?.GetAllItems())
+                (await ((await _provider.GetRecommendationAsync("sg")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
                 .Select(t => (NeteaseSong)t).ToList();
             
             // 私人雷达
@@ -73,7 +73,7 @@ public partial class HomeViewModel
 
         // 排行榜
         TopLists =
-            (await ((await _provider.GetRecommendation("ct")) as NeteaseActionGettableContainer)?.GetAllItems())
+            (await ((await _provider.GetRecommendationAsync("ct")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
             .Select(t => (NeteasePlaylist)t).ToList();
     }
 }

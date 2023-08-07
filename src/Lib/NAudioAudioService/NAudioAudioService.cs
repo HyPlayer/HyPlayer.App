@@ -6,22 +6,23 @@ namespace NAudioAudioService;
 
 public class NAudioAudioService : AudioServiceBase
 {
-    public override async Task<AudioTicketBase> GetAudioTicket(MusicResourceBase musicResource)
+    public override async Task<AudioTicketBase> GetAudioTicketAsync(MusicResourceBase musicResource,
+                                                                    CancellationToken ctk = new())
     {
         throw new NotImplementedException();
     }
 
-    public override async Task DisposeAudioTicket(AudioTicketBase audioTicket)
+    public override async Task DisposeAudioTicketAsync(AudioTicketBase audioTicket, CancellationToken ctk = new())
     {
         throw new NotImplementedException();
     }
 
 
-    public override async Task<List<AudioTicketBase>> GetCreatedAudioTickets()
+    public override async Task<List<AudioTicketBase>> GetCreatedAudioTicketsAsync(CancellationToken ctk = new())
     {
         throw new NotImplementedException();
     }
 
-    public override string Id => "na";
+    public override string Id => "nad";
     public override string Name => "NAudio Service";
 }

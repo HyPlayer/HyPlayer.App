@@ -30,14 +30,13 @@ namespace HyPlayer.App.ViewModels
             bool isPhone = Regex.Match(usr, "^[0-9]+$").Success;
             if (isPhone)
             {
-                IsLogin = await _provider.LoginCellphone(usr, pwd);
-                User = _provider.LoginedUser;
+                IsLogin = await _provider.LoginCellphoneAsync(usr, pwd);
             }
             else
             {
-                IsLogin = await _provider.LoginEmail(usr, pwd);
-                User = _provider.LoginedUser;
+                IsLogin = await _provider.LoginEmailAsync(usr, pwd);
             }
+            User = _provider.LoginedUser;
         }
     }
 }
