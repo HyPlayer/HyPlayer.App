@@ -6,7 +6,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HyPlayer.App.Interfaces;
 using HyPlayer.App.Interfaces.ViewModels;
-using HyPlayer.App.Extensions.Mappers;
 using HyPlayer.NeteaseApi;
 using HyPlayer.NeteaseApi.ApiContracts;
 using HyPlayer.NeteaseProvider.Mappers;
@@ -61,12 +60,7 @@ public partial class HomeViewModel
                 (await ((await _provider.GetRecommendationAsync("sg")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
                 .Select(t => (NeteaseSong)t).ToList();
             
-            // 私人雷达
-            PersonalFM =
-                (await _provider.RequestAsync(NeteaseApis.PersonalFmApi, new PersonalFmRequest())).Match(success => success.Items?.Select(
-                                      t => (NeteaseSong)
-                                          t.MapToNeteaseMusic()).ToList() ?? new List<NeteaseSong>(),
-                                  error => throw error);
+            // 
         }
 
         // 不登录加载
