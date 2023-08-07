@@ -25,9 +25,6 @@ using System.Runtime.CompilerServices;
 
 namespace HyPlayer.App.Views.Window
 {
-    /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainWindow : WindowEx
     {
         private ShellViewModel _shellViewModel;
@@ -248,7 +245,7 @@ namespace HyPlayer.App.Views.Window
             }
             else
             {
-                App.GetService<INavigationService>().NavigateTo(typeof(MePage));
+                // App.GetService<INavigationService>().NavigateTo(typeof(MePage));
             }
         }
 

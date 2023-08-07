@@ -26,8 +26,8 @@
     <None Remove="Views\Controls\Search\SearchBox.xaml" />
     <None Remove="Views\Pages\ErrorPage.xaml" />
     <None Remove="Views\Pages\HomePage.xaml" />
-    <None Remove="Views\Pages\MePage.xaml" />
     <None Remove="Views\Pages\ShellPage.xaml" />
+    <None Remove="Views\Pages\UserPage.xaml" />
     <None Remove="Views\Window\MainWindow.xaml" />
     <None Remove="Views\Window\SmallWindow.xaml" />
   </ItemGroup>
@@ -121,14 +121,19 @@
     <Page Update="Views\Controls\App\DesktopNavigationView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="Views\Pages\MePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Contract\Services\IPageService.cs" />
     <Compile Remove="Helpers\UIHelper.cs" />
     <Compile Remove="Controls\App\PivotExtensions\PivotEx.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <CustomAdditionalCompileInputs Remove="Views\Pages\UserPage.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Remove="Views\Pages\UserPage.xaml" />
   </ItemGroup>
 </Project>
