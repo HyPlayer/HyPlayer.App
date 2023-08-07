@@ -294,7 +294,7 @@
         </DataTemplate>
         <DataTemplate x:Key="HomePagePlaylistTemplate" x:DataType="models:NeteasePlaylist">
             <Grid
-                Padding="15"
+                Padding="16"
                 HorizontalAlignment="Stretch"
                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
@@ -575,25 +575,33 @@
                             x:Name="PlayListView"
                             Margin="10,0,0,0"
                             Grid.Row="1"
-                            Height="310"
-                            DesiredWidth="295"
+                            Height="280"
+                            ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                            ScrollViewer.VerticalScrollMode="Disabled"
+                            DesiredWidth="320"
                             IsItemClickEnabled="True"
                             ItemClick="OnPlaylistItemClicked"
-                            ItemHeight="112"
+                            ItemHeight="120"
+                            
                             ItemTemplate="{StaticResource HomePagePlaylistTemplate}"
                             ItemsSource="{x:Bind ViewModel.PlayLists, Mode=OneWay}"
                             OneRowModeEnabled="False"
                             ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                             ScrollViewer.HorizontalScrollMode="Disabled"
                             SelectionMode="None">
+                            <controls:AdaptiveGridView.Resources>
+                                <Style TargetType="GridViewItem" BasedOn="{StaticResource DefaultGridViewItemStyle}">
+                                    <Setter Property="Margin" Value="8"/>
+                                </Style>
+                            </controls:AdaptiveGridView.Resources>
                         </controls:AdaptiveGridView>
                     </Grid>
                     <Grid Grid.Row="0" Grid.Column="1" x:Name="GridOfficialPlaylist">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <HyperlinkButton Margin="0,8"
+                        <HyperlinkButton Margin="-4,8"
                                          Grid.Row="0"
                                          Foreground="{ThemeResource TextFillColorPrimary}">
                             <behaviors:Interaction.Behaviors>
@@ -609,34 +617,29 @@
                             </StackPanel>
                         </HyperlinkButton>
 
-                        <Button
-                            Height="310"
+                        <Button Margin="4,8,0,16"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
                             Grid.Row="1"
                             Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                             BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                             BorderThickness="1"
                             CornerRadius="8">
-                            <Grid Height="300">
-                                <controls:ImageEx
-                                    Width="240"
-                                    Height="180"
-                                    Margin="0,14,0,0"
-                                    VerticalAlignment="Top"
-                                    Background="Gray"
-                                    CornerRadius="4" />
-                                <StackPanel VerticalAlignment="Bottom" Spacing="16" Margin="10,0,10,14">
-                                    <TextBlock
-                                        FontSize="14"
-                                        FontWeight="SemiBold"
-                                        Text="歌单名歌单名歌单名歌单名歌单名歌单名歌单名歌单名歌单名(替换)"
-                                        TextTrimming="CharacterEllipsis"
-                                        TextWrapping="Wrap" />
-                                    <TextBlock
-                                        VerticalAlignment="Bottom"
-                                        FontSize="14"
-                                        Foreground="{StaticResource SystemControlForegroundBaseMediumBrush}"
-                                        Text="云音乐私人雷达"
-                                        TextTrimming="CharacterEllipsis" />
+                            <Grid Margin="8">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <controls:ImageEx HorizontalAlignment="Stretch" 
+                                                  VerticalAlignment="Stretch"
+                                                  CornerRadius="8" 
+                                                  Margin="0,4,0,0"
+                                                  Background="#33808080"/>
+                                <StackPanel Grid.Row="1" Margin="0,12,0,0">
+                                    <TextBlock FontSize="16" Text="歌单名称11111111111111" TextTrimming="CharacterEllipsis" />
+                                    <TextBlock Text="111" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" TextTrimming="CharacterEllipsis"/>
                                 </StackPanel>
                             </Grid>
                         </Button>
@@ -663,7 +666,7 @@
                         </HyperlinkButton>
 
                         <Button
-                            Margin="0,0,6,0"
+                            Margin="0,0,6,0" Background="Transparent" BorderBrush="Transparent"
                             HorizontalAlignment="Right">
                             <StackPanel Orientation="Horizontal">
                                 <FontIcon
@@ -675,18 +678,26 @@
                         </Button>
 
                         <controls:AdaptiveGridView
+                            Height="250"
                             Margin="10,0,0,0"
                             Grid.Row="1"
                             CanBeScrollAnchor="True"
-                            DesiredWidth="295"
+                            DesiredWidth="320"
                             IsItemClickEnabled="True"
                             ItemHeight="112"
                             ItemTemplate="{StaticResource HomePageRecommendSongItemTemplate}"
                             ItemsSource="{x:Bind ViewModel.RecommendedSongs, Mode=OneWay}"
-                            OneRowModeEnabled="True"
                             ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                             ScrollViewer.HorizontalScrollMode="Disabled"
-                            SelectionMode="None" />
+                            ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                            ScrollViewer.VerticalScrollMode="Disabled"
+                            SelectionMode="None" >
+                            <controls:AdaptiveGridView.Resources>
+                                <Style TargetType="GridViewItem" BasedOn="{StaticResource DefaultGridViewItemStyle}">
+                                    <Setter Property="Margin" Value="8"/>
+                                </Style>
+                            </controls:AdaptiveGridView.Resources>
+                        </controls:AdaptiveGridView>
                     </Grid>
 
                     <Grid
@@ -726,10 +737,17 @@
                             ItemHeight="128"
                             ItemTemplate="{StaticResource HomePageTopChartTemplate}"
                             ItemsSource="{x:Bind ViewModel.TopLists, Mode=OneWay}"
-                            OneRowModeEnabled="True"
                             ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                            ScrollViewer.HorizontalScrollMode="Disabled"
-                            SelectionMode="None" />
+                            ScrollViewer.HorizontalScrollMode="Disabled"                         
+                            ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                            ScrollViewer.VerticalScrollMode="Disabled"
+                            SelectionMode="None" >
+                            <controls:AdaptiveGridView.Resources>
+                                <Style TargetType="GridViewItem" BasedOn="{StaticResource DefaultGridViewItemStyle}">
+                                    <Setter Property="Margin" Value="8"/>
+                                </Style>
+                            </controls:AdaptiveGridView.Resources>
+                        </controls:AdaptiveGridView>
                     </Grid>
 
                 </Grid>
