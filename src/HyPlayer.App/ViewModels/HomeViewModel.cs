@@ -31,7 +31,6 @@ public partial class HomeViewModel
     [ObservableProperty] private List<NeteaseSong>? _recommendedSongs;
     [ObservableProperty] private List<NeteasePlaylist>? _playLists;
     [ObservableProperty] private List<NeteasePlaylist>? _topLists;
-    [ObservableProperty] private List<NeteaseSong>? _personalFM;
 
     [ObservableProperty] private CurrentPlayingViewModel _currentPlaying;
 
@@ -59,8 +58,6 @@ public partial class HomeViewModel
             RecommendedSongs =
                 (await ((await _provider.GetRecommendationAsync("sg")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
                 .Select(t => (NeteaseSong)t).ToList();
-            
-            // 
         }
 
         // ²»µÇÂ¼¼ÓÔØ
