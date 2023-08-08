@@ -16,6 +16,7 @@
     <Authors>HyPlayer Team</Authors>
     <Company>HyPlayer Team</Company>
     <Product>HyPlayer</Product>
+    <UserSecretsId>3e757a82-9759-482b-851c-170ec2aa99dc</UserSecretsId>
   </PropertyGroup>
   
   <ItemGroup>
@@ -127,6 +128,11 @@
     <Compile Remove="Contract\Services\IPageService.cs" />
     <Compile Remove="Helpers\UIHelper.cs" />
     <Compile Remove="Controls\App\PivotExtensions\PivotEx.cs" />
+    <Compile Update="Translations\AppUI.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AppUI.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -135,5 +141,12 @@
 
   <ItemGroup>
     <Resource Remove="Views\Pages\UserPage.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Translations\AppUI.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppUI.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

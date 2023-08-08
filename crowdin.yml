@@ -1,0 +1,13 @@
+"project_id": "558549"
+"base_path": "."
+"base_url": "https://api.crowdin.com"
+"preserve_hierarchy": true
+files: [
+  {
+    "source": "src/HyPlayer.App/Translations/AppUI.resx",
+    "translation": "src/HyPlayer.App/Translations/AppUI.%locale%.resx",
+    "translation_replace": {
+        "zh-TW": "zh-hant-tw"
+    }
+  }
+]
