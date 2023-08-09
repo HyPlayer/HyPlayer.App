@@ -46,28 +46,28 @@ namespace HyPlayer.App.Views.Pages
             int hour = currentTime.Hour;
             if (hour < 11 && hour>=6)
             {
-                Greetings.Text="早上好！";
-                GreetingsText.Text = "用音乐开启新的一天吧";
+                Greetings.Text=Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetValue("Resources/HomePage_GreetingPrefix_Morning").ValueAsString;
+                GreetingsText.Text = Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetValue("Resources/HomePage_GreetingSuffix_Morning").ValueAsString;
             }
             else if(hour>=11 && hour<13)
             {
-                Greetings.Text = "中午好！";
-                GreetingsText.Text = "听听音乐放松下心情吧";
+                Greetings.Text = Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetValue("Resources/HomePage_GreetingPrefix_Noon").ValueAsString;
+                GreetingsText.Text = Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetValue("Resources/HomePage_GreetingSuffix_Noon").ValueAsString;
             }
             else if (hour >= 13 && hour < 17)
             {
-                Greetings.Text = "下午好！";
-                GreetingsText.Text = "沉浸在动听的旋律当中吧";
+                Greetings.Text = Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetValue("Resources/HomePage_GreetingPrefix_Afternoon").ValueAsString;
+                GreetingsText.Text = Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetValue("Resources/HomePage_GreetingSuffix_Noon").ValueAsString;
             }
             else if (hour >= 17 && hour < 23)
             {
-                Greetings.Text = "晚上好！";
-                GreetingsText.Text = "来首音乐缓解一天的疲劳吧";
+                Greetings.Text = Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetValue("Resources/HomePage_GreetingPrefix_Night").ValueAsString;
+                GreetingsText.Text = Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetValue("Resources/HomePage_GreetingSuffix_Night").ValueAsString;
             }
             else
             {
-                Greetings.Text = "夜深了。";
-                GreetingsText.Text = "愿美妙的音乐伴你进入梦乡";
+                Greetings.Text = Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetValue("Resources/HomePage_GreetingPrefix_DeepNight").ValueAsString;
+                GreetingsText.Text = Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetValue("Resources/HomePage_GreetingSuffix_DeepNight").ValueAsString;
             }
         }
 

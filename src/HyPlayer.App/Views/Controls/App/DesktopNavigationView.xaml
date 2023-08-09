@@ -22,10 +22,10 @@
             <Frame x:Name="contentFrame" />
 
             <NavigationView.MenuItems>
-                <NavigationViewItemHeader Margin="0,3,3,3" Content="发现" />
+                <NavigationViewItemHeader Margin="0,3,3,3" x:Uid="MainNav_Header_Discover.Text" />
                 <NavigationViewItem
                     x:Name="Home"
-                    Content="主页"
+                    x:Uid="MainNav_Item_Home"
                     Tag="HomePage">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEA8A;" />
@@ -34,22 +34,22 @@
                 <NavigationViewItem
                     x:Name="NavItemDailyRcmd"
                     x:FieldModifier="public"
-                    Content="每日推荐"
+                    x:Uid="MainNav_Item_DailyRcmd"
                     Tag="DailyRcmd">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEA89;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem
-                    x:Name="PrivateFM"
-                    Content="私人FM"
+                    x:Name="PersonalFM"
+                    x:Uid="MainNav_Item_PersonalFm"
                     Tag="PrivateFMPage">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xF8B2;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem
-                    Content="心动模式"
+                    x:Uid="MainNav_Item_HeartBeatMode"
                     SelectsOnInvoked="False"
                     Tag="HeartBeat">
                     <NavigationViewItem.Icon>
@@ -57,24 +57,24 @@
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem
-                    Content="我的收藏"
+                    x:Uid="MainNav_Item_MyLibrary.Content"
                     SelectsOnInvoked="False"
                     Tag="PageFavorite">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE113;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItemHeader Margin="0,3,3,3" Content="歌单" />
+                <NavigationViewItemHeader Margin="0,3,3,3" x:Uid="MainNav_Header_Songlist" />
                 <NavigationViewItem
                     x:Name="NavItemsAddPlaylist"
-                    Content="创建歌单"
+                    x:Uid="MainNav_Item_CreatePlaylist"
                     Icon="Add"
                     SelectsOnInvoked="False"
                     Tag="SonglistCreate"/>
                 <NavigationViewItem
                     x:Name="NavItemsMyLovedPlaylist"
                     x:FieldModifier="public"
-                    Content="我喜欢的音乐"
+                    x:Uid="MainNav_Item_MyLovedPlaylist"
                     Tag="SonglistMyLike">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE006;" />
@@ -83,40 +83,17 @@
                 <NavigationViewItem
                     x:Name="NavItemsMyList"
                     x:FieldModifier="public"
-                    Content="我创建的歌单"
+                    x:Uid="MainNav_Item_MyCreatedPlaylist"
                     Icon="List"
                     IsExpanded="True"/>
                 <NavigationViewItem
                     x:Name="NavItemsLikeList"
                     x:FieldModifier="public"
-                    Content="我收藏的歌单"
+                    x:Uid="MainNav_Item_MyStoredPlaylist"
                     Icon="List"
                     IsExpanded="True" />
 
             </NavigationView.MenuItems>
         </NavigationView>
-
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="641" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="NavView.IsPaneToggleButtonVisible" Value="True" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-            <VisualStateGroup>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="1008" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="NavView.IsPaneToggleButtonVisible" Value="False" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
     </Grid>
 </base:NavigationViewBase>

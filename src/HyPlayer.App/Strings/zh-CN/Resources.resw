@@ -147,7 +147,73 @@
   <data name="HomePage_Title.Text" xml:space="preserve">
     <value>主页</value>
   </data>
-  <data name="LANG_NAME" xml:space="preserve">
+  <data name="__LANG_NAME" xml:space="preserve">
     <value>中文（简体）</value>
+  </data>
+  <data name="HomePage_GreetingPrefix_Morning" xml:space="preserve">
+    <value>早上好！</value>
+  </data>
+  <data name="HomePage_GreetingSuffix_Morning" xml:space="preserve">
+    <value>用音乐开启新的一天吧</value>
+  </data>
+  <data name="HomePage_GreetingPrefix_Noon" xml:space="preserve">
+    <value>中午好！</value>
+  </data>
+  <data name="HomePage_GreetingSuffix_Noon" xml:space="preserve">
+    <value>听听音乐放松下心情吧</value>
+  </data>
+  <data name="HomePage_GreetingPrefix_Afternoon" xml:space="preserve">
+    <value>下午好！</value>
+  </data>
+  <data name="HomePage_GreetingSuffixx_Afternoon" xml:space="preserve">
+    <value>沉浸在动听的旋律当中吧</value>
+  </data>
+  <data name="HomePage_GreetingPrefix_Night" xml:space="preserve">
+    <value>晚上好！</value>
+  </data>
+  <data name="HomePage_GreetingSuffix_Night" xml:space="preserve">
+    <value>来首音乐缓解一天的疲劳吧</value>
+  </data>
+  <data name="HomePage_GreetingPrefix_DeepNight" xml:space="preserve">
+    <value>夜深了。</value>
+  </data>
+  <data name="HomePage_GreetingSuffix_DeepNight" xml:space="preserve">
+    <value>愿美妙的音乐伴你进入梦乡</value>
+  </data>
+  <data name="MainNav_Header_Discover.Content" xml:space="preserve">
+    <value>发现</value>
+  </data>
+  <data name="MainNav_Header_Songlist.Content" xml:space="preserve">
+    <value>歌单</value>
+  </data>
+  <data name="MainNav_Item_CreatePlaylist.Content" xml:space="preserve">
+    <value>创建歌单</value>
+  </data>
+  <data name="MainNav_Item_DailyRcmd.Content" xml:space="preserve">
+    <value>每日推荐</value>
+  </data>
+  <data name="MainNav_Item_HeartBeatMode.Content" xml:space="preserve">
+    <value>心动模式</value>
+  </data>
+  <data name="MainNav_Item_Home.Content" xml:space="preserve">
+    <value>主页</value>
+  </data>
+  <data name="MainNav_Item_MyCreatedPlaylist.Content" xml:space="preserve">
+    <value>我创建的歌单</value>
+  </data>
+  <data name="MainNav_Item_MyLibrary.Content" xml:space="preserve">
+    <value>我的收藏</value>
+  </data>
+  <data name="MainNav_Item_MyLovedPlaylist.Content" xml:space="preserve">
+    <value>我喜欢的音乐</value>
+  </data>
+  <data name="MainNav_Item_MyStoredPlaylist.Content" xml:space="preserve">
+    <value>我收藏的歌单</value>
+  </data>
+  <data name="MainNav_Item_PersonalFm.Content" xml:space="preserve">
+    <value>私人FM</value>
+  </data>
+  <data name="__APP_NAME" xml:space="preserve">
+    <value>HyPlayer</value>
   </data>
 </root>
