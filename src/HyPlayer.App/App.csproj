@@ -129,11 +129,6 @@
     <Compile Remove="Contract\Services\IPageService.cs" />
     <Compile Remove="Helpers\UIHelper.cs" />
     <Compile Remove="Controls\App\PivotExtensions\PivotEx.cs" />
-    <Compile Update="Translations\AppUI.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>AppUI.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -143,15 +138,5 @@
   <ItemGroup>
     <Resource Remove="Views\Pages\UserPage.xaml" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Clones\WinUI3Localizer\WinUI3Localizer\WinUI3Localizer.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Translations\AppUI.resw">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppUI.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
+  
 </Project>
