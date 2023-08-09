@@ -444,7 +444,7 @@
                         FontSize="24"
                         Foreground="White"
                         Style="{StaticResource TitleTextBlockStyle}"
-                        Text="主页" />
+                        x:Uid="HomePage_Title" />
                     <Grid
                         VerticalAlignment="Stretch">
                         <controls1:HomePageHeaderImage
@@ -475,13 +475,13 @@
                                 FontSize="32"
                                 Foreground="White"
                                 Style="{StaticResource TitleTextBlockStyle}"
-                                Text="欢迎，" />
+                                x:Uid="HomePage_Title" />
                         </StackPanel>
                         <TextBlock
                             x:Name="GreetingsText"
                             FontSize="16"
                             Foreground="White"
-                            Text="用音乐开启新的一天吧" />
+                            x:Uid="HomePage_GreetingText" />
                     </StackPanel>
                     <StackPanel
                         x:Name="ActionPanel"
@@ -498,7 +498,7 @@
                             CornerRadius="6">
                             <StackPanel Orientation="Horizontal" Spacing="12">
                                 <FontIcon FontSize="22" Glyph="&#xE006;" />
-                                <TextBlock FontSize="14" Text="我的喜欢" />
+                                <TextBlock FontSize="14" x:Uid="HomePage_Btn_MyLike" />
                             </StackPanel>
                             <!--<Button.Background>
                             <media:BackdropBlurBrush Amount="30"/>
@@ -512,7 +512,7 @@
                             CornerRadius="6">
                             <StackPanel Orientation="Horizontal" Spacing="12">
                                 <FontIcon FontSize="22" Glyph="&#xE163;" />
-                                <TextBlock FontSize="14" Text="每日推荐" />
+                                <TextBlock FontSize="14" x:Uid="HomePage_Btn_DailyRcmd" />
                             </StackPanel>
                             <!--<Button.Background>
                             <media:BackdropBlurBrush Amount="30"/>
@@ -525,7 +525,7 @@
                             CornerRadius="6">
                             <StackPanel Orientation="Horizontal" Spacing="12">
                                 <FontIcon FontSize="22" Glyph="&#xEFA9;" />
-                                <TextBlock FontSize="14" Text="私人FM" />
+                                <TextBlock FontSize="14" x:Uid="HomePage_Btn_PersonalFm" />
                             </StackPanel>
                             <!--<Button.Background>
                             <media:BackdropBlurBrush Amount="30"/>
@@ -561,7 +561,7 @@
                             </behaviors:Interaction.Behaviors>
 
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="推荐歌单" />
+                                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" x:Uid="HomePage_HypBtn_RcmdSonglist" />
                                 <FontIcon
                                     Margin="4,2,0,0"
                                     HorizontalAlignment="Left"
@@ -608,7 +608,7 @@
                                 <controls2:ButtonContentSnapBehavior SnapType="Left" />
                             </behaviors:Interaction.Behaviors>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="官方歌单" />
+                                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" x:Uid="HomePage_HypBtn_OfficialPlaylist" />
                                 <FontIcon
                                     Margin="4,2,0,0"
                                     HorizontalAlignment="Left"
@@ -656,7 +656,7 @@
                                 <controls2:ButtonContentSnapBehavior SnapType="Left" />
                             </behaviors:Interaction.Behaviors>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="推荐歌曲" />
+                                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" x:Uid="HomePage_HypBtn_RcmdSongs" />
                                 <FontIcon
                                     Margin="4,2,0,0"
                                     HorizontalAlignment="Left"
@@ -673,7 +673,7 @@
                                     Margin="0,0,6,0"
                                     FontSize="14"
                                     Glyph="&#xE102;" />
-                                <TextBlock Text="播放全部" />
+                                <TextBlock x:Uid="HomePage_Btn_PlayAll" />
                             </StackPanel>
                         </Button>
 
@@ -716,7 +716,7 @@
                                 <controls2:ButtonContentSnapBehavior SnapType="Left" />
                             </behaviors:Interaction.Behaviors>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="排行榜" />
+                                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" x:Uid="HomePage_HypBtn_Topchart" />
                                 <FontIcon
                                     Margin="4,2,0,0"
                                     HorizontalAlignment="Left"

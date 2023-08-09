@@ -19,6 +19,7 @@
     <UserSecretsId>3e757a82-9759-482b-851c-170ec2aa99dc</UserSecretsId>
   </PropertyGroup>
   
+ 
   <ItemGroup>
     <None Remove="Controls\Dialogs\SignInDialog.xaml" />
     <None Remove="Styles\Styles.Overwrite.xaml" />
@@ -144,7 +145,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Translations\AppUI.resx">
+    <ProjectReference Include="..\..\..\..\Clones\WinUI3Localizer\WinUI3Localizer\WinUI3Localizer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Translations\AppUI.resw">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AppUI.Designer.cs</LastGenOutput>
     </EmbeddedResource>

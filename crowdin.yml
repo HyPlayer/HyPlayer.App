@@ -5,10 +5,7 @@
 "api_token_env": "CROWDIN_PERSONAL_TOKEN"
 files: [
   {
-    "source": "src/HyPlayer.App/Translations/AppUI.resx",
-    "translation": "src/HyPlayer.App/Translations/AppUI.%locale%.resx",
-    "translation_replace": {
-        "zh-TW": "zh-hant-tw"
-    }
+    "source": "src/HyPlayer.App/Strings/zh-CN/Resources.resw",
+    "translation": "src/HyPlayer.App/Strings/%locale%/Resources.resw"
   }
 ]

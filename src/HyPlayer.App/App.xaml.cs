@@ -2,7 +2,9 @@
 using Microsoft.UI.Xaml.Controls;
 using WinUIEx;
 using System;
+using System.IO;
 using System.Threading.Tasks;
+using Windows.Storage;
 using Depository.Abstraction.Interfaces;
 using Depository.Core;
 using Depository.Extensions;
@@ -81,13 +83,12 @@ namespace HyPlayer.App
             window.Activate();
         }
 
+        
         private void ConfigureServices()
         {
             Depository.AddMvvm();
             Depository.AddSingleton<INavigationService, NavigationService>();
             Depository.AddSingleton<IPageService, PageService>();
-
-            // Depository.AddTransient<ShellViewModel>();
         }
 
         private async Task ConfigurePlayCore()

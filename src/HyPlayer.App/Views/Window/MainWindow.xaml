@@ -16,8 +16,8 @@
     <ex:WindowEx.WindowContent>
         <Grid>
             <TeachingTip
-                x:Name="globalTeachingTip"
-                Title="一个弹窗, 两个弹窗, 三个弹窗, 四个弹窗...zzzzzz"
+                x:Name="GlobalTeachingTip"
+                Title="Popup"
                 IsLightDismissEnabled="False"
                 PreferredPlacement="TopRight" />
             <Border
