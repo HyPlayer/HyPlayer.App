@@ -113,7 +113,7 @@
     <None Update="Resources\Theme.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
-    <None Update="Views\Controls\App\RedirectVisualView.xaml">
+    <None Update="Views\Controls\CoolControls\RedirectVisualView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
     <Page Update="Views\Controls\Netease\PlayList.xaml">
