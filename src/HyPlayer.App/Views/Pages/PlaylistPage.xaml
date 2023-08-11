@@ -9,7 +9,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <ScrollViewer x:Name="MainScrollViewer">
+    <ScrollViewer x:Name="MainScrollViewer" >
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -78,11 +78,12 @@
                     TextWrapping="Wrap" />
 
             </Grid>
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1" Margin="40,0">
                 <NavigationView
                     IsBackButtonVisible="Collapsed"
                     IsSettingsVisible="False"
-                    PaneDisplayMode="Top">
+                    PaneDisplayMode="Top"
+                    Background="Transparent">
                     <NavigationView.MenuItems>
                         <NavigationViewItem Content="歌曲">
                             <NavigationViewItem.Icon>
