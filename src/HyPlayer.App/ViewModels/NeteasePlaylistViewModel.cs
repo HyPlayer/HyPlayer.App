@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using HyPlayer.App.Interfaces.ViewModels;
 using HyPlayer.NeteaseProvider.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace HyPlayer.App.ViewModels;
@@ -33,6 +34,7 @@ public partial class NeteasePlaylistViewModel : ObservableObject, IScrollableVie
     [RelayCommand]
     public async Task GetSongsAsync()
     {
-        //SongsList = await _playList.GetAllItemsAsync();
+        SongsList = (await ((await _playList.GetAllItemsAsync() as NeteaseActionGettableContainer)?.GetAllItemsAsync())
+                .Select(t => (NeteaseSong)t).ToList());
     }
 }
