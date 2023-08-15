@@ -22,13 +22,13 @@ namespace HyPlayer.App.Views.Controls.Netease.PlayListView
 {
     public sealed partial class PlayListViewItem : UserControl
     {
-        private static readonly DependencyProperty SongProperty =
-            DependencyProperty.Register("Song", typeof(NeteaseSong), typeof(PlayListViewItem), new PropertyMetadata(default(NeteaseSong)));
+        private static readonly DependencyProperty PlayListProperty =
+            DependencyProperty.Register("PlayList", typeof(NeteasePlaylist), typeof(PlayListViewItem), new PropertyMetadata(default(NeteasePlaylist)));
 
-        public NeteaseSong Song
+        public NeteasePlaylist PlayList
         {
-            get => (NeteaseSong)GetValue(SongProperty);
-            set => SetValue(SongProperty, value);
+            get => (NeteasePlaylist)GetValue(PlayListProperty);
+            set => SetValue(PlayListProperty, value);
         }
 
         public PlayListViewItem()

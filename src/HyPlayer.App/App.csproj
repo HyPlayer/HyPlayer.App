@@ -27,6 +27,8 @@
     <None Remove="Views\Controls\App\HomePageHeaderImage.xaml" />
     <None Remove="Views\Controls\Netease\PlayListView\PlayListView.xaml" />
     <None Remove="Views\Controls\Netease\PlayListView\PlayListViewItem.xaml" />
+    <None Remove="Views\Controls\Netease\SongListView\SongListView.xaml" />
+    <None Remove="Views\Controls\Netease\SongListView\SongListViewItem.xaml" />
     <None Remove="Views\Controls\Search\SearchBox.xaml" />
     <None Remove="Views\Pages\ErrorPage.xaml" />
     <None Remove="Views\Pages\HomePage.xaml" />
@@ -117,6 +119,12 @@
     <None Update="Views\Controls\CoolControls\RedirectVisualView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <Page Update="Views\Controls\Netease\SongListView\SongListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\Controls\Netease\SongListView\SongListViewItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Views\Controls\Netease\PlayListView\PlayListViewItem.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
