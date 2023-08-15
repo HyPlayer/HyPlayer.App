@@ -25,7 +25,8 @@
     <None Remove="Styles\Styles.Overwrite.xaml" />
     <None Remove="Views\Controls\App\DesktopNavigationView.xaml" />
     <None Remove="Views\Controls\App\HomePageHeaderImage.xaml" />
-    <None Remove="Views\Controls\Netease\PlayList.xaml" />
+    <None Remove="Views\Controls\Netease\PlayListView\PlayListView.xaml" />
+    <None Remove="Views\Controls\Netease\PlayListView\PlayListViewItem.xaml" />
     <None Remove="Views\Controls\Search\SearchBox.xaml" />
     <None Remove="Views\Pages\ErrorPage.xaml" />
     <None Remove="Views\Pages\HomePage.xaml" />
@@ -116,7 +117,10 @@
     <None Update="Views\Controls\CoolControls\RedirectVisualView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
-    <Page Update="Views\Controls\Netease\PlayList.xaml">
+    <Page Update="Views\Controls\Netease\PlayListView\PlayListViewItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\Controls\Netease\PlayListView\PlayListView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="Views\Pages\PlaylistPage.xaml">
