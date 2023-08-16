@@ -59,7 +59,7 @@
     <PackageReference Include="Humanizer" Version="2.14.1" />
     <PackageReference Include="HyPlayer.NeteaseProvider" Version="0.0.7" />
     <PackageReference Include="HyPlayer.PlayCore" Version="0.1.0.2" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.230628000-preview1" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.230811000-preview2" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.25926-preview" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
