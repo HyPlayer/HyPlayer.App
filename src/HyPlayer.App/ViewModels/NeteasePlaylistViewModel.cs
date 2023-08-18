@@ -15,26 +15,26 @@ public partial class NeteasePlaylistViewModel : ObservableObject, IScrollableVie
     public string? ConnectedElementName { get; set; }
 
     private readonly NeteaseProvider.NeteaseProvider _provider;
-    private readonly NeteasePlaylist? _playList;
+    public NeteasePlaylist? _playList;
 
     public string Title => _playList.Name;
     public string Description => _playList.Description;
     public long PlayCount => _playList.PlayCount;
     public long ShareCount => _playList.ShareCount;
+    [ObservableProperty]
+    public List<NeteaseSong>? _songsList;
 
-    public List<NeteaseSong>? SongsList;
 
-
-    public NeteasePlaylistViewModel(NeteaseProvider.NeteaseProvider provider, NeteasePlaylist playList = null)
+    public NeteasePlaylistViewModel(NeteaseProvider.NeteaseProvider provider, NeteasePlaylist CurrentPlayList)
     {
         _provider = provider;
-        _playList = playList;
+        _playList = CurrentPlayList;
+        
     }
 
     [RelayCommand]
     public async Task GetSongsAsync()
     {
-        SongsList = (await ((await _playList.GetAllItemsAsync() as NeteaseActionGettableContainer)?.GetAllItemsAsync())
-                .Select(t => (NeteaseSong)t).ToList());
+        SongsList = (await _playList?.GetAllItemsAsync()).OfType<NeteaseSong>().ToList();
     }
 }
