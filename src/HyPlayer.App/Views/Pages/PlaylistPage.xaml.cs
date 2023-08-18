@@ -14,24 +14,33 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using HyPlayer.App.Interfaces.Views;
 using HyPlayer.App.ViewModels;
+using System.Threading.Tasks;
+using HyPlayer.NeteaseProvider.Models;
+using HyPlayer.PlayCore.Abstraction;
+using AsyncAwaitBestPractices;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace HyPlayer.App.Views.Pages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class PlaylistPage : Page
+    
+    public sealed partial class PlaylistPage : PlaylistPageBase
     {
         public PlaylistPage()
         {
             this.InitializeComponent();
         }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            
+            this.ViewModel.GetSongsAsync().SafeFireAndForget();
+        }
     }
 
     public class PlaylistPageBase : AppPageWithScopedViewModelBase<NeteasePlaylistViewModel>
     {
+        
     }
 }
