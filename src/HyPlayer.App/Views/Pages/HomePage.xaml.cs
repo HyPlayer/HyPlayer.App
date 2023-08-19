@@ -31,8 +31,6 @@ namespace HyPlayer.App.Views.Pages
     /// </summary>
     public sealed partial class HomePage : HomePageBase
     {
-        private int selectedIndex;
-       
         public HomePage()
         {
             InitializeComponent();

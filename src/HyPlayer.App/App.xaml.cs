@@ -33,13 +33,13 @@ namespace HyPlayer.App
         public static WindowEx? window;
         public static XamlRoot? AppXamlRoot;
 
-        public IDepository Depository;
-        public DispatcherQueue DispatcherQueue;
+        public IDepository? Depository;
+        public DispatcherQueue? DispatcherQueue;
 
         public static T GetService<T>()
             where T : class
         {
-            if ((App.Current as App)!.Depository.ResolveDependency(typeof(T)) is not T service)
+            if ((App.Current as App)!.Depository?.ResolveDependency(typeof(T)) is not T service)
             {
                 throw new ArgumentException($"{typeof(T)} needs to be registered in ConfigureServices within App.xaml.cs.");
             }
@@ -86,14 +86,14 @@ namespace HyPlayer.App
         
         private void ConfigureServices()
         {
-            Depository.AddMvvm();
-            Depository.AddSingleton<INavigationService, NavigationService>();
-            Depository.AddSingleton<IPageService, PageService>();
+            Depository?.AddMvvm();
+            Depository?.AddSingleton<INavigationService, NavigationService>();
+            Depository?.AddSingleton<IPageService, PageService>();
         }
 
         private async Task ConfigurePlayCore()
         {
-            Depository.AddSingleton<PlayCoreBase, Chopin>();
+            Depository?.AddSingleton<PlayCoreBase, Chopin>();
             var playCore = Depository.Resolve<PlayCoreBase>();
             await playCore.RegisterMusicProviderAsync(typeof(NeteaseProvider.NeteaseProvider));
         }

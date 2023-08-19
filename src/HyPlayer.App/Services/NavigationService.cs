@@ -10,21 +10,21 @@ namespace HyPlayer.App.Services
     {
         public bool CanGoBack => App.contentFrame.CanGoBack;
 
-        public Frame Frame => App.contentFrame;
+        public Frame? Frame => App.contentFrame;
 
-        public event NavigatedEventHandler Navigated;
+        public event NavigatedEventHandler? Navigated;
 
         public bool GoBack()
         {
             if(CanGoBack)
             {
-                Frame.GoBack();
+                Frame?.GoBack();
                 return true;
             }
             else return false;
         }
 
-        public bool NavigateTo(Type Page, object parameter = null)
+        public bool NavigateTo(Type Page, object parameter)
         {
             if (Frame != null)
             {

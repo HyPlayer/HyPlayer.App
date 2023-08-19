@@ -16,15 +16,15 @@ namespace HyPlayer.App.Views.Controls.App
 
     public sealed partial class HomePageHeaderImage : UserControl
     {
-        private Compositor _compositor;
-        private CompositionLinearGradientBrush _imageGridBottomGradientBrush;
-        private CompositionEffectBrush _imageGridEffectBrush;
-        private ExpressionAnimation _imageGridSizeAnimation;
-        private ExpressionAnimation _bottomGradientStartPointAnimation;
-        private SpriteVisual _imageGridSpriteVisual;
-        private CompositionSurfaceBrush _imageGridSurfaceBrush;
-        private Visual _imageGridVisual;
-        private CompositionVisualSurface _imageGridVisualSurface;
+        private Compositor? _compositor;
+        private CompositionLinearGradientBrush? _imageGridBottomGradientBrush;
+        private CompositionEffectBrush? _imageGridEffectBrush;
+        private ExpressionAnimation? _imageGridSizeAnimation;
+        private ExpressionAnimation? _bottomGradientStartPointAnimation;
+        private SpriteVisual? _imageGridSpriteVisual;
+        private CompositionSurfaceBrush? _imageGridSurfaceBrush;
+        private Visual? _imageGridVisual;
+        private CompositionVisualSurface? _imageGridVisualSurface;
         private const string GradientSizeKey = "GradientSize";
         public HomePageHeaderImage()
         {
@@ -123,7 +123,7 @@ namespace HyPlayer.App.Views.Controls.App
 
         private ExpressionAnimation CreateExpressionAnimation(string target, string expression)
         {
-            var ani = _compositor.CreateExpressionAnimation(expression);
+            var ani = _compositor?.CreateExpressionAnimation(expression);
             ani.SetReferenceParameter("Visual", _imageGridVisual);
             ani.Target = target;
             return ani;

@@ -49,22 +49,35 @@ public partial class HomeViewModel
         // 仅在登录后加载
         if (AccountViewModel.IsLogin)
         {
-            // 推荐歌单
-            PlayLists =
-                (await ((await _provider.GetRecommendationAsync("pl")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
-                .Select(t => (NeteasePlaylist)t).ToList();
-
-            // 推荐歌曲
-            RecommendedSongs =
-                (await ((await _provider.GetRecommendationAsync("sg")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
-                .Select(t => (NeteaseSong)t).ToList();
+            if((await ((await _provider.GetRecommendationAsync("pl")) as NeteaseActionGettableContainer)?.GetAllItemsAsync()) is not null)
+            {
+                // 推荐歌单
+                PlayLists =
+                    (await ((await _provider.GetRecommendationAsync("pl")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
+                    .Select(t => (NeteasePlaylist)t).ToList();
+            }
+            
+            
+            if((await ((await _provider.GetRecommendationAsync("sg")) as NeteaseActionGettableContainer)?.GetAllItemsAsync()) is not null)
+            {
+                // 推荐歌曲
+                RecommendedSongs =
+                    (await ((await _provider.GetRecommendationAsync("sg")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
+                    .Select(t => (NeteaseSong)t).ToList();
+            }
+            
+            
         }
 
         // 不登录加载
 
         // 排行榜
-        TopLists =
-            (await ((await _provider.GetRecommendationAsync("ct")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
-            .Select(t => (NeteasePlaylist)t).ToList();
+        if((await ((await _provider.GetRecommendationAsync("ct")) as NeteaseActionGettableContainer)?.GetAllItemsAsync()) is not null)
+        {
+            TopLists =
+                (await ((await _provider?.GetRecommendationAsync("ct")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())?
+                .Select(t => (NeteasePlaylist)t).ToList();
+        }
+        
     }
 }

@@ -9,7 +9,7 @@ namespace HyPlayer.App.Views.Controls.App.PivotExtensions;
 
 public class PivotExHeaderView : ListView
 {
-    public static readonly DependencyProperty PivotProperty =
+    public static readonly DependencyProperty? PivotProperty =
         DependencyProperty.Register("Pivot", typeof(PivotEx), typeof(PivotExHeaderView), new PropertyMetadata(null,
             (s, a) =>
             {
@@ -39,10 +39,10 @@ public class PivotExHeaderView : ListView
                 }
             }));
 
-    private DataTemplate DefaultHeaderTemplate;
-    private DataTemplate EmptyHeaderTemplate;
+    private DataTemplate? DefaultHeaderTemplate;
+    private DataTemplate? EmptyHeaderTemplate;
 
-    private Border LayoutRoot;
+    private Border? LayoutRoot;
     private long pivotHeaderTemplateEventToken;
 
     public PivotExHeaderView()
@@ -129,7 +129,7 @@ public class PivotExHeaderView : ListView
 
         public object Header => pivotItem.Header;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         private void PivotItemHeaderChanged(DependencyObject sender, DependencyProperty dp)
         {
@@ -152,7 +152,7 @@ public class PivotExHeaderView : ListView
             this.view = view ?? throw new ArgumentNullException(nameof(view));
         }
 
-        protected override DataTemplate SelectTemplateCore(object item)
+        protected override DataTemplate? SelectTemplateCore(object item)
         {
             if (item is PivotItemHeaderWrapper wrapper && wrapper.Header is not UIElement)
                 return view.DefaultHeaderTemplate;
