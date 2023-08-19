@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HyPlayer.App.Views.Controls.Base
 {
-    public class NavigationViewBase : ReactiveUserControl<ShellViewModel>
+    public class NavigationViewBase : ReactiveControlBase<ShellViewModel>
     {
     }
 }

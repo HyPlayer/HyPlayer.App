@@ -25,7 +25,33 @@
 
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="netease:NeteaseSong">
-                    <local:SongListViewItem Height="48" Song="{x:Bind}" />
+                    <Grid Margin="12,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="45" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock VerticalAlignment="Center" Text="{x:Bind Name}" />
+                        <TextBlock
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
+                            Text="{x:Bind Artists, Converter={StaticResource StringListToStringConverter}}" />
+                        <TextBlock
+                            Grid.Column="2"
+                            VerticalAlignment="Center"
+                            Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
+                            Text="{x:Bind Album}" />
+                        <Button
+                            Grid.Column="3"
+                            Height="32"
+                            VerticalAlignment="Center"
+                            Background="Transparent"
+                            BorderBrush="Transparent">
+                            <FontIcon Glyph="&#xE10C;" />
+                        </Button>
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

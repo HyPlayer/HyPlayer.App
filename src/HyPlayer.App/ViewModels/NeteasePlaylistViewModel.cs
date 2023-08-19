@@ -2,6 +2,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HyPlayer.App.Interfaces.ViewModels;
 using HyPlayer.NeteaseProvider.Models;
+using HyPlayer.PlayCore.Abstraction.Models.SingleItems;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ public partial class NeteasePlaylistViewModel : ObservableObject, IScrollableVie
     public long PlayCount => _playList.PlayCount;
     public long ShareCount => _playList.ShareCount;
     [ObservableProperty]
-    public List<NeteaseSong>? _songsList;
+    public List<SingleSongBase>? _songsList;
 
 
     public NeteasePlaylistViewModel(NeteaseProvider.NeteaseProvider provider, NeteasePlaylist CurrentPlayList)
@@ -35,6 +36,10 @@ public partial class NeteasePlaylistViewModel : ObservableObject, IScrollableVie
     [RelayCommand]
     public async Task GetSongsAsync()
     {
-        SongsList = (await _playList?.GetAllItemsAsync()).OfType<NeteaseSong>().ToList();
+        if(_playList is not null)
+        {
+            SongsList = (await _playList?.GetAllItemsAsync()).OfType<SingleSongBase>().ToList();
+        }
+        
     }
 }

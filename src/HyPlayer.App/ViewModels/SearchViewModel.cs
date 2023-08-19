@@ -3,7 +3,7 @@ using HyPlayer.App.Interfaces.ViewModels;
 
 namespace HyPlayer.App.ViewModels;
 
-public class SearchViewModel : ObservableObject, IViewModel
+public class SearchViewModel : ObservableObject, IViewModel, IScopedViewModel
 {
     private readonly NeteaseProvider.NeteaseProvider _provider;
     

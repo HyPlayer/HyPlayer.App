@@ -3,34 +3,46 @@ using Microsoft.UI.Xaml;
 using Depository.Abstraction.Interfaces;
 using Depository.Core;
 using Depository.Extensions;
+using HyPlayer.App.Interfaces.ViewModels;
+using System;
 
-namespace HyPlayer.App.Interfaces.Views
+namespace HyPlayer.App.Interfaces.Views;
+
+
+public abstract class ReactiveControlBase<TViewModel> : Page, IDisposable
+    where TViewModel : class, IScopedViewModel
 {
-    public class ReactiveUserControl<TViewModel> : UserControl
-        where TViewModel : class
-    {
-        private readonly IDepositoryResolveScope _scope;
-
-        public static readonly DependencyProperty ViewModelProperty =
+    public static readonly DependencyProperty ViewModelProperty =
         DependencyProperty.Register(nameof(ViewModel), typeof(TViewModel), typeof(TViewModel),
                                     new PropertyMetadata(default));
 
-        public TViewModel ViewModel
-        {
-            get => (TViewModel)GetValue(ViewModelProperty);
-            set => SetValue(ViewModelProperty, value);
-        }
+    public TViewModel ViewModel
+    {
+        get => (TViewModel)GetValue(ViewModelProperty);
+        set => SetValue(ViewModelProperty, value);
+    }
 
-        internal virtual void OnViewModelChanged(DependencyPropertyChangedEventArgs e)
-        {
-        }
+    private readonly IDepositoryResolveScope _scope;
 
-        public ReactiveUserControl()
+
+    protected ReactiveControlBase()
+    {
+        _scope = DepositoryResolveScope.Create();
+        ViewModel = App.GetDIContainer().ResolveInScope<TViewModel>(_scope);
+        DataContext = ViewModel;
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposing)
         {
-            _scope = DepositoryResolveScope.Create();
-            ViewModel = App.GetDIContainer().ResolveInScope<TViewModel>(_scope);
-            DataContext = ViewModel;
-            
+            _scope.Dispose();
         }
+    }
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
     }
 }

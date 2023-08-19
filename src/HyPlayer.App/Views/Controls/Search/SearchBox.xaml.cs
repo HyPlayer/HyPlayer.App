@@ -26,7 +26,7 @@ namespace HyPlayer.App.Views.Controls.Search
         }
     }
 
-    public class SearchBoxBase : ReactiveUserControl<SearchViewModel>
+    public class SearchBoxBase : ReactiveControlBase<SearchViewModel>
     {
         
     }
