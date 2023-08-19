@@ -26,11 +26,9 @@ public partial class NeteasePlaylistViewModel : ObservableObject, IScrollableVie
     public List<SingleSongBase>? _songsList;
 
 
-    public NeteasePlaylistViewModel(NeteaseProvider.NeteaseProvider provider, NeteasePlaylist CurrentPlayList)
+    public NeteasePlaylistViewModel(NeteaseProvider.NeteaseProvider provider)
     {
-        _provider = provider;
-        _playList = CurrentPlayList;
-        
+        _provider = provider;   
     }
 
     [RelayCommand]
