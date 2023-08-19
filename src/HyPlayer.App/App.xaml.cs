@@ -30,8 +30,8 @@ namespace HyPlayer.App
     public partial class App : Application
     {
         public static Frame? contentFrame;
-        public static WindowEx window;
-        public static XamlRoot AppXamlRoot;
+        public static WindowEx? window;
+        public static XamlRoot? AppXamlRoot;
 
         public IDepository Depository;
         public DispatcherQueue DispatcherQueue;

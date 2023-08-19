@@ -11,12 +11,9 @@ namespace HyPlayer.App.Interfaces.Views
     {
         private readonly IDepositoryResolveScope _scope;
 
-        public static readonly DependencyProperty ViewModelProperty = DependencyProperty
-                .Register(nameof(ViewModel), typeof(TViewModel), typeof(ReactiveUserControl<TViewModel>), new PropertyMetadata(default, new PropertyChangedCallback((dp, args) =>
-                {
-                    var instance = dp as ReactiveUserControl<TViewModel>;
-                    instance.OnViewModelChanged(args);
-                })));
+        public static readonly DependencyProperty ViewModelProperty =
+        DependencyProperty.Register(nameof(ViewModel), typeof(TViewModel), typeof(TViewModel),
+                                    new PropertyMetadata(default));
 
         public TViewModel ViewModel
         {
@@ -30,7 +27,8 @@ namespace HyPlayer.App.Interfaces.Views
 
         public ReactiveUserControl()
         {
-            
+            _scope = DepositoryResolveScope.Create();
+            ViewModel = App.GetDIContainer().ResolveInScope<TViewModel>(_scope);
             DataContext = ViewModel;
             
         }
