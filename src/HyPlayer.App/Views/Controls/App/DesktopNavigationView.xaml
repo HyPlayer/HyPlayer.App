@@ -13,7 +13,7 @@
         <NavigationView
             x:Name="NavView"
             BackRequested="{x:Bind ViewModel.GoBack}"
-            IsBackEnabled="{x:Bind ViewModel.CanBack}"
+            IsBackEnabled="{x:Bind contentFrame.CanGoBack, Mode=OneWay}"
             IsPaneToggleButtonVisible="True"
             ItemInvoked="{x:Bind NavView_ItemInvoked}"
             Loaded="NavView_Loaded"

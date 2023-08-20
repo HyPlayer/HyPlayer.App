@@ -35,9 +35,9 @@ public partial class NeteasePlaylistViewModel : ObservableObject, IScrollableVie
     [RelayCommand]
     public async Task GetSongsAsync()
     {
-        if(_playList is not null)
+        if(PlayList is not null)
         {
-            SongsList = (await _playList?.GetAllItemsAsync())?.OfType<NeteaseSong>().ToList();
+            SongsList = (await PlayList.GetAllItemsAsync())?.Select(t => (NeteaseSong)t).ToList();
         }
         
     }

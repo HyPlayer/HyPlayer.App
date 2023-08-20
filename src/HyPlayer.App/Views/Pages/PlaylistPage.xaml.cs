@@ -32,16 +32,17 @@ namespace HyPlayer.App.Views.Pages
             InitializeComponent();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             if((NeteasePlaylist)e.Parameter != null)
             {
                 ViewModel.PlayList = (NeteasePlaylist?)e.Parameter;
+                await ViewModel.GetSongsAsync();
             }
 
-            ViewModel.GetSongsAsync();
-            //.SafeFireAndForget()
+            
+            //
         }
     }
 

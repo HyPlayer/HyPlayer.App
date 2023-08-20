@@ -208,7 +208,7 @@ namespace HyPlayer.App.Views.Window
                 List<Windows.Graphics.RectInt32> dragRectsList = new();
 
                 Windows.Graphics.RectInt32 dragRectL;
-                dragRectL.X = (int)((LeftPaddingColumn.ActualWidth) * scaleAdjustment);
+                dragRectL.X = (int)((LeftPaddingColumn.ActualWidth) * scaleAdjustment)+48;
                 dragRectL.Y = 0;
                 dragRectL.Height = (int)(AppTitleBar.ActualHeight * scaleAdjustment);
                 dragRectL.Width = (int)((IconColumn.ActualWidth

@@ -20,7 +20,7 @@
                 Grid.RowSpan="2"
                 Height="164"
                 VerticalAlignment="Top"
-                Source="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=164}"
+                Source="{x:Bind ViewModel.PlayList,Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=164}"
                 Stretch="UniformToFill" />
 
             <Grid
