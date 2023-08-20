@@ -20,7 +20,7 @@
                 Grid.RowSpan="2"
                 Height="164"
                 VerticalAlignment="Top"
-                Source="http://s4.music.126.net/style/web2/img/default/default_album.jpg"
+                Source="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=84}"
                 Stretch="UniformToFill" />
 
             <Grid
@@ -36,17 +36,15 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <Border
+                    <controls:ImageEx
                         x:Name="AlbumImage"
                         Width="100"
                         Height="100"
                         HorizontalAlignment="Left"
                         Background="#80404040"
                         Canvas.ZIndex="1"
-                        CornerRadius="8">
-                        <FontIcon FontSize="24" Glyph="&#xE142;" />
-
-                    </Border>
+                        CornerRadius="8"
+                        Source="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=100}"/>
                     <controls:ImageEx
                         Height="100"
                         HorizontalAlignment="Left"
@@ -60,8 +58,12 @@
                         <TextBlock
                             FontSize="30"
                             Style="{ThemeResource TitleTextBlockStyle}"
-                            Text="我的音乐" />
-                        <TextBlock FontSize="16" Text="创建者 更新于 2023-5-20" />
+                            Text="{x:Bind ViewModel.Title}" />
+                        <TextBlock FontSize="16">
+                            <Run Text="{x:Bind ViewModel._playList.CreatorList, Converter={StaticResource StringListToStringConverter}}"/>
+                            <Run Text=" 更新于"/>
+                            <Run Text="{x:Bind ViewModel._playList.UpdateTime}"/>
+                        </TextBlock>
                         <Button Margin="0,6,0,0">
                             <StackPanel Orientation="Horizontal" Spacing="8">
                                 <FontIcon FontSize="12" Glyph="&#xE10B;" />
@@ -76,7 +78,7 @@
                         Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
                         MaxLines="4"
                         Style="{ThemeResource BodyTextBlockStyle}"
-                        Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+                        Text="{x:Bind ViewModel.Description}"
                         TextWrapping="Wrap" />
                 </Grid>
 

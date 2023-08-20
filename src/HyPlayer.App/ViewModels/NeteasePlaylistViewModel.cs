@@ -23,7 +23,7 @@ public partial class NeteasePlaylistViewModel : ObservableObject, IScrollableVie
     public long? PlayCount => _playList?.PlayCount;
     public long? ShareCount => _playList?.ShareCount;
     [ObservableProperty]
-    public List<SingleSongBase>? _songsList;
+    public List<NeteaseSong>? _songsList;
 
 
     public NeteasePlaylistViewModel(NeteaseProvider.NeteaseProvider provider)
@@ -36,7 +36,7 @@ public partial class NeteasePlaylistViewModel : ObservableObject, IScrollableVie
     {
         if(_playList is not null)
         {
-            SongsList = (await _playList?.GetAllItemsAsync())?.OfType<SingleSongBase>().ToList();
+            SongsList = (await _playList?.GetAllItemsAsync())?.OfType<NeteaseSong>().ToList();
         }
         
     }

@@ -19,10 +19,11 @@ using Windows.Foundation.Collections;
 using Depository.Abstraction.Models.Options;
 using Depository.Extensions;
 using HomeViewModel = HyPlayer.App.ViewModels.HomeViewModel;
+using App = HyPlayer.App.App;
 using AsyncAwaitBestPractices;
 using HyPlayer.App.Interfaces.Views;
 using HyPlayer.PlayCore.Abstraction.Models;
-
+using HyPlayer.NeteaseProvider.Models;
 
 namespace HyPlayer.App.Views.Pages
 {
@@ -72,7 +73,9 @@ namespace HyPlayer.App.Views.Pages
 
         private void OnPlaylistItemClicked(object sender, ItemClickEventArgs e)
         {
-            Debug.WriteLine($"Clicking on {(e.ClickedItem as ProvidableItemBase)?.Name}");
+            // Debug.WriteLine($"Clicking on {(e.ClickedItem as ProvidableItemBase)?.Name}");
+
+            App.GetService<INavigationService>().NavigateTo(typeof(PlaylistPage), (e.ClickedItem as NeteasePlaylist));
         }
     }
 
