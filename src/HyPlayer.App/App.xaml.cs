@@ -47,12 +47,12 @@ namespace HyPlayer.App
             return service;
         }
 
-        public static DispatcherQueue GetDispatcherQueue()
+        public static DispatcherQueue? GetDispatcherQueue()
         {
             return (Current as App)!.DispatcherQueue;
         }
 
-        public static IDepository GetDIContainer()
+        public static IDepository? GetDIContainer()
         {
             return (Current as App)!.Depository;
         }
@@ -80,7 +80,7 @@ namespace HyPlayer.App
             window = new Window.MainWindow();
             AppXamlRoot = window.Content.XamlRoot;
             NavigateToRootPage(args);
-            window.Activate();
+            window?.Activate();
         }
 
         
@@ -94,7 +94,7 @@ namespace HyPlayer.App
         private async Task ConfigurePlayCore()
         {
             Depository?.AddSingleton<PlayCoreBase, Chopin>();
-            var playCore = Depository.Resolve<PlayCoreBase>();
+            var playCore = Depository?.Resolve<PlayCoreBase>();
             await playCore.RegisterMusicProviderAsync(typeof(NeteaseProvider.NeteaseProvider));
         }
 

@@ -32,9 +32,9 @@ namespace HyPlayer.App.Views.Pages
             this.InitializeComponent();
         }
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            
+
             this.ViewModel.GetSongsAsync().SafeFireAndForget();
         }
     }
