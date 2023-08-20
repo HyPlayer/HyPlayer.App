@@ -37,7 +37,7 @@ namespace HyPlayer.App.Views.Pages
             base.OnNavigatedTo(e);
             if((NeteasePlaylist)e.Parameter != null)
             {
-                ViewModel._playList = (NeteasePlaylist?)e.Parameter;
+                ViewModel.PlayList = (NeteasePlaylist?)e.Parameter;
             }
 
             ViewModel.GetSongsAsync();

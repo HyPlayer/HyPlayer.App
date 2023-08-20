@@ -20,7 +20,7 @@
                 Grid.RowSpan="2"
                 Height="164"
                 VerticalAlignment="Top"
-                Source="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=84}"
+                Source="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=164}"
                 Stretch="UniformToFill" />
 
             <Grid
@@ -44,7 +44,7 @@
                         Background="#80404040"
                         Canvas.ZIndex="1"
                         CornerRadius="8"
-                        Source="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=100}"/>
+                        Source="{x:Bind ViewModel.PlayList, Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=100}"/>
                     <controls:ImageEx
                         Height="100"
                         HorizontalAlignment="Left"
@@ -58,11 +58,11 @@
                         <TextBlock
                             FontSize="30"
                             Style="{ThemeResource TitleTextBlockStyle}"
-                            Text="{x:Bind ViewModel.Title}" />
+                            Text="{x:Bind ViewModel.PlayList.Name}" />
                         <TextBlock FontSize="16">
-                            <Run Text="{x:Bind ViewModel._playList.CreatorList, Converter={StaticResource StringListToStringConverter}}"/>
+                            <Run Text="{x:Bind ViewModel.PlayList.CreatorList, Converter={StaticResource StringListToStringConverter}}"/>
                             <Run Text=" 更新于"/>
-                            <Run Text="{x:Bind ViewModel._playList.UpdateTime}"/>
+                            <Run Text="{x:Bind ViewModel.PlayList.UpdateTime}"/>
                         </TextBlock>
                         <Button Margin="0,6,0,0">
                             <StackPanel Orientation="Horizontal" Spacing="8">

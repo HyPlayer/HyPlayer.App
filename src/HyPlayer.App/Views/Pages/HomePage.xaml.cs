@@ -10,6 +10,7 @@ using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -37,6 +38,7 @@ namespace HyPlayer.App.Views.Pages
             InitializeComponent();
         }
 
+        [SuppressMessage("ReSharper", "ResourceItemNotResolved")]
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);

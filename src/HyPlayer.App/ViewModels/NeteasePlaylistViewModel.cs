@@ -16,12 +16,13 @@ public partial class NeteasePlaylistViewModel : ObservableObject, IScrollableVie
     public string? ConnectedElementName { get; set; }
 
     private readonly NeteaseProvider.NeteaseProvider _provider;
+    [ObservableProperty]
     public NeteasePlaylist? _playList;
 
-    public string? Title => _playList?.Name;
-    public string? Description => _playList?.Description;
-    public long? PlayCount => _playList?.PlayCount;
-    public long? ShareCount => _playList?.ShareCount;
+    public string? Title => PlayList?.Name;
+    public string? Description => PlayList?.Description;
+    public long? PlayCount => PlayList?.PlayCount;
+    public long? ShareCount => PlayList?.ShareCount;
     [ObservableProperty]
     public List<NeteaseSong>? _songsList;
 
