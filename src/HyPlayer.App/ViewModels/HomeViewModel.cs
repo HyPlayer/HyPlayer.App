@@ -15,6 +15,9 @@ using HyPlayer.PlayCore.Abstraction.Models;
 using HyPlayer.PlayCore.Abstraction.Models.Containers;
 using HyPlayer.PlayCore.Abstraction.Models.Resources;
 using HyPlayer.NeteaseApi.Models.ResponseModels;
+using HyPlayer.App.Interfaces.Views;
+using HyPlayer.App.Views.Pages;
+using Microsoft.UI.Xaml.Controls;
 
 namespace HyPlayer.App.ViewModels;
 
@@ -31,6 +34,7 @@ public partial class HomeViewModel
     [ObservableProperty] private List<NeteaseSong>? _recommendedSongs;
     [ObservableProperty] private List<NeteasePlaylist>? _playLists;
     [ObservableProperty] private List<NeteasePlaylist>? _topLists;
+    [ObservableProperty] private NeteasePlaylist? _official;
 
     [ObservableProperty] private CurrentPlayingViewModel _currentPlaying;
 
@@ -49,6 +53,7 @@ public partial class HomeViewModel
         // 仅在登录后加载
         if (AccountViewModel.IsLogin)
         {
+            /*
             if((await ((await _provider.GetRecommendationAsync("pl")) as NeteaseActionGettableContainer)?.GetAllItemsAsync()) is not null)
             {
                 // 推荐歌单
@@ -56,7 +61,7 @@ public partial class HomeViewModel
                     (await ((await _provider.GetRecommendationAsync("pl")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
                     .Select(t => (NeteasePlaylist)t).ToList();
             }
-            
+            */
             
             if((await ((await _provider.GetRecommendationAsync("sg")) as NeteaseActionGettableContainer)?.GetAllItemsAsync()) is not null)
             {
@@ -65,8 +70,14 @@ public partial class HomeViewModel
                     (await ((await _provider.GetRecommendationAsync("sg")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
                     .Select(t => (NeteaseSong)t).ToList();
             }
-            
-            
+
+            if ((await ((await _provider.GetRecommendationAsync("PC")) as NeteaseActionGettableContainer)?.GetAllItemsAsync()) is not null)
+            {
+                // 官方歌单
+                Official =
+                    (await ((await _provider.GetRecommendationAsync("PC")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
+                    .Select(t => (NeteasePlaylist)t).ToList().FirstOrDefault();
+            }
         }
 
         // 不登录加载
@@ -79,5 +90,27 @@ public partial class HomeViewModel
                 .Select(t => (NeteasePlaylist)t).ToList();
         }
         
+    }
+
+    [RelayCommand]
+    public async Task GetPlayListAsync()
+    {
+        if (AccountViewModel.IsLogin)
+        {
+            if ((await ((await _provider.GetRecommendationAsync("pl")) as NeteaseActionGettableContainer)?.GetAllItemsAsync()) is not null)
+            {
+                // 推荐歌单
+                PlayLists =
+                    (await ((await _provider.GetRecommendationAsync("pl")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
+                    .Select(t => (NeteasePlaylist)t).ToList();
+            }
+        }
+    }
+
+    public void OnPlaylistItemClicked(object sender, ItemClickEventArgs e)
+    {
+        // Debug.WriteLine($"Clicking on {(e.ClickedItem as ProvidableItemBase)?.Name}");
+
+        App.GetService<INavigationService>().NavigateTo(typeof(PlaylistPage), (e.ClickedItem as NeteasePlaylist));
     }
 }

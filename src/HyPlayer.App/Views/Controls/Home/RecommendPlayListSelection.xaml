@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<local:RecommendPlayListSelectionBase
+    x:Class="HyPlayer.App.Views.Controls.Home.RecommendPlayListSelection"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:behaviors="using:Microsoft.Xaml.Interactivity"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:controls2="using:CoolControls.WinUI3.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:HyPlayer.App.Views.Controls.Home"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:HyPlayer.NeteaseProvider.Models"
+    mc:Ignorable="d"
+    
+    Loaded="RecommendPlayListSelectionBase_Loaded"
+    >
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <HyperlinkButton
+            Grid.Row="0"
+            Margin="12,8"
+            Foreground="{ThemeResource TextFillColorPrimary}">
+            <behaviors:Interaction.Behaviors>
+                <controls2:ButtonContentSnapBehavior SnapType="Left" />
+            </behaviors:Interaction.Behaviors>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Uid="HomePage_HypBtn_RcmdSonglist" Style="{StaticResource SubtitleTextBlockStyle}" />
+                <FontIcon
+                    Margin="4,2,0,0"
+                    HorizontalAlignment="Left"
+                    Foreground="{ThemeResource SystemAccentColorLight2}"
+                    Glyph="&#xE970;" />
+            </StackPanel>
+        </HyperlinkButton>
+
+
+        <controls:AdaptiveGridView
+            x:Name="PlayListView"
+            Grid.Row="1"
+            Height="280"
+            Margin="10,0,0,0"
+            DesiredWidth="320"
+            IsItemClickEnabled="True"
+            ItemClick="{x:Bind ViewModel.OnPlaylistItemClicked}"
+            ItemHeight="120"
+            ItemsSource="{x:Bind ViewModel.PlayLists}"
+            OneRowModeEnabled="False"
+            ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+            ScrollViewer.HorizontalScrollMode="Disabled"
+            ScrollViewer.VerticalScrollBarVisibility="Hidden"
+            ScrollViewer.VerticalScrollMode="Disabled"
+            SelectionMode="None">
+
+            <controls:AdaptiveGridView.Resources>
+                <Style BasedOn="{StaticResource DefaultGridViewItemStyle}" TargetType="GridViewItem">
+                    <Setter Property="Margin" Value="8" />
+                </Style>
+            </controls:AdaptiveGridView.Resources>
+
+            <controls:AdaptiveGridView.ItemTemplate>
+                <DataTemplate x:DataType="models:NeteasePlaylist">
+                    <Grid
+                        Padding="16"
+                        HorizontalAlignment="Stretch"
+                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        ToolTipService.ToolTip="{x:Bind Name}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="84" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <controls:ImageEx
+                            Width="84"
+                            Height="84"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            CornerRadius="8"
+                            Source="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=84}"
+                            Stretch="UniformToFill" />
+                        <Grid
+                            Grid.Column="1"
+                            Margin="16,9,0,9"
+                            RowSpacing="4">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                Grid.Row="0"
+                                FontSize="14"
+                                FontWeight="SemiBold"
+                                MaxLines="2"
+                                Text="{x:Bind Name}"
+                                TextTrimming="CharacterEllipsis"
+                                TextWrapping="Wrap"
+                                ToolTipService.ToolTip="{x:Bind Name}" />
+                            <TextBlock
+                                Grid.Row="1"
+                                VerticalAlignment="Bottom"
+                                FontSize="14"
+                                Foreground="{StaticResource SystemControlForegroundBaseMediumBrush}"
+                                MaxLines="1"
+                                Text="{x:Bind CreatorList, Converter={StaticResource StringListToStringConverter}}"
+                                TextTrimming="CharacterEllipsis"
+                                ToolTipService.ToolTip="{x:Bind CreatorList, Converter={StaticResource StringListToStringConverter}}" />
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </controls:AdaptiveGridView.ItemTemplate>
+        </controls:AdaptiveGridView>
+    </Grid>
+</local:RecommendPlayListSelectionBase>
