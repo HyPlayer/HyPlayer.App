@@ -35,7 +35,6 @@ namespace HyPlayer.Views.Window
             this.InitializeComponent();
             this.AppWindow.SetPresenter((Microsoft.UI.Windowing.AppWindowPresenterKind)AppWindowPresentationKind.CompactOverlay);
             
-            var titleBar = this.AppWindow.TitleBar;
             
             this.SetTitleBar(AppTitleBar);
 

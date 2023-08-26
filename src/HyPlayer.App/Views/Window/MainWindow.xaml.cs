@@ -51,7 +51,6 @@ namespace HyPlayer.Views.Window
             LeftPaddingColumn.Width = new GridLength(CaptionButtonOcclusionWidthLeft);
             if (AppWindowTitleBar.IsCustomizationSupported())
             {
-                titleBar.ExtendsContentIntoTitleBar = true;
                 AppTitleBar.Loaded += AppTitleBar_Loaded;
                 AppTitleBar.SizeChanged += AppTitleBar_SizeChanged;
             }

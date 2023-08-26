@@ -81,9 +81,13 @@ namespace HyPlayer.Extensions.Helpers
             titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
             titleBar.IconShowOptions = IconShowOptions.HideIconAndSystemMenu;
 
+            if (AppWindowTitleBar.IsCustomizationSupported())
+            {
+                titleBar.ExtendsContentIntoTitleBar = true;
+            }
 
-            // A taller title bar is only supported when drawing a fully custom title bar
-            if (AppWindowTitleBar.IsCustomizationSupported() && titleBar.ExtendsContentIntoTitleBar)
+                // A taller title bar is only supported when drawing a fully custom title bar
+                if (AppWindowTitleBar.IsCustomizationSupported() && titleBar.ExtendsContentIntoTitleBar)
             {
                 if (isTallTitleBar)
                 {
