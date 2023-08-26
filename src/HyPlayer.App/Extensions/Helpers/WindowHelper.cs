@@ -50,12 +50,7 @@ namespace HyPlayer.Extensions.Helpers
             _activeWindows.Add(window);
         }
 
-        static public AppWindow GetAppWindow(Window window)
-        {
-            IntPtr hWnd = WindowNative.GetWindowHandle(window);
-            WindowId wndId = Win32Interop.GetWindowIdFromWindow(hWnd);
-            return AppWindow.GetFromWindowId(wndId);
-        }
+
 
         static public Window? GetWindowForElement(UIElement element)
         {
