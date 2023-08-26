@@ -3,10 +3,10 @@ using Microsoft.UI.Xaml;
 using Depository.Abstraction.Interfaces;
 using Depository.Core;
 using Depository.Extensions;
-using HyPlayer.App.Interfaces.ViewModels;
+using HyPlayer.Interfaces.ViewModels;
 using System;
 
-namespace HyPlayer.App.Interfaces.Views;
+namespace HyPlayer.Interfaces.Views;
 
 
 public abstract class ReactiveControlBase<TViewModel> : Page, IDisposable

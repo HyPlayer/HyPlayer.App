@@ -2,7 +2,7 @@ using HyPlayer.NeteaseProvider.Models;
 using HyPlayer.PlayCore.Abstraction.Interfaces.ProvidableItem;
 using HyPlayer.PlayCore.Abstraction.Models.Resources;
 
-namespace HyPlayer.App.Extensions;
+namespace HyPlayer.Extensions;
 
 public static class CoverExtensions
 {

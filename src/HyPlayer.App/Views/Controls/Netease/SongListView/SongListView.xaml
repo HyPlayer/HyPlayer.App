@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <UserControl
-    x:Class="HyPlayer.App.Views.Controls.Netease.SongListView.SongListView"
+    x:Class="HyPlayer.Views.Controls.Netease.SongListView.SongListView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:HyPlayer.App.Views.Controls.Netease.SongListView"
+    xmlns:local="using:HyPlayer.Views.Controls.Netease.SongListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:netease="using:HyPlayer.NeteaseProvider.Models"
     mc:Ignorable="d">

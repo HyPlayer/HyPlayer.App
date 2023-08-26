@@ -7,7 +7,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
 
-namespace HyPlayer.App.Views.Controls.App.PivotExtensions;
+namespace HyPlayer.Views.Controls.App.PivotExtensions;
 
 public class PivotEx : Pivot
 {

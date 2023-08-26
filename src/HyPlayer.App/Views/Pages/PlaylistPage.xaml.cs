@@ -12,8 +12,8 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-using HyPlayer.App.Interfaces.Views;
-using HyPlayer.App.ViewModels;
+using HyPlayer.Interfaces.Views;
+using HyPlayer.ViewModels;
 using System.Threading.Tasks;
 using HyPlayer.NeteaseProvider.Models;
 using HyPlayer.PlayCore.Abstraction;
@@ -22,7 +22,7 @@ using AsyncAwaitBestPractices;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace HyPlayer.App.Views.Pages
+namespace HyPlayer.Views.Pages
 {
     
     public sealed partial class PlaylistPage : PlaylistPageBase

@@ -2,7 +2,7 @@
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace HyPlayer.App.Interfaces.Views;
+namespace HyPlayer.Interfaces.Views;
 
 public interface INavigationService
 {

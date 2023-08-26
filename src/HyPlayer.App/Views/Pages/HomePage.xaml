@@ -1,18 +1,18 @@
 <local:HomePageBase
-    x:Class="HyPlayer.App.Views.Pages.HomePage"
+    x:Class="HyPlayer.Views.Pages.HomePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:behaviors="using:Microsoft.Xaml.Interactivity"
     xmlns:ui="using:CommunityToolkit.WinUI.UI"
     xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
-    xmlns:controls1="using:HyPlayer.App.Views.Controls.App"
+    xmlns:controls1="using:HyPlayer.Views.Controls.App"
     xmlns:controls2="using:CoolControls.WinUI3.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:HyPlayer.App.Views.Pages"
+    xmlns:local="using:HyPlayer.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:media="using:CommunityToolkit.WinUI.UI.Media"
     xmlns:models="using:HyPlayer.NeteaseProvider.Models"
-    xmlns:viewmodels="using:HyPlayer.App.ViewModels"
+    xmlns:viewmodels="using:HyPlayer.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:HomeViewModel}"
     mc:Ignorable="d">
     <local:HomePageBase.Resources>

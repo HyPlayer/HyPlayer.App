@@ -1,5 +1,5 @@
-﻿using HyPlayer.App.Interfaces.Views;
-using HyPlayer.App.ViewModels;
+﻿using HyPlayer.Interfaces.Views;
+using HyPlayer.ViewModels;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HyPlayer.App.Views.Pages
+namespace HyPlayer.Views.Pages
 {
     public partial class UserPage : Page
     {

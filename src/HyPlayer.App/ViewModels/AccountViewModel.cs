@@ -5,12 +5,12 @@ using System.Security.Principal;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-using HyPlayer.App.Interfaces.ViewModels;
+using HyPlayer.Interfaces.ViewModels;
 using HyPlayer.NeteaseProvider.Models;
 using HyPlayer.PlayCore.Abstraction.Models.Containers;
 
 
-namespace HyPlayer.App.ViewModels
+namespace HyPlayer.ViewModels
 {
     public partial class AccountViewModel : ObservableObject, ISingletonViewModel
     {

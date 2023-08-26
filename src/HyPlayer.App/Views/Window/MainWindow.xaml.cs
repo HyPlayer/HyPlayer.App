@@ -11,19 +11,19 @@ using AppWindow = Microsoft.UI.Windowing.AppWindow;
 using AppWindowTitleBar = Microsoft.UI.Windowing.AppWindowTitleBar;
 using Microsoft.UI.Xaml.Controls;
 using Windows.UI.WindowManagement;
-using HyPlayer.App.Interfaces.Views;
-using HyPlayer.App.ViewModels;
+using HyPlayer.Interfaces.Views;
+using HyPlayer.ViewModels;
 using Depository.Abstraction.Interfaces;
 using Depository.Abstraction.Models.Options;
 using Depository.Core;
 using Depository.Extensions;
-using HyPlayer.App.Interfaces.ViewModels;
-using HyPlayer.App.Views.Controls.Dialogs;
-using HyPlayer.App.Views.Pages;
-using HyPlayer.App.Views.Controls.App;
+using HyPlayer.Interfaces.ViewModels;
+using HyPlayer.Views.Controls.Dialogs;
+using HyPlayer.Views.Pages;
+using HyPlayer.Views.Controls.App;
 using System.Runtime.CompilerServices;
 
-namespace HyPlayer.App.Views.Window
+namespace HyPlayer.Views.Window
 {
     public sealed partial class MainWindow : WindowEx
     {

@@ -11,7 +11,7 @@ using Windows.UI;
 using System;
 using CommunityToolkit.WinUI.UI;
 
-namespace HyPlayer.App.Views.Controls.App
+namespace HyPlayer.Views.Controls.App
 {
 
     public sealed partial class HomePageHeaderImage : UserControl

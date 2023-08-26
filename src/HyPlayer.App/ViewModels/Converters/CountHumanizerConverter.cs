@@ -3,7 +3,7 @@ using System.Numerics;
 using Humanizer;
 using Microsoft.UI.Xaml.Data;
 
-namespace HyPlayer.App.ViewModels.Converters;
+namespace HyPlayer.ViewModels.Converters;
 
 public class CountHumanizerConverter : IValueConverter
 {

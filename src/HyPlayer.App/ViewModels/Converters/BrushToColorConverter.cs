@@ -3,7 +3,7 @@ using System.Drawing;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Media;
 
-namespace HyPlayer.App.ViewModels.Converters;
+namespace HyPlayer.ViewModels.Converters;
 
 internal class BrushToColorConverter : IValueConverter
 {

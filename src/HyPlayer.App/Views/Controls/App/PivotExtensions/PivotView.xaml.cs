@@ -7,7 +7,7 @@ using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Markup;
 using Microsoft.UI.Xaml.Media;
 
-namespace HyPlayer.App.Views.Controls.App.PivotExtensions;
+namespace HyPlayer.Views.Controls.App.PivotExtensions;
 
 [ContentProperty(Name = "Pivot")]
 internal class PivotView : Control

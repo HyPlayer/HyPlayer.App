@@ -1,12 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using HyPlayer.App.Interfaces.ViewModels;
+using HyPlayer.Interfaces.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HyPlayer.App.ViewModels
+namespace HyPlayer.ViewModels
 {
     public class UserViewModel : ObservableObject, IScopedViewModel
     {

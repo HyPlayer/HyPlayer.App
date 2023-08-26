@@ -1,12 +1,12 @@
 using System;
-using HyPlayer.App.Extensions;
+using HyPlayer.Extensions;
 using HyPlayer.PlayCore.Abstraction.Interfaces.ProvidableItem;
 using HyPlayer.PlayCore.Abstraction.Models.Resources;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 
-namespace HyPlayer.App.ViewModels.Converters;
+namespace HyPlayer.ViewModels.Converters;
 
 public class CoverToImageSourceConverter : IValueConverter
 {

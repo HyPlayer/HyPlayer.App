@@ -5,7 +5,7 @@ using Windows.Foundation.Collections;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace HyPlayer.App.Views.Controls.App.PivotExtensions;
+namespace HyPlayer.Views.Controls.App.PivotExtensions;
 
 public class PivotExHeaderView : ListView
 {

@@ -19,14 +19,14 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Depository.Abstraction.Models.Options;
 using Depository.Extensions;
-using HomeViewModel = HyPlayer.App.ViewModels.HomeViewModel;
-using App = HyPlayer.App.App;
+using HomeViewModel = HyPlayer.ViewModels.HomeViewModel;
+using App = HyPlayer.App;
 using AsyncAwaitBestPractices;
-using HyPlayer.App.Interfaces.Views;
+using HyPlayer.Interfaces.Views;
 using HyPlayer.PlayCore.Abstraction.Models;
 using HyPlayer.NeteaseProvider.Models;
 
-namespace HyPlayer.App.Views.Pages
+namespace HyPlayer.Views.Pages
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

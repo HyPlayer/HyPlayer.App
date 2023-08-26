@@ -8,21 +8,21 @@ using Windows.Storage;
 using Depository.Abstraction.Interfaces;
 using Depository.Core;
 using Depository.Extensions;
-using HyPlayer.App.Extensions.DependencyInjectionExtensions;
-using HyPlayer.App.Interfaces.Views;
-using HyPlayer.App.Services;
+using HyPlayer.Extensions.DependencyInjectionExtensions;
+using HyPlayer.Interfaces.Views;
+using HyPlayer.Services;
 using HyPlayer.PlayCore;
 using HyPlayer.PlayCore.Abstraction;
 using Microsoft.UI.Dispatching;
 using DispatcherQueue = Windows.System.DispatcherQueue;
-using Window = HyPlayer.App.Views.Window;
-using Pages = HyPlayer.App.Views.Pages;
-using HyPlayer.App.ViewModels;
+using Window = HyPlayer.Views.Window;
+using Pages = HyPlayer.Views.Pages;
+using HyPlayer.ViewModels;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace HyPlayer.App
+namespace HyPlayer
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

@@ -2,11 +2,11 @@
 using Depository.Abstraction.Interfaces;
 using Depository.Core;
 using Depository.Extensions;
-using HyPlayer.App.Interfaces.ViewModels;
+using HyPlayer.Interfaces.ViewModels;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace HyPlayer.App.Interfaces.Views;
+namespace HyPlayer.Interfaces.Views;
 
 public abstract class AppPageWithScopedViewModelBase<TViewModel> : Page, IDisposable
     where TViewModel : class, IScopedViewModel

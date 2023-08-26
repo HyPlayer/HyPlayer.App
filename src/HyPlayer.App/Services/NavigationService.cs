@@ -2,9 +2,9 @@
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
 using System;
-using HyPlayer.App.Interfaces.Views;
+using HyPlayer.Interfaces.Views;
 
-namespace HyPlayer.App.Services
+namespace HyPlayer.Services
 {
     internal class NavigationService : INavigationService
     {

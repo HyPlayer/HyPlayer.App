@@ -2,7 +2,7 @@
 using System;
 using Windows.UI;
 
-namespace HyPlayer.App.ViewModels.Converters
+namespace HyPlayer.ViewModels.Converters
 {
     public class TransparentColorConverter : IValueConverter
     {

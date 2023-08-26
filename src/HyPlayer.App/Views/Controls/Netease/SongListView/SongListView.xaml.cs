@@ -16,7 +16,7 @@ using Microsoft.UI.Xaml.Navigation;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace HyPlayer.App.Views.Controls.Netease.SongListView
+namespace HyPlayer.Views.Controls.Netease.SongListView
 {
     public sealed partial class SongListView : UserControl
     {
