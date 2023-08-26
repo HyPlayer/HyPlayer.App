@@ -14,7 +14,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-
+using HyPlayer.App.Views.Pages;
 
 namespace HyPlayer.App.Views.Controls.Search
 {
@@ -23,6 +23,14 @@ namespace HyPlayer.App.Views.Controls.Search
         public SearchBox()
         {
             this.InitializeComponent();
+        }
+
+        private void AppSearchBox_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                HyPlayer.App.App.GetService<INavigationService>().NavigateTo(typeof(SearchPage), AppSearchBox.Text);
+            }
         }
     }
 

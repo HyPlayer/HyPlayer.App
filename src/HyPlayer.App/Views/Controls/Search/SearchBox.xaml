@@ -84,7 +84,8 @@
             QueryIcon="Find"
             TabIndex="2"
             UpdateTextOnSelect="False"
-            XYFocusLeftNavigationStrategy="Auto">
+            XYFocusLeftNavigationStrategy="Auto"
+            KeyDown="AppSearchBox_KeyDown">
             <AutoSuggestBox.TextBoxStyle>
                 <Style TargetType="TextBox">
                     <Setter Property="Padding" Value="40,8,0,8" />
