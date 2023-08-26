@@ -79,8 +79,12 @@ namespace HyPlayer
             ConfigureServices();
             await ConfigurePlayCore();
             window = WindowHelper.CreateWindow();
-            NavigateToRootPage(args);
-            window?.Activate();
+            if(window != null) 
+            { 
+                NavigateToRootPage(args);
+
+                window?.Activate();
+            }
         }
         
         private void ConfigureServices()
@@ -99,7 +103,7 @@ namespace HyPlayer
 
         private void NavigateToRootPage(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {   
-            App.GetService<INavigationService>().NavigateTo(typeof(Pages.HomePage));
+            GetService<INavigationService>().NavigateTo(typeof(Pages.HomePage));
         }
        
     }

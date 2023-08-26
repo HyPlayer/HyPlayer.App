@@ -28,12 +28,24 @@ namespace HyPlayer.Services
         {
             if (Frame != null)
             {
-                var navigated = Frame.Navigate(Page, parameter, new SlideNavigationTransitionInfo { Effect = SlideNavigationTransitionEffect.FromRight });
-                return navigated;
+                return Frame.Navigate(Page, parameter, new SlideNavigationTransitionInfo { Effect = SlideNavigationTransitionEffect.FromRight });
             }
             else 
             {
                 return false; 
+            }
+        }
+
+        public bool NavigateTo(Page Page, object parameter)
+        {
+            if (Frame != null)
+            {
+                return Frame.Navigate(typeof(Page), parameter, new SlideNavigationTransitionInfo { Effect = SlideNavigationTransitionEffect.FromRight });
+                
+            }
+            else
+            {
+                return false;
             }
         }
     }
