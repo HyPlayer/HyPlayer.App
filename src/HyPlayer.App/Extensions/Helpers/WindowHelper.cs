@@ -73,4 +73,4 @@ namespace HyPlayer.Extensions.Helpers
         static private List<Window> _activeWindows = new List<Window>();
     }
 }
-}
+
