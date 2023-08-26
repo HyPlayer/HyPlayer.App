@@ -1,8 +1,6 @@
-<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.ThemeDictionaries>
-        <ResourceDictionary Source="./Styles/Themes.Dark.xaml" x:Key="Dark" />
-        <ResourceDictionary Source="./Styles/Themes.Light.xaml" x:Key="Light" />
+        <ResourceDictionary x:Key="Dark" Source="./Styles/Themes.Dark.xaml" />
+        <ResourceDictionary x:Key="Light" Source="./Styles/Themes.Light.xaml" />
     </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>

@@ -22,7 +22,7 @@
             <Frame x:Name="contentFrame" />
 
             <NavigationView.MenuItems>
-                <NavigationViewItemHeader Margin="0,3,3,3" x:Uid="MainNav_Header_Discover" />
+                <NavigationViewItemHeader x:Uid="MainNav_Header_Discover" Margin="0,3,3,3" />
                 <NavigationViewItem
                     x:Name="Home"
                     x:Uid="MainNav_Item_Home"
@@ -33,8 +33,8 @@
                 </NavigationViewItem>
                 <NavigationViewItem
                     x:Name="NavItemDailyRcmd"
-                    x:FieldModifier="public"
                     x:Uid="MainNav_Item_DailyRcmd"
+                    x:FieldModifier="public"
                     Tag="DailyRcmd">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEA89;" />
@@ -64,17 +64,17 @@
                         <FontIcon Glyph="&#xE113;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItemHeader Margin="0,3,3,3" x:Uid="MainNav_Header_Songlist" />
+                <NavigationViewItemHeader x:Uid="MainNav_Header_Songlist" Margin="0,3,3,3" />
                 <NavigationViewItem
                     x:Name="NavItemsAddPlaylist"
                     x:Uid="MainNav_Item_CreatePlaylist"
                     Icon="Add"
                     SelectsOnInvoked="False"
-                    Tag="SonglistCreate"/>
+                    Tag="SonglistCreate" />
                 <NavigationViewItem
                     x:Name="NavItemsMyLovedPlaylist"
-                    x:FieldModifier="public"
                     x:Uid="MainNav_Item_MyLovedPlaylist"
+                    x:FieldModifier="public"
                     Tag="SonglistMyLike">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE006;" />
@@ -82,14 +82,14 @@
                 </NavigationViewItem>
                 <NavigationViewItem
                     x:Name="NavItemsMyList"
-                    x:FieldModifier="public"
                     x:Uid="MainNav_Item_MyCreatedPlaylist"
+                    x:FieldModifier="public"
                     Icon="List"
-                    IsExpanded="True"/>
+                    IsExpanded="True" />
                 <NavigationViewItem
                     x:Name="NavItemsLikeList"
-                    x:FieldModifier="public"
                     x:Uid="MainNav_Item_MyStoredPlaylist"
+                    x:FieldModifier="public"
                     Icon="List"
                     IsExpanded="True" />
 
