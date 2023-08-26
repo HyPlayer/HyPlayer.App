@@ -82,7 +82,6 @@ namespace HyPlayer
             NavigateToRootPage(args);
             window?.Activate();
         }
-
         
         private void ConfigureServices()
         {

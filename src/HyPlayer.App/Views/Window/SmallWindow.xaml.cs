@@ -36,11 +36,7 @@ namespace HyPlayer.Views.Window
             this.AppWindow.SetPresenter((Microsoft.UI.Windowing.AppWindowPresenterKind)AppWindowPresentationKind.CompactOverlay);
             
             var titleBar = this.AppWindow.TitleBar;
-            titleBar.ExtendsContentIntoTitleBar = true;
-            titleBar.BackgroundColor = Colors.Transparent;
-            titleBar.ButtonBackgroundColor = Colors.Transparent;
-            titleBar.InactiveBackgroundColor = Colors.Transparent;
-            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+            
             this.SetTitleBar(AppTitleBar);
 
             Content = contentFrame;

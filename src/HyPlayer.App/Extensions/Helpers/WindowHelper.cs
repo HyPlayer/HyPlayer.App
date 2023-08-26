@@ -14,9 +14,11 @@ namespace HyPlayer.Extensions.Helpers
 {
     public class WindowHelper
     {
-        static public Window CreateWindow()
+        static public Window CreateWindow(bool high = true)
         {
             Window newWindow = new MainWindow();
+
+            InitializeTitleBarForWindow(newWindow, high);
 
             TrackWindow(newWindow);
             return newWindow;
@@ -25,6 +27,8 @@ namespace HyPlayer.Extensions.Helpers
         static public Window CreateSmallWindow()
         {
             Window newWindow = new SmallWindow();
+
+            InitializeTitleBarForWindow(newWindow, false);
 
             TrackWindow(newWindow);
             return newWindow;
@@ -53,7 +57,7 @@ namespace HyPlayer.Extensions.Helpers
             return AppWindow.GetFromWindowId(wndId);
         }
 
-        static public Window GetWindowForElement(UIElement element)
+        static public Window? GetWindowForElement(UIElement element)
         {
             if (element.XamlRoot != null)
             {
@@ -66,6 +70,32 @@ namespace HyPlayer.Extensions.Helpers
                 }
             }
             return null;
+        }
+
+        static public void InitializeTitleBarForWindow(Window window, bool isTallTitleBar = true)
+        {
+            var titleBar = window.AppWindow.TitleBar;
+            titleBar.BackgroundColor = Colors.Transparent;
+            titleBar.ButtonBackgroundColor = Colors.Transparent;
+            titleBar.InactiveBackgroundColor = Colors.Transparent;
+            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+            titleBar.IconShowOptions = IconShowOptions.HideIconAndSystemMenu;
+
+
+            // A taller title bar is only supported when drawing a fully custom title bar
+            if (AppWindowTitleBar.IsCustomizationSupported() && titleBar.ExtendsContentIntoTitleBar)
+            {
+                if (isTallTitleBar)
+                {
+                    // Choose a tall title bar to provide more room for interactive elements 
+                    // like search box or person picture controls.
+                    titleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
+                }
+                else
+                {
+                    titleBar.PreferredHeightOption = TitleBarHeightOption.Standard;
+                }
+            }
         }
 
         static public List<Window> ActiveWindows { get { return _activeWindows; } }
