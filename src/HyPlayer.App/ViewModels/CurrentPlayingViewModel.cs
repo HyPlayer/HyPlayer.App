@@ -8,7 +8,6 @@ using HyPlayer.NeteaseProvider.Models;
 using HyPlayer.PlayCore.Abstraction;
 using HyPlayer.PlayCore.Abstraction.Models.Notifications;
 using HyPlayer.PlayCore.Abstraction.Models.SingleItems;
-using Depository.Abstraction.Interfaces.NotificationHub;
 
 namespace HyPlayer.ViewModels;
 
