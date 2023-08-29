@@ -1,14 +1,40 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using HyPlayer.Interfaces.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using HyPlayer.NeteaseProvider;
+using HyPlayer.NeteaseProvider.Models;
 
 namespace HyPlayer.ViewModels
 {
-    public class UserViewModel : ObservableObject, IScopedViewModel
+    public partial class UserViewModel : ObservableObject, IScopedViewModel
     {
+        private readonly NeteaseProvider.NeteaseProvider _provider;
+
+        [ObservableProperty] public NeteaseUser _ncmUser;
+        [ObservableProperty] private string? _userName;
+        [ObservableProperty] private string? _description;
+        [ObservableProperty] private int? _vipType;
+
+        public UserViewModel(NeteaseProvider.NeteaseProvider provider) 
+        {
+            _provider = provider;
+        }
+
+        [RelayCommand]
+        public void GetUserInfo()
+        {
+            if (NcmUser == null) 
+            {
+                UserName = "HyPlayer";
+                Description = "A Third-party Netease Music Cilent";
+                VipType = 0;
+                return;
+            }
+
+            UserName = NcmUser.Name;
+            Description = NcmUser.Description;
+            VipType = NcmUser.VipType;
+        }
     }
+
 }

@@ -10,6 +10,15 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid x:Name="GridHeader">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <PersonPicture HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" ProfilePicture="{x:Bind ViewModel.NcmUser, Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=256}"/>
+            <TextBlock Grid.Column="1" HorizontalAlignment="Left" Style="{ThemeResource TitleTextBlockStyle}" Text="{x:Bind ViewModel.UserName}" />
+        </Grid>
+        
 
     </Grid>
 </local:UserPageBase>

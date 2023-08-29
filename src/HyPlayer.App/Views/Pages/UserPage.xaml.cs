@@ -14,9 +14,8 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using HyPlayer.Interfaces.Views;
 using HyPlayer.ViewModels;
+using HyPlayer.NeteaseProvider.Models;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace HyPlayer.Views.Pages
 {
@@ -30,10 +29,16 @@ namespace HyPlayer.Views.Pages
             this.InitializeComponent();   
         }
 
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedFrom(e);
-            if(e.Parameter !=)
+            base.OnNavigatedTo(e);
+
+            ViewModel.NcmUser = (NeteaseUser) e.Parameter;
+            if(ViewModel.NcmUser != null)
+            {
+                
+                ViewModel.GetUserInfo();
+            }
         }
     }
 

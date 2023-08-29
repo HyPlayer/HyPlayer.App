@@ -217,7 +217,7 @@ namespace HyPlayer.Views.Window
 
         private async void UserButton_Click(object sender, RoutedEventArgs e)
         {
-            if(!_accountViewModel.IsLogin)
+            if(!_shellViewModel.AccountViewModel.IsLogin)
             {
                 var signin_dialog = new SignInDialog();
                 signin_dialog.XamlRoot = this.Content.XamlRoot;
@@ -225,7 +225,7 @@ namespace HyPlayer.Views.Window
             }
             else
             {
-                // App.GetService<INavigationService>().NavigateTo(typeof(MePage));
+                App.GetService<INavigationService>().NavigateTo(typeof(UserPage), _shellViewModel.AccountViewModel.User);
             }
         }
 

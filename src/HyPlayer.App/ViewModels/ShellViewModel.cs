@@ -12,11 +12,11 @@ namespace HyPlayer.ViewModels
 {
     public partial class ShellViewModel : ObservableObject, IScopedViewModel
     {
+        [ObservableProperty] private AccountViewModel _accountViewModel;
 
-
-        public ShellViewModel() 
+        public ShellViewModel(AccountViewModel accountViewModel) 
         { 
-
+            _accountViewModel = accountViewModel;
         }
 
         [RelayCommand]
