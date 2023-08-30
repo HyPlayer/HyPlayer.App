@@ -20,10 +20,12 @@
                 <TextBox
                     x:Name="TextBoxAccount"
                     Margin="0,6"
+                    BorderThickness="0"
                     PlaceholderText="手机 / 邮箱" />
                 <PasswordBox
                     x:Name="TextBoxPassword"
                     Margin="0,6"
+                    BorderThickness="0"
                     PlaceholderText="密码" />
                 <Grid>
                     <TextBlock

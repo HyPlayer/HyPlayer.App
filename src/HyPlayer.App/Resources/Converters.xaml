@@ -9,4 +9,6 @@
     <converters:StringListToStringConverter x:Key="StringListToStringConverter" />
     <converters:TransparentColorConverter x:Key="TransparentColorConverter" />
     <converters:CountHumanizerConverter x:Key="CountHumanizerConverter" />
+    <converters:BooleanToNavButtonVisibleConverter x:Key="BooleanToNavButtonVisibleConverter" />
+    <converters:StringToImageSourceConverter x:Key="StringToImageSourceConverter" />
 </ResourceDictionary>

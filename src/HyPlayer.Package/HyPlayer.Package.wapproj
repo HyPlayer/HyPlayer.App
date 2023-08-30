@@ -79,5 +79,6 @@
     <Content Include="Assets\Images\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\Images\StoreLogo.png" />
     <Content Include="Assets\Images\Wide310x150Logo.scale-200.png" />
+    <Content Include="Assets\icon.png" />
   </ItemGroup>
 </Project>

@@ -13,11 +13,13 @@
         <NavigationView
             x:Name="NavView"
             BackRequested="{x:Bind ViewModel.GoBack}"
-            IsBackEnabled="{x:Bind contentFrame.CanGoBack, Mode=OneWay}"
+            IsBackEnabled="True"
+            IsBackButtonVisible="{x:Bind contentFrame.CanGoBack, Mode=OneWay, Converter={StaticResource BooleanToNavButtonVisibleConverter}}"
             IsPaneToggleButtonVisible="True"
             ItemInvoked="{x:Bind NavView_ItemInvoked}"
             Loaded="NavView_Loaded"
-            Style="{StaticResource LeftNavViewDefaultStyle}">
+            Style="{StaticResource LeftNavViewDefaultStyle}"
+            IsPaneOpen="{x:Bind IsPaneOpen}">
 
             <Frame x:Name="contentFrame" />
 
