@@ -46,12 +46,12 @@ public partial class HomeViewModel
     [RelayCommand]
     public async Task GetSongsAsync()
     {
-        // ½öÔÚµÇÂ¼ºó¼ÓÔØ
+        // ä»…åœ¨ç™»å½•ååŠ è½½
         if (AccountViewModel.IsLogin)
         {
             if((await ((await _provider.GetRecommendationAsync("pl")) as NeteaseActionGettableContainer)?.GetAllItemsAsync()) is not null)
             {
-                // ÍÆ¼ö¸èµ¥
+                // æ¨èæ­Œå•
                 PlayLists =
                     (await ((await _provider.GetRecommendationAsync("pl")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
                     .Select(t => (NeteasePlaylist)t).ToList();
@@ -60,7 +60,7 @@ public partial class HomeViewModel
             
             if((await ((await _provider.GetRecommendationAsync("sg")) as NeteaseActionGettableContainer)?.GetAllItemsAsync()) is not null)
             {
-                // ÍÆ¼ö¸èÇú
+                // æ¨èæ­Œæ›²
                 RecommendedSongs =
                     (await ((await _provider.GetRecommendationAsync("sg")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
                     .Select(t => (NeteaseSong)t).ToList();
@@ -69,9 +69,9 @@ public partial class HomeViewModel
             
         }
 
-        // ²»µÇÂ¼¼ÓÔØ
+        // ä¸ç™»å½•åŠ è½½
 
-        // ÅÅĞĞ°ñ
+        // æ’è¡Œæ¦œ
         if((await ((await _provider.GetRecommendationAsync("ct")) as NeteaseActionGettableContainer)?.GetAllItemsAsync()) is not null)
         {
             TopLists =
