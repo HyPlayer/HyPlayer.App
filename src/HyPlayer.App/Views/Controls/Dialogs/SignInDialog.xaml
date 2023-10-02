@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentDialog
-    x:Class="HyPlayer.App.Views.Controls.Dialogs.SignInDialog"
+    x:Class="HyPlayer.Views.Controls.Dialogs.SignInDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="登录 HyPlayer"
-    CloseButtonText="取消"
-    PrimaryButtonText="登录"
-    PrimaryButtonClick="{x:Bind ContentDialog_PrimaryButtonClickAsync}"
-    DefaultButton="Primary"
-    Style="{ThemeResource DefaultContentDialogStyle}"
     Background="{ThemeResource SystemControlAltLowAcrylicElementBrush}"
+    CloseButtonText="取消"
+    DefaultButton="Primary"
+    PrimaryButtonClick="{x:Bind ContentDialog_PrimaryButtonClickAsync}"
+    PrimaryButtonText="登录"
+    Style="{ThemeResource DefaultContentDialogStyle}"
     mc:Ignorable="d">
 
     <Grid>
@@ -19,12 +19,14 @@
             <StackPanel Orientation="Vertical" Spacing="12">
                 <TextBox
                     x:Name="TextBoxAccount"
-                    PlaceholderText="手机 / 邮箱" 
-                    Margin="0,6"/>
+                    Margin="0,6"
+                    BorderThickness="0"
+                    PlaceholderText="手机 / 邮箱" />
                 <PasswordBox
                     x:Name="TextBoxPassword"
-                    PlaceholderText="密码"
-                    Margin="0,6"/>
+                    Margin="0,6"
+                    BorderThickness="0"
+                    PlaceholderText="密码" />
                 <Grid>
                     <TextBlock
                         VerticalAlignment="Center"

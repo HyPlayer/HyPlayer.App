@@ -7,7 +7,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
 
-namespace HyPlayer.App.Views.Controls.App.PivotExtensions;
+namespace HyPlayer.Views.Controls.App.PivotExtensions;
 
 public class PivotEx : Pivot
 {
@@ -35,17 +35,17 @@ public class PivotEx : Pivot
                 }
             }));
 
-    private CancellationTokenSource cts;
-    private CompositionPropertySet currentScrollPropSet;
+    private CancellationTokenSource? cts;
+    private CompositionPropertySet? currentScrollPropSet;
 
-    private ScrollViewer currentScrollViewer;
+    private ScrollViewer? currentScrollViewer;
     private bool innerSet;
     private readonly CompositionPropertySet internalPropSet;
 
     private double lastScrollOffsetY;
-    private ExpressionAnimation offsetYBind;
+    private ExpressionAnimation? offsetYBind;
     private readonly CompositionPropertySet progressPropSet;
-    private ExpressionAnimation scrollProgressBind;
+    private ExpressionAnimation? scrollProgressBind;
 
     public PivotEx()
     {
@@ -188,7 +188,7 @@ public class PivotEx : Pivot
         if (container == args.Item) _ = UpdateCurrentScrollViewer();
     }
 
-    private Task<double?> TryScrollVerticalOffsetAsync(ScrollViewer scrollViewer)
+    private Task<double?>? TryScrollVerticalOffsetAsync(ScrollViewer scrollViewer)
     {
         if (scrollViewer == null) return null;
 
@@ -244,5 +244,5 @@ public class PivotEx : Pivot
         return progressPropSet;
     }
 
-    public event EventHandler HeaderScrollOffsetChanged;
+    public event EventHandler? HeaderScrollOffsetChanged;
 }

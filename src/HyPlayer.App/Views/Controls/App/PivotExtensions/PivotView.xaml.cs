@@ -7,7 +7,7 @@ using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Markup;
 using Microsoft.UI.Xaml.Media;
 
-namespace HyPlayer.App.Views.Controls.App.PivotExtensions;
+namespace HyPlayer.Views.Controls.App.PivotExtensions;
 
 [ContentProperty(Name = "Pivot")]
 internal class PivotView : Control
@@ -67,13 +67,13 @@ internal class PivotView : Control
             }));
 
 
-    private Border HeaderContainer;
+    private Border? HeaderContainer;
     private bool internalSet;
-    private ExpressionAnimation offsetBind;
-    private Border PivotContainer;
-    private PivotExHeaderView PivotExHeaderView;
+    private ExpressionAnimation? offsetBind;
+    private Border? PivotContainer;
+    private PivotExHeaderView? PivotExHeaderView;
 
-    private CompositionPropertySet progressPropSet;
+    private CompositionPropertySet? progressPropSet;
 
     public PivotView()
     {
@@ -266,6 +266,6 @@ internal class PivotView : Control
     }
 
 
-    public event EventHandler HeaderHeightChanged;
-    public event EventHandler HeaderScrollProgressChanged;
+    public event EventHandler? HeaderHeightChanged;
+    public event EventHandler? HeaderScrollProgressChanged;
 }

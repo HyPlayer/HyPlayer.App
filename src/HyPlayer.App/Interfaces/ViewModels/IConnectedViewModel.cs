@@ -1,4 +1,4 @@
-namespace HyPlayer.App.Interfaces.ViewModels;
+namespace HyPlayer.Interfaces.ViewModels;
 
 public interface IConnectedViewModel
 {

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ex:WindowEx
-    x:Class="HyPlayer.App.Views.Window.SmallWindow"
+    x:Class="HyPlayer.Views.Window.SmallWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:ex="using:WinUIEx"
-    xmlns:local="using:HyPlayer.App.Views.Window"
+    xmlns:local="using:HyPlayer.Views.Window"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <ex:WindowEx.SystemBackdrop>

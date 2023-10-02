@@ -1,9 +1,9 @@
 using Depository.Abstraction.Interfaces;
 using Depository.Core;
 using Depository.Extensions;
-using HyPlayer.App.Interfaces.ViewModels;
-using HyPlayer.App.Interfaces.Views;
-using HyPlayer.App.ViewModels;
+using HyPlayer.Interfaces.ViewModels;
+using HyPlayer.Interfaces.Views;
+using HyPlayer.ViewModels;
 using Microsoft.UI.Xaml.Controls;
 using System.Threading.Tasks;
 
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace HyPlayer.App.Views.Controls.Dialogs
+namespace HyPlayer.Views.Controls.Dialogs
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -26,14 +26,14 @@ namespace HyPlayer.App.Views.Controls.Dialogs
             this.InitializeComponent();
 
             _scope = DepositoryResolveScope.Create();
-            ViewModel = HyPlayer.App.App.GetDIContainer().ResolveInScope<AccountViewModel>(_scope);
+            ViewModel = HyPlayer.App.GetDIContainer().ResolveInScope<AccountViewModel>(_scope);
             DataContext = ViewModel;
         }
 
         private async Task ContentDialog_PrimaryButtonClickAsync(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
             await ViewModel.SignInAsync(TextBoxAccount.Text, TextBoxPassword.Password);
-            HyPlayer.App.App.GetService<INavigationService>().NavigateTo(typeof(Pages.HomePage));
+            HyPlayer.App.GetService<INavigationService>().NavigateTo(typeof(Pages.HomePage));
         }
     }
 }

@@ -3,7 +3,7 @@ using Depository.Abstraction.Enums;
 using Depository.Abstraction.Interfaces;
 using Depository.Extensions;
 
-namespace HyPlayer.App.Extensions.DependencyInjectionExtensions;
+namespace HyPlayer.Extensions.DependencyInjectionExtensions;
 
 public static class DIAddExtensions
 {

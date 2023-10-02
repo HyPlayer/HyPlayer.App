@@ -1,10 +1,10 @@
 using System.Reflection;
 using Depository.Abstraction.Enums;
 using Depository.Abstraction.Interfaces;
-using HyPlayer.App.Interfaces;
-using HyPlayer.App.Interfaces.ViewModels;
+using HyPlayer.Interfaces;
+using HyPlayer.Interfaces.ViewModels;
 
-namespace HyPlayer.App.Extensions.DependencyInjectionExtensions;
+namespace HyPlayer.Extensions.DependencyInjectionExtensions;
 
 public static class MvvmExtensions
 {

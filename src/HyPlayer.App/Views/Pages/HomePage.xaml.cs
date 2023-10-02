@@ -10,6 +10,7 @@ using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -18,26 +19,26 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Depository.Abstraction.Models.Options;
 using Depository.Extensions;
-using HomeViewModel = HyPlayer.App.ViewModels.HomeViewModel;
+using HomeViewModel = HyPlayer.ViewModels.HomeViewModel;
+using App = HyPlayer.App;
 using AsyncAwaitBestPractices;
-using HyPlayer.App.Interfaces.Views;
+using HyPlayer.Interfaces.Views;
 using HyPlayer.PlayCore.Abstraction.Models;
+using HyPlayer.NeteaseProvider.Models;
 
-
-namespace HyPlayer.App.Views.Pages
+namespace HyPlayer.Views.Pages
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class HomePage : HomePageBase
     {
-        private int selectedIndex;
-       
         public HomePage()
         {
             InitializeComponent();
         }
 
+        [SuppressMessage("ReSharper", "ResourceItemNotResolved")]
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -74,7 +75,9 @@ namespace HyPlayer.App.Views.Pages
 
         private void OnPlaylistItemClicked(object sender, ItemClickEventArgs e)
         {
-            Debug.WriteLine($"Clicking on {(e.ClickedItem as ProvidableItemBase)?.Name}");
+            // Debug.WriteLine($"Clicking on {(e.ClickedItem as ProvidableItemBase)?.Name}");
+
+            App.GetService<INavigationService>().NavigateTo(typeof(PlaylistPage), (e.ClickedItem as NeteasePlaylist));
         }
     }
 

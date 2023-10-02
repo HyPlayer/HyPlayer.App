@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <base:NavigationViewBase
-    x:Class="HyPlayer.App.Views.Controls.App.DesktopNavigationView"
+    x:Class="HyPlayer.Views.Controls.App.DesktopNavigationView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:base="using:HyPlayer.App.Views.Controls.Base"
+    xmlns:base="using:HyPlayer.Views.Controls.Base"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:HyPlayer.App.Views.Controls.App"
+    xmlns:local="using:HyPlayer.Views.Controls.App"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
@@ -13,11 +13,13 @@
         <NavigationView
             x:Name="NavView"
             BackRequested="{x:Bind ViewModel.GoBack}"
-            IsBackEnabled="{x:Bind ViewModel.CanBack}"
+            IsBackEnabled="True"
+            IsBackButtonVisible="{x:Bind contentFrame.CanGoBack, Mode=OneWay, Converter={StaticResource BooleanToNavButtonVisibleConverter}}"
             IsPaneToggleButtonVisible="True"
             ItemInvoked="{x:Bind NavView_ItemInvoked}"
             Loaded="NavView_Loaded"
-            Style="{StaticResource LeftNavViewDefaultStyle}">
+            Style="{StaticResource LeftNavViewDefaultStyle}"
+            IsPaneOpen="{x:Bind IsPaneOpen}">
 
             <Frame x:Name="contentFrame" />
 
@@ -33,8 +35,8 @@
                 </NavigationViewItem>
                 <NavigationViewItem
                     x:Name="NavItemDailyRcmd"
-                    x:FieldModifier="public"
                     x:Uid="MainNav_Item_DailyRcmd"
+                    x:FieldModifier="public"
                     Tag="DailyRcmd">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEA89;" />
@@ -57,24 +59,24 @@
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem
-                    x:Uid="MainNav_Item_MyLibrary.Content"
+                    x:Uid="MainNav_Item_MyLibrary"
                     SelectsOnInvoked="False"
                     Tag="PageFavorite">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE113;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItemHeader Margin="0,3,3,3" x:Uid="MainNav_Header_Songlist" />
+                <NavigationViewItemHeader x:Uid="MainNav_Header_Songlist" Margin="0,3,3,3" />
                 <NavigationViewItem
                     x:Name="NavItemsAddPlaylist"
                     x:Uid="MainNav_Item_CreatePlaylist"
                     Icon="Add"
                     SelectsOnInvoked="False"
-                    Tag="SonglistCreate"/>
+                    Tag="SonglistCreate" />
                 <NavigationViewItem
                     x:Name="NavItemsMyLovedPlaylist"
-                    x:FieldModifier="public"
                     x:Uid="MainNav_Item_MyLovedPlaylist"
+                    x:FieldModifier="public"
                     Tag="SonglistMyLike">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE006;" />
@@ -82,14 +84,14 @@
                 </NavigationViewItem>
                 <NavigationViewItem
                     x:Name="NavItemsMyList"
-                    x:FieldModifier="public"
                     x:Uid="MainNav_Item_MyCreatedPlaylist"
+                    x:FieldModifier="public"
                     Icon="List"
-                    IsExpanded="True"/>
+                    IsExpanded="True" />
                 <NavigationViewItem
                     x:Name="NavItemsLikeList"
-                    x:FieldModifier="public"
                     x:Uid="MainNav_Item_MyStoredPlaylist"
+                    x:FieldModifier="public"
                     Icon="List"
                     IsExpanded="True" />
 

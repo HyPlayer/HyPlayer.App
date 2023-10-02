@@ -1,9 +1,9 @@
 using CommunityToolkit.Mvvm.ComponentModel;
-using HyPlayer.App.Interfaces.ViewModels;
+using HyPlayer.Interfaces.ViewModels;
 
-namespace HyPlayer.App.ViewModels;
+namespace HyPlayer.ViewModels;
 
-public class SearchViewModel : ObservableObject, IViewModel
+public class SearchViewModel : ObservableObject, IViewModel, IScopedViewModel
 {
     private readonly NeteaseProvider.NeteaseProvider _provider;
     

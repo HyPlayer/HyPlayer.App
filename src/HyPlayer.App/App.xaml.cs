@@ -8,21 +8,23 @@ using Windows.Storage;
 using Depository.Abstraction.Interfaces;
 using Depository.Core;
 using Depository.Extensions;
-using HyPlayer.App.Extensions.DependencyInjectionExtensions;
-using HyPlayer.App.Interfaces.Views;
-using HyPlayer.App.Services;
+using HyPlayer.Extensions.DependencyInjectionExtensions;
+using HyPlayer.Interfaces.Views;
+using HyPlayer.Services;
 using HyPlayer.PlayCore;
 using HyPlayer.PlayCore.Abstraction;
 using Microsoft.UI.Dispatching;
 using DispatcherQueue = Windows.System.DispatcherQueue;
-using Window = HyPlayer.App.Views.Window;
-using Pages = HyPlayer.App.Views.Pages;
-using HyPlayer.App.ViewModels;
+using Window = HyPlayer.Views.Window;
+using XamlWindow = Microsoft.UI.Xaml.Window;
+using Pages = HyPlayer.Views.Pages;
+using HyPlayer.ViewModels;
+using HyPlayer.Extensions.Helpers;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace HyPlayer.App
+namespace HyPlayer
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -30,16 +32,15 @@ namespace HyPlayer.App
     public partial class App : Application
     {
         public static Frame? contentFrame;
-        public static WindowEx window;
-        public static XamlRoot AppXamlRoot;
+        private XamlWindow? window;
 
-        public IDepository Depository;
-        public DispatcherQueue DispatcherQueue;
+        public IDepository? Depository;
+        public DispatcherQueue? DispatcherQueue;
 
         public static T GetService<T>()
             where T : class
         {
-            if ((App.Current as App)!.Depository.ResolveDependency(typeof(T)) is not T service)
+            if ((App.Current as App)!.Depository?.ResolveDependency(typeof(T)) is not T service)
             {
                 throw new ArgumentException($"{typeof(T)} needs to be registered in ConfigureServices within App.xaml.cs.");
             }
@@ -47,12 +48,12 @@ namespace HyPlayer.App
             return service;
         }
 
-        public static DispatcherQueue GetDispatcherQueue()
+        public static DispatcherQueue? GetDispatcherQueue()
         {
             return (Current as App)!.DispatcherQueue;
         }
 
-        public static IDepository GetDIContainer()
+        public static IDepository? GetDIContainer()
         {
             return (Current as App)!.Depository;
         }
@@ -77,30 +78,32 @@ namespace HyPlayer.App
             Depository = DepositoryFactory.CreateNew();
             ConfigureServices();
             await ConfigurePlayCore();
-            window = new Window.MainWindow();
-            AppXamlRoot = window.Content.XamlRoot;
-            NavigateToRootPage(args);
-            window.Activate();
-        }
+            window = WindowHelper.CreateWindow();
+            if(window != null) 
+            { 
+                NavigateToRootPage(args);
 
+                window?.Activate();
+            }
+        }
         
         private void ConfigureServices()
         {
-            Depository.AddMvvm();
-            Depository.AddSingleton<INavigationService, NavigationService>();
-            Depository.AddSingleton<IPageService, PageService>();
+            Depository?.AddMvvm();
+            Depository?.AddSingleton<INavigationService, NavigationService>();
+            Depository?.AddSingleton<IPageService, PageService>();
         }
 
         private async Task ConfigurePlayCore()
         {
-            Depository.AddSingleton<PlayCoreBase, Chopin>();
-            var playCore = Depository.Resolve<PlayCoreBase>();
+            Depository?.AddSingleton<PlayCoreBase, Chopin>();
+            var playCore = Depository?.Resolve<PlayCoreBase>();
             await playCore.RegisterMusicProviderAsync(typeof(NeteaseProvider.NeteaseProvider));
         }
 
         private void NavigateToRootPage(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {   
-            App.GetService<INavigationService>().NavigateTo(typeof(Pages.HomePage));
+            GetService<INavigationService>().NavigateTo(typeof(Pages.HomePage));
         }
        
     }

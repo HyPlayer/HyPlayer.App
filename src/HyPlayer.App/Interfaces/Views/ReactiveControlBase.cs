@@ -3,36 +3,46 @@ using Microsoft.UI.Xaml;
 using Depository.Abstraction.Interfaces;
 using Depository.Core;
 using Depository.Extensions;
+using HyPlayer.Interfaces.ViewModels;
+using System;
 
-namespace HyPlayer.App.Interfaces.Views
+namespace HyPlayer.Interfaces.Views;
+
+
+public abstract class ReactiveControlBase<TViewModel> : Page, IDisposable
+    where TViewModel : class, IScopedViewModel
 {
-    public class ReactiveUserControl<TViewModel> : UserControl
-        where TViewModel : class
+    public static readonly DependencyProperty ViewModelProperty =
+        DependencyProperty.Register(nameof(ViewModel), typeof(TViewModel), typeof(TViewModel),
+                                    new PropertyMetadata(default));
+
+    public TViewModel ViewModel
     {
-        private readonly IDepositoryResolveScope _scope;
+        get => (TViewModel)GetValue(ViewModelProperty);
+        set => SetValue(ViewModelProperty, value);
+    }
 
-        public static readonly DependencyProperty ViewModelProperty = DependencyProperty
-                .Register(nameof(ViewModel), typeof(TViewModel), typeof(ReactiveUserControl<TViewModel>), new PropertyMetadata(default, new PropertyChangedCallback((dp, args) =>
-                {
-                    var instance = dp as ReactiveUserControl<TViewModel>;
-                    instance.OnViewModelChanged(args);
-                })));
+    private readonly IDepositoryResolveScope _scope;
 
-        public TViewModel ViewModel
+
+    protected ReactiveControlBase()
+    {
+        _scope = DepositoryResolveScope.Create();
+        ViewModel = App.GetDIContainer().ResolveInScope<TViewModel>(_scope);
+        DataContext = ViewModel;
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposing)
         {
-            get => (TViewModel)GetValue(ViewModelProperty);
-            set => SetValue(ViewModelProperty, value);
+            _scope.Dispose();
         }
+    }
 
-        internal virtual void OnViewModelChanged(DependencyPropertyChangedEventArgs e)
-        {
-        }
-
-        public ReactiveUserControl()
-        {
-            
-            DataContext = ViewModel;
-            
-        }
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
     }
 }

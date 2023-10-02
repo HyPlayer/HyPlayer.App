@@ -12,31 +12,40 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-using HyPlayer.App.Views.Controls.Base;
-using HyPlayer.App.Interfaces.Views;
+using HyPlayer.Views.Controls.Base;
+using HyPlayer.Interfaces.Views;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace HyPlayer.App.Views.Controls.App
+namespace HyPlayer.Views.Controls.App
 {
     public sealed partial class DesktopNavigationView : NavigationViewBase
     {
+        public static readonly DependencyProperty IsPaneOpenProperty = DependencyProperty.Register(
+            nameof(IsPaneOpen), typeof(bool), typeof(DesktopNavigationView), new PropertyMetadata(default(bool)));
+
+        public bool IsPaneOpen
+        {
+            get => (bool)GetValue(IsPaneOpenProperty);
+            set => SetValue(IsPaneOpenProperty, value);
+        }
+
         public DesktopNavigationView()
         {
             this.InitializeComponent();
-            HyPlayer.App.App.contentFrame = contentFrame;
+            HyPlayer.App.contentFrame = contentFrame;
         }
 
         
 
         private void NavView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
         {
-            var invokedItemTag = HyPlayer.App.App.GetService<IPageService>().GetPageType((args.InvokedItemContainer as NavigationViewItem)?.Tag?.ToString());
+            var invokedItemTag = HyPlayer.App.GetService<IPageService>().GetPageType((args.InvokedItemContainer as NavigationViewItem)?.Tag?.ToString());
             var invokedItemName = (args.InvokedItemContainer as NavigationViewItem)?.Content?.ToString();
 
 
-            HyPlayer.App.App.GetService<INavigationService>().NavigateTo(invokedItemTag);
+            HyPlayer.App.GetService<INavigationService>().NavigateTo(invokedItemTag);
             // NavView.Header = invokedItemName;        
         }
 

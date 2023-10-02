@@ -11,19 +11,19 @@ using AppWindow = Microsoft.UI.Windowing.AppWindow;
 using AppWindowTitleBar = Microsoft.UI.Windowing.AppWindowTitleBar;
 using Microsoft.UI.Xaml.Controls;
 using Windows.UI.WindowManagement;
-using HyPlayer.App.Interfaces.Views;
-using HyPlayer.App.ViewModels;
+using HyPlayer.Interfaces.Views;
+using HyPlayer.ViewModels;
 using Depository.Abstraction.Interfaces;
 using Depository.Abstraction.Models.Options;
 using Depository.Core;
 using Depository.Extensions;
-using HyPlayer.App.Interfaces.ViewModels;
-using HyPlayer.App.Views.Controls.Dialogs;
-using HyPlayer.App.Views.Pages;
-using HyPlayer.App.Views.Controls.App;
+using HyPlayer.Interfaces.ViewModels;
+using HyPlayer.Views.Controls.Dialogs;
+using HyPlayer.Views.Pages;
+using HyPlayer.Views.Controls.App;
 using System.Runtime.CompilerServices;
 
-namespace HyPlayer.App.Views.Window
+namespace HyPlayer.Views.Window
 {
     public sealed partial class MainWindow : WindowEx
     {
@@ -40,14 +40,7 @@ namespace HyPlayer.App.Views.Window
             _shellViewModel = App.GetDIContainer().ResolveInScope<ShellViewModel>(_scope);
             _accountViewModel = App.GetDIContainer().ResolveInScope<AccountViewModel>(_scope);
 
-            // Customize the Title Bar.
-            titleBar = this.AppWindow.TitleBar;
-            titleBar.BackgroundColor = Colors.Transparent;
-            titleBar.ButtonBackgroundColor = Colors .Transparent;
-            titleBar.InactiveBackgroundColor = Colors .Transparent;
-            titleBar.ButtonInactiveBackgroundColor = Colors .Transparent;
-            titleBar.IconShowOptions = IconShowOptions.HideIconAndSystemMenu;
-            
+            titleBar = AppWindow.TitleBar;
 
             // Get caption button occlusion information.
             int CaptionButtonOcclusionWidthRight = titleBar.RightInset;
@@ -58,7 +51,6 @@ namespace HyPlayer.App.Views.Window
             LeftPaddingColumn.Width = new GridLength(CaptionButtonOcclusionWidthLeft);
             if (AppWindowTitleBar.IsCustomizationSupported())
             {
-                titleBar.ExtendsContentIntoTitleBar = true;
                 AppTitleBar.Loaded += AppTitleBar_Loaded;
                 AppTitleBar.SizeChanged += AppTitleBar_SizeChanged;
             }
@@ -72,31 +64,19 @@ namespace HyPlayer.App.Views.Window
                 // the title bar, such as search.
             }
 
-            // Use High TitleBar.
-            bool isTallTitleBar = true;
-
             // A taller title bar is only supported when drawing a fully custom title bar
             if (AppWindowTitleBar.IsCustomizationSupported() && titleBar.ExtendsContentIntoTitleBar)
             {
-                if (isTallTitleBar)
-                {
-                    // Choose a tall title bar to provide more room for interactive elements 
-                    // like search box or person picture controls.
-                    titleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
-                }
-                else
-                {
-                    titleBar.PreferredHeightOption = TitleBarHeightOption.Standard;
-                }
+               
                 // Recalculate the drag region for the custom title bar 
                 // if you explicitly defined new draggable areas.
                 SetDragRegionForCustomTitleBar(AppWindow);
             }
 
-            // Set the rootFrame of the MainWindow as App.rootFrame.
+            // Navigate to ShellPage
             rootFrame.Navigate(typeof(ShellPage));
 
-            this.AppWindow.Changed += AppWindow_Changed;
+            AppWindow.Changed += AppWindow_Changed;
         }
 
         private void AppWindow_Changed(AppWindow sender, Microsoft.UI.Windowing.AppWindowChangedEventArgs args)
@@ -208,7 +188,7 @@ namespace HyPlayer.App.Views.Window
                 List<Windows.Graphics.RectInt32> dragRectsList = new();
 
                 Windows.Graphics.RectInt32 dragRectL;
-                dragRectL.X = (int)((LeftPaddingColumn.ActualWidth) * scaleAdjustment);
+                dragRectL.X = (int)((LeftPaddingColumn.ActualWidth) * scaleAdjustment)+48;
                 dragRectL.Y = 0;
                 dragRectL.Height = (int)(AppTitleBar.ActualHeight * scaleAdjustment);
                 dragRectL.Width = (int)((IconColumn.ActualWidth
@@ -237,7 +217,7 @@ namespace HyPlayer.App.Views.Window
 
         private async void UserButton_Click(object sender, RoutedEventArgs e)
         {
-            if(!_accountViewModel.IsLogin)
+            if(!_shellViewModel.AccountViewModel.IsLogin)
             {
                 var signin_dialog = new SignInDialog();
                 signin_dialog.XamlRoot = this.Content.XamlRoot;
@@ -245,7 +225,7 @@ namespace HyPlayer.App.Views.Window
             }
             else
             {
-                // App.GetService<INavigationService>().NavigateTo(typeof(MePage));
+                App.GetService<INavigationService>().NavigateTo(typeof(UserPage), _shellViewModel.AccountViewModel.User);
             }
         }
 

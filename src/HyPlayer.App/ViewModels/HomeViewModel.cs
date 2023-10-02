@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 using AsyncAwaitBestPractices;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using HyPlayer.App.Interfaces;
-using HyPlayer.App.Interfaces.ViewModels;
+using HyPlayer.Interfaces;
+using HyPlayer.Interfaces.ViewModels;
 using HyPlayer.NeteaseApi;
 using HyPlayer.NeteaseApi.ApiContracts;
 using HyPlayer.NeteaseProvider.Mappers;
@@ -16,7 +16,7 @@ using HyPlayer.PlayCore.Abstraction.Models.Containers;
 using HyPlayer.PlayCore.Abstraction.Models.Resources;
 using HyPlayer.NeteaseApi.Models.ResponseModels;
 
-namespace HyPlayer.App.ViewModels;
+namespace HyPlayer.ViewModels;
 
 public partial class HomeViewModel
     : ObservableObject, IScrollableViewModel, IConnectedViewModel, IScopedViewModel
@@ -46,25 +46,38 @@ public partial class HomeViewModel
     [RelayCommand]
     public async Task GetSongsAsync()
     {
-        // ½öÔÚµÇÂ¼ºó¼ÓÔØ
+        // ä»…åœ¨ç™»å½•ååŠ è½½
         if (AccountViewModel.IsLogin)
         {
-            // ÍÆ¼ö¸èµ¥
-            PlayLists =
-                (await ((await _provider.GetRecommendationAsync("pl")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
-                .Select(t => (NeteasePlaylist)t).ToList();
-
-            // ÍÆ¼ö¸èÇú
-            RecommendedSongs =
-                (await ((await _provider.GetRecommendationAsync("sg")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
-                .Select(t => (NeteaseSong)t).ToList();
+            if((await ((await _provider.GetRecommendationAsync("pl")) as NeteaseActionGettableContainer)?.GetAllItemsAsync()) is not null)
+            {
+                // æ¨èæ­Œå•
+                PlayLists =
+                    (await ((await _provider.GetRecommendationAsync("pl")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
+                    .Select(t => (NeteasePlaylist)t).ToList();
+            }
+            
+            
+            if((await ((await _provider.GetRecommendationAsync("sg")) as NeteaseActionGettableContainer)?.GetAllItemsAsync()) is not null)
+            {
+                // æ¨èæ­Œæ›²
+                RecommendedSongs =
+                    (await ((await _provider.GetRecommendationAsync("sg")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
+                    .Select(t => (NeteaseSong)t).ToList();
+            }
+            
+            
         }
 
-        // ²»µÇÂ¼¼ÓÔØ
+        // ä¸ç™»å½•åŠ è½½
 
-        // ÅÅĞĞ°ñ
-        TopLists =
-            (await ((await _provider.GetRecommendationAsync("ct")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
-            .Select(t => (NeteasePlaylist)t).ToList();
+        // æ’è¡Œæ¦œ
+        if((await ((await _provider.GetRecommendationAsync("ct")) as NeteaseActionGettableContainer)?.GetAllItemsAsync()) is not null)
+        {
+            TopLists =
+                (await ((await _provider?.GetRecommendationAsync("ct")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())?
+                .Select(t => (NeteasePlaylist)t).ToList();
+        }
+        
     }
 }

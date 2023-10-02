@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="HyPlayer.PlayCore.Abstraction" Version="0.1.0.2" />
+      <PackageReference Include="HyPlayer.PlayCore.Abstraction" Version="0.1.3" />
     </ItemGroup>
 
 </Project>
