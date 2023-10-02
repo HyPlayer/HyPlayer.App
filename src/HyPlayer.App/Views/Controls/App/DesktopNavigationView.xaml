@@ -24,7 +24,7 @@
             <Frame x:Name="contentFrame" />
 
             <NavigationView.MenuItems>
-                <NavigationViewItemHeader x:Uid="MainNav_Header_Discover" Margin="0,3,3,3" />
+                <NavigationViewItemHeader Margin="0,3,3,3" x:Uid="MainNav_Header_Discover"/>
                 <NavigationViewItem
                     x:Name="Home"
                     x:Uid="MainNav_Item_Home"
