@@ -379,7 +379,7 @@
         </DataTemplate>
     </local:HomePageBase.Resources>
     <Grid>
-        <ScrollView x:Name="MainScrollViewer">
+        <ScrollViewer x:Name="MainScrollViewer">
             <Grid Margin="0,0,0,128" RowSpacing="12">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="340" />
@@ -722,7 +722,7 @@
 
                 </Grid>
             </Grid>
-        </ScrollView>
+        </ScrollViewer>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState>
