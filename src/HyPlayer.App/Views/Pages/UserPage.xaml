@@ -21,8 +21,8 @@
             </Grid.ColumnDefinitions>
             <StackPanel Margin="20" Orientation="Horizontal">
                 <PersonPicture
-                    Height="112"
                     Width="112"
+                    Height="112"
                     Margin="8,4"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"

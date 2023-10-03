@@ -13,18 +13,18 @@
         <NavigationView
             x:Name="NavView"
             BackRequested="{x:Bind ViewModel.GoBack}"
-            IsBackEnabled="True"
             IsBackButtonVisible="{x:Bind contentFrame.CanGoBack, Mode=OneWay, Converter={StaticResource BooleanToNavButtonVisibleConverter}}"
+            IsBackEnabled="True"
+            IsPaneOpen="{x:Bind IsPaneOpen}"
             IsPaneToggleButtonVisible="True"
             ItemInvoked="{x:Bind NavView_ItemInvoked}"
             Loaded="NavView_Loaded"
-            Style="{StaticResource LeftNavViewDefaultStyle}"
-            IsPaneOpen="{x:Bind IsPaneOpen}">
+            Style="{StaticResource LeftNavViewDefaultStyle}">
 
             <Frame x:Name="contentFrame" />
 
             <NavigationView.MenuItems>
-                <NavigationViewItemHeader Margin="0,3,3,3" x:Uid="MainNav_Header_Discover"/>
+                <NavigationViewItemHeader x:Uid="MainNav_Header_Discover" Margin="0,3,3,3" />
                 <NavigationViewItem
                     x:Name="Home"
                     x:Uid="MainNav_Item_Home"
