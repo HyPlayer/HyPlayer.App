@@ -1,4 +1,4 @@
-﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml;
 using Microsoft.UI;
 using System;
 using System.Collections.Generic;
@@ -49,8 +49,6 @@ namespace HyPlayer.Extensions.Helpers
             };
             _activeWindows.Add(window);
         }
-
-
 
         static public Window? GetWindowForElement(UIElement element)
         {
