@@ -1,7 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HyPlayer.Interfaces.ViewModels;
-using HyPlayer.NeteaseProvider;
 using HyPlayer.NeteaseProvider.Models;
 
 namespace HyPlayer.ViewModels

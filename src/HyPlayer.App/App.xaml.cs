@@ -1,28 +1,28 @@
-﻿using Microsoft.UI.Xaml;
+using Depository.Abstraction.Interfaces;
+using Depository.Core;
+using Depository.Extensions;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using WinUIEx;
+using Microsoft.UI.Dispatching;
 using System;
 using System.IO;
 using System.Threading.Tasks;
 using Windows.Storage;
-using Depository.Abstraction.Interfaces;
-using Depository.Core;
-using Depository.Extensions;
+using WinUIEx;
 using HyPlayer.Extensions.DependencyInjectionExtensions;
 using HyPlayer.Interfaces.Views;
 using HyPlayer.Services;
 using HyPlayer.PlayCore;
 using HyPlayer.PlayCore.Abstraction;
-using Microsoft.UI.Dispatching;
-using DispatcherQueue = Windows.System.DispatcherQueue;
-using Window = HyPlayer.Views.Window;
-using XamlWindow = Microsoft.UI.Xaml.Window;
-using Pages = HyPlayer.Views.Pages;
 using HyPlayer.ViewModels;
 using HyPlayer.Extensions.Helpers;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+using XamlWindow = Microsoft.UI.Xaml.Window;
+using DispatcherQueue = Windows.System.DispatcherQueue;
+using Pages = HyPlayer.Views.Pages;
+using Window = HyPlayer.Views.Window;
+
+
 
 namespace HyPlayer
 {

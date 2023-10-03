@@ -1,7 +1,6 @@
 using Depository.Abstraction.Interfaces;
 using Depository.Core;
 using Depository.Extensions;
-using HyPlayer.Interfaces.ViewModels;
 using HyPlayer.Interfaces.Views;
 using HyPlayer.ViewModels;
 using Microsoft.UI.Xaml.Controls;

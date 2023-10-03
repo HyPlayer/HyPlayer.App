@@ -1,30 +1,13 @@
-using Depository.Abstraction.Interfaces;
-using Depository.Core;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Depository.Abstraction.Models.Options;
-using Depository.Extensions;
-using HomeViewModel = HyPlayer.ViewModels.HomeViewModel;
-using App = HyPlayer.App;
 using AsyncAwaitBestPractices;
 using HyPlayer.Interfaces.Views;
-using HyPlayer.PlayCore.Abstraction.Models;
 using HyPlayer.NeteaseProvider.Models;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Navigation;
+using System;
+using System.Diagnostics.CodeAnalysis;
+
+using HomeViewModel = HyPlayer.ViewModels.HomeViewModel;
+
 
 namespace HyPlayer.Views.Pages
 {

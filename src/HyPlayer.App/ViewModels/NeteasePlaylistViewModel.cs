@@ -2,7 +2,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HyPlayer.Interfaces.ViewModels;
 using HyPlayer.NeteaseProvider.Models;
-using HyPlayer.PlayCore.Abstraction.Models.SingleItems;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
