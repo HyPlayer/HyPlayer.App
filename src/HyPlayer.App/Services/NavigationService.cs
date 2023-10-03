@@ -1,4 +1,4 @@
-﻿using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
 using System;
@@ -8,7 +8,7 @@ namespace HyPlayer.Services
 {
     internal class NavigationService : INavigationService
     {
-        public bool CanGoBack => App.contentFrame.CanGoBack;
+        public bool CanGoBack => Frame.CanGoBack;
 
         public Frame? Frame => App.contentFrame;
 

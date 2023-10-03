@@ -20,61 +20,7 @@
                 Title="Popup"
                 IsLightDismissEnabled="False"
                 PreferredPlacement="TopRight" />
-            <Border
-                x:Name="AppTitleBar"
-                Height="48"
-                Margin="48,0,0,0"
-                VerticalAlignment="Top"
-                Canvas.ZIndex="1">
-                <Grid x:Name="TitleBarContainer" Height="48">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition x:Name="LeftPaddingColumn" Width="0" />
-                        <ColumnDefinition x:Name="IconColumn" Width="Auto" />
-                        <ColumnDefinition x:Name="TitleColumn" Width="Auto" />
-                        <ColumnDefinition x:Name="LeftDragColumn" Width="*" />
-                        <ColumnDefinition x:Name="SearchColumn" Width="Auto" />
-                        <ColumnDefinition x:Name="RightDragColumn" Width="*" />
-                        <ColumnDefinition x:Name="PersonPictureButton" Width="Auto" />
-                        <ColumnDefinition x:Name="RightPaddingColumn" Width="0" />
-                    </Grid.ColumnDefinitions>
-                    <Image
-                        x:Name="TitleBarIcon"
-                        Grid.Column="1"
-                        Width="16"
-                        Height="16"
-                        Margin="8,0,0,0"
-                        Source="ms-appx:///Assets/Images/StoreLogo.png" />
-                    <TextBlock
-                        x:Name="TitleTextBlock"
-                        Grid.Column="2"
-                        Margin="6,0,0,0"
-                        VerticalAlignment="Center"
-                        FontSize="14"
-                        Style="{StaticResource CaptionTextBlockStyle}"
-                        Text="{x:Bind Title}" />
-                    <search:SearchBox
-                        x:Name="SearchBox"
-                        Grid.Column="4"
-                        Width="400"
-                        Height="36"
-                        MinWidth="250"
-                        MaxWidth="550"
-                        VerticalAlignment="Center"
-                        BorderThickness="0" />
-                    <Button
-                        x:Name="UserButton"
-                        Grid.Column="6"
-                        Width="40"
-                        Height="40"
-                        Margin="0,0,10,0"
-                        VerticalAlignment="Center"
-                        Click="UserButton_Click"
-                        Style="{ThemeResource TitleBarButtonStyle}">
-                        <PersonPicture Width="30" Height="30" />
-                    </Button>
-                </Grid>
-            </Border>
-
+            
             <Frame
                 x:Name="rootFrame"
                 Margin="0,0,0,0"
