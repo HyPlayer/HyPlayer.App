@@ -21,7 +21,6 @@ using XamlWindow = Microsoft.UI.Xaml.Window;
 using DispatcherQueue = Windows.System.DispatcherQueue;
 using Pages = HyPlayer.Views.Pages;
 using Window = HyPlayer.Views.Window;
-using HyPlayer.Views.Window;
 
 
 
@@ -33,73 +32,15 @@ namespace HyPlayer
     public partial class App : Application
     {
         public static Frame? contentFrame;
+        private XamlWindow? window;
 
-        /// <summary>
-        /// Initializes the singleton application object.  This is the first line of authored code
-        /// executed, and as such is the logical equivalent of main() or WinMain().
-        /// </summary>
-        public App()
-        {
-            InitializeComponent();
-
-            UnhandledException += App_UnhandledException;
-        }
-
-        /// <summary>
-        /// Invoked when the application is launched.
-        /// </summary>
-        /// <param name="args">Details about the launch request and process.</param>
-        protected override async void OnLaunched(LaunchActivatedEventArgs args)
-        {
-            base.OnLaunched(args);
-            await EnsureEarlyApp();
-      
-            if(MainWindow.Instance != null) 
-            { 
-                NavigateToRootPage(args);
-
-                MainWindow.Instance?.Activate();
-            }
-        }
-
-        private void NavigateToRootPage(LaunchActivatedEventArgs args)
-        {   
-            GetService<INavigationService>().NavigateTo(typeof(Pages.HomePage));
-        }
-
-        private async Task EnsureEarlyApp()
-        {
-            DispatcherQueue = DispatcherQueue.GetForCurrentThread();
-            Depository = DepositoryFactory.CreateNew();
-
-            // Configure ViewModels.
-            Depository?.AddMvvm();
-
-            // Configure Services.
-            Depository?.AddSingleton<INavigationService, NavigationService>();
-            Depository?.AddSingleton<IPageService, PageService>();
-
-            // Configure PlayCore.
-            Depository?.AddSingleton<PlayCoreBase, Chopin>();
-            var playCore = Depository?.Resolve<PlayCoreBase>();
-            await playCore.RegisterMusicProviderAsync(typeof(NeteaseProvider.NeteaseProvider));
-        }
-
-        #region Exception Handlers        
-        private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
-        {
-            e.Handled = true;
-        }
-        #endregion
-
-        #region Dependency Injection Container
         public IDepository? Depository;
         public DispatcherQueue? DispatcherQueue;
 
         public static T GetService<T>()
             where T : class
         {
-            if ((Current as App)!.Depository?.ResolveDependency(typeof(T)) is not T service)
+            if ((App.Current as App)!.Depository?.ResolveDependency(typeof(T)) is not T service)
             {
                 throw new ArgumentException($"{typeof(T)} needs to be registered in ConfigureServices within App.xaml.cs.");
             }
@@ -116,6 +57,54 @@ namespace HyPlayer
         {
             return (Current as App)!.Depository;
         }
-        #endregion
+
+        /// <summary>
+        /// Initializes the singleton application object.  This is the first line of authored code
+        /// executed, and as such is the logical equivalent of main() or WinMain().
+        /// </summary>
+
+        public App()
+        {
+            this.InitializeComponent();
+        }
+
+        /// <summary>
+        /// Invoked when the application is launched.
+        /// </summary>
+        /// <param name="args">Details about the launch request and process.</param>
+        protected override async void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+        {
+            DispatcherQueue = DispatcherQueue.GetForCurrentThread();
+            Depository = DepositoryFactory.CreateNew();
+            ConfigureServices();
+            await ConfigurePlayCore();
+            window = WindowHelper.CreateWindow();
+            if(window != null) 
+            { 
+                NavigateToRootPage(args);
+
+                window?.Activate();
+            }
+        }
+        
+        private void ConfigureServices()
+        {
+            Depository?.AddMvvm();
+            Depository?.AddSingleton<INavigationService, NavigationService>();
+            Depository?.AddSingleton<IPageService, PageService>();
+        }
+
+        private async Task ConfigurePlayCore()
+        {
+            Depository?.AddSingleton<PlayCoreBase, Chopin>();
+            var playCore = Depository?.Resolve<PlayCoreBase>();
+            await playCore.RegisterMusicProviderAsync(typeof(NeteaseProvider.NeteaseProvider));
+        }
+
+        private void NavigateToRootPage(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+        {   
+            GetService<INavigationService>().NavigateTo(typeof(Pages.HomePage));
+        }
+       
     }
 }
