@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="HomePage_Btn_DailyRcmd.Text" xml:space="preserve">
-    <value>Daily Mix</value>
+    <value>Daily Recommended</value>
   </data>
   <data name="HomePage_Btn_MyLike.Text" xml:space="preserve">
     <value>My Favorites</value>
@@ -136,7 +136,7 @@
     <value>Official Playlist</value>
   </data>
   <data name="HomePage_HypBtn_RcmdSonglist.Text" xml:space="preserve">
-    <value>Recommended Songlist</value>
+    <value>Recommended Playlists</value>
   </data>
   <data name="HomePage_HypBtn_RcmdSongs.Text" xml:space="preserve">
     <value>Recommended Songs</value>
@@ -154,13 +154,13 @@
     <value>Good morning!</value>
   </data>
   <data name="HomePage_GreetingSuffix_Morning" xml:space="preserve">
-    <value>Start a new day with music</value>
+    <value>Turn on a new day with music</value>
   </data>
   <data name="HomePage_GreetingPrefix_Noon" xml:space="preserve">
     <value>Good noon!</value>
   </data>
   <data name="HomePage_GreetingSuffix_Noon" xml:space="preserve">
-    <value>Listen to music to relax</value>
+    <value>Let's listen to music and relax.</value>
   </data>
   <data name="HomePage_GreetingPrefix_Afternoon" xml:space="preserve">
     <value>Good Afternoon!</value>
@@ -172,19 +172,19 @@
     <value>Good Evening!</value>
   </data>
   <data name="HomePage_GreetingSuffix_Night" xml:space="preserve">
-    <value>Get started with music to ease a day of fatigue</value>
+    <value>Tune in to ease the day's fatigue.</value>
   </data>
   <data name="HomePage_GreetingPrefix_DeepNight" xml:space="preserve">
     <value>Good night.</value>
   </data>
   <data name="HomePage_GreetingSuffix_DeepNight" xml:space="preserve">
-    <value>May the lullaby help you fall asleep</value>
+    <value>May the lullaby help you fall asleep.</value>
   </data>
   <data name="MainNav_Header_Discover.Content" xml:space="preserve">
     <value>Discover</value>
   </data>
   <data name="MainNav_Header_Songlist.Content" xml:space="preserve">
-    <value>Playlist</value>
+    <value>Playlists</value>
   </data>
   <data name="MainNav_Item_CreatePlaylist.Content" xml:space="preserve">
     <value>Create playlist</value>
@@ -199,7 +199,7 @@
     <value>Home</value>
   </data>
   <data name="MainNav_Item_MyCreatedPlaylist.Content" xml:space="preserve">
-    <value>Playlist of mine</value>
+    <value>Playlists I created</value>
   </data>
   <data name="MainNav_Item_MyLibrary.Content" xml:space="preserve">
     <value>My Collections</value>
@@ -208,7 +208,7 @@
     <value>Liked Songs</value>
   </data>
   <data name="MainNav_Item_MyStoredPlaylist.Content" xml:space="preserve">
-    <value>Playlist of favor</value>
+    <value>Playlists of favor</value>
   </data>
   <data name="MainNav_Item_PersonalFm.Content" xml:space="preserve">
     <value>For You</value>
