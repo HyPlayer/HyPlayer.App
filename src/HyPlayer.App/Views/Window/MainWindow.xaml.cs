@@ -16,6 +16,7 @@ using WinUIEx;
 
 using AppWindow = Microsoft.UI.Windowing.AppWindow;
 using AppWindowTitleBar = Microsoft.UI.Windowing.AppWindowTitleBar;
+using HyPlayer.Extensions.Helpers;
 
 
 namespace HyPlayer.Views.Window
@@ -26,6 +27,9 @@ namespace HyPlayer.Views.Window
         private AccountViewModel _accountViewModel;
         private readonly IDepositoryResolveScope _scope;
         private readonly AppWindowTitleBar titleBar;
+
+        private static MainWindow _instance;
+        public static MainWindow Instance => _instance ?? (_instance = (MainWindow)WindowHelper.CreateWindow(WindowType.Main));
 
         public MainWindow()
         {

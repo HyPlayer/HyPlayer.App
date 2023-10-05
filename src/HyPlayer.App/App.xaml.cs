@@ -21,6 +21,7 @@ using XamlWindow = Microsoft.UI.Xaml.Window;
 using DispatcherQueue = Windows.System.DispatcherQueue;
 using Pages = HyPlayer.Views.Pages;
 using Window = HyPlayer.Views.Window;
+using HyPlayer.Views.Window;
 
 
 
@@ -32,7 +33,6 @@ namespace HyPlayer
     public partial class App : Application
     {
         public static Frame? contentFrame;
-        private XamlWindow? window;
 
         public IDepository? Depository;
         public DispatcherQueue? DispatcherQueue;
@@ -78,12 +78,12 @@ namespace HyPlayer
             Depository = DepositoryFactory.CreateNew();
             ConfigureServices();
             await ConfigurePlayCore();
-            window = WindowHelper.CreateWindow();
-            if(window != null) 
+            
+            if(MainWindow.Instance != null) 
             { 
                 NavigateToRootPage(args);
 
-                window?.Activate();
+                MainWindow.Instance.Activate();
             }
         }
         

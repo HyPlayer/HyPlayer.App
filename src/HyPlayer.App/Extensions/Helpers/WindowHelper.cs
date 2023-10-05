@@ -1,47 +1,46 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.ApplicationModel;
-using WinRT.Interop;
 using HyPlayer.Views.Window;
 using Microsoft.UI.Windowing;
+using WinUIEx;
+
 
 namespace HyPlayer.Extensions.Helpers
 {
     public class WindowHelper
     {
-        static public Window CreateWindow(bool high = true)
+        static public Window CreateWindow(WindowType windowType)
         {
-            Window newWindow = new MainWindow();
-
-            InitializeTitleBarForWindow(newWindow, high);
-
-            TrackWindow(newWindow);
-            return newWindow;
+            if (windowType == WindowType.Main)
+            {
+                Window newWindow = new MainWindow();
+                InitializeTitleBarForWindow(newWindow);
+                TrackWindow(newWindow);
+                return newWindow;
+            }
+            else if (windowType == WindowType.SmallSize)
+            {
+                Window newWindow = new SmallWindow();
+                InitializeTitleBarForWindow(newWindow, false);
+                TrackWindow(newWindow);
+                return newWindow;
+            }
+            else if (windowType == WindowType.Blank)
+            {
+                Window newWindow = new WindowEx();
+                TrackWindow(newWindow);
+                return newWindow;
+            }
+            else
+            {
+                Window newWindow = new WindowEx();
+                TrackWindow(newWindow);
+                return newWindow;
+            }
         }
 
-        static public Window CreateSmallWindow()
-        {
-            Window newWindow = new SmallWindow();
-
-            InitializeTitleBarForWindow(newWindow, false);
-
-            TrackWindow(newWindow);
-            return newWindow;
-        }
-
-        static public Window CreateBlankWindow()
-        {
-            Window newWindow = new Window();
-
-            TrackWindow(newWindow);
-            return newWindow;
-        }
-
+        
         static public void TrackWindow(Window window)
         {
             window.Closed += (sender, args) => {
@@ -98,6 +97,13 @@ namespace HyPlayer.Extensions.Helpers
         static public List<Window> ActiveWindows { get { return _activeWindows; } }
 
         static private List<Window> _activeWindows = new List<Window>();
+    }
+
+    public enum WindowType
+    {
+        Main,
+        SmallSize,
+        Blank
     }
 }
 
