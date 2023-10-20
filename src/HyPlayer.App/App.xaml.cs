@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 using XamlWindow = Microsoft.UI.Xaml.Window;
 using DispatcherQueue = Windows.System.DispatcherQueue;
+using HyPlayer.Views;
 
 
 namespace HyPlayer
@@ -62,7 +63,14 @@ namespace HyPlayer
             await ConfigurePlayCore();
             window = GetService<IWindowManagementService>().Current;
             if(window != null) 
-            { 
+            {
+                GetService<IWindowManagementService>().EnsureEarlyWindow(window);
+
+                
+                var rootFrame = new Frame();
+                window.Content = rootFrame;
+                
+                rootFrame.Navigate(typeof(ShellPage), args);
                 NavigateToRootPage(args);
 
                 window?.Activate();

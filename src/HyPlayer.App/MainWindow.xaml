@@ -8,5 +8,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ex="using:WinUIEx"
     mc:Ignorable="d">
+    <ex:WindowEx.SystemBackdrop>
+        <MicaBackdrop Kind="Base" />
+    </ex:WindowEx.SystemBackdrop>
 
 </ex:WindowEx>
