@@ -1,7 +1,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using HyPlayer.Interfaces.Services;
 using HyPlayer.Interfaces.ViewModels;
-using HyPlayer.Interfaces.Views;
 
 
 namespace HyPlayer.ViewModels

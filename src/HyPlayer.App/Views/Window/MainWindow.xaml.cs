@@ -1,7 +1,6 @@
 using Depository.Abstraction.Interfaces;
 using Depository.Core;
 using Depository.Extensions;
-using HyPlayer.Interfaces.Views;
 using HyPlayer.ViewModels;
 using HyPlayer.Views.Controls.Dialogs;
 using HyPlayer.Views.Pages;
@@ -16,6 +15,7 @@ using WinUIEx;
 
 using AppWindow = Microsoft.UI.Windowing.AppWindow;
 using AppWindowTitleBar = Microsoft.UI.Windowing.AppWindowTitleBar;
+using HyPlayer.Interfaces.Services;
 
 
 namespace HyPlayer.Views.Window

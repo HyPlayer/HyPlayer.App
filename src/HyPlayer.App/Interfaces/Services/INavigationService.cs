@@ -2,7 +2,7 @@
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace HyPlayer.Interfaces.Views;
+namespace HyPlayer.Interfaces.Services;
 
 public interface INavigationService
 {
@@ -15,7 +15,7 @@ public interface INavigationService
 
     Frame? Frame
     {
-        get; 
+        get;
     }
 
     bool NavigateTo(Type Page, object? parameter = null);
