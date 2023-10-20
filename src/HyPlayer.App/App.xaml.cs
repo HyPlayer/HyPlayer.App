@@ -1,27 +1,9 @@
 using Depository.Abstraction.Interfaces;
-using Depository.Core;
-using Depository.Extensions;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Dispatching;
 using System;
-using System.IO;
 using System.Threading.Tasks;
-using Windows.Storage;
-using WinUIEx;
-using HyPlayer.Extensions.DependencyInjectionExtensions;
-using HyPlayer.Services;
-using HyPlayer.PlayCore;
-using HyPlayer.PlayCore.Abstraction;
-using HyPlayer.ViewModels;
-using HyPlayer.Extensions.Helpers;
 
 using XamlWindow = Microsoft.UI.Xaml.Window;
 using DispatcherQueue = Windows.System.DispatcherQueue;
-using Pages = HyPlayer.Views.Pages;
-using Window = HyPlayer.Views.Window;
-using HyPlayer.Interfaces.Services;
-
 
 
 namespace HyPlayer
@@ -78,7 +60,7 @@ namespace HyPlayer
             Depository = DepositoryFactory.CreateNew();
             ConfigureServices();
             await ConfigurePlayCore();
-            window = WindowHelper.CreateWindow();
+            window = GetService<IWindowManagementService>().Current;
             if(window != null) 
             { 
                 NavigateToRootPage(args);
@@ -91,7 +73,7 @@ namespace HyPlayer
         {
             Depository?.AddMvvm();
             Depository?.AddSingleton<INavigationService, NavigationService>();
-            Depository?.AddSingleton<IPageService, PageService>();
+            Depository?.AddSingleton<IWindowManagementService, WindowManagementService>();
         }
 
         private async Task ConfigurePlayCore()
@@ -103,7 +85,7 @@ namespace HyPlayer
 
         private void NavigateToRootPage(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {   
-            GetService<INavigationService>().NavigateTo(typeof(Pages.HomePage));
+            // GetService<INavigationService>().NavigateTo(typeof(Pages.HomePage));
         }
        
     }

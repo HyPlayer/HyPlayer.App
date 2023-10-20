@@ -22,19 +22,10 @@
  
   <ItemGroup>
     <None Remove="Controls\Dialogs\SignInDialog.xaml" />
+    <None Remove="MainWindow.xaml" />
     <None Remove="Styles\Styles.Overwrite.xaml" />
-    <None Remove="Views\Controls\App\DesktopNavigationView.xaml" />
-    <None Remove="Views\Controls\App\HomePageHeaderImage.xaml" />
-    <None Remove="Views\Controls\Netease\SongListView\SongListView.xaml" />
-    <None Remove="Views\Controls\Search\SearchBox.xaml" />
-    <None Remove="Views\Pages\ErrorPage.xaml" />
-    <None Remove="Views\Pages\HomePage.xaml" />
-    <None Remove="Views\Pages\PlaylistPage.xaml" />
-    <None Remove="Views\Pages\SearchPage.xaml" />
-    <None Remove="Views\Pages\ShellPage.xaml" />
-    <None Remove="Views\Pages\UserPage.xaml" />
-    <None Remove="Views\Window\MainWindow.xaml" />
-    <None Remove="Views\Window\SmallWindow.xaml" />
+    <None Remove="Views\ExtendedSplashScreen.xaml" />
+    <None Remove="Views\ShellPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Page Remove="Controls\App\SelectableTextBox.xaml" />
@@ -42,7 +33,6 @@
     <Page Remove="resources\Dark.xaml" />
     <Page Remove="resources\Light.xaml" />
     <Page Remove="resources\Theme.xaml" />
-    <Page Remove="Views\Controls\App\RedirectVisualView.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -66,30 +56,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Views\Pages\ErrorPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Views\Pages\HomePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Views\Window\SmallWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Views\Window\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
-  <ItemGroup>
     <Page Update="Styles\Styles.Overwrite.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -105,6 +71,9 @@
     <None Update="Controls\App\SelectableTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <Page Update="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <None Update="Resources\Styles\Themes.Dark.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
@@ -114,28 +83,10 @@
     <None Update="Resources\Theme.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
-    <None Update="Views\Controls\CoolControls\RedirectVisualView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <Page Update="Views\Pages\UserPage.xaml">
+    <Page Update="Views\ShellPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="Views\Pages\SearchPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Controls\Netease\SongListView\SongListView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Pages\PlaylistPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Controls\App\HomePageHeaderImage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Controls\Search\SearchBox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Controls\App\DesktopNavigationView.xaml">
+    <Page Update="Views\ExtendedSplashScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

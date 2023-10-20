@@ -1,26 +1,29 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
 
-namespace HyPlayer.Interfaces.Services;
-
-public interface INavigationService
+namespace HyPlayer.Interfaces.Services
 {
-    event NavigatedEventHandler Navigated;
-
-    bool CanGoBack
+    public interface INavigationService
     {
-        get;
-    }
+        event NavigatedEventHandler Navigated;
+    
+        bool CanGoBack
+        {
+            get;
+        }
 
-    Frame? Frame
-    {
-        get;
-    }
+        Frame? Frame
+        {
+            get;
+        }
 
-    bool NavigateTo(Type Page, object? parameter = null);
+        bool NavigateTo(Page Page, object? parameter = null);
 
-    bool NavigateTo(Page Page, object? parameter = null);
+        bool GoBack();
 
-    bool GoBack();
+        
+}
 }
