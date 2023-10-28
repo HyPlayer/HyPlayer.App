@@ -6,6 +6,7 @@
     xmlns:local="using:HyPlayer.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:HyPlayer.Controls"
     mc:Ignorable="d">
 
     <Grid>
@@ -14,6 +15,9 @@
             <RowDefinition x:Name="NavViewRowDefinition" Height="*" />
             <RowDefinition x:Name="PlayBarRowDefinition" Height="96" />
         </Grid.RowDefinitions>
-        <NavigationView Grid.Row="1" Style="{ThemeResource LeftNavViewDefaultStyle}"/>
+        <controls:AppTitleBar />
+        <NavigationView Grid.Row="1" Style="{ThemeResource LeftNavViewDefaultStyle}">
+            <Frame x:Name="contentFrame" />
+        </NavigationView>
     </Grid>
 </local:ShellPageBase>

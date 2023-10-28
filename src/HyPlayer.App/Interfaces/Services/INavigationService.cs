@@ -15,12 +15,9 @@ namespace HyPlayer.Interfaces.Services
             get;
         }
 
-        Frame? Frame
-        {
-            get;
-        }
+        Frame? Frame { get; set; }
 
-        bool NavigateTo(Page Page, object? parameter = null);
+        bool NavigateTo(Type Page, object? parameter = null);
 
         bool GoBack();
 

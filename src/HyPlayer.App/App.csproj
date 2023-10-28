@@ -21,15 +21,14 @@
   
  
   <ItemGroup>
-    <None Remove="Controls\Dialogs\SignInDialog.xaml" />
+    <None Remove="Controls\App\AppTitleBar.xaml" />
     <None Remove="MainWindow.xaml" />
     <None Remove="Styles\Styles.Overwrite.xaml" />
     <None Remove="Views\ExtendedSplashScreen.xaml" />
+    <None Remove="Views\HomePage.xaml" />
     <None Remove="Views\ShellPage.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <Page Remove="Controls\App\SelectableTextBox.xaml" />
-    <Page Remove="Controls\App\PivotExtensions\PivotExHeaderView.xaml" />
     <Page Remove="resources\Dark.xaml" />
     <Page Remove="resources\Light.xaml" />
     <Page Remove="resources\Theme.xaml" />
@@ -37,7 +36,8 @@
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Labs.WinUI.SettingsControls" Version="0.0.18" />
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="CommunityToolkit.WinUI.Helpers" Version="8.0.230907" />
     <PackageReference Include="CommunityToolkit.WinUI.Notifications" Version="7.1.2" />
     <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2" />
     <PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.1.2" />
@@ -68,9 +68,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="Controls\App\AppTitleBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <None Update="Controls\App\SelectableTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <Page Update="Views\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -94,7 +100,6 @@
   <ItemGroup>
     <Compile Remove="Contract\Services\IPageService.cs" />
     <Compile Remove="Helpers\UIHelper.cs" />
-    <Compile Remove="Controls\App\PivotExtensions\PivotEx.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,7 +3,7 @@ using Depository.Abstraction.Enums;
 using Depository.Abstraction.Interfaces;
 using HyPlayer.Interfaces.ViewModels;
 
-namespace HyPlayer.Extensions.DependencyInjectionExtensions;
+namespace HyPlayer.Extensions.DIExtensions;
 
 public static class MvvmExtensions
 {

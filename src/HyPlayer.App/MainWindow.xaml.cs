@@ -1,3 +1,5 @@
+using System;
+
 namespace HyPlayer
 {
     /// <summary>
@@ -8,6 +10,17 @@ namespace HyPlayer
         public MainWindow()
         {
             this.InitializeComponent();
+            App.themeListener.ThemeChanged += MainWindow_ThemeChanged;
+        }
+
+        private void MainWindow_ThemeChanged(CommunityToolkit.WinUI.Helpers.ThemeListener sender)
+        {
+            var titleBar = AppWindow.TitleBar;
+
+            if (sender.CurrentTheme == ApplicationTheme.Light) 
+            {
+                titleBar.ForegroundColor = Colors.Black;
+            }
         }
 
         public Frame GetRootFrame()

@@ -2,6 +2,7 @@
 global using Microsoft.UI;
 global using Microsoft.UI.Xaml;
 global using Microsoft.UI.Windowing;
+global using Microsoft.UI.Dispatching;
 global using Microsoft.UI.Composition;
 global using Microsoft.UI.Xaml.Controls;
 global using Microsoft.UI.Xaml.Navigation;
@@ -9,6 +10,11 @@ global using Microsoft.UI.Xaml.Documents;
 global using Microsoft.UI.Xaml.Media;
 global using Microsoft.UI.Xaml.Shapes;
 global using Microsoft.UI.Xaml.Input;
+global using Microsoft.Windows.AppLifecycle;
+
+// System namespaces.
+global using System;
+global using System.Threading.Tasks;
 
 // Community Toolkit namespaces.
 global using CommunityToolkit.Mvvm.Collections;
@@ -25,6 +31,7 @@ global using CommunityToolkit.WinUI.UI.Media;
 
 // Depository namespaces.
 global using Depository.Abstraction;
+global using Depository.Abstraction.Interfaces;
 global using Depository.Core;
 global using Depository.Extensions;
 
@@ -43,7 +50,8 @@ global using HyPlayer.PlayCore.Abstraction;
 global using HyPlayer.PlayCore.PlayListControllers;
 
 // HyPlayer APP namespaces.
-global using HyPlayer.Extensions.DependencyInjectionExtensions;
+global using HyPlayer.Extensions.DIExtensions;
 global using HyPlayer.ViewModels;
 global using HyPlayer.Services;
 global using HyPlayer.Interfaces.Services;
+global using HyPlayer.Views;

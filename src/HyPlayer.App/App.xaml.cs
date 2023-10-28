@@ -1,12 +1,3 @@
-using Depository.Abstraction.Interfaces;
-using System;
-using System.Threading.Tasks;
-
-using XamlWindow = Microsoft.UI.Xaml.Window;
-using DispatcherQueue = Windows.System.DispatcherQueue;
-using HyPlayer.Views;
-
-
 namespace HyPlayer
 {
     /// <summary>
@@ -14,8 +5,10 @@ namespace HyPlayer
     /// </summary>
     public partial class App : Application
     {
+        public static SystemInformation systemInfo => SystemInformation.Instance;
+        public static CommunityToolkit.WinUI.Helpers.ThemeListener themeListener = new();
         public static Frame? contentFrame;
-        private XamlWindow? window;
+        private Window? window;
 
         public IDepository? Depository;
         public DispatcherQueue? DispatcherQueue;
@@ -55,26 +48,16 @@ namespace HyPlayer
         /// Invoked when the application is launched.
         /// </summary>
         /// <param name="args">Details about the launch request and process.</param>
-        protected override async void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+        protected override async void OnLaunched(LaunchActivatedEventArgs args)
         {
+            base.OnLaunched(args);
+            
             DispatcherQueue = DispatcherQueue.GetForCurrentThread();
             Depository = DepositoryFactory.CreateNew();
             ConfigureServices();
             await ConfigurePlayCore();
-            window = GetService<IWindowManagementService>().Current;
-            if(window != null) 
-            {
-                GetService<IWindowManagementService>().EnsureEarlyWindow(window);
 
-                
-                var rootFrame = new Frame();
-                window.Content = rootFrame;
-                
-                rootFrame.Navigate(typeof(ShellPage), args);
-                NavigateToRootPage(args);
-
-                window?.Activate();
-            }
+            GetService<IActivationService>().OnActivated();
         }
         
         private void ConfigureServices()
@@ -82,6 +65,7 @@ namespace HyPlayer
             Depository?.AddMvvm();
             Depository?.AddSingleton<INavigationService, NavigationService>();
             Depository?.AddSingleton<IWindowManagementService, WindowManagementService>();
+            Depository?.AddSingleton<IActivationService, ActivationService>();
         }
 
         private async Task ConfigurePlayCore()
@@ -89,12 +73,6 @@ namespace HyPlayer
             Depository?.AddSingleton<PlayCoreBase, Chopin>();
             var playCore = Depository?.Resolve<PlayCoreBase>();
             await playCore.RegisterMusicProviderAsync(typeof(NeteaseProvider.NeteaseProvider));
-        }
-
-        private void NavigateToRootPage(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
-        {   
-            // GetService<INavigationService>().NavigateTo(typeof(Pages.HomePage));
-        }
-       
+        }      
     }
 }
