@@ -9,7 +9,11 @@
     mc:Ignorable="d">
 
     <Grid>
-        <NavigationView></NavigationView>
-
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="TitleBarRowDefinition" Height="48" />
+            <RowDefinition x:Name="NavViewRowDefinition" Height="*" />
+            <RowDefinition x:Name="PlayBarRowDefinition" Height="96" />
+        </Grid.RowDefinitions>
+        <NavigationView Grid.Row="1" Style="{ThemeResource LeftNavViewDefaultStyle}"/>
     </Grid>
 </local:ShellPageBase>

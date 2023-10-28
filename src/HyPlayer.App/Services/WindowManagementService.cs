@@ -27,9 +27,11 @@ namespace HyPlayer.Services
             titleBar.ButtonBackgroundColor = Colors.Transparent;
             titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
             titleBar.InactiveBackgroundColor = Colors.Transparent;
-
-            titleBar.IconShowOptions = IconShowOptions.HideIconAndSystemMenu;
+            
             titleBar.ExtendsContentIntoTitleBar = true;
+            titleBar.IconShowOptions = IconShowOptions.HideIconAndSystemMenu;
+            titleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
+            
         }
 
         public Window? GetWindowForElement(UIElement Element)

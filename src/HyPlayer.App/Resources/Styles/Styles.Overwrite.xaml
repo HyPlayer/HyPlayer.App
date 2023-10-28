@@ -11,7 +11,7 @@
     <MicaBackdrop x:Key="DefaultMicaSystemBackdrop" Kind="BaseAlt" />
 
     <Thickness x:Key="NavigationViewHeaderMargin">0,0,0,0</Thickness>
-    <Thickness x:Key="NavigationViewContentMargin">0,48,0,96</Thickness>
+    <Thickness x:Key="NavigationViewContentMargin">0,0,0,0</Thickness>
     <Thickness x:Key="NavigationViewContentGridBorderThickness">1,1,0,0</Thickness>
     <CornerRadius x:Key="NavigationViewContentGridCornerRadius">8,0,0,8</CornerRadius>
     <SolidColorBrush x:Key="NavigationViewTopPaneBackground" Color="Transparent" />
@@ -20,7 +20,8 @@
         <Style.Setters>
             <Setter Property="IsPaneOpen" Value="True" />
             <Setter Property="PaneDisplayMode" Value="Auto" />
-            <Setter Property="IsPaneToggleButtonVisible" Value="True" />
+            <Setter Property="IsPaneToggleButtonVisible" Value="False" />
+            <Setter Property="IsBackButtonVisible" Value="Collapsed" />
             <Setter Property="OpenPaneLength" Value="284" />
             <Setter Property="IsSettingsVisible" Value="False" />
             <Setter Property="IsTitleBarAutoPaddingEnabled" Value="True" />

@@ -27,6 +27,7 @@ namespace HyPlayer.Views
         public ShellPage()
         {
             this.InitializeComponent();
+            var titleBar = App.GetService<IWindowManagementService>().GetAppWindowForCrrent().TitleBar;
         }
     }
 
