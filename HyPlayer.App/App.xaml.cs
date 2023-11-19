@@ -1,4 +1,4 @@
-﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -15,9 +15,8 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using WinUIEx;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace HyPlayer.App
 {
@@ -26,6 +25,7 @@ namespace HyPlayer.App
     /// </summary>
     public partial class App : Application
     {
+        public static WindowEx CurrentWindow = new ();
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -41,10 +41,19 @@ namespace HyPlayer.App
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            m_window = new MainWindow();
-            m_window.Activate();
-        }
+            if (CurrentWindow != null)
+            {
+                Frame rootFrame = CurrentWindow.Content as Frame;
+                if (rootFrame is null) 
+                {
+                    rootFrame = new Frame();
+                    CurrentWindow.Content = rootFrame;
 
-        private Window m_window;
+                    rootFrame.Navigate(typeof(MainPage), args);
+                }
+                CurrentWindow.Activate();
+            }
+            
+        }
     }
 }
