@@ -1,4 +1,4 @@
-﻿using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml;
 using Depository.Abstraction.Interfaces;
 using Depository.Core;
@@ -9,7 +9,7 @@ using System;
 namespace HyPlayer.Interfaces.Views;
 
 
-public abstract class ReactiveControlBase<TViewModel> : Page, IDisposable
+public abstract class ReactiveControlBase<TViewModel> : UserControl, IDisposable
     where TViewModel : class, IScopedViewModel
 {
     public static readonly DependencyProperty ViewModelProperty =

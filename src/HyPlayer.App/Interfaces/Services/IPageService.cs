@@ -1,6 +1,6 @@
 using System;
 
-namespace HyPlayer.Interfaces.Views;
+namespace HyPlayer.Interfaces.Services;
 
 public interface IPageService
 {

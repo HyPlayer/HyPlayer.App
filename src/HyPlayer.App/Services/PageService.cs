@@ -1,6 +1,6 @@
 using HyPlayer.Views.Pages;
 using System;
-using HyPlayer.Interfaces.Views;
+using HyPlayer.Interfaces.Services;
 
 namespace HyPlayer.Services
 {

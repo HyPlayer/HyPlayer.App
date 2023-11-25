@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace HyPlayer.Extensions.Helpers
+namespace HyPlayer.Helpers
 {
     public class NavigationHelper
     {
