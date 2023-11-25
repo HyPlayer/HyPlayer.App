@@ -1,7 +1,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using HyPlayer.Views.Controls.Base;
-using HyPlayer.Interfaces.Views;
+using HyPlayer.Interfaces.Services;
 
 
 namespace HyPlayer.Views.Controls.App

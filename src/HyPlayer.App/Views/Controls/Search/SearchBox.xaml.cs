@@ -2,6 +2,7 @@ using HyPlayer.Views.Pages;
 using HyPlayer.Interfaces.Views;
 using HyPlayer.ViewModels;
 using Microsoft.UI.Xaml.Input;
+using HyPlayer.Interfaces.Services;
 
 
 namespace HyPlayer.Views.Controls.Search

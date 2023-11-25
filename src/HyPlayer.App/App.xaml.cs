@@ -10,17 +10,17 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using WinUIEx;
 using HyPlayer.Extensions.DependencyInjectionExtensions;
-using HyPlayer.Interfaces.Views;
 using HyPlayer.Services;
 using HyPlayer.PlayCore;
 using HyPlayer.PlayCore.Abstraction;
 using HyPlayer.ViewModels;
-using HyPlayer.Extensions.Helpers;
 
 using XamlWindow = Microsoft.UI.Xaml.Window;
 using DispatcherQueue = Windows.System.DispatcherQueue;
 using Pages = HyPlayer.Views.Pages;
 using Window = HyPlayer.Views.Window;
+using HyPlayer.Helpers;
+using HyPlayer.Interfaces.Services;
 
 
 

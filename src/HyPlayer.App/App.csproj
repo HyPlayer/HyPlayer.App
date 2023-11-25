@@ -23,6 +23,7 @@
   <ItemGroup>
     <None Remove="Controls\Dialogs\SignInDialog.xaml" />
     <None Remove="Styles\Styles.Overwrite.xaml" />
+    <None Remove="Views\Controls\App\AppTitleBar.xaml" />
     <None Remove="Views\Controls\App\DesktopNavigationView.xaml" />
     <None Remove="Views\Controls\App\HomePageHeaderImage.xaml" />
     <None Remove="Views\Controls\Netease\SongListView\SongListView.xaml" />
@@ -107,6 +108,9 @@
     <None Update="Resources\Theme.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <Page Update="Views\Controls\App\AppTitleBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <None Update="Views\Controls\CoolControls\RedirectVisualView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
@@ -135,7 +139,6 @@
 
   <ItemGroup>
     <Compile Remove="Contract\Services\IPageService.cs" />
-    <Compile Remove="Helpers\UIHelper.cs" />
     <Compile Remove="Controls\App\PivotExtensions\PivotEx.cs" />
   </ItemGroup>
 
