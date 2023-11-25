@@ -24,16 +24,6 @@ namespace HyPlayer.Extensions.Helpers
             return newWindow;
         }
 
-        static public Window CreateSmallWindow()
-        {
-            Window newWindow = new SmallWindow();
-
-            InitializeTitleBarForWindow(newWindow, false);
-
-            TrackWindow(newWindow);
-            return newWindow;
-        }
-
         static public Window CreateBlankWindow()
         {
             Window newWindow = new Window();
