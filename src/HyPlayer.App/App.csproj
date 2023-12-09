@@ -147,7 +147,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\AudioGraphAudioService\AudioGraphAudioService.csproj" />
+    <ProjectReference Include="..\Lib\AudioGraphAudioService\AudioGraphAudioService.csproj" />
   </ItemGroup>
   
 </Project>
