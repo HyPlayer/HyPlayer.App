@@ -46,7 +46,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Labs.WinUI.SettingsControls" Version="0.0.18" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
     <PackageReference Include="CommunityToolkit.WinUI.Notifications" Version="7.1.2" />
     <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2" />
@@ -144,10 +143,6 @@
     <Compile Remove="Contract\Services\IPageService.cs" />
     <Compile Remove="Helpers\UIHelper.cs" />
     <Compile Remove="Controls\App\PivotExtensions\PivotEx.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\AudioGraphAudioService\AudioGraphAudioService.csproj" />
   </ItemGroup>
   
 </Project>
