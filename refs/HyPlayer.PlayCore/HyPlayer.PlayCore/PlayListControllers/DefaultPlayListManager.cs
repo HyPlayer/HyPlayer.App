@@ -1,5 +1,4 @@
-﻿using AsyncAwaitBestPractices;
-using Depository.Abstraction.Interfaces;
+﻿using Depository.Abstraction.Interfaces;
 using HyPlayer.PlayCore.Abstraction;
 using HyPlayer.PlayCore.Abstraction.Interfaces.PlayListContainer;
 using HyPlayer.PlayCore.Abstraction.Models;

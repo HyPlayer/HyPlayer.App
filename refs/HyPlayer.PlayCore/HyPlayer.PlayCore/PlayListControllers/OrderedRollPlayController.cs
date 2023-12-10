@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using AsyncAwaitBestPractices;
 using Depository.Abstraction.Interfaces;
 using Depository.Abstraction.Interfaces.NotificationHub;
 using HyPlayer.PlayCore.Abstraction;
@@ -9,6 +8,7 @@ using HyPlayer.PlayCore.Abstraction.Models;
 using HyPlayer.PlayCore.Abstraction.Models.Containers;
 using HyPlayer.PlayCore.Abstraction.Models.Notifications;
 using HyPlayer.PlayCore.Abstraction.Models.SingleItems;
+using HyPlayer.PlayCore.Extensions;
 
 namespace HyPlayer.PlayCore.PlayListControllers;
 
