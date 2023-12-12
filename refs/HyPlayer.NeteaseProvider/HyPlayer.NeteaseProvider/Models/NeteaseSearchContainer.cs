@@ -25,7 +25,7 @@ public class NeteaseSearchContainer : LinerContainerBase, IProgressiveLoadingCon
 
     public override async Task<List<ProvidableItemBase>> GetAllItemsAsync(CancellationToken ctk = new())
     {
-        return (await GetProgressiveItemsListAsync(0, MaxProgressiveCount, ctk)).Item2;
+        return (await GetProgressiveItemsListAsync(0, MaxProgressiveCount, ctk).ConfigureAwait(false)).Item2;
     }
 
     public async Task<(bool, List<ProvidableItemBase>)> GetProgressiveItemsListAsync(int start, int count,CancellationToken ctk = new())
@@ -43,7 +43,7 @@ public class NeteaseSearchContainer : LinerContainerBase, IProgressiveLoadingCon
                                                           Type = SearchTypeId,
                                                           Limit = count,
                                                           Offset = start
-                                                      }, ctk);
+                                                      }, ctk).ConfigureAwait(false);
                 return result.Match(success => (success.Result?.Count > start + count, success.Result?.Items
                                                     ?.Select(t => (ProvidableItemBase)t.MapToNeteaseMusic())
                                                     .ToList() ?? new()),

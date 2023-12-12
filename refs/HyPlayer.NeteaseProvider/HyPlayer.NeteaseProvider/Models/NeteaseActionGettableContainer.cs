@@ -46,7 +46,7 @@ public class NeteaseActionGettableProgressiveContainer : NeteaseActionGettableCo
 
     public override async Task<List<ProvidableItemBase>> GetAllItemsAsync(CancellationToken ctk = new())
     {
-        return (await GetProgressiveItemsListAsync(0, MaxProgressiveCount, ctk)).Item2;
+        return (await GetProgressiveItemsListAsync(0, MaxProgressiveCount, ctk).ConfigureAwait(false)).Item2;
     }
 
     public int MaxProgressiveCount { get; set; } = 30;

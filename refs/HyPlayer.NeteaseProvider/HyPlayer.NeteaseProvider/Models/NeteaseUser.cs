@@ -28,7 +28,7 @@ public class NeteaseUser : PersonBase, IHasCover, IHasDescription
                                                         Uid = ActualId,
                                                         Limit = 9999,
                                                         Offset = 0
-                                                    });
+                                                    }, ctk).ConfigureAwait(false);
         return results.Match(
             success => success.Playlists?.Select(t => (ContainerBase)t.MapToNeteasePlaylist()).ToList() ?? new List<ContainerBase>(),
             error => new List<ContainerBase>()

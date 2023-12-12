@@ -60,7 +60,7 @@ public class NeteaseProvider : ProviderBase,
     {
         try
         {
-            return await Handler.RequestAsync(contract, Option, cancellationToken);
+            return await Handler.RequestAsync(contract, Option, cancellationToken).ConfigureAwait(false);
         }
         catch (Exception ex)
         {
@@ -78,7 +78,7 @@ public class NeteaseProvider : ProviderBase,
     {
         try
         {
-            return await Handler.RequestAsync(contract, request, Option, cancellationToken);
+            return await Handler.RequestAsync(contract, request, Option, cancellationToken).ConfigureAwait(false);
         }
         catch (Exception ex)
         {
@@ -99,7 +99,7 @@ public class NeteaseProvider : ProviderBase,
         try
         {
             return await Handler.RequestAsync<TCustomResponse, TRequest, TResponse, TError, TActualRequest>(
-                contract, request, Option, cancellationToken);
+                contract, request, Option, cancellationToken).ConfigureAwait(false);
         }
         catch (Exception ex)
         {
@@ -122,7 +122,7 @@ public class NeteaseProvider : ProviderBase,
         {
             return await Handler
                 .RequestAsync<TCustomRequest, TCustomResponse, TRequest, TResponse, TError, TActualRequest>(
-                    contract, true, request, Option, cancellationToken);
+                    contract, true, request, Option, cancellationToken).ConfigureAwait(false);
         }
         catch (Exception ex)
         {
@@ -143,7 +143,7 @@ public class NeteaseProvider : ProviderBase,
         try
         {
             return await Handler.RequestAsync(
-                contract, true, request, option, cancellationToken);
+                contract, true, request, option, cancellationToken).ConfigureAwait(false);
         }
         catch (Exception ex)
         {
@@ -163,7 +163,7 @@ public class NeteaseProvider : ProviderBase,
             request.Md5Password = password;
         else
             request.Password = password;
-        var result = await RequestAsync(NeteaseApis.LoginEmailApi, request, ctk);
+        var result = await RequestAsync(NeteaseApis.LoginEmailApi, request, ctk).ConfigureAwait(false);
         return result.Match(
             success =>
             {
@@ -185,7 +185,7 @@ public class NeteaseProvider : ProviderBase,
             request.Md5Password = password;
         else
             request.Password = password;
-        var result = await RequestAsync(NeteaseApis.LoginCellphoneApi, request, ctk);
+        var result = await RequestAsync(NeteaseApis.LoginCellphoneApi, request, ctk).ConfigureAwait(false);
         return result.Match(
             success =>
             {
@@ -199,7 +199,7 @@ public class NeteaseProvider : ProviderBase,
 
     public async Task<List<RawLyricInfo>> GetLyricInfoAsync(SingleSongBase song, CancellationToken ctk = new())
     {
-        var results = await RequestAsync(NeteaseApis.LyricApi, new LyricRequest() { Id = song.ActualId }, ctk);
+        var results = await RequestAsync(NeteaseApis.LyricApi, new LyricRequest() { Id = song.ActualId }, ctk).ConfigureAwait(false);
         return results.Match(
             success => success.Map(),
             _ => new()
@@ -217,7 +217,7 @@ public class NeteaseProvider : ProviderBase,
                                          {
                                              Id = song.ActualId,
                                              Level = quality
-                                         }, ctk);
+                                         }, ctk).ConfigureAwait(false);
 
         NeteaseMusicResource? MatchSuccess(SongUrlResponse response)
         {
@@ -255,7 +255,7 @@ public class NeteaseProvider : ProviderBase,
                     {
                         TrackId = inProviderId.Substring(2),
                         Like = true
-                    }, ctk);
+                    }, ctk).ConfigureAwait(false);
             }
             else
             {
@@ -266,7 +266,7 @@ public class NeteaseProvider : ProviderBase,
                         IsAdd = true,
                         PlaylistId = targetId,
                         TrackId = inProviderId.Substring(2)
-                    }, ctk);
+                    }, ctk).ConfigureAwait(false);
             }
         }
         else if (inProviderId.StartsWith(NeteaseTypeIds.Playlist))
@@ -276,7 +276,7 @@ public class NeteaseProvider : ProviderBase,
                                {
                                    IsSubscribe = true,
                                    PlaylistId = inProviderId.Substring(2)
-                               }, ctk);
+                               }, ctk).ConfigureAwait(false);
         }
         // TODO
     }
@@ -293,7 +293,7 @@ public class NeteaseProvider : ProviderBase,
                     {
                         TrackId = inProviderId.Substring(2),
                         Like = false
-                    }, ctk);
+                    }, ctk).ConfigureAwait(false);
             }
             else
             {
@@ -304,7 +304,7 @@ public class NeteaseProvider : ProviderBase,
                         IsAdd = false,
                         PlaylistId = targetId,
                         TrackId = inProviderId.Substring(2)
-                    }, ctk);
+                    }, ctk).ConfigureAwait(false);
             }
         }
         else if (inProviderId.StartsWith(NeteaseTypeIds.Playlist))
@@ -314,7 +314,7 @@ public class NeteaseProvider : ProviderBase,
                                {
                                    IsSubscribe = true,
                                    PlaylistId = inProviderId.Substring(2)
-                               }, ctk);
+                               }, ctk).ConfigureAwait(false);
         }
         // TODO
     }
@@ -324,7 +324,7 @@ public class NeteaseProvider : ProviderBase,
         var result = await RequestAsync(NeteaseApis.LikelistApi, new LikelistRequest()
                                                                  {
                                                                      Uid = LoginedUser?.ActualId!
-                                                                 }, ctk);
+                                                                 }, ctk).ConfigureAwait(false);
         return result.Match(
             success => success.TrackIds?.ToList() ?? new List<string>(),
             _ => new List<string>());
@@ -339,9 +339,9 @@ public class NeteaseProvider : ProviderBase,
         switch (typeId)
         {
             case NeteaseTypeIds.SingleSong:
-                return await GetSingleSongById(actualId, ctk);
+                return await GetSingleSongById(actualId, ctk).ConfigureAwait(false);
             case NeteaseTypeIds.Playlist:
-                return await GetPlaylistById(actualId, ctk);
+                return await GetPlaylistById(actualId, ctk).ConfigureAwait(false);
         }
 
         throw new NotImplementedException();
@@ -356,10 +356,10 @@ public class NeteaseProvider : ProviderBase,
         switch (grouped[0].Key)
         {
             case NeteaseTypeIds.SingleSong:
-                return (await GetSingleSongRangeByIds(inProviderIds.Select(t => t.Substring(2)).ToList(), ctk))
+                return (await GetSingleSongRangeByIds(inProviderIds.Select(t => t.Substring(2)).ToList(), ctk).ConfigureAwait(false))
                        .Select(t => (ProvidableItemBase)t).ToList();
             case NeteaseTypeIds.Playlist:
-                return (await GetPlaylistRangeByIds(inProviderIds.Select(t => t.Substring(2)).ToList(), ctk))
+                return (await GetPlaylistRangeByIds(inProviderIds.Select(t => t.Substring(2)).ToList(), ctk).ConfigureAwait(false))
                        .Select(t => (ProvidableItemBase)t).ToList();
         }
 
@@ -374,7 +374,7 @@ public class NeteaseProvider : ProviderBase,
                                             new SongDetailRequest()
                                             {
                                                 Id = id
-                                            }, cancellationToken);
+                                            }, cancellationToken).ConfigureAwait(false);
         return songResult.Match(
             success => success.Songs?[0].MapToNeteaseMusic(),
             _ => null
@@ -387,7 +387,7 @@ public class NeteaseProvider : ProviderBase,
                                             new PlaylistDetailRequest()
                                             {
                                                 Id = id
-                                            }, cancellationToken);
+                                            }, cancellationToken).ConfigureAwait(false);
         return songResult.Match(
             success => success.Playlists?[0].MapToNeteasePlaylist(),
             _ => null
@@ -401,7 +401,7 @@ public class NeteaseProvider : ProviderBase,
                                             new SongDetailRequest()
                                             {
                                                 IdList = idList
-                                            }, cancellationToken);
+                                            }, cancellationToken).ConfigureAwait(false);
         return songResult.Match(
             success => success.Songs?.Select(t => t.MapToNeteaseMusic()).ToList() ??
                        new List<NeteaseSong>(),
@@ -416,7 +416,7 @@ public class NeteaseProvider : ProviderBase,
                                             new PlaylistDetailRequest()
                                             {
                                                 IdList = idList
-                                            }, cancellationToken);
+                                            }, cancellationToken).ConfigureAwait(false);
         return songResult.Match(
             success => success.Playlists?.Select(t => t.MapToNeteasePlaylist()).ToList() ??
                        new List<NeteasePlaylist>(),
@@ -457,7 +457,7 @@ public class NeteaseProvider : ProviderBase,
                    {
                        return (await RequestAsync(
                                NeteaseApis.RecommendPlaylistsApi,
-                               new RecommendPlaylistsRequest(), ctk))
+                               new RecommendPlaylistsRequest(), ctk).ConfigureAwait(false))
                            .Match(success => success.Recommends?.Select(
                                       t => (ProvidableItemBase)
                                           t.MapToNeteasePlaylist()).ToList() ?? new List<ProvidableItemBase>(),
@@ -472,7 +472,7 @@ public class NeteaseProvider : ProviderBase,
                    {
                        return (await RequestAsync(
                                NeteaseApis.RecommendSongsApi,
-                               new RecommendSongsRequest(), ctk))
+                               new RecommendSongsRequest(), ctk).ConfigureAwait(false))
                            .Match(success => success.Data?.DailySongs?.Select(
                                       t => (ProvidableItemBase)
                                           t.MapToNeteaseMusic()).ToList() ?? new List<ProvidableItemBase>(),
@@ -487,7 +487,7 @@ public class NeteaseProvider : ProviderBase,
                    {
                        return (await RequestAsync(
                                NeteaseApis.ToplistApi,
-                               new ToplistRequest(), ctk))
+                               new ToplistRequest(), ctk).ConfigureAwait(false))
                            .Match(success => success.List?.Select(
                                       t => (ProvidableItemBase)
                                           t.MapToNeteasePlaylist()).ToList() ?? new List<ProvidableItemBase>(),
@@ -507,7 +507,7 @@ public class NeteaseProvider : ProviderBase,
                                    {
                                        Category = typeId.Substring(2),
                                        Limit = count
-                                   }, ctk))
+                                   }, ctk).ConfigureAwait(false))
                                .Match(success => success.Playlists?.Select(
                                           t => (ProvidableItemBase)
                                               t.MapToNeteasePlaylist()).ToList() ?? new List<ProvidableItemBase>(),

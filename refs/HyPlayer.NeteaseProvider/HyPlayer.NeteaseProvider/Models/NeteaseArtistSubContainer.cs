@@ -28,12 +28,12 @@ public class NeteaseArtistSubContainer : LinerContainerBase, IProgressiveLoading
                         OrderType = "hot",
                         Offset = 0,
                         Limit = 50
-                    });
+                    }, ctk).ConfigureAwait(false);
                 return result.Match(
                     success => 
-                        success.Songs.Select(song => (ProvidableItemBase)song.MapToNeteaseMusic()).ToList(),
+                        success.Songs?.Select(song => (ProvidableItemBase)song.MapToNeteaseMusic()).ToList(),
                     error => new List<ProvidableItemBase>()
-                );
+                )?? new List<ProvidableItemBase>();
             case "tim":
                 var resTime = await NeteaseProvider.Instance.RequestAsync(
                     NeteaseApis.ArtistSongsApi,
@@ -43,12 +43,12 @@ public class NeteaseArtistSubContainer : LinerContainerBase, IProgressiveLoading
                         OrderType = "time",
                         Offset = 0,
                         Limit = 50
-                    });
+                    }, ctk).ConfigureAwait(false);
                 return resTime.Match(
                     success =>
-                        success.Songs.Select(song => (ProvidableItemBase)song.MapToNeteaseMusic()).ToList(),
+                        success.Songs?.Select(song => (ProvidableItemBase)song.MapToNeteaseMusic()).ToList(),
                     error => new List<ProvidableItemBase>()
-                );
+                ) ?? new List<ProvidableItemBase>();
             case "alb":
                 var resAlbum =
                     await NeteaseProvider.Instance.RequestAsync(
@@ -58,7 +58,7 @@ public class NeteaseArtistSubContainer : LinerContainerBase, IProgressiveLoading
                             ArtistId = artistId,
                             Limit = 50,
                             Start = 0
-                        });
+                        }, ctk).ConfigureAwait(false);
                 return resAlbum.Match(
                     success => 
                         success.Albums?.Select(alb => (ProvidableItemBase)alb.MapToNeteaseAlbum()!).ToList() ?? new(),
@@ -83,7 +83,7 @@ public class NeteaseArtistSubContainer : LinerContainerBase, IProgressiveLoading
                         OrderType = "hot",
                         Offset = start,
                         Limit = count
-                    });
+                    }).ConfigureAwait(false);
                 return result.Match(
                     success => (success.HasMore,
                         success.Songs?.Select(song => (ProvidableItemBase)song.MapToNeteaseMusic()).ToList() ?? new List<ProvidableItemBase>()),
@@ -98,7 +98,7 @@ public class NeteaseArtistSubContainer : LinerContainerBase, IProgressiveLoading
                         OrderType = "time",
                         Offset = 0,
                         Limit = 50
-                    });
+                    }, ctk).ConfigureAwait(false);
                 return resTime.Match(
                     success => (success.HasMore,
                                     success.Songs?.Select(song => (ProvidableItemBase)song.MapToNeteaseMusic()).ToList()?? new List<ProvidableItemBase>()),

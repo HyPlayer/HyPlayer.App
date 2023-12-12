@@ -34,7 +34,7 @@ public class NeteasePlaylist : LinerContainerBase, IProgressiveLoadingContainer,
             new PlaylistDetailRequest
             {
                 Id = ActualId
-            }, ctk);
+            }, ctk).ConfigureAwait(false);
         results.Match(
             success =>
             {
@@ -64,17 +64,17 @@ public class NeteasePlaylist : LinerContainerBase, IProgressiveLoadingContainer,
                                                                  new PlaylistTracksGetRequest()
                                                                  {
                                                                      Id = ActualId
-                                                                 }, ctk)).Match(
+                                                                 }, ctk).ConfigureAwait(false)).Match(
             success => success.Playlist.TrackIds,
-            error => { return Array.Empty<PlaylistTracksGetResponse.PlaylistWithTracksInfoDto.TrackIdItem>(); });
+            error => Array.Empty<PlaylistTracksGetResponse.PlaylistWithTracksInfoDto.TrackIdItem>());
     }
 
     public override async Task<List<ProvidableItemBase>> GetAllItemsAsync(CancellationToken ctk = new())
     {
         if (_trackIds is null)
-            await UpdateTrackListAsync(ctk);
+            await UpdateTrackListAsync(ctk).ConfigureAwait(false);
         if (_trackIds is { Length: > 0 })
-            return (await NeteaseProvider.Instance.GetSingleSongRangeByIds(_trackIds.Select(t => t.Id).ToList(), ctk))
+            return (await NeteaseProvider.Instance.GetSingleSongRangeByIds(_trackIds.Select(t => t.Id).ToList(), ctk).ConfigureAwait(false))
                    .Select(t => (ProvidableItemBase)t).ToList();
         return new List<ProvidableItemBase>();
     }
@@ -83,11 +83,11 @@ public class NeteasePlaylist : LinerContainerBase, IProgressiveLoadingContainer,
         int start, int count, CancellationToken ctk = new())
     {
         if (_trackIds is null)
-            await UpdatePlaylistInfoAsync(ctk);
+            await UpdatePlaylistInfoAsync(ctk).ConfigureAwait(false);
         if (_trackIds is not null)
             return (start + count < _trackIds.Length,
                     (await NeteaseProvider.Instance.GetSingleSongRangeByIds(
-                        _trackIds.Skip(start).Take(count).Select(t => t.Id).ToList(), ctk))
+                        _trackIds.Skip(start).Take(count).Select(t => t.Id).ToList(), ctk).ConfigureAwait(false))
                     .Select(t => (ProvidableItemBase)t).ToList());
         return (false, new List<ProvidableItemBase>());
     }
