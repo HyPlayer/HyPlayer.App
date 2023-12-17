@@ -30,10 +30,41 @@ namespace HyPlayer.Views.Controls.Dialogs
             DataContext = ViewModel;
         }
 
-        private async Task ContentDialog_PrimaryButtonClickAsync(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+
+        private void CancelButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        {
+            Hide();
+        }
+
+        private void LoginButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        {
+            Login();
+        }
+        public async void Login()
         {
             await ViewModel.SignInAsync(TextBoxAccount.Text, TextBoxPassword.Password);
+            if (!ViewModel.IsLogin)
+            {
+                LoginFailedInfoBar.IsOpen = true;
+                return;
+            }
             HyPlayer.App.GetService<INavigationService>().NavigateTo(typeof(Pages.HomePage));
+            Hide();
+        }
+
+        private void ContentDialog_KeyDown(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if(TextBoxAccount.Text == "")
+            {
+                TextBoxAccount.Focus(Microsoft.UI.Xaml.FocusState.Programmatic);
+                return;
+            }
+            if (TextBoxPassword.Password == "")
+            {
+                TextBoxPassword.Focus(Microsoft.UI.Xaml.FocusState.Programmatic);
+                return;
+            }
+            Login();
         }
     }
 }
