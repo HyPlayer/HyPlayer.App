@@ -23,6 +23,9 @@
  
   <ItemGroup>
     <None Remove="Controls\Dialogs\SignInDialog.xaml" />
+    <None Remove="Resources\Styles\FontSizes.xaml" />
+    <None Remove="Resources\Styles\TextBlock.xaml" />
+    <None Remove="Resources\Styles\Thickness.xaml" />
     <None Remove="Styles\Styles.Overwrite.xaml" />
     <None Remove="Views\Controls\App\DesktopNavigationView.xaml" />
     <None Remove="Views\Controls\App\HomePageHeaderImage.xaml" />
@@ -104,6 +107,15 @@
     <None Update="Controls\App\SelectableTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <Page Update="Resources\Styles\FontSizes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Resources\Styles\TextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Resources\Styles\Thickness.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <None Update="Resources\Styles\Themes.Dark.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
