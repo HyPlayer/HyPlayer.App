@@ -11,4 +11,5 @@
     <converters:CountHumanizerConverter x:Key="CountHumanizerConverter" />
     <converters:BooleanToNavButtonVisibleConverter x:Key="BooleanToNavButtonVisibleConverter" />
     <converters:StringToImageSourceConverter x:Key="StringToImageSourceConverter" />
+    <converters:BrushToColorConverter x:Key="BrushToColorConverter" />
 </ResourceDictionary>
