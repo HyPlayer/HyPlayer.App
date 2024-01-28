@@ -32,7 +32,6 @@ namespace HyPlayer
     public partial class App : Application
     {
         public static Frame? contentFrame;
-        private XamlWindow? window;
 
         public IDepository? Depository;
         public DispatcherQueue? DispatcherQueue;
@@ -66,6 +65,14 @@ namespace HyPlayer
         public App()
         {
             this.InitializeComponent();
+            
+            DispatcherQueue = DispatcherQueue.GetForCurrentThread();
+            Depository = DepositoryFactory.CreateNew();
+            
+            Depository?.AddMvvm();
+            Depository?.AddSingleton<INavigationService, NavigationService>();
+            Depository?.AddSingleton<IActivationService, ActivationService>();
+            Depository?.AddSingleton<IPageService, PageService>();
         }
 
         /// <summary>
@@ -74,37 +81,7 @@ namespace HyPlayer
         /// <param name="args">Details about the launch request and process.</param>
         protected override async void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            DispatcherQueue = DispatcherQueue.GetForCurrentThread();
-            Depository = DepositoryFactory.CreateNew();
-            ConfigureServices();
-            await ConfigurePlayCore();
-            window = WindowHelper.CreateWindow();
-            if(window != null) 
-            { 
-                NavigateToRootPage(args);
-
-                window?.Activate();
-            }
-        }
-        
-        private void ConfigureServices()
-        {
-            Depository?.AddMvvm();
-            Depository?.AddSingleton<INavigationService, NavigationService>();
-            Depository?.AddSingleton<IPageService, PageService>();
-        }
-
-        private async Task ConfigurePlayCore()
-        {
-            Depository?.AddSingleton<PlayCoreBase, Chopin>();
-            var playCore = Depository?.Resolve<PlayCoreBase>();
-            await playCore.RegisterMusicProviderAsync(typeof(NeteaseProvider.NeteaseProvider));
-        }
-
-        private void NavigateToRootPage(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
-        {   
-            GetService<INavigationService>().NavigateTo(typeof(Pages.HomePage));
-        }
-       
+            await GetService<IActivationService>().OnLaunchedAsync(args);
+        }      
     }
 }
