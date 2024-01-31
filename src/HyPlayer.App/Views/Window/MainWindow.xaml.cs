@@ -24,8 +24,10 @@ namespace HyPlayer.Views.Window
     {
         private ShellViewModel _shellViewModel;
         private AccountViewModel _accountViewModel;
+        
         private readonly IDepositoryResolveScope _scope;
         private readonly AppWindowTitleBar titleBar;
+
 
         public MainWindow()
         {

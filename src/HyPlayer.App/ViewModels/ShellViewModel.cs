@@ -9,6 +9,7 @@ namespace HyPlayer.ViewModels
     public partial class ShellViewModel : ObservableObject, IScopedViewModel
     {
         [ObservableProperty] private AccountViewModel _accountViewModel;
+        public bool IsProgressBarVisible => App.GetService<IShellService>().IsProgressBarVisible;
 
         public ShellViewModel(AccountViewModel accountViewModel) 
         { 

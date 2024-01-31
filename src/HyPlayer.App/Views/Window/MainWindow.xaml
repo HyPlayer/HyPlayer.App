@@ -37,6 +37,7 @@
                         <ColumnDefinition x:Name="PersonPictureButton" Width="Auto" />
                         <ColumnDefinition x:Name="RightPaddingColumn" Width="0" />
                     </Grid.ColumnDefinitions>
+                    <ProgressBar HorizontalAlignment="Stretch" IsIndeterminate="True" ShowPaused="False" ShowError="False"/>
                     <Image
                         x:Name="TitleBarIcon"
                         Grid.Column="1"

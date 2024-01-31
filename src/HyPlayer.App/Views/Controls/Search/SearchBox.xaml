@@ -6,6 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:HyPlayer.Views.Controls.Search"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:media="using:CommunityToolkit.WinUI.UI.Media"
+    xmlns:ui="using:CommunityToolkit.WinUI.UI"
     BorderThickness="0"
     mc:Ignorable="d">
 
@@ -53,62 +55,69 @@
                 </ListView.ItemTemplate>
             </ListView>
         </Flyout>
-    </local:SearchBoxBase.Resources>
 
+        <media:AttachedCardShadow x:Key="SearchBoxShadow"
+                                  Offset="4" />
+
+    </local:SearchBoxBase.Resources>
     <Grid>
-        <AutoSuggestBox
-            x:Name="AppSearchBox"
-            HorizontalAlignment="Stretch"
-            BorderThickness="0"
-            IsTabStop="True"
-            KeyDown="AppSearchBox_KeyDown"
-            PlaceholderText="搜索音乐、歌手或者音乐视频"
-            QueryIcon="Find"
-            TabIndex="2"
-            UpdateTextOnSelect="False"
-            XYFocusLeftNavigationStrategy="Auto">
-            <AutoSuggestBox.TextBoxStyle>
-                <Style TargetType="TextBox">
-                    <Setter Property="Padding" Value="40,8,0,8" />
-                </Style>
-            </AutoSuggestBox.TextBoxStyle>
-        </AutoSuggestBox>
-        <Button
-            x:Name="SearchHistoryButton"
-            Width="32"
-            Margin="4,0,0,0"
-            Padding="0,8"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            AutomationProperties.Name="最近搜索"
-            Background="Transparent"
-            BorderThickness="0"
-            Flyout="{StaticResource SearchHistoryFlyout}"
-            IsTabStop="True"
-            TabIndex="1">
-            <FontIcon
-                FontFamily="Segoe Fluent Icons"
-                FontSize="12"
-                Glyph="&#xE823;" />
-        </Button>
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="LayoutStateGroup">
-                <VisualStateGroup.States>
-                    <VisualState x:Name="Wide">
-                        <VisualState.StateTriggers>
-                            <AdaptiveTrigger MinWindowWidth="{StaticResource MediumWindowThresholdWidth}" />
-                        </VisualState.StateTriggers>
-                    </VisualState>
-                    <VisualState x:Name="Narrow">
-                        <VisualState.StateTriggers>
-                            <AdaptiveTrigger MinWindowWidth="0" />
-                        </VisualState.StateTriggers>
-                        <VisualState.Setters>
-                            <Setter Target="AppSearchBox.PlaceholderText" Value="" />
-                        </VisualState.Setters>
-                    </VisualState>
-                </VisualStateGroup.States>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+        <Border x:Name="SearchBoxBorder" ui:Effects.Shadow="{ThemeResource SearchBoxShadow}">
+            <Grid>
+                <AutoSuggestBox
+                    x:Name="AppSearchBox"
+                    HorizontalAlignment="Stretch"
+                    BorderThickness="0"
+                    IsTabStop="True"
+                    KeyDown="AppSearchBox_KeyDown"
+                    PlaceholderText="搜索音乐、歌手或者音乐视频"
+                    QueryIcon="Find"
+                    TabIndex="2"
+                    UpdateTextOnSelect="False"
+                    XYFocusLeftNavigationStrategy="Auto">
+                    <AutoSuggestBox.TextBoxStyle>
+                        <Style TargetType="TextBox">
+                            <Setter Property="Padding" Value="40,8,0,8" />
+                        </Style>
+                    </AutoSuggestBox.TextBoxStyle>
+                </AutoSuggestBox>
+                <Button
+                    x:Name="SearchHistoryButton"
+                    Width="32"
+                    Margin="4,0,0,0"
+                    Padding="0,8"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    AutomationProperties.Name="最近搜索"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Flyout="{StaticResource SearchHistoryFlyout}"
+                    IsTabStop="True"
+                    TabIndex="1">
+                    <FontIcon
+                        FontFamily="Segoe Fluent Icons"
+                        FontSize="12"
+                        Glyph="&#xE823;" />
+                </Button>
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="LayoutStateGroup">
+                        <VisualStateGroup.States>
+                            <VisualState x:Name="Wide">
+                                <VisualState.StateTriggers>
+                                    <AdaptiveTrigger MinWindowWidth="{StaticResource MediumWindowThresholdWidth}" />
+                                </VisualState.StateTriggers>
+                            </VisualState>
+                            <VisualState x:Name="Narrow">
+                                <VisualState.StateTriggers>
+                                    <AdaptiveTrigger MinWindowWidth="0" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Target="AppSearchBox.PlaceholderText" Value="" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup.States>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </Grid>
+        </Border>
     </Grid>
 </local:SearchBoxBase>
