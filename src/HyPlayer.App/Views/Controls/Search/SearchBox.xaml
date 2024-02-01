@@ -57,7 +57,7 @@
         </Flyout>
 
         <media:AttachedCardShadow x:Key="SearchBoxShadow"
-                                  Offset="4" />
+                                  Offset="0.1" />
 
     </local:SearchBoxBase.Resources>
     <Grid>
