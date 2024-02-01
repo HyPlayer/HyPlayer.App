@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:base="using:HyPlayer.Views.Controls.Base"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:HyPlayer.Helpers"
     xmlns:local="using:HyPlayer.Views.Controls.App"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -17,7 +18,6 @@
             IsBackEnabled="True"
             IsPaneOpen="{x:Bind IsPaneOpen}"
             IsPaneToggleButtonVisible="True"
-            ItemInvoked="{x:Bind NavView_ItemInvoked}"
             Loaded="NavView_Loaded"
             Style="{StaticResource LeftNavViewDefaultStyle}">
 
@@ -28,7 +28,8 @@
                 <NavigationViewItem
                     x:Name="Home"
                     x:Uid="MainNav_Item_Home"
-                    Tag="HomePage">
+                    helpers:NavigationHelper.NavigateTo="HomePage"
+                    Tag="HyPlayer.ViewModel.HomeViewModel">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEA8A;" />
                     </NavigationViewItem.Icon>

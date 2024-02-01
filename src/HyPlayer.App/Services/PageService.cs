@@ -20,6 +20,7 @@ namespace HyPlayer.Services
             ConfigurePage<SearchViewModel, SearchPage>();
             ConfigurePage<NeteasePlaylistViewModel, PlaylistPage>();
             ConfigurePage<UserViewModel, UserPage>();
+            ConfigurePage<SettingsViewModel, SettingsPage>();
         }
 
         public Type GetPageType(string key)

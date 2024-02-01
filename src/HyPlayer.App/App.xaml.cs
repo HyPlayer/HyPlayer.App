@@ -74,6 +74,7 @@ namespace HyPlayer
             Depository?.AddSingleton<IActivationService, ActivationService>();
             Depository?.AddSingleton<IShellService, ShellService>();
             Depository?.AddSingleton<IPageService, PageService>();
+            Depository?.AddSingleton<INavigationViewService, NavigationViewService>();
         }
 
         /// <summary>

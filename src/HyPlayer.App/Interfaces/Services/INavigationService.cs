@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
@@ -21,6 +21,8 @@ public interface INavigationService
     bool NavigateTo(Type Page, object? parameter = null);
 
     bool NavigateTo(Page Page, object? parameter = null);
+
+    bool NavigateTo(string pageKey, object? parameter = null);
 
     bool GoBack();
 }
