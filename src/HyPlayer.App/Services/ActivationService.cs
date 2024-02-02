@@ -38,10 +38,10 @@ namespace HyPlayer.Services
 
             if(ActivatedEventArgs != null) 
             {
-                Window MainWindow = WindowHelper.CreateWindow();
+                Window MainWindow = WindowHelper.CurrentMainWindow;
                 if (ActivatedEventArgs.Kind == ExtendedActivationKind.Launch)
                 {
-                    App.GetService<INavigationService>().NavigateTo(typeof(Views.Pages.ErrorPage), ActivateEventArgs);
+                    App.GetService<INavigationService>().NavigateTo(typeof(Views.Pages.HomePage), ActivateEventArgs);
                 }
                 MainWindow.Activate();
             }

@@ -9,6 +9,7 @@ using Windows.ApplicationModel;
 using WinRT.Interop;
 using HyPlayer.Views.Window;
 using Microsoft.UI.Windowing;
+using WinUIEx;
 
 namespace HyPlayer.Helpers
 {
@@ -89,6 +90,8 @@ namespace HyPlayer.Helpers
         static public List<Window> ActiveWindows { get { return _activeWindows; } }
 
         static private List<Window> _activeWindows = new List<Window>();
+
+        static public readonly MainWindow CurrentMainWindow = (MainWindow)CreateWindow();
     }
 }
 
