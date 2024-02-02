@@ -22,7 +22,7 @@
             <Setter Property="PaneDisplayMode" Value="Auto" />
             <Setter Property="IsPaneToggleButtonVisible" Value="True" />
             <Setter Property="OpenPaneLength" Value="250" />
-            <Setter Property="IsSettingsVisible" Value="False" />
+            <Setter Property="IsSettingsVisible" Value="True" />
             <Setter Property="IsTitleBarAutoPaddingEnabled" Value="True" />
         </Style.Setters>
     </Style>

@@ -8,17 +8,15 @@ namespace HyPlayer.ViewModels
 {
     public partial class ShellViewModel : ObservableObject, IScopedViewModel
     {
-        private readonly INavigationViewService _navigationViewService;
-        private readonly INavigationService _navigationService;
+        
 
         [ObservableProperty] private AccountViewModel _accountViewModel;
         public bool IsProgressBarVisible => App.GetService<IShellService>().IsProgressBarVisible;
 
-        public ShellViewModel(AccountViewModel accountViewModel, INavigationViewService navigationViewService, INavigationService navigationService)
+        public ShellViewModel(AccountViewModel accountViewModel)
         {
             _accountViewModel = accountViewModel;
-            _navigationViewService = navigationViewService;
-            _navigationService = navigationService;
+            
         }
 
         [RelayCommand]

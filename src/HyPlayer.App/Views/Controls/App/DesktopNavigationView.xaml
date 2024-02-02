@@ -28,8 +28,8 @@
                 <NavigationViewItem
                     x:Name="Home"
                     x:Uid="MainNav_Item_Home"
-                    helpers:NavigationHelper.NavigateTo="HomePage"
-                    Tag="HyPlayer.ViewModel.HomeViewModel">
+                    helpers:NavigationHelper.NavigateTo="HyPlayer.ViewModels.HomeViewModel"
+                    Tag="HomePage">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEA8A;" />
                     </NavigationViewItem.Icon>
