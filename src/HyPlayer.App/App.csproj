@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows10.0.19041.0</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RootNamespace>HyPlayer</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -23,7 +23,6 @@
   <ItemGroup>
     <None Remove="Controls\Dialogs\SignInDialog.xaml" />
     <None Remove="Styles\Styles.Overwrite.xaml" />
-    <None Remove="Views\Controls\App\AppTitleBar.xaml" />
     <None Remove="Views\Controls\App\DesktopNavigationView.xaml" />
     <None Remove="Views\Controls\App\HomePageHeaderImage.xaml" />
     <None Remove="Views\Controls\Netease\SongListView\SongListView.xaml" />
@@ -110,9 +109,6 @@
       <Generator>MSBuild:Compile</Generator>
     </None>
     <Page Update="Views\Pages\SettingsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Controls\App\AppTitleBar.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <None Update="Views\Controls\CoolControls\RedirectVisualView.xaml">
