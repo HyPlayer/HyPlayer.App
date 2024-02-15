@@ -1,14 +1,10 @@
-﻿using System.Collections.ObjectModel;
+﻿using AsyncAwaitBestPractices;
 using Depository.Abstraction.Interfaces;
 using Depository.Abstraction.Interfaces.NotificationHub;
 using HyPlayer.PlayCore.Abstraction;
-using HyPlayer.PlayCore.Abstraction.Interfaces.PlayListContainer;
 using HyPlayer.PlayCore.Abstraction.Interfaces.PlayListController;
-using HyPlayer.PlayCore.Abstraction.Models;
-using HyPlayer.PlayCore.Abstraction.Models.Containers;
 using HyPlayer.PlayCore.Abstraction.Models.Notifications;
 using HyPlayer.PlayCore.Abstraction.Models.SingleItems;
-using HyPlayer.PlayCore.Extensions;
 
 namespace HyPlayer.PlayCore.PlayListControllers;
 
@@ -72,7 +68,7 @@ public class OrderedRollPlayController : PlayControllerBase,
     {
         _list.Reverse();
         _index = _list.Count - _index - 1;
-        _notificationHub.PublishNotificationAsync(new OrderedPlaylistChangedNotification(){ IsRandom = false, OrderedList = _list}, ctk).SafeFireAndForget();
+        _notificationHub.PublishNotificationAsync(new OrderedPlaylistChangedNotification() { IsRandom = false, OrderedList = _list }, ctk).SafeFireAndForget();
         return Task.CompletedTask;
     }
 
@@ -106,7 +102,7 @@ public class OrderedRollPlayController : PlayControllerBase,
     {
         _playListManager = _depository.ResolveDependency(typeof(PlayListManagerBase)) as PlayListManagerBase;
         _list = await (_playListManager?.GetPlayListAsync() ?? Task.FromResult(new List<SingleSongBase>()));
-        _notificationHub.PublishNotificationAsync(new OrderedPlaylistChangedNotification(){ IsRandom = false, OrderedList = _list}).SafeFireAndForget();
+        _notificationHub.PublishNotificationAsync(new OrderedPlaylistChangedNotification() { IsRandom = false, OrderedList = _list }).SafeFireAndForget();
     }
 
     public async Task HandleNotificationAsync(
@@ -114,6 +110,6 @@ public class OrderedRollPlayController : PlayControllerBase,
         CancellationToken ctk = new())
     {
         _list = await (_playListManager?.GetPlayListAsync(ctk) ?? Task.FromResult(new List<SingleSongBase>()));
-        _notificationHub.PublishNotificationAsync(new OrderedPlaylistChangedNotification(){ IsRandom = false, OrderedList = _list}, ctk).SafeFireAndForget();
+        _notificationHub.PublishNotificationAsync(new OrderedPlaylistChangedNotification() { IsRandom = false, OrderedList = _list }, ctk).SafeFireAndForget();
     }
 }

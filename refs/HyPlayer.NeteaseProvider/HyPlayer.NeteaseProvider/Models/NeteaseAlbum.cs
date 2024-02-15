@@ -21,13 +21,14 @@ public class NeteaseAlbum : AlbumBase, IHasCover, IHasTranslation, IHasDescripti
     public List<NeteaseArtist>? Artists { get; set; }
     
 
-    public async Task<ImageResourceBase?> GetCoverAsync(CancellationToken ctk = new())
+    public Task<ImageResourceBase?> GetCoverAsync(ImageResourceQualityTag? qualityTag = null,CancellationToken ctk = new())
     {
-        return new NeteaseImageResource
-               {
-                   Url = PictureUrl,
-                   HasContent = true
-               };
+        return Task.FromResult<ImageResourceBase?>(new NeteaseImageResource
+        {
+            Url = PictureUrl,
+            HasContent = true,
+            QualityTag = qualityTag
+        });
     }
 
     public string? Translation { get; set; }

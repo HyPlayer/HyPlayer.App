@@ -332,7 +332,7 @@
                 BorderBrush="{ThemeResource ButtonRevealBorderBrush}"
                 BorderThickness="{ThemeResource ButtonRevealBorderThemeThickness}"
                 CornerRadius="8"
-                Cover="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=96}"
+                Cover="{x:Bind Converter={StaticResource CoverToImageSourceConverter}, ConverterParameter=256}"
                 LeaderBoardName="{x:Bind Name}"
                 PlayCount="{x:Bind PlayCount, Converter={StaticResource CountHumanizerConverter}}"
                 Style="{ThemeResource DefaultTopChartButtonStyle}"

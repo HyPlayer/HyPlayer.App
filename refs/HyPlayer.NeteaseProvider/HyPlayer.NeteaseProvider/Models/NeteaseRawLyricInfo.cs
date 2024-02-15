@@ -5,7 +5,7 @@ using HyPlayer.PlayCore.Abstraction.Models.Resources;
 
 namespace HyPlayer.NeteaseProvider.Models;
 
-public class NeteaseRawLyricInfo : RawLyricInfo
+public class NeteaseRawLyricInfo : RawLyricInfo, IResourceResultOf<string>
 {
     public required string LyricText { get; set; }
 
@@ -24,8 +24,8 @@ public class NeteaseRawLyricInfo : RawLyricInfo
         
     }
 
-    public override Task<object?> GetResourceAsync(ResourceQualityTag? qualityTag = null, Type? awaitingType = null,CancellationToken ctk = new())
+    public Task<string?> GetResourceAsync(CancellationToken cancellationToken = default)
     {
-        return Task.FromResult<object?>(LyricText);
+        return Task.FromResult(LyricText)!;
     }
 }

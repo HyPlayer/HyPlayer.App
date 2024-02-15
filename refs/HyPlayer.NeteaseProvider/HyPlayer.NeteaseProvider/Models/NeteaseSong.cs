@@ -26,8 +26,8 @@ public class NeteaseSong : SingleSongBase, IHasTranslation, IHasCover
     }
 
     public string? Translation { get; set; }
-    public Task<ImageResourceBase?> GetCoverAsync(CancellationToken ctk = new())
+    public Task<ImageResourceBase?> GetCoverAsync(ImageResourceQualityTag? qualityTag = null, CancellationToken ctk = new())
     {
-        return Task.FromResult<ImageResourceBase?>(new NeteaseImageResource() { Url = CoverUrl });
+        return Task.FromResult<ImageResourceBase?>(new NeteaseImageResource() { Url = CoverUrl, QualityTag = qualityTag});
     }
 }

@@ -94,12 +94,13 @@ public class NeteasePlaylist : LinerContainerBase, IProgressiveLoadingContainer,
 
     public int MaxProgressiveCount => 200;
 
-    public Task<ImageResourceBase?> GetCoverAsync(CancellationToken ctk = new())
+    public Task<ImageResourceBase?> GetCoverAsync(ImageResourceQualityTag? qualityTag = null,CancellationToken ctk = new())
     {
         return Task.FromResult<ImageResourceBase?>(
             new NeteaseImageResource
             {
                 Url = CoverUrl,
+                QualityTag = qualityTag
             });
     }
 

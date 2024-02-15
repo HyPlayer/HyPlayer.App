@@ -7,5 +7,5 @@ namespace HyPlayer.PlayCore.Abstraction.Interfaces.AudioServices;
 /// </summary>
 public interface IAudioTicketSeekableService : IAudioService
 {
-    public Task SeekAudioTicket(AudioTicketBase audioTicket, long position, CancellationToken ctk = new());
+    public Task SeekAudioTicketAsync(AudioTicketBase audioTicket, double position, CancellationToken ctk = new());
 }

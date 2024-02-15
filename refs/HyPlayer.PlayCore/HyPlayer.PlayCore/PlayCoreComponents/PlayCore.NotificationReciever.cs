@@ -1,11 +1,9 @@
-﻿using System.Collections.ObjectModel;
-using Depository.Abstraction.Interfaces;
-using Depository.Abstraction.Interfaces.NotificationHub;
+﻿using Depository.Abstraction.Interfaces.NotificationHub;
 using HyPlayer.PlayCore.Abstraction.Models.Notifications;
 
 namespace HyPlayer.PlayCore;
 
-public sealed partial class Chopin : 
+public sealed partial class Chopin :
     INotificationSubscriber<CurrentSongChangedNotification>
 {
     public Task HandleNotificationAsync(CurrentSongChangedNotification notification, CancellationToken ctk = new CancellationToken())

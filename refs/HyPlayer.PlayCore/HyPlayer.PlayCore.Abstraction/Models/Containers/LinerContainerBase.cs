@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-
-namespace HyPlayer.PlayCore.Abstraction.Models.Containers;
+﻿namespace HyPlayer.PlayCore.Abstraction.Models.Containers;
 
 public abstract class LinerContainerBase : ContainerBase
 {

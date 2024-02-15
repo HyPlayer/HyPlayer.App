@@ -1,6 +1,4 @@
-﻿using HyPlayer.PlayCore.Abstraction.Interfaces.Provider;
-
-namespace HyPlayer.PlayCore.Abstraction;
+﻿namespace HyPlayer.PlayCore.Abstraction;
 
 public abstract class ProviderBase : IProvider
 {

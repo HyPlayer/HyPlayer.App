@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using HyPlayer.PlayCore.Abstraction.Models.Lyric;
+﻿using HyPlayer.PlayCore.Abstraction.Models.Lyric;
 
 namespace HyPlayer.PlayCore.Abstraction.Interfaces.Lyric;
 

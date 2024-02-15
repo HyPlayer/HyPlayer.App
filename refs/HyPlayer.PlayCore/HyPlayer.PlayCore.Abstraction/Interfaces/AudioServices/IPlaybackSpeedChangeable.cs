@@ -15,6 +15,6 @@ public interface IPlaybackSpeedChangeable : IAudioService
         /// <param name="ticket">音频票</param>
         /// <param name="playbackSpeed">目标速度(x1.0)</param>
         /// <returns></returns>
-        public Task ChangePlaybackSpeed(AudioTicketBase ticket, double playbackSpeed, CancellationToken ctk = new());
+        public Task ChangePlaybackSpeedAsync(AudioTicketBase ticket, double playbackSpeed, CancellationToken ctk = new());
     }
 }

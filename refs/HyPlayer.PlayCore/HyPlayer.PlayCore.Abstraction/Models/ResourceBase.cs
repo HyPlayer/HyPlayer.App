@@ -4,14 +4,19 @@ namespace HyPlayer.PlayCore.Abstraction.Models;
 
 public abstract class ResourceBase
 {
-    public string? Url { get; set; }
+    public Uri? Uri { get; set; }
     public string? ResourceName { get; set; }
     public bool HasContent { get; set; }
     public string? ExtensionName { get; set; }
     public abstract ResourceType Type { get; }
-    public abstract Task<object?> GetResourceAsync(ResourceQualityTag? qualityTag = null, Type? awaitingType = null, CancellationToken ctk = new());
+    public abstract Task<ResourceResultBase> GetResourceAsync(ResourceQualityTag? qualityTag = null, CancellationToken ctk = new());
 }
 
+public abstract class ResourceResultBase
+{
+    public abstract required Exception ExternalException { get; init; }
+    public abstract required ResourceStatus ResourceStatus { get; init; }
+}
 public enum ResourceType
 {
     None,
@@ -20,4 +25,10 @@ public enum ResourceType
     Video,
     Audio,
     Binary,
+}
+
+public enum ResourceStatus
+{
+    Success,
+    Fail
 }

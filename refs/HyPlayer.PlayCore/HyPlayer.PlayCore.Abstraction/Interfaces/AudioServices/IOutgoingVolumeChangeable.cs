@@ -2,5 +2,5 @@
 
 public interface IOutgoingVolumeChangeable : IAudioService
 {
-    public Task ChangeOutgoingVolume(double volume, CancellationToken ctk = new());
+    public Task ChangeOutgoingVolumeAsync(double volume, CancellationToken ctk = new());
 }

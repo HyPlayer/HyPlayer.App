@@ -4,5 +4,5 @@ namespace HyPlayer.PlayCore.Abstraction.Interfaces.AudioServices;
 
 public interface IPauseAudioTicketService : IAudioService
 {
-    public Task PauseAudioTicket(AudioTicketBase ticket, CancellationToken ctk = new());
+    public Task PauseAudioTicketAsync(AudioTicketBase ticket, CancellationToken ctk = new());
 }

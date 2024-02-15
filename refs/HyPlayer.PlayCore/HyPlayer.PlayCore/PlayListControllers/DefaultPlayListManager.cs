@@ -33,7 +33,7 @@ public class DefaultPlayListManager : PlayListManagerBase
 
         _currentSongListContainers.Add(container);
         var songsList = new List<SingleSongBase>();
-        await AppendSongContainerToList(container, songsList, ctk).ConfigureAwait(false);
+        await AppendSongContainerToList(container, songsList, ctk);
         _containerSongsDictionary[container] = songsList;
     }
 
@@ -50,36 +50,36 @@ public class DefaultPlayListManager : PlayListManagerBase
             {
                 (hasMore, var progressiveList) = await progressiveLoadingContainer.GetProgressiveItemsListAsync(
                     start, progressiveLoadingContainer.MaxProgressiveCount,
-                    ctk).ConfigureAwait(false);
+                    ctk);
                 var resultList = progressiveList.OfType<SingleSongBase>().ToList();
                 list.AddRange(resultList);
                 _list.AddRange(resultList);
                 await _notificationHub.PublishNotificationAsync(new InnerPlayListProgressiveAddedNotification
-                                                                {
-                                                                    AddedSongs = resultList
-                                                                }, ctk).ConfigureAwait(false);
+                {
+                    AddedSongs = resultList
+                }, ctk);
             }
 
-            await _notificationHub.PublishNotificationAsync(new InnerPlayListChangedNotification(), ctk).ConfigureAwait(false);
+            await _notificationHub.PublishNotificationAsync(new InnerPlayListChangedNotification(), ctk);
             return;
         }
 
         if (container is LinerContainerBase linerContainer)
         {
-            var resultList = (await linerContainer.GetAllItemsAsync(ctk).ConfigureAwait(false)).OfType<SingleSongBase>().ToList();
+            var resultList = (await linerContainer.GetAllItemsAsync(ctk)).OfType<SingleSongBase>().ToList();
             list.AddRange(resultList);
             _list.AddRange(resultList);
-            await _notificationHub.PublishNotificationAsync(new InnerPlayListChangedNotification(), ctk).ConfigureAwait(false);
+            await _notificationHub.PublishNotificationAsync(new InnerPlayListChangedNotification(), ctk);
             return;
         }
 
         if (container is UndeterminedContainerBase undeterminedContainer)
         {
-            var resultList = (await undeterminedContainer.GetNextItemsRangeAsync(ctk).ConfigureAwait(false)).OfType<SingleSongBase>()
+            var resultList = (await undeterminedContainer.GetNextItemsRangeAsync(ctk)).OfType<SingleSongBase>()
                 .ToList();
             list.AddRange(resultList);
             _list.AddRange(resultList);
-            await _notificationHub.PublishNotificationAsync(new InnerPlayListChangedNotification(), ctk).ConfigureAwait(false);
+            await _notificationHub.PublishNotificationAsync(new InnerPlayListChangedNotification(), ctk);
             return;
         }
     }
@@ -95,7 +95,7 @@ public class DefaultPlayListManager : PlayListManagerBase
 
         _containerSongsDictionary[container].Clear();
         _containerSongsDictionary.Remove(container);
-        await _notificationHub.PublishNotificationAsync(new InnerPlayListChangedNotification(), ctk).ConfigureAwait(false);
+        await _notificationHub.PublishNotificationAsync(new InnerPlayListChangedNotification(), ctk);
     }
 
     public override async Task ClearSongContainersAsync(CancellationToken ctk = new())
@@ -113,7 +113,7 @@ public class DefaultPlayListManager : PlayListManagerBase
 
         _list.Clear();
         _containerSongsDictionary.Clear();
-        await _notificationHub.PublishNotificationAsync(new InnerPlayListChangedNotification(), ctk).ConfigureAwait(false);
+        await _notificationHub.PublishNotificationAsync(new InnerPlayListChangedNotification(), ctk);
     }
 
     public override Task<List<ContainerBase>> GetAllSongContainersAsync(CancellationToken ctk = new())
@@ -132,7 +132,7 @@ public class DefaultPlayListManager : PlayListManagerBase
             _list.Insert(index, song);
         else
             _list.Add(song);
-        await _notificationHub.PublishNotificationAsync(new InnerPlayListChangedNotification(), ctk).ConfigureAwait(false);
+        await _notificationHub.PublishNotificationAsync(new InnerPlayListChangedNotification(), ctk);
     }
 
     public override async Task AddSongRangeAsync(
@@ -144,13 +144,13 @@ public class DefaultPlayListManager : PlayListManagerBase
             _list.InsertRange(index, songs);
         else
             _list.AddRange(songs);
-        await _notificationHub.PublishNotificationAsync(new InnerPlayListChangedNotification(), ctk).ConfigureAwait(false);
+        await _notificationHub.PublishNotificationAsync(new InnerPlayListChangedNotification(), ctk);
     }
 
     public override async Task RemoveSongAsync(SingleSongBase song, CancellationToken ctk = new())
     {
         _list.Remove(song);
-        await _notificationHub.PublishNotificationAsync(new InnerPlayListChangedNotification(), ctk).ConfigureAwait(false);
+        await _notificationHub.PublishNotificationAsync(new InnerPlayListChangedNotification(), ctk);
     }
 
     public override async Task RemoveSongRangeAsync(List<SingleSongBase> songs, CancellationToken ctk = new())
@@ -160,19 +160,19 @@ public class DefaultPlayListManager : PlayListManagerBase
             _list.Remove(singleSongBase);
         }
 
-        await _notificationHub.PublishNotificationAsync(new InnerPlayListChangedNotification(), ctk).ConfigureAwait(false);
+        await _notificationHub.PublishNotificationAsync(new InnerPlayListChangedNotification(), ctk);
     }
 
     public override async Task ClearSongsAsync(CancellationToken ctk = new())
     {
         _list.Clear();
-        await _notificationHub.PublishNotificationAsync(new InnerPlayListChangedNotification(), ctk).ConfigureAwait(false);
+        await _notificationHub.PublishNotificationAsync(new InnerPlayListChangedNotification(), ctk);
     }
 
     public override async Task SetSongListAsync(List<SingleSongBase> songs, CancellationToken ctk = new())
     {
         _list.Clear();
         _list.AddRange(songs);
-        await _notificationHub.PublishNotificationAsync(new InnerPlayListChangedNotification(), ctk).ConfigureAwait(false);
+        await _notificationHub.PublishNotificationAsync(new InnerPlayListChangedNotification(), ctk);
     }
 }

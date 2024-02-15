@@ -35,11 +35,12 @@ public class NeteaseUser : PersonBase, IHasCover, IHasDescription
             );
     }
 
-    public Task<ImageResourceBase?> GetCoverAsync(CancellationToken ctk = new())
+    public Task<ImageResourceBase?> GetCoverAsync(ImageResourceQualityTag? qualityTag = null, CancellationToken ctk = new())
     {
         return Task.FromResult<ImageResourceBase?>(new NeteaseImageResource()
                                                    {
-                                                       Url = AvatarUrl
+                                                       Url = AvatarUrl,
+                                                       QualityTag = qualityTag
                                                    });
     }
 

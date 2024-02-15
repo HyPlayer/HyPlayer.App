@@ -1,5 +1,3 @@
-using System.Collections.ObjectModel;
-
 namespace HyPlayer.PlayCore.Abstraction.Interfaces.Provider;
 
 public interface IProvableItemLikable : IProvider

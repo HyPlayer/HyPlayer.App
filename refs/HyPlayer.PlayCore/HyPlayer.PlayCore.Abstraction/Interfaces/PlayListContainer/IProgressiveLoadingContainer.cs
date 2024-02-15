@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using HyPlayer.PlayCore.Abstraction.Models;
+﻿using HyPlayer.PlayCore.Abstraction.Models;
 
 namespace HyPlayer.PlayCore.Abstraction.Interfaces.PlayListContainer;
 

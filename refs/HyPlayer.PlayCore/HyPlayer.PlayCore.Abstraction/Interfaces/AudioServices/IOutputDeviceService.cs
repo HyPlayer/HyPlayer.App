@@ -9,14 +9,14 @@ public interface IOutputDeviceChangeableService : IAudioService
     /// 获取可输出设备列表
     /// </summary>
     /// <returns></returns>
-    public Task<List<OutputDeviceBase>> GetOutputDevices( CancellationToken ctk = new());
+    public Task<List<OutputDeviceBase>> GetOutputDevicesAsync(CancellationToken ctk = new());
 
     /// <summary>
     /// 设置输出设备
     /// </summary>
     /// <param name="device">设备信息</param>
     /// <returns></returns>
-    public Task SetOutputDevices(OutputDeviceBase device, CancellationToken ctk = new());
+    public Task SetOutputDevicesAsync(OutputDeviceBase device, CancellationToken ctk = new());
 }
 
 public abstract class OutputDeviceBase

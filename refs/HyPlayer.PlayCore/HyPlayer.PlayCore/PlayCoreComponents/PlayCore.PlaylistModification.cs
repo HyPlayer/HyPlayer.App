@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using HyPlayer.PlayCore.Abstraction;
+﻿using HyPlayer.PlayCore.Abstraction;
 using HyPlayer.PlayCore.Abstraction.Interfaces.PlayListController;
 using HyPlayer.PlayCore.Abstraction.Models;
 using HyPlayer.PlayCore.Abstraction.Models.SingleItems;
@@ -41,7 +40,7 @@ public sealed partial class Chopin
         await (CurrentPlayList?.RemoveSongRangeAsync(items, ctk) ?? Task.CompletedTask);
     }
 
-    public override async Task RemoveAllSongAsync( CancellationToken ctk = new())
+    public override async Task RemoveAllSongAsync(CancellationToken ctk = new())
     {
         await (CurrentPlayList?.ClearSongsAsync(ctk) ?? Task.CompletedTask);
     }

@@ -1,16 +1,17 @@
-﻿using HyPlayer.PlayCore.Abstraction.Models.Resources;
+﻿using HyPlayer.PlayCore.Abstraction.Models;
+using HyPlayer.PlayCore.Abstraction.Models.Resources;
 
 namespace HyPlayer.NeteaseProvider.Models;
 
-public class NeteaseImageResource : ImageResourceBase
+public class NeteaseImageResource : ImageResourceBase, IResourceResultOf<string>
 {
-    public override async Task<object?> GetResourceAsync(ResourceQualityTag? qualityTag = null, Type? awaitingType = null,CancellationToken ctk = new())
+    public Task<string?> GetResourceAsync(CancellationToken cancellationToken = default)
     {
-        if (awaitingType == typeof(string))
+        if (QualityTag is ImageResourceQualityTag irqt)
+            return Task.FromResult($"{Url}?param={irqt.PixelX}y{irqt.PixelY}");
+        else
         {
-            return Url;
+            return Task.FromResult($"{Url}");
         }
-
-        return null;
     }
 }

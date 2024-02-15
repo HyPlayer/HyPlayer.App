@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-
-namespace HyPlayer.PlayCore.Abstraction.Interfaces.PlayCore;
+﻿namespace HyPlayer.PlayCore.Abstraction.Interfaces.PlayCore;
 
 public interface IPlayCoreService : IPlayCore
 {

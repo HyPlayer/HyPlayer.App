@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using HyPlayer.PlayCore.Abstraction.Interfaces.PlayCore;
+﻿using HyPlayer.PlayCore.Abstraction.Interfaces.PlayCore;
 using HyPlayer.PlayCore.Abstraction.Models;
 using HyPlayer.PlayCore.Abstraction.Models.AudioServiceComponents;
 using HyPlayer.PlayCore.Abstraction.Models.SingleItems;

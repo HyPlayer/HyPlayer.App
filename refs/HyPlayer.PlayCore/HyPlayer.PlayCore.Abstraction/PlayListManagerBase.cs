@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using HyPlayer.PlayCore.Abstraction.Models;
+﻿using HyPlayer.PlayCore.Abstraction.Models;
 using HyPlayer.PlayCore.Abstraction.Models.SingleItems;
 
 namespace HyPlayer.PlayCore.Abstraction;
