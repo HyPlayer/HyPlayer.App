@@ -18,7 +18,7 @@
 
     <ItemGroup>
         <PackageReference Include="Kengwang.Toolkit" Version="1.0.0"/>
-        <PackageReference Include="System.Text.Json" Version="7.0.3"/>
+        <PackageReference Include="System.Text.Json" Version="7.0.4"/>
     </ItemGroup>
 
 
