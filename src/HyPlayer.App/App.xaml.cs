@@ -21,9 +21,9 @@ using Pages = HyPlayer.Views.Pages;
 using HyPlayer.ViewModels;
 using HyPlayer.Extensions.Helpers;
 using HyPlayer.Views.Pages;
+using Microsoft.UI.Windowing;
+using Microsoft.UI;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace HyPlayer
 {
@@ -33,7 +33,6 @@ namespace HyPlayer
     public partial class App : Application
     {
         public static Frame? contentFrame;
-        private XamlWindow? window;
 
         public IDepository? Depository;
         public DispatcherQueue? DispatcherQueue;
@@ -67,6 +66,11 @@ namespace HyPlayer
         public App()
         {
             this.InitializeComponent();
+
+            Depository = DepositoryFactory.CreateNew();
+            Depository?.AddMvvm();
+            Depository?.AddSingleton<INavigationService, NavigationService>();
+            Depository?.AddSingleton<IPageService, PageService>();
         }
 
         /// <summary>
@@ -76,23 +80,15 @@ namespace HyPlayer
         protected override async void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
             DispatcherQueue = DispatcherQueue.GetForCurrentThread();
-            Depository = DepositoryFactory.CreateNew();
-            ConfigureServices();
-            await ConfigurePlayCore();
-            window = WindowHelper.CreateBlankWindow();
-            if(window != null) 
-            {
-                window.Content = new ShellPage();
 
-                window?.Activate();
+            await ConfigurePlayCore();
+            if(WindowHelper.CurrentWindow != null) 
+            {
+                WindowHelper.CurrentWindow.Content = new ShellPage();
+                TitleBarHelper.InitializeTitleBarForWindow(WindowHelper.CurrentWindow);
+                WindowHelper.CurrentWindow?.Activate();
             }
-        }
-        
-        private void ConfigureServices()
-        {
-            Depository?.AddMvvm();
-            Depository?.AddSingleton<INavigationService, NavigationService>();
-            Depository?.AddSingleton<IPageService, PageService>();
+            
         }
 
         private async Task ConfigurePlayCore()

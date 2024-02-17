@@ -6,11 +6,18 @@
     xmlns:local="using:HyPlayer"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:pages="using:HyPlayer.Views.Pages"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    xmlns:pages="using:HyPlayer.Views.Pages" 
+    xmlns:controls="using:HyPlayer.Views.Controls.App"
+    mc:Ignorable="d">
 
     <Grid>
-        <pages:ShellPage />
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="TitleBarRow" Height="48" />
+            <RowDefinition x:Name="ShellRow" Height="*" />
+            <RowDefinition x:Name="PlayBarRow" Height="96" />
+        </Grid.RowDefinitions>
+        <controls:TitleBar Grid.Row="0" VerticalAlignment="Top"
+Canvas.ZIndex="1"/>
+        <pages:ShellPage Grid.Row="1"/>
     </Grid>
 </Page>

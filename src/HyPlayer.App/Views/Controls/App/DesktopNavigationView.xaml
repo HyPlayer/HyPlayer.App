@@ -15,7 +15,7 @@
             BackRequested="{x:Bind ViewModel.GoBack}"
             IsBackEnabled="True"
             IsBackButtonVisible="{x:Bind contentFrame.CanGoBack, Mode=OneWay, Converter={StaticResource BooleanToNavButtonVisibleConverter}}"
-            IsPaneToggleButtonVisible="True"
+            IsPaneToggleButtonVisible="False"
             ItemInvoked="{x:Bind NavView_ItemInvoked}"
             Loaded="NavView_Loaded"
             Style="{StaticResource LeftNavViewDefaultStyle}"
