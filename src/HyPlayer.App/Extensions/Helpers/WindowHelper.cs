@@ -1,4 +1,4 @@
-﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml;
 using Microsoft.UI;
 using System;
 using System.Collections.Generic;
@@ -19,16 +19,6 @@ namespace HyPlayer.Extensions.Helpers
             Window newWindow = new MainWindow();
 
             InitializeTitleBarForWindow(newWindow, high);
-
-            TrackWindow(newWindow);
-            return newWindow;
-        }
-
-        static public Window CreateSmallWindow()
-        {
-            Window newWindow = new SmallWindow();
-
-            InitializeTitleBarForWindow(newWindow, false);
 
             TrackWindow(newWindow);
             return newWindow;

@@ -1,4 +1,4 @@
-﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using WinUIEx;
 using System;
@@ -20,6 +20,7 @@ using XamlWindow = Microsoft.UI.Xaml.Window;
 using Pages = HyPlayer.Views.Pages;
 using HyPlayer.ViewModels;
 using HyPlayer.Extensions.Helpers;
+using HyPlayer.Views.Pages;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -78,10 +79,10 @@ namespace HyPlayer
             Depository = DepositoryFactory.CreateNew();
             ConfigureServices();
             await ConfigurePlayCore();
-            window = WindowHelper.CreateWindow();
+            window = WindowHelper.CreateBlankWindow();
             if(window != null) 
-            { 
-                NavigateToRootPage(args);
+            {
+                window.Content = new ShellPage();
 
                 window?.Activate();
             }

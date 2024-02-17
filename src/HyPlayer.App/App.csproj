@@ -23,6 +23,7 @@
  
   <ItemGroup>
     <None Remove="Controls\Dialogs\SignInDialog.xaml" />
+    <None Remove="MainPage.xaml" />
     <None Remove="Resources\Styles\FontSizes.xaml" />
     <None Remove="Resources\Styles\TextBlock.xaml" />
     <None Remove="Resources\Styles\Thickness.xaml" />
@@ -38,7 +39,6 @@
     <None Remove="Views\Pages\ShellPage.xaml" />
     <None Remove="Views\Pages\UserPage.xaml" />
     <None Remove="Views\Window\MainWindow.xaml" />
-    <None Remove="Views\Window\SmallWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Page Remove="Controls\App\SelectableTextBox.xaml" />
@@ -80,12 +80,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Views\Window\SmallWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
-  <ItemGroup>
     <Page Update="Views\Window\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -107,6 +101,9 @@
     <None Update="Controls\App\SelectableTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <Page Update="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Resources\Styles\FontSizes.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
