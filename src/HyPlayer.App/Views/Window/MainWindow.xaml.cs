@@ -213,22 +213,10 @@ namespace HyPlayer.Views.Window
             }
         }
 
-       
 
-        private async void UserButton_Click(object sender, RoutedEventArgs e)
-        {
-            if(!_shellViewModel.AccountViewModel.IsLogin)
-            {
-                var signin_dialog = new SignInDialog();
-                signin_dialog.XamlRoot = this.Content.XamlRoot;
-                var result = await signin_dialog.ShowAsync();
-            }
-            else
-            {
-                App.GetService<INavigationService>().NavigateTo(typeof(UserPage), _shellViewModel.AccountViewModel.User);
-            }
-        }
 
         
+
+
     }
 }

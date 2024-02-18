@@ -31,6 +31,7 @@
     <None Remove="Views\Controls\App\DesktopNavigationView.xaml" />
     <None Remove="Views\Controls\App\HomePageHeaderImage.xaml" />
     <None Remove="Views\Controls\App\TitleBar.xaml" />
+    <None Remove="Views\Controls\App\UserControlCentreButton.xaml" />
     <None Remove="Views\Controls\Netease\SongListView\SongListView.xaml" />
     <None Remove="Views\Controls\Search\SearchBox.xaml" />
     <None Remove="Views\Pages\ErrorPage.xaml" />
@@ -102,6 +103,9 @@
     <None Update="Controls\App\SelectableTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <Page Update="Views\Controls\App\UserControlCentreButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Views\Controls\App\TitleBar.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -161,6 +165,10 @@
   <ItemGroup>
     <ProjectReference Include="..\..\refs\HyPlayer.NeteaseProvider\HyPlayer.NeteaseProvider\HyPlayer.NeteaseProvider.csproj" />
     <ProjectReference Include="..\..\refs\HyPlayer.PlayCore\HyPlayer.PlayCore\HyPlayer.PlayCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Controls\App\TitleBarNavigationBackButton\" />
   </ItemGroup>
   
 </Project>

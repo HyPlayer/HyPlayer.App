@@ -23,6 +23,7 @@ using HyPlayer.Extensions.Helpers;
 using HyPlayer.Views.Pages;
 using Microsoft.UI.Windowing;
 using Microsoft.UI;
+using Windows.ApplicationModel.Resources.Core;
 
 
 namespace HyPlayer
@@ -77,15 +78,16 @@ namespace HyPlayer
         /// Invoked when the application is launched.
         /// </summary>
         /// <param name="args">Details about the launch request and process.</param>
-        protected override async void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+        protected override async void OnLaunched(LaunchActivatedEventArgs args)
         {
             DispatcherQueue = DispatcherQueue.GetForCurrentThread();
 
             await ConfigurePlayCore();
             if(WindowHelper.CurrentWindow != null) 
             {
-                WindowHelper.CurrentWindow.Content = new ShellPage();
+                WindowHelper.CurrentWindow.Content = new MainPage();
                 TitleBarHelper.InitializeTitleBarForWindow(WindowHelper.CurrentWindow);
+                WindowHelper.CurrentWindow.Title = "HyPlayer";
                 WindowHelper.CurrentWindow?.Activate();
             }
             
@@ -98,7 +100,7 @@ namespace HyPlayer
             await playCore.RegisterMusicProviderAsync(typeof(NeteaseProvider.NeteaseProvider));
         }
 
-        private void NavigateToRootPage(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+        private void NavigateToRootPage(LaunchActivatedEventArgs args)
         {   
             GetService<INavigationService>().NavigateTo(typeof(Pages.HomePage));
         }

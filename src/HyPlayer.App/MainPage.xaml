@@ -17,7 +17,7 @@
             <RowDefinition x:Name="PlayBarRow" Height="96" />
         </Grid.RowDefinitions>
         <controls:TitleBar Grid.Row="0" VerticalAlignment="Top"
-Canvas.ZIndex="1"/>
+Canvas.ZIndex="1" Height="48"/>
         <pages:ShellPage Grid.Row="1"/>
     </Grid>
 </Page>

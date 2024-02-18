@@ -1,5 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using HyPlayer.Extensions.Helpers;
 using HyPlayer.Interfaces.ViewModels;
 using HyPlayer.Interfaces.Views;
 using HyPlayer.Views.Controls.Dialogs;
@@ -13,10 +14,12 @@ namespace HyPlayer.ViewModels
     public partial class ShellViewModel : ObservableObject, IScopedViewModel
     {
         [ObservableProperty] private AccountViewModel _accountViewModel;
+        [ObservableProperty] private String _title;
 
         public ShellViewModel(AccountViewModel accountViewModel) 
         { 
             _accountViewModel = accountViewModel;
+            _title = WindowHelper.CurrentWindow.Title;
         }
 
         [RelayCommand]

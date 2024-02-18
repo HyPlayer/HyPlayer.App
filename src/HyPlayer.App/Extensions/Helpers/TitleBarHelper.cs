@@ -6,7 +6,7 @@ namespace HyPlayer.Extensions.Helpers
 {
     public class TitleBarHelper
     {
-        static public void InitializeTitleBarForWindow(Window window, bool isTallTitleBar = true)
+        static public void InitializeTitleBarForWindow(Window window, bool isTallTitleBar = false)
         {
             var titleBar = window.AppWindow.TitleBar;
             titleBar.BackgroundColor = Colors.Transparent;

@@ -15,16 +15,6 @@ namespace HyPlayer.Extensions.Helpers
 {
     public class WindowHelper
     {
-        //static public Window CreateWindow(bool high = true)
-        //{
-        //    Window newWindow = new MainWindow();
-        //
-        //   InitializeTitleBarForWindow(newWindow, high);
-
-        //    TrackWindow(newWindow);
-        //    return newWindow;
-        //}
-
         static public Window CreateBlankWindow()
         {
             Window newWindow = new Window();

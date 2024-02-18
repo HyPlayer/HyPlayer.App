@@ -15,9 +15,6 @@ using Microsoft.UI.Xaml.Navigation;
 using HyPlayer.Views.Controls.Base;
 using HyPlayer.Interfaces.Views;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace HyPlayer.Views.Controls.App
 {
     public sealed partial class DesktopNavigationView : NavigationViewBase

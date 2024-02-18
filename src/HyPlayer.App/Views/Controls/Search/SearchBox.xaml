@@ -6,7 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:HyPlayer.Views.Controls.Search"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    BorderThickness="0"
+    BorderThickness="1"
+    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
     mc:Ignorable="d">
 
     <local:SearchBoxBase.Resources>
@@ -59,7 +60,7 @@
         <AutoSuggestBox
             x:Name="AppSearchBox"
             HorizontalAlignment="Stretch"
-            BorderThickness="0"
+
             IsTabStop="True"
             KeyDown="AppSearchBox_KeyDown"
             PlaceholderText="搜索音乐、歌手或者音乐视频"

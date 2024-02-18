@@ -1,3 +1,7 @@
+using HyPlayer.Interfaces.Views;
+using HyPlayer.ViewModels;
+using HyPlayer.Views.Controls.Dialogs;
+using HyPlayer.Views.Pages;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -13,16 +17,33 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace HyPlayer.Views.Controls.App
 {
-    public sealed partial class TitleBar : UserControl
+    public sealed partial class TitleBar : TitleBarBase
     {
         public TitleBar()
         {
             this.InitializeComponent();
         }
+
+        private async void UserButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!ViewModel.AccountViewModel.IsLogin)
+            {
+                var signin_dialog = new SignInDialog();
+                signin_dialog.XamlRoot = this.Content.XamlRoot;
+                var result = await signin_dialog.ShowAsync();
+            }
+            else
+            {
+                HyPlayer.App.GetService<INavigationService>().NavigateTo(typeof(UserPage), ViewModel.AccountViewModel.User);
+            }
+        }
+    }
+
+    public class TitleBarBase : ReactiveControlBase<ShellViewModel>
+    {
+
     }
 }

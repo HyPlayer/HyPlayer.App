@@ -37,13 +37,6 @@
                         <ColumnDefinition x:Name="PersonPictureButton" Width="Auto" />
                         <ColumnDefinition x:Name="RightPaddingColumn" Width="0" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        x:Name="TitleBarIcon"
-                        Grid.Column="1"
-                        Width="16"
-                        Height="16"
-                        Margin="8,0,0,0"
-                        Source="ms-appx:///Assets/Images/StoreLogo.png" />
                     <TextBlock
                         x:Name="TitleTextBlock"
                         Grid.Column="2"
@@ -51,27 +44,7 @@
                         VerticalAlignment="Center"
                         FontSize="14"
                         Style="{StaticResource CaptionTextBlockStyle}"
-                        Text="{x:Bind Title}" />
-                    <search:SearchBox
-                        x:Name="SearchBox"
-                        Grid.Column="4"
-                        Width="400"
-                        Height="36"
-                        MinWidth="250"
-                        MaxWidth="550"
-                        VerticalAlignment="Center"
-                        BorderThickness="0" />
-                    <Button
-                        x:Name="UserButton"
-                        Grid.Column="6"
-                        Width="40"
-                        Height="40"
-                        Margin="0,0,10,0"
-                        VerticalAlignment="Center"
-                        Click="UserButton_Click"
-                        Style="{ThemeResource TitleBarButtonStyle}">
-                        <PersonPicture Width="30" Height="30" />
-                    </Button>
+                        Text="HyPlayer" />
                 </Grid>
             </Border>
 
