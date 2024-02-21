@@ -13,7 +13,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using HyPlayer.Views.Controls.Base;
-using HyPlayer.Interfaces.Views;
+using HyPlayer.Interfaces.Services;
 
 namespace HyPlayer.Views.Controls.App
 {

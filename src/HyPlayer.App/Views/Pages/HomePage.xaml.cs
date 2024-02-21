@@ -23,6 +23,7 @@ using Depository.Extensions;
 using HomeViewModel = HyPlayer.ViewModels.HomeViewModel;
 using App = HyPlayer.App;
 using HyPlayer.Interfaces.Views;
+using HyPlayer.Interfaces.Services;
 using HyPlayer.PlayCore.Abstraction.Models;
 using HyPlayer.NeteaseProvider.Models;
 

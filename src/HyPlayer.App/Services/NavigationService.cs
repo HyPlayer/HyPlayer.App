@@ -1,8 +1,8 @@
-﻿using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
 using System;
-using HyPlayer.Interfaces.Views;
+using HyPlayer.Interfaces.Services;
 
 namespace HyPlayer.Services
 {

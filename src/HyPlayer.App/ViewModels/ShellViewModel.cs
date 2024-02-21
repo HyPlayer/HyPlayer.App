@@ -2,7 +2,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HyPlayer.Extensions.Helpers;
 using HyPlayer.Interfaces.ViewModels;
-using HyPlayer.Interfaces.Views;
+using HyPlayer.Interfaces.Services;
 using HyPlayer.Views.Controls.Dialogs;
 using HyPlayer.Views.Pages;
 using Microsoft.UI.Xaml.Controls;

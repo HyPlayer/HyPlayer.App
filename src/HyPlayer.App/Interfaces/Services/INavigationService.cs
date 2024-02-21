@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace HyPlayer.Interfaces.Views;
+namespace HyPlayer.Interfaces.Services;
 
 public interface INavigationService
 {

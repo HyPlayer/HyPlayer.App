@@ -9,7 +9,7 @@ using Depository.Abstraction.Interfaces;
 using Depository.Core;
 using Depository.Extensions;
 using HyPlayer.Extensions.DependencyInjectionExtensions;
-using HyPlayer.Interfaces.Views;
+using HyPlayer.Interfaces.Services;
 using HyPlayer.Services;
 using HyPlayer.PlayCore;
 using HyPlayer.PlayCore.Abstraction;
