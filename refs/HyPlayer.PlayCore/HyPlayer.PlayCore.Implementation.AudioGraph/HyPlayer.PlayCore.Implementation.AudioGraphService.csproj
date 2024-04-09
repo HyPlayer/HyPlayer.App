@@ -12,7 +12,7 @@
 
   <ItemGroup>
       <PackageReference Include="Depository" Version="2.1.0" />
-      <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.231219000" />
+      <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240404000" />
       <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.2428" />
   </ItemGroup>
 
