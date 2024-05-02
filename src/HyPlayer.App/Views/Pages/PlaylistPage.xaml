@@ -119,8 +119,68 @@
                         </NavigationViewItem>
                     </NavigationView.MenuItems>
                     <NavigationView.FooterMenuItems>
-                        <NavigationViewItem Icon="Sort" SelectsOnInvoked="False" />
-                        <NavigationViewItem Icon="Filter" SelectsOnInvoked="False" />
+                        <!-- 第一个 NavigationViewItem -->
+                            <NavigationViewItem SelectsOnInvoked="False">
+                                <NavigationViewItem.Template>
+                                    <ControlTemplate TargetType="NavigationViewItem">
+                                        <Grid x:Name="LayoutRoot" HorizontalAlignment="Stretch">
+                                            <!-- 其他代码 -->
+                                            <ToggleSplitButton HorizontalAlignment="Stretch" 
+                                                               Background="Transparent"
+                                                               BorderBrush="Transparent" 
+                                                               Margin="0"
+                                                               Click="SortButton_Click">
+                                            <winuicontrols:ToolTipService.ToolTip>
+                                                <ToolTip Content="排序方式"
+                                                             x:Name="SortToolTip"/>
+                                            </winuicontrols:ToolTipService.ToolTip>
+                                            <FontIcon Glyph="" FontSize="16" x:Name="SortIcon"/>
+                                                <ToggleSplitButton.Flyout>
+                                                    <Flyout>
+                                                        <StackPanel>
+                                                            <RadioButton Content="按照歌曲名排序" Tag="SongName" Checked="SortRadioButton_OnChecked" IsChecked="True"/>
+                                                        <RadioButton Content="按照歌手排序" Tag="Artist" Checked="SortRadioButton_OnChecked"/>
+                                                        <RadioButton Content="按照专辑排序" Tag="Album" Checked="SortRadioButton_OnChecked"/>
+                                                        <RadioButton Content="按照发布时间排序" Tag="ReleaseDate" Checked="SortRadioButton_OnChecked"/>
+                                                        <RadioButton Content="按照播放次数排序" Tag="PlayCount" Checked="SortRadioButton_OnChecked"/>
+                                                        <RadioButton Content="按照收藏数排序" Tag="FavoritesCount" Checked="SortRadioButton_OnChecked"/>
+                                                        </StackPanel>
+                                                    </Flyout>
+                                                </ToggleSplitButton.Flyout>
+                                            </ToggleSplitButton>
+                                            <!-- 其他代码 -->
+                                        </Grid>
+                                    </ControlTemplate>
+                                </NavigationViewItem.Template>
+                            </NavigationViewItem>
+
+                            <!-- 第二个 NavigationViewItem -->
+                        <NavigationViewItem SelectsOnInvoked="False">
+                            <NavigationViewItem.Template>
+                                <ControlTemplate TargetType="NavigationViewItem">
+                                    <Grid x:Name="LayoutRoot" HorizontalAlignment="Stretch">
+                                        <!-- 其他代码 -->
+                                        <ToggleSplitButton HorizontalAlignment="Stretch"
+                                                           Background="Transparent"
+                                                           BorderBrush="Transparent"
+                                                           Margin="0">
+                                            <FontIcon Glyph="" FontSize="16"/>
+                                            <ToggleSplitButton.Flyout>
+                                                <Flyout>
+                                                    <StackPanel>
+                                                        <!-- 这里放置第二个 Flyout 的内容 -->
+                                                        <TextBlock Text="这里是第二个 Flyout 的内容" />
+                                                        <!-- 可以添加更多控件 -->
+                                                    </StackPanel>
+                                                </Flyout>
+                                            </ToggleSplitButton.Flyout>
+                                        </ToggleSplitButton>
+                                        <!-- 其他代码 -->
+                                    </Grid>
+                                </ControlTemplate>
+                            </NavigationViewItem.Template>
+                        </NavigationViewItem>
+
                     </NavigationView.FooterMenuItems>
                     <NavigationView.AutoSuggestBox>
                         <AutoSuggestBox
