@@ -25,7 +25,77 @@
             <ListView.Footer>
                 <ContentControl Content="{x:Bind Footer}" />
             </ListView.Footer>
-
+            <ListView.ContextFlyout>
+                <MenuFlyout>
+                    <MenuFlyoutItem
+                        x:Name="FlyoutItemPlay"
+                        Text="立即播放">
+                        <MenuFlyoutItem.Icon>
+                            <SymbolIcon Symbol="Play" />
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutItem
+                        x:Name="FlyoutItemAddToPlaylist"
+                        Text="添加到播放列表">
+                        <MenuFlyoutItem.Icon>
+                            <SymbolIcon Symbol="MusicInfo" />
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutSeparator />
+                    <MenuFlyoutItem
+                        x:Name="FlyoutItemSinger"
+                        Text="歌手">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE716;" />
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutItem
+                        x:Name="FlyoutItemAlbum"
+                        Text="专辑">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE93C;" />
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutSeparator />
+                    <MenuFlyoutItem
+                        x:Name="FlyoutItemComments"
+                        Text="评论">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE8F2;" />
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutItem
+                        x:Name="FlyoutItemDownload"
+                        Text="下载">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE118;" />
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutItem
+                        x:Name="BtnMV"
+                        Text="视频">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE173;" />
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutItem
+                        x:Name="FlyoutCollection"
+                        Text="收藏">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE1DA;" />
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutItem
+                        x:Name="Btn_Del"
+                        Foreground="Red"
+                        Text="删除"
+                        Visibility="{Binding ElementName=SongListRoot, Path=IsMySongList}">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Foreground="Red" Glyph="&#xE107;" />
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
+                </MenuFlyout>
+            </ListView.ContextFlyout>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="netease:NeteaseSong">
                     <Grid Margin="12,8">
