@@ -126,9 +126,13 @@
                         <AutoSuggestBox
                             BorderThickness="0"
                             PlaceholderText="在歌单中搜索..."
-                            QueryIcon="Find" />
+                            QueryIcon="Find" 
+                            TextChanged="AutoSuggestBox_OnTextChanged"
+                            SuggestionChosen="AutoSuggestBox_OnSuggestionChosen"/>
                     </NavigationView.AutoSuggestBox>
-                    <songlist:SongListView CornerRadius="0,8,0,0" ListSource="{x:Bind ViewModel.SongsList}" />
+                    <songlist:SongListView x:Name="SongsListView" 
+                                           CornerRadius="0,8,0,0" 
+                                           ListSource="{x:Bind ViewModel.SongsList}"/>
                 </NavigationView>
 
             </Grid>

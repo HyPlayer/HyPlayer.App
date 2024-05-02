@@ -40,12 +40,30 @@ namespace HyPlayer.Views.Pages
                 ViewModel.PlayList = (NeteasePlaylist?)e.Parameter;
                 await ViewModel.GetSongsAsync();
             }
+            SongsListView.ViewModel = ViewModel;
+            Bindings.Update();
+            SongsListView.Update();
         }
 
         private async void LikeBtnClick(object sender, RoutedEventArgs e)
         {
             await ViewModel.SubscribePlaylistAsync();
             ViewModel.PlayList.Subscribed = !ViewModel.PlayList.Subscribed;
+        }
+
+        private void AutoSuggestBox_OnTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+            {
+                var suggestions = ViewModel.SongsList.Where(t => t.Name.Contains(sender.Text)).Select(t => t.Name).ToList();
+                sender.ItemsSource = suggestions;
+            }
+        }
+
+        private async void AutoSuggestBox_OnSuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            var song = ViewModel.SongsList.First(t => t.Name == args.SelectedItem.ToString());
+            SongsListView.ScrollToIndex(ViewModel.SongsList.IndexOf(song));
         }
     }
 

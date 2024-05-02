@@ -10,7 +10,10 @@
     mc:Ignorable="d">
 
     <Grid>
-        <ListView x:Name="SongContainer">
+        <ListView x:Name="SongContainer"
+                  ItemsSource="{x:Bind ViewModel.SongsList ,Mode=OneWay}"
+                  IsItemClickEnabled="True"
+                  ItemClick="SongItemOnClick">
             <ListView.Header>
                 <ContentControl
                     x:Name="HeaderPanel"
@@ -37,12 +40,12 @@
                             Grid.Column="1"
                             VerticalAlignment="Center"
                             Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
-                            Text="{x:Bind Artists, Converter={StaticResource StringListToStringConverter}}" />
+                            Text="{x:Bind Artists, Converter={StaticResource ArtistListToStringConverter}}" />
                         <TextBlock
                             Grid.Column="2"
                             VerticalAlignment="Center"
                             Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
-                            Text="{x:Bind Album}" />
+                            Text="{x:Bind Album.Name}" />
                         <Button
                             Grid.Column="3"
                             Height="32"
