@@ -12,4 +12,7 @@
     <converters:BooleanToNavButtonVisibleConverter x:Key="BooleanToNavButtonVisibleConverter" />
     <converters:StringToImageSourceConverter x:Key="StringToImageSourceConverter" />
     <converters:BrushToColorConverter x:Key="BrushToColorConverter" />
+    <converters:TimeStampToDateConverter x:Key="TimeStampToDateConverter"/>
+    <converters:ArtistListToStringConverter x:Key="ArtistListToStringConverter"/>
+    <converters:BoolToStringConverter x:Key="BoolToStringConverter"/>
 </ResourceDictionary>
