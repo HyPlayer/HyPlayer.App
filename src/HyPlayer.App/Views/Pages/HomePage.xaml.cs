@@ -79,6 +79,16 @@ namespace HyPlayer.Views.Pages
 
             App.GetService<INavigationService>().NavigateTo(typeof(PlaylistPage), (e.ClickedItem as NeteasePlaylist));
         }
+
+        private void HomePageTopChart_OnClick(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            if (button == null) return;
+            var playlist = button.CommandParameter as NeteasePlaylist;
+            Debug.WriteLine($"Clicking on {playlist.Name}");
+            App.GetService<INavigationService>().NavigateTo(typeof(PlaylistPage), playlist);
+
+        }
     }
 
     public class HomePageBase : AppPageWithScopedViewModelBase<HomeViewModel>

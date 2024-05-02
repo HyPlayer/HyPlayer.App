@@ -336,7 +336,8 @@
                 LeaderBoardName="{x:Bind Name}"
                 PlayCount="{x:Bind PlayCount, Converter={StaticResource CountHumanizerConverter}}"
                 Style="{ThemeResource DefaultTopChartButtonStyle}"
-                UseSystemFocusVisuals="True" />
+                CommandParameter="{x:Bind}"
+                Click="HomePageTopChart_OnClick"/>
         </DataTemplate>
 
         <DataTemplate x:Key="HomePagePeronalFMTemplate" x:DataType="models:NeteaseSong">
@@ -702,7 +703,7 @@
                             Height="140"
                             Margin="12,4"
                             DesiredWidth="240"
-                            IsItemClickEnabled="True"
+                            IsItemClickEnabled="False"
                             ItemClick="OnPlaylistItemClicked"
                             ItemHeight="128"
                             ItemTemplate="{StaticResource HomePageTopChartTemplate}"
