@@ -21,11 +21,13 @@
         <TextBox
             x:Name="TextBoxAccount"
             BorderThickness="0"
-            PlaceholderText="手机 / 邮箱" />
+            PlaceholderText="手机 / 邮箱" 
+            TabIndex="1"/>
         <PasswordBox
             x:Name="TextBoxPassword"
             BorderThickness="0"
-            PlaceholderText="密码" />
+            PlaceholderText="密码" 
+            TabIndex="2"/>
         <TextBlock
             VerticalAlignment="Center"
             Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
