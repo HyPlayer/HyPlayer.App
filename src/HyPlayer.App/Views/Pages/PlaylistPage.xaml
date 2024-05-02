@@ -4,13 +4,14 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:winuicontrols="using:Microsoft.UI.Xaml.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:HyPlayer.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:songlist="using:HyPlayer.Views.Controls.Netease.SongListView"
     mc:Ignorable="d">
 
-    <ScrollViewer x:Name="MainScrollViewer">
+    <Grid x:Name="MainScrollViewer">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -24,6 +25,7 @@
                 Stretch="UniformToFill" />
 
             <Grid
+                Row ="0"
                 Padding="0,32"
                 Background="{ThemeResource SystemControlAcrylicElementBrush}"
                 ColumnSpacing="24">
@@ -61,13 +63,15 @@
                             Text="{x:Bind ViewModel.PlayList.Name}" />
                         <TextBlock FontSize="16">
                             <Run Text="{x:Bind ViewModel.PlayList.CreatorList, Converter={StaticResource StringListToStringConverter}}" />
-                            <Run Text=" 更新于" />
-                            <Run Text="{x:Bind ViewModel.PlayList.UpdateTime}" />
+                            <Run Text="更新于" />
+                            <Run Text="{x:Bind ViewModel.PlayList.UpdateTime, Converter={StaticResource TimeStampToDateConverter}}" />
                         </TextBlock>
-                        <Button Margin="0,6,0,0">
+                        <Button Margin="0,6,0,0"
+                                Click="LikeBtnClick">
                             <StackPanel Orientation="Horizontal" Spacing="8">
-                                <FontIcon FontSize="12" Glyph="&#xE10B;" />
-                                <TextBlock Text="已收藏" />
+                                <FontIcon FontSize="12"
+                                          Glyph="{x:Bind ViewModel.PlayList.Subscribed, Converter={StaticResource BoolToStringConverter}, ConverterParameter='&#xE0B4;|&#xE10B;',Mode=OneWay}"/>
+                                <TextBlock Text="{x:Bind ViewModel.PlayList.Subscribed, Converter={StaticResource BoolToStringConverter}, ConverterParameter='收藏|已收藏',Mode=OneWay}" />
                             </StackPanel>
                         </Button>
                     </StackPanel>
@@ -99,7 +103,7 @@
                                     Margin="4,14,0,0"
                                     Background="Transparent"
                                     Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
-                                    Value="11" />
+                                    Value="{x:Bind ViewModel.PlayList.TrackCount}" />
                             </NavigationViewItem.InfoBadge>
                         </NavigationViewItem>
                         <NavigationViewItem Content="评论">
@@ -110,8 +114,7 @@
                                 <InfoBadge
                                     Margin="4,14,0,0"
                                     Background="Transparent"
-                                    Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
-                                    Value="123" />
+                                    Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"/>
                             </NavigationViewItem.InfoBadge>
                         </NavigationViewItem>
                     </NavigationView.MenuItems>
@@ -131,5 +134,5 @@
             </Grid>
         </Grid>
 
-    </ScrollViewer>
+    </Grid>
 </local:PlaylistPageBase>

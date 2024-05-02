@@ -24,7 +24,7 @@ using AsyncAwaitBestPractices;
 
 namespace HyPlayer.Views.Pages
 {
-    
+
     public sealed partial class PlaylistPage : PlaylistPageBase
     {
         public PlaylistPage()
@@ -35,14 +35,17 @@ namespace HyPlayer.Views.Pages
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            if((NeteasePlaylist)e.Parameter != null)
+            if ((NeteasePlaylist)e.Parameter != null)
             {
                 ViewModel.PlayList = (NeteasePlaylist?)e.Parameter;
                 await ViewModel.GetSongsAsync();
             }
+        }
 
-            
-            //
+        private async void LikeBtnClick(object sender, RoutedEventArgs e)
+        {
+            await ViewModel.SubscribePlaylistAsync();
+            ViewModel.PlayList.Subscribed = !ViewModel.PlayList.Subscribed;
         }
     }
 

@@ -4,6 +4,7 @@ using HyPlayer.Interfaces.ViewModels;
 using HyPlayer.NeteaseProvider.Models;
 using HyPlayer.PlayCore.Abstraction.Models.SingleItems;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -24,7 +25,7 @@ public partial class NeteasePlaylistViewModel : ObservableObject, IScrollableVie
     public long? PlayCount => PlayList?.PlayCount;
     public long? ShareCount => PlayList?.ShareCount;
     [ObservableProperty]
-    public List<NeteaseSong>? _songsList;
+    public ObservableCollection<NeteaseSong>? _songsList;
 
 
     public NeteasePlaylistViewModel(NeteaseProvider.NeteaseProvider provider)
@@ -37,8 +38,21 @@ public partial class NeteasePlaylistViewModel : ObservableObject, IScrollableVie
     {
         if(PlayList is not null)
         {
-            SongsList = (await PlayList.GetAllItemsAsync())?.Select(t => (NeteaseSong)t).ToList();
+            SongsList = new ObservableCollection<NeteaseSong>((await PlayList.GetAllItemsAsync())?.Select(t => (NeteaseSong)t));
         }
-        
+    }
+
+    [RelayCommand]
+    public async Task SubscribePlaylistAsync()
+    {
+        if (PlayList.Subscribed==false)
+        {
+            await _provider.LikeProvidableItemAsync($"pl{PlayList.ActualId}", null);
+        }
+        else
+        {
+            await _provider.UnlikeProvidableItemAsync($"pl{PlayList.ActualId}", null);
+        }
+        OnPropertyChanged(nameof(PlayList));
     }
 }
