@@ -1,10 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using System.Runtime.InteropServices;
+using CommunityToolkit.WinUI.UI;
+using HyPlayer.NeteaseProvider.Models;
+using HyPlayer.ViewModels;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -31,7 +38,7 @@ namespace HyPlayer.Views.Controls.Netease.SongListView
 
         public static readonly DependencyProperty FooterProperty = DependencyProperty.Register(
             "Footer", typeof(UIElement), typeof(SongListView), new PropertyMetadata(default(UIElement)));
-
+        public NeteasePlaylistViewModel ViewModel;
         public string ListSource
         {
             get => (string)GetValue(ListSourceProperty);
@@ -57,6 +64,25 @@ namespace HyPlayer.Views.Controls.Netease.SongListView
         public SongListView()
         {
             this.InitializeComponent();
+        }
+
+
+        public void Update()
+        {
+            this.Bindings.Update();
+        }
+
+        private void SongItemOnClick(object sender, ItemClickEventArgs e)
+        {
+            var song = (NeteaseSong)e.ClickedItem;
+            Debug.WriteLine($"Clicking on {song.Name}");
+            //TODO: Play the song
+        }
+
+        public async void ScrollToIndex(int index)
+        {
+            SongContainer.SelectedItem = ViewModel.SongsList[index];
+            await SongContainer.SmoothScrollIntoViewWithIndexAsync(index, ScrollItemPlacement.Top, false, true);
         }
     }
 }
