@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  IgnorableNamespaces="uap rescap">
+
+  <Identity
+    Name="84838174-2521-4e34-bce8-c0c9173f137e"
+    Publisher="CN=HyPlayer Team"
+    Version="1.0.0.0" />
+
+  <mp:PhoneIdentity PhoneProductId="84838174-2521-4e34-bce8-c0c9173f137e" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
+  <Properties>
+    <DisplayName>HyPlayer</DisplayName>
+    <PublisherDisplayName>HyPlayer Team</PublisherDisplayName>
+    <Logo>Assets\Images\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.17763.0" MaxVersionTested="10.0.19041.0" />
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.19041.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="en-US"/>
+    <Resource Language="zh-CN"/>
+    <Resource Language="zh-TW"/>
+  </Resources>
+
+  <Applications>
+    <Application Id="App"
+      Executable="$targetnametoken$.exe"
+      EntryPoint="$targetentrypoint$">
+      <uap:VisualElements
+        DisplayName="HyPlayer"
+        Description="A third-party Netease Cloud Music Cilent."
+        BackgroundColor="transparent"
+        Square150x150Logo="Assets\Images\Square150x150Logo.png"
+        Square44x44Logo="Assets\Images\Square44x44Logo.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\Images\Wide310x150Logo.png" />
+        <uap:SplashScreen Image="Assets\Images\SplashScreen.png" />
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+</Package>
