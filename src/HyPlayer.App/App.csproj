@@ -161,5 +161,9 @@
     <ProjectReference Include="..\..\refs\HyPlayer.NeteaseProvider\HyPlayer.NeteaseProvider\HyPlayer.NeteaseProvider.csproj" />
     <ProjectReference Include="..\..\refs\HyPlayer.PlayCore\HyPlayer.PlayCore\HyPlayer.PlayCore.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Controls\PlayBar\" />
+  </ItemGroup>
   
 </Project>
