@@ -1,8 +1,9 @@
-﻿using HyPlayer.NeteaseProvider.Constants;
+using HyPlayer.NeteaseProvider.Constants;
 using HyPlayer.PlayCore.Abstraction.Interfaces.ProvidableItem;
 using HyPlayer.PlayCore.Abstraction.Models.Containers;
 using HyPlayer.PlayCore.Abstraction.Models.Resources;
 using HyPlayer.PlayCore.Abstraction.Models.SingleItems;
+using System.Diagnostics.Contracts;
 
 namespace HyPlayer.NeteaseProvider.Models;
 
@@ -18,7 +19,7 @@ public class NeteaseSong : SingleSongBase, IHasTranslation, IHasCover
     public int TrackNumber { get; set; }
     public string? CoverUrl { get; set; }
 
-    public required List<PersonBase>? Artists { get; init; }
+    public List<PersonBase>? Artists { get; set; } = new() { };
 
     public override Task<List<PersonBase>?> GetCreatorsAsync(CancellationToken ctk = new())
     {
@@ -28,6 +29,6 @@ public class NeteaseSong : SingleSongBase, IHasTranslation, IHasCover
     public string? Translation { get; set; }
     public Task<ImageResourceBase?> GetCoverAsync(ImageResourceQualityTag? qualityTag = null, CancellationToken ctk = new())
     {
-        return Task.FromResult<ImageResourceBase?>(new NeteaseImageResource() { Url = CoverUrl, QualityTag = qualityTag});
+        return Task.FromResult<ImageResourceBase?>(new NeteaseImageResource() { Url = CoverUrl, QualityTag = qualityTag });
     }
 }

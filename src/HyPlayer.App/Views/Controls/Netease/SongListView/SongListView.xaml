@@ -6,7 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:HyPlayer.Views.Controls.Netease.SongListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:netease="using:HyPlayer.NeteaseProvider.Models"
+    xmlns:netease="using:HyPlayer.NeteaseProvider.Models" 
+    xmlns:singlesongview="using:HyPlayer.Views.Controls.SingleSongView"
     mc:Ignorable="d">
 
     <Grid>
@@ -98,33 +99,9 @@
             </ListView.ContextFlyout>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="netease:NeteaseSong">
-                    <Grid Margin="12,8">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="45" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock VerticalAlignment="Center" Text="{x:Bind Name}" />
-                        <TextBlock
-                            Grid.Column="1"
-                            VerticalAlignment="Center"
-                            Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
-                            Text="{x:Bind Artists, Converter={StaticResource ArtistListToStringConverter}}" />
-                        <TextBlock
-                            Grid.Column="2"
-                            VerticalAlignment="Center"
-                            Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
-                            Text="{x:Bind Album.Name}" />
-                        <Button
-                            Grid.Column="3"
-                            Height="32"
-                            VerticalAlignment="Center"
-                            Background="Transparent"
-                            BorderBrush="Transparent">
-                            <FontIcon Glyph="&#xE10C;" />
-                        </Button>
-                    </Grid>
+                    <singlesongview:SingleSongView Loaded="SingleSongView_Loaded" >
+
+                    </singlesongview:SingleSongView>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

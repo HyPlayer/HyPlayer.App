@@ -27,6 +27,7 @@ namespace HyPlayer.Views.Controls.Netease.SongListView
 {
     public sealed partial class SongListView : UserControl
     {
+        private int loadIndex = 0;
         public static readonly DependencyProperty ListSourceProperty = DependencyProperty.Register(
             "ListSource", typeof(string),
             typeof(SongListView),
@@ -83,6 +84,11 @@ namespace HyPlayer.Views.Controls.Netease.SongListView
         {
             SongContainer.SelectedItem = ViewModel.SongsList[index];
             await SongContainer.SmoothScrollIntoViewWithIndexAsync(index, ScrollItemPlacement.Top, false, true);
+        }
+
+        private void SingleSongView_Loaded(object sender, RoutedEventArgs e)
+        {
+            (sender as SingleSongView.SingleSongView).SetSong(ViewModel.SongsList[loadIndex++], loadIndex);
         }
     }
 }

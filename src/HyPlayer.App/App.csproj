@@ -30,7 +30,9 @@
     <None Remove="Views\Controls\App\DesktopNavigationView.xaml" />
     <None Remove="Views\Controls\App\HomePageHeaderImage.xaml" />
     <None Remove="Views\Controls\Netease\SongListView\SongListView.xaml" />
+    <None Remove="Views\Controls\PlayBar\PlayBar.xaml" />
     <None Remove="Views\Controls\Search\SearchBox.xaml" />
+    <None Remove="Views\Controls\SingleSongView\SingleSongView.xaml" />
     <None Remove="Views\Pages\ErrorPage.xaml" />
     <None Remove="Views\Pages\HomePage.xaml" />
     <None Remove="Views\Pages\PlaylistPage.xaml" />
@@ -52,6 +54,7 @@
   <ItemGroup>
     <PackageReference Include="AsyncAwaitBestPractices" Version="7.0.0" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="CommunityToolkit.WinUI.Behaviors" Version="8.0.240109" />
     <PackageReference Include="CommunityToolkit.WinUI.Notifications" Version="7.1.2" />
     <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2" />
     <PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.1.2" />
@@ -107,6 +110,12 @@
     <None Update="Controls\App\SelectableTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <Page Update="Views\Controls\SingleSongView\SingleSongView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\Controls\PlayBar\PlayBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Resources\Styles\FontSizes.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -160,10 +169,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\refs\HyPlayer.NeteaseProvider\HyPlayer.NeteaseProvider\HyPlayer.NeteaseProvider.csproj" />
     <ProjectReference Include="..\..\refs\HyPlayer.PlayCore\HyPlayer.PlayCore\HyPlayer.PlayCore.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Controls\PlayBar\" />
   </ItemGroup>
   
 </Project>
