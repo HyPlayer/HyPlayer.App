@@ -156,5 +156,12 @@
     <Compile Remove="Helpers\UIHelper.cs" />
     <Compile Remove="Controls\App\PivotExtensions\PivotEx.cs" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HyPlayer.NeteaseProvider\HyPlayer.NeteaseApi\HyPlayer.NeteaseApi.csproj" />
+    <ProjectReference Include="..\HyPlayer.NeteaseProvider\HyPlayer.NeteaseProvider\HyPlayer.NeteaseProvider.csproj" />
+    <ProjectReference Include="..\HyPlayer.PlayCore\HyPlayer.PlayCore.Abstraction\HyPlayer.PlayCore.Abstraction.csproj" />
+    <ProjectReference Include="..\HyPlayer.PlayCore\HyPlayer.PlayCore\HyPlayer.PlayCore.csproj" />
+  </ItemGroup>
   
 </Project>

@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>default</LangVersion>
+        <Version>0.0.7</Version>
+        <Authors>HyPlayer Team</Authors>
+        <Description>The NeteaseCloudMusic Api</Description>
+        <PackageProjectUrl>https://github.com/HyPlayer/HyPlayer.NeteaseProvider</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/HyPlayer/HyPlayer.NeteaseProvider/blob/main/LICENCE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/HyPlayer/HyPlayer.NeteaseProvider</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <AssemblyVersion>0.0.1</AssemblyVersion>
+        <FileVersion>0.0.1</FileVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Kengwang.Toolkit" Version="1.0.0" />
+        <PackageReference Include="System.Text.Json" Version="8.0.4" />
+    </ItemGroup>
+
+
+
+</Project>

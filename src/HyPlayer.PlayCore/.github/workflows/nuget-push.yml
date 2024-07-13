@@ -1,0 +1,47 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: NuGet Publish
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0.x
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
+      - name: Build NuGet Packages
+        run: |
+          dotnet pack HyPlayer.PlayCore/HyPlayer.PlayCore.csproj -c Release -o Packages/
+          dotnet pack HyPlayer.PlayCore.Abstraction/HyPlayer.PlayCore.Abstraction.csproj -c Release -o Packages/
+
+      - name: Publish Packages to Artifacts
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          name: packages
+          path: Packages
+
+
+
+      - name: Publish To NuGet
+        run: |
+          dotnet nuget push "Packages/*.nupkg" -k ${{ secrets.NUGET_APIKEY }} -s 'https://api.nuget.org/v3/index.json' --skip-duplicate
+
+      - name: Publish To Github Package
+        run: |
+          dotnet nuget add source --username kengwang --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/HyPlayer/index.json"
+          dotnet nuget push "Packages/*.nupkg" --source "github" --skip-duplicate
