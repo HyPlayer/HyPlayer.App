@@ -14,7 +14,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AsyncAwaitBestPractices" Version="7.0.0" />
+        <PackageReference Include="AsyncAwaitBestPractices" Version="8.0.0" />
         <PackageReference Include="Depository.Abstraction" Version="2.1.0" />
     </ItemGroup>
 

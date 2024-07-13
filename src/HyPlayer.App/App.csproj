@@ -50,7 +50,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AsyncAwaitBestPractices" Version="7.0.0" />
+    <PackageReference Include="AsyncAwaitBestPractices" Version="8.0.0" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
     <PackageReference Include="CommunityToolkit.WinUI.Notifications" Version="7.1.2" />
     <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2" />
@@ -59,8 +59,8 @@
     <PackageReference Include="CommunityToolkit.WinUI.UI.Media" Version="7.1.2" />
     <PackageReference Include="Depository" Version="2.1.0" />
     <PackageReference Include="Humanizer" Version="2.14.1" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240404000" />
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.3233" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240627000" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="WinUIEx" Version="2.3.4" />
@@ -155,11 +155,6 @@
     <Compile Remove="Contract\Services\IPageService.cs" />
     <Compile Remove="Helpers\UIHelper.cs" />
     <Compile Remove="Controls\App\PivotExtensions\PivotEx.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\refs\HyPlayer.NeteaseProvider\HyPlayer.NeteaseProvider\HyPlayer.NeteaseProvider.csproj" />
-    <ProjectReference Include="..\..\refs\HyPlayer.PlayCore\HyPlayer.PlayCore\HyPlayer.PlayCore.csproj" />
   </ItemGroup>
   
 </Project>
