@@ -1,12 +1,6 @@
-﻿using HyPlayer.Views.Pages;
-using Microsoft.UI.Xaml.Controls;
+﻿using HyPlayer.Interfaces.Views;
+using HyPlayer.Views.Pages;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HyPlayer.Interfaces.Views;
 
 namespace HyPlayer.Services
 {

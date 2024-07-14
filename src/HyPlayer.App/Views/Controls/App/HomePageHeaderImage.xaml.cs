@@ -1,15 +1,16 @@
-using System.Numerics;
+using CommunityToolkit.WinUI.UI;
+using CommunityToolkit.WinUI.UI.Animations;
+using CommunityToolkit.WinUI.UI.Animations.Expressions;
 using Microsoft.Graphics.Canvas.Effects;
+using Microsoft.UI;
+using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media.Animation;
-using Microsoft.UI.Composition;
-using Microsoft.UI;
-using CommunityToolkit.WinUI.UI.Animations;
-using Windows.UI;
 using System;
-using CommunityToolkit.WinUI.UI;
+using System.Numerics;
+using Windows.UI;
 
 namespace HyPlayer.Views.Controls.App
 {
@@ -51,10 +52,16 @@ namespace HyPlayer.Views.Controls.App
 
             _imageGridBottomGradientBrush = _compositor.CreateLinearGradientBrush();
             _imageGridBottomGradientBrush.MappingMode = CompositionMappingMode.Absolute;
-            _imageGridBottomGradientBrush.StartAnimation(_bottomGradientStartPointAnimation);
-            _imageGridBottomGradientBrush.StartAnimation(CreateExpressionAnimation(nameof(CompositionLinearGradientBrush.EndPoint), "Vector2(0.5, Visual.Size.Y)"));
+            if (_bottomGradientStartPointAnimation is not null)
+            {
+                _imageGridBottomGradientBrush.StartAnimation(_bottomGradientStartPointAnimation);
+            }
+            var animation = CreateExpressionAnimation(nameof(CompositionLinearGradientBrush.EndPoint), "Vector2(0.5, Visual.Size.Y)");
+            if (animation is not null)
+            {
+                _imageGridBottomGradientBrush.StartAnimation(animation);
+            }
             _imageGridBottomGradientBrush.CreateColorStopsWithEasingFunction(EasingType.Sine, EasingMode.EaseInOut, 0f, 1f);
-
             var alphaMask = new AlphaMaskEffect
             {
                 Source = new CompositionEffectSourceParameter("ImageGrid"),
@@ -121,11 +128,14 @@ namespace HyPlayer.Views.Controls.App
         }
 
 
-        private ExpressionAnimation CreateExpressionAnimation(string target, string expression)
+        private ExpressionAnimation? CreateExpressionAnimation(string target, string expression)
         {
             var ani = _compositor?.CreateExpressionAnimation(expression);
-            ani.SetReferenceParameter("Visual", _imageGridVisual);
-            ani.Target = target;
+            if (ani != null)
+            {
+                ani.SetReferenceParameter("Visual", _imageGridVisual);
+                ani.Target = target;
+            }
             return ani;
         }
     }

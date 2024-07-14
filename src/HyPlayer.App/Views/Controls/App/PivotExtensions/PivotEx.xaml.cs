@@ -1,11 +1,11 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
 using CommunityToolkit.WinUI.UI;
 using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace HyPlayer.Views.Controls.App.PivotExtensions;
 
@@ -118,8 +118,11 @@ public class PivotEx : Pivot
             cts = _cts;
 
             currentScrollViewer.ViewChanging += CurrentScrollViewer_ViewChanging;
-
-            var offsetY = await TryScrollVerticalOffsetAsync(currentScrollViewer);
+            var task = TryScrollVerticalOffsetAsync(currentScrollViewer);
+            if (task is not null)
+            {
+                var offsetY = await task;
+            }
 
             if (cts.IsCancellationRequested) return;
 
@@ -151,7 +154,7 @@ public class PivotEx : Pivot
         }
     }
 
-    private void CurrentScrollViewer_ViewChanging(object sender, ScrollViewerViewChangingEventArgs e)
+    private void CurrentScrollViewer_ViewChanging(object? sender, ScrollViewerViewChangingEventArgs e)
     {
         UpdateHeaderScrollOffset(e.NextView.VerticalOffset);
     }
@@ -207,7 +210,7 @@ public class PivotEx : Pivot
 
                 return tcs.Task;
 
-                void ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
+                void ScrollViewer_ViewChanged(object? sender, ScrollViewerViewChangedEventArgs e)
                 {
                     scrollViewer.ViewChanged -= ScrollViewer_ViewChanged;
                     tcs.SetResult(scrollViewer.VerticalOffset);

@@ -1,25 +1,19 @@
-﻿using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using WinUIEx;
-using System;
-using System.IO;
-using System.Threading.Tasks;
-using Windows.Storage;
 using Depository.Abstraction.Interfaces;
 using Depository.Core;
 using Depository.Extensions;
 using HyPlayer.Extensions.DependencyInjectionExtensions;
+using HyPlayer.Extensions.Helpers;
 using HyPlayer.Interfaces.Views;
-using HyPlayer.Services;
 using HyPlayer.PlayCore;
 using HyPlayer.PlayCore.Abstraction;
-using Microsoft.UI.Dispatching;
+using HyPlayer.Services;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using System;
+using System.Threading.Tasks;
 using DispatcherQueue = Windows.System.DispatcherQueue;
-using Window = HyPlayer.Views.Window;
-using XamlWindow = Microsoft.UI.Xaml.Window;
 using Pages = HyPlayer.Views.Pages;
-using HyPlayer.ViewModels;
-using HyPlayer.Extensions.Helpers;
+using XamlWindow = Microsoft.UI.Xaml.Window;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -53,9 +47,9 @@ namespace HyPlayer
             return (Current as App)!.DispatcherQueue;
         }
 
-        public static IDepository? GetDIContainer()
+        public static IDepository GetDIContainer()
         {
-            return (Current as App)!.Depository;
+            return (Current as App)!.Depository!;
         }
 
         /// <summary>
@@ -79,14 +73,14 @@ namespace HyPlayer
             ConfigureServices();
             await ConfigurePlayCore();
             window = WindowHelper.CreateWindow();
-            if(window != null) 
-            { 
+            if (window != null)
+            {
                 NavigateToRootPage(args);
 
                 window?.Activate();
             }
         }
-        
+
         private void ConfigureServices()
         {
             Depository?.AddMvvm();
@@ -98,13 +92,16 @@ namespace HyPlayer
         {
             Depository?.AddSingleton<PlayCoreBase, Chopin>();
             var playCore = Depository?.Resolve<PlayCoreBase>();
-            await playCore.RegisterMusicProviderAsync(typeof(NeteaseProvider.NeteaseProvider));
+            if (playCore != null)
+            {
+                await playCore.RegisterMusicProviderAsync(typeof(NeteaseProvider.NeteaseProvider));
+            }
         }
 
         private void NavigateToRootPage(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
-        {   
+        {
             GetService<INavigationService>().NavigateTo(typeof(Pages.HomePage));
         }
-       
+
     }
 }

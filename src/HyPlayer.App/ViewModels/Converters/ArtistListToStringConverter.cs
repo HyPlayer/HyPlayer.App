@@ -1,13 +1,8 @@
-using Microsoft.UI.Xaml.Media;
+using HyPlayer.PlayCore.Abstraction.Models.Containers;
+using Microsoft.UI.Xaml.Data;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HyPlayer.NeteaseProvider.Models;
-using Microsoft.UI.Xaml.Data;
-using HyPlayer.PlayCore.Abstraction.Models.Containers;
 
 namespace HyPlayer.ViewModels.Converters
 {

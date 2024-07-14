@@ -1,19 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using HyPlayer.Interfaces.Views;
+using HyPlayer.Views.Controls.Base;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using HyPlayer.Views.Controls.Base;
-using HyPlayer.Interfaces.Views;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -37,11 +25,13 @@ namespace HyPlayer.Views.Controls.App
             HyPlayer.App.contentFrame = contentFrame;
         }
 
-        
+
 
         private void NavView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
         {
-            var invokedItemTag = HyPlayer.App.GetService<IPageService>().GetPageType((args.InvokedItemContainer as NavigationViewItem)?.Tag?.ToString());
+            var invokedItem = (args.InvokedItemContainer as NavigationViewItem)?.Tag?.ToString();
+            if (invokedItem == null) return;
+            var invokedItemTag = HyPlayer.App.GetService<IPageService>().GetPageType(invokedItem);
             var invokedItemName = (args.InvokedItemContainer as NavigationViewItem)?.Content?.ToString();
 
 

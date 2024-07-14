@@ -1,9 +1,9 @@
-﻿using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml;
-using Depository.Abstraction.Interfaces;
+﻿using Depository.Abstraction.Interfaces;
 using Depository.Core;
 using Depository.Extensions;
 using HyPlayer.Interfaces.ViewModels;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using System;
 
 namespace HyPlayer.Interfaces.Views;

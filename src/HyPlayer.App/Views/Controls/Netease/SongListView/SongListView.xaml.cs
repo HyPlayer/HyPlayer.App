@@ -1,24 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.Diagnostics;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using System.Runtime.InteropServices;
 using CommunityToolkit.WinUI.UI;
 using HyPlayer.NeteaseProvider.Models;
 using HyPlayer.ViewModels;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
+using System.Diagnostics;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -38,7 +23,7 @@ namespace HyPlayer.Views.Controls.Netease.SongListView
 
         public static readonly DependencyProperty FooterProperty = DependencyProperty.Register(
             "Footer", typeof(UIElement), typeof(SongListView), new PropertyMetadata(default(UIElement)));
-        public NeteasePlaylistViewModel ViewModel;
+        public NeteasePlaylistViewModel? ViewModel;
         public string ListSource
         {
             get => (string)GetValue(ListSourceProperty);
@@ -81,8 +66,11 @@ namespace HyPlayer.Views.Controls.Netease.SongListView
 
         public async void ScrollToIndex(int index)
         {
-            SongContainer.SelectedItem = ViewModel.SongsList[index];
-            await SongContainer.SmoothScrollIntoViewWithIndexAsync(index, ScrollItemPlacement.Top, false, true);
+            if (ViewModel?.SongsList != null)
+            {
+                SongContainer.SelectedItem = ViewModel.SongsList[index];
+                await SongContainer.SmoothScrollIntoViewWithIndexAsync(index, ScrollItemPlacement.Top, false, true);
+            }
         }
     }
 }

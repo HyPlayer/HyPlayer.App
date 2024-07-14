@@ -1,27 +1,20 @@
+using Depository.Abstraction.Interfaces;
+using Depository.Core;
+using Depository.Extensions;
+using HyPlayer.Interfaces.Views;
+using HyPlayer.ViewModels;
+using HyPlayer.Views.Controls.Dialogs;
+using HyPlayer.Views.Pages;
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using WinRT.Interop;
 using WinUIEx;
-
 using AppWindow = Microsoft.UI.Windowing.AppWindow;
 using AppWindowTitleBar = Microsoft.UI.Windowing.AppWindowTitleBar;
-using Microsoft.UI.Xaml.Controls;
-using Windows.UI.WindowManagement;
-using HyPlayer.Interfaces.Views;
-using HyPlayer.ViewModels;
-using Depository.Abstraction.Interfaces;
-using Depository.Abstraction.Models.Options;
-using Depository.Core;
-using Depository.Extensions;
-using HyPlayer.Interfaces.ViewModels;
-using HyPlayer.Views.Controls.Dialogs;
-using HyPlayer.Views.Pages;
-using HyPlayer.Views.Controls.App;
-using System.Runtime.CompilerServices;
 
 namespace HyPlayer.Views.Window
 {
@@ -67,7 +60,7 @@ namespace HyPlayer.Views.Window
             // A taller title bar is only supported when drawing a fully custom title bar
             if (AppWindowTitleBar.IsCustomizationSupported() && titleBar.ExtendsContentIntoTitleBar)
             {
-               
+
                 // Recalculate the drag region for the custom title bar 
                 // if you explicitly defined new draggable areas.
                 SetDragRegionForCustomTitleBar(AppWindow);
@@ -188,7 +181,7 @@ namespace HyPlayer.Views.Window
                 List<Windows.Graphics.RectInt32> dragRectsList = new();
 
                 Windows.Graphics.RectInt32 dragRectL;
-                dragRectL.X = (int)((LeftPaddingColumn.ActualWidth) * scaleAdjustment)+48;
+                dragRectL.X = (int)((LeftPaddingColumn.ActualWidth) * scaleAdjustment) + 48;
                 dragRectL.Y = 0;
                 dragRectL.Height = (int)(AppTitleBar.ActualHeight * scaleAdjustment);
                 dragRectL.Width = (int)((IconColumn.ActualWidth
@@ -213,11 +206,11 @@ namespace HyPlayer.Views.Window
             }
         }
 
-       
+
 
         private async void UserButton_Click(object sender, RoutedEventArgs e)
         {
-            if(!_shellViewModel.AccountViewModel.IsLogin)
+            if (!_shellViewModel.AccountViewModel.IsLogin)
             {
                 var signin_dialog = new SignInDialog();
                 signin_dialog.XamlRoot = this.Content.XamlRoot;
@@ -229,6 +222,6 @@ namespace HyPlayer.Views.Window
             }
         }
 
-        
+
     }
 }

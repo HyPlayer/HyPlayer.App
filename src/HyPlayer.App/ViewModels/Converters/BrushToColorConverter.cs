@@ -1,7 +1,7 @@
-﻿using System;
-using System.Drawing;
-using Microsoft.UI.Xaml.Data;
+﻿using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Media;
+using System;
+using System.Drawing;
 
 namespace HyPlayer.ViewModels.Converters;
 

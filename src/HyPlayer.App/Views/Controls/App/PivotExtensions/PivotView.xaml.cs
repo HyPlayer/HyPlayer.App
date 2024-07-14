@@ -1,11 +1,11 @@
-﻿using System;
-using Windows.Foundation;
 using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Markup;
 using Microsoft.UI.Xaml.Media;
+using System;
+using Windows.Foundation;
 
 namespace HyPlayer.Views.Controls.App.PivotExtensions;
 
@@ -253,7 +253,7 @@ internal class PivotView : Control
         UpdateHeaderHeight();
     }
 
-    private void Pivot_HeaderScrollOffsetChanged(object sender, EventArgs e)
+    private void Pivot_HeaderScrollOffsetChanged(object? sender, EventArgs e)
     {
         UpdatePivotMaxHeaderScrollOffset();
         UpdateScrollProgress();

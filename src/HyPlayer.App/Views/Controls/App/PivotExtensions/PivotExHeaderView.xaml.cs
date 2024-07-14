@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using System;
 using System.ComponentModel;
 using System.Linq;
 using Windows.Foundation.Collections;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
 
 namespace HyPlayer.Views.Controls.App.PivotExtensions;
 
