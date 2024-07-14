@@ -19,6 +19,7 @@
     <Product>HyPlayer</Product>
     <UserSecretsId>3e757a82-9759-482b-851c-170ec2aa99dc</UserSecretsId>
     <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+	<WindowsSdkPackageVersion>10.0.22621.35-preview</WindowsSdkPackageVersion>
   </PropertyGroup>
   
  
@@ -59,7 +60,7 @@
     <PackageReference Include="CommunityToolkit.WinUI.UI.Media" Version="7.1.2" />
     <PackageReference Include="Depository" Version="2.1.0" />
     <PackageReference Include="Humanizer" Version="2.14.1" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240627000" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240531000-experimental1" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />

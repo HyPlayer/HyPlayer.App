@@ -1,3 +1,4 @@
+using HyPlayer.Interfaces.Services;
 using HyPlayer.Interfaces.Views;
 using HyPlayer.ViewModels;
 using Microsoft.UI.Xaml;
