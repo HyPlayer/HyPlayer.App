@@ -1,4 +1,4 @@
-﻿using HyPlayer.Interfaces.Views;
+﻿using HyPlayer.Interfaces.Services;
 using HyPlayer.Views.Pages;
 using System;
 
