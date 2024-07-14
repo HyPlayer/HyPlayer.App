@@ -28,7 +28,6 @@
     <None Remove="Resources\Styles\TextBlock.xaml" />
     <None Remove="Resources\Styles\Thickness.xaml" />
     <None Remove="Styles\Styles.Overwrite.xaml" />
-    <None Remove="Views\Controls\App\DesktopNavigationView.xaml" />
     <None Remove="Views\Controls\App\HomePageHeaderImage.xaml" />
     <None Remove="Views\Controls\Netease\SongListView\SongListView.xaml" />
     <None Remove="Views\Controls\Search\SearchBox.xaml" />
@@ -145,9 +144,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="Views\Controls\Search\SearchBox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Controls\App\DesktopNavigationView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
