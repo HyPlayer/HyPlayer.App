@@ -30,7 +30,7 @@
                     x:Uid="MainNav_Item_Home"
                     Tag="HomePage">
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xEA8A;" />
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE80F;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem
@@ -39,7 +39,7 @@
                     x:FieldModifier="public"
                     Tag="DailyRcmd">
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xEA89;" />
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE8BF;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem
@@ -47,7 +47,7 @@
                     x:Uid="MainNav_Item_PersonalFm"
                     Tag="PrivateFMPage">
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xF8B2;" />
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE77B;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem
@@ -55,7 +55,7 @@
                     SelectsOnInvoked="False"
                     Tag="HeartBeat">
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xEB4F;" />
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xEA80;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem
@@ -63,7 +63,7 @@
                     SelectsOnInvoked="False"
                     Tag="PageFavorite">
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE113;" />
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE728;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItemHeader x:Uid="MainNav_Header_Songlist" Margin="0,3,3,3" />
