@@ -1,23 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using HyPlayer.Interfaces.Views;
+using HyPlayer.NeteaseProvider.Models;
+using HyPlayer.ViewModels;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-using HyPlayer.Interfaces.Views;
-using HyPlayer.ViewModels;
-using System.Threading.Tasks;
-using HyPlayer.NeteaseProvider.Models;
-using HyPlayer.PlayCore.Abstraction;
-using AsyncAwaitBestPractices;
+using System.Linq;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -48,22 +35,26 @@ namespace HyPlayer.Views.Pages
         private async void LikeBtnClick(object sender, RoutedEventArgs e)
         {
             await ViewModel.SubscribePlaylistAsync();
-            ViewModel.PlayList.Subscribed = !ViewModel.PlayList.Subscribed;
+            if (ViewModel.PlayList is not null)
+                ViewModel.PlayList.Subscribed = !ViewModel.PlayList.Subscribed;
         }
 
         private void AutoSuggestBox_OnTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
             {
-                var suggestions = ViewModel.SongsList.Where(t => t.Name.Contains(sender.Text)).Select(t => t.Name).ToList();
+                var suggestions = ViewModel.SongsList?.Where(t => t.Name.Contains(sender.Text)).Select(t => t.Name).ToList();
                 sender.ItemsSource = suggestions;
             }
         }
 
-        private async void AutoSuggestBox_OnSuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        private void AutoSuggestBox_OnSuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
-            var song = ViewModel.SongsList.First(t => t.Name == args.SelectedItem.ToString());
-            SongsListView.ScrollToIndex(ViewModel.SongsList.IndexOf(song));
+            var song = ViewModel.SongsList?.First(t => t.Name == args.SelectedItem.ToString());
+            if (song != null)
+            {
+                SongsListView.ScrollToIndex(ViewModel.SongsList!.IndexOf(song));
+            }
         }
 
         private void SortButton_Click(SplitButton sender, SplitButtonClickEventArgs args)
@@ -76,7 +67,7 @@ namespace HyPlayer.Views.Pages
             switch (ViewModel.SortOrder)
             {
                 case 1: // 升序
-                    sortToolTip.Content="升序";
+                    sortToolTip.Content = "升序";
                     fontIcon.Glyph = "\uE74A";
                     splitButton.IsChecked = true;
                     break;
@@ -95,13 +86,17 @@ namespace HyPlayer.Views.Pages
 
         private void SortRadioButton_OnChecked(object sender, RoutedEventArgs e)
         {
-            ViewModel.SortTypes = (sender as RadioButton).Tag.ToString();
-            ViewModel.SortSongListOrder();
+            var sortType = (sender as RadioButton)?.Tag?.ToString();
+            if (sortType is not null)
+            {
+                ViewModel.SortTypes = sortType;
+                ViewModel.SortSongListOrder();
+            }
         }
     }
 
     public class PlaylistPageBase : AppPageWithScopedViewModelBase<NeteasePlaylistViewModel>
     {
-        
+
     }
 }

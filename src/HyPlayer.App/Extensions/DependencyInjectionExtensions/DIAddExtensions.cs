@@ -1,7 +1,7 @@
-using System.Reflection;
 using Depository.Abstraction.Enums;
 using Depository.Abstraction.Interfaces;
 using Depository.Extensions;
+using System.Reflection;
 
 namespace HyPlayer.Extensions.DependencyInjectionExtensions;
 

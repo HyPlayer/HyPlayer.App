@@ -1,7 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HyPlayer.Interfaces.ViewModels;
-using HyPlayer.NeteaseProvider;
 using HyPlayer.NeteaseProvider.Models;
 
 namespace HyPlayer.ViewModels
@@ -10,12 +9,12 @@ namespace HyPlayer.ViewModels
     {
         private readonly NeteaseProvider.NeteaseProvider _provider;
 
-        [ObservableProperty] public NeteaseUser _ncmUser;
+        [ObservableProperty] public NeteaseUser? _ncmUser;
         [ObservableProperty] private string? _userName;
         [ObservableProperty] private string? _description;
         [ObservableProperty] private int? _vipType;
 
-        public UserViewModel(NeteaseProvider.NeteaseProvider provider) 
+        public UserViewModel(NeteaseProvider.NeteaseProvider provider)
         {
             _provider = provider;
         }
@@ -23,7 +22,7 @@ namespace HyPlayer.ViewModels
         [RelayCommand]
         public void GetUserInfo()
         {
-            if (NcmUser == null) 
+            if (NcmUser == null)
             {
                 UserName = "HyPlayer";
                 Description = "A Third-party Netease Music Cilent";

@@ -1,11 +1,9 @@
 using Depository.Abstraction.Interfaces;
 using Depository.Core;
 using Depository.Extensions;
-using HyPlayer.Interfaces.ViewModels;
 using HyPlayer.Interfaces.Views;
 using HyPlayer.ViewModels;
 using Microsoft.UI.Xaml.Controls;
-using System.Threading.Tasks;
 
 
 // To learn more about WinUI, the WinUI project structure,
@@ -54,7 +52,7 @@ namespace HyPlayer.Views.Controls.Dialogs
 
         private void ContentDialog_KeyDown(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if(TextBoxAccount.Text == "")
+            if (TextBoxAccount.Text == "")
             {
                 TextBoxAccount.Focus(Microsoft.UI.Xaml.FocusState.Programmatic);
                 return;

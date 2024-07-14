@@ -1,14 +1,8 @@
-﻿using Microsoft.UI.Xaml;
+﻿using HyPlayer.Views.Window;
 using Microsoft.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.ApplicationModel;
-using WinRT.Interop;
-using HyPlayer.Views.Window;
 using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+using System.Collections.Generic;
 
 namespace HyPlayer.Extensions.Helpers
 {
@@ -44,7 +38,8 @@ namespace HyPlayer.Extensions.Helpers
 
         static public void TrackWindow(Window window)
         {
-            window.Closed += (sender, args) => {
+            window.Closed += (sender, args) =>
+            {
                 _activeWindows.Remove(window);
             };
             _activeWindows.Add(window);
@@ -81,8 +76,8 @@ namespace HyPlayer.Extensions.Helpers
                 titleBar.ExtendsContentIntoTitleBar = true;
             }
 
-                // A taller title bar is only supported when drawing a fully custom title bar
-                if (AppWindowTitleBar.IsCustomizationSupported() && titleBar.ExtendsContentIntoTitleBar)
+            // A taller title bar is only supported when drawing a fully custom title bar
+            if (AppWindowTitleBar.IsCustomizationSupported() && titleBar.ExtendsContentIntoTitleBar)
             {
                 if (isTallTitleBar)
                 {
