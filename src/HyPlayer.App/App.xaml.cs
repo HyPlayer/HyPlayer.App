@@ -7,6 +7,7 @@ using HyPlayer.Interfaces.Services;
 using HyPlayer.PlayCore;
 using HyPlayer.PlayCore.Abstraction;
 using HyPlayer.Services;
+using HyPlayer.Views.Pages;
 using HyPlayer.Views.Window;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -96,7 +97,7 @@ namespace HyPlayer
 
         private void NavigateToRootPage(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            GetService<INavigationService>().NavigateTo(typeof(Pages.HomePage));
+            GetService<INavigationService>().NavigateTo(GetService<IPageService>().GetPageType("HomePage"));
         }
 
     }

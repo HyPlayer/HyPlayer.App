@@ -10,7 +10,7 @@
     <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
     <UseWinUI>true</UseWinUI>
-	<EnableMsixTooling>true</EnableMsixTooling>
+	  <EnableMsixTooling>true</EnableMsixTooling>
     <LangVersion>default</LangVersion>
     <Nullable>enable</Nullable>
     <PackageId>HyPlayer</PackageId>
