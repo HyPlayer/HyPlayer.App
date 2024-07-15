@@ -8,7 +8,7 @@
     xmlns:media="using:CommunityToolkit.WinUI.UI.Media"
     xmlns:ui="using:CommunityToolkit.WinUI.UI">
 
-    <MicaBackdrop x:Key="DefaultMicaSystemBackdrop" Kind="BaseAlt" />
+    <MicaBackdrop x:Key="DefaultMicaSystemBackdrop" Kind="Base" />
 
     <Thickness x:Key="NavigationViewHeaderMargin">0,0,0,0</Thickness>
     <Thickness x:Key="NavigationViewContentMargin">0,48,0,96</Thickness>

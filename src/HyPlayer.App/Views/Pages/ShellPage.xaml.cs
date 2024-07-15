@@ -1,8 +1,16 @@
 using HyPlayer.Interfaces.Services;
 using HyPlayer.Interfaces.Views;
 using HyPlayer.ViewModels;
+using HyPlayer.Views.Controls.Dialogs;
+using HyPlayer.Views.Window;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Windowing;
+using System;
+using Windows.ApplicationModel;
+using Microsoft.UI.Input;
+using Microsoft.UI.Xaml.Media;
+using Windows.Foundation;
 
 
 namespace HyPlayer.Views.Pages
@@ -12,9 +20,11 @@ namespace HyPlayer.Views.Pages
     /// </summary>
     public sealed partial class ShellPage : ShellPageBase
     {
+
         public ShellPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+
             App.contentFrame = contentFrame;
         }
 
@@ -34,6 +44,8 @@ namespace HyPlayer.Views.Pages
         {
             NavView.SelectedItem = Home;
         }
+
+        
     }
 
     public class ShellPageBase : AppPageWithScopedViewModelBase<ShellViewModel>

@@ -38,8 +38,8 @@
     <None Remove="Views\Pages\SearchPage.xaml" />
     <None Remove="Views\Pages\ShellPage.xaml" />
     <None Remove="Views\Pages\UserPage.xaml" />
+    <None Remove="Views\Window\CompactWindow.xaml" />
     <None Remove="Views\Window\MainWindow.xaml" />
-    <None Remove="Views\Window\SmallWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Page Remove="Controls\App\SelectableTextBox.xaml" />
@@ -60,10 +60,11 @@
     <PackageReference Include="CommunityToolkit.WinUI.UI.Media" Version="7.1.2" />
     <PackageReference Include="Depository" Version="2.1.0" />
     <PackageReference Include="Humanizer" Version="2.14.1" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240531000-experimental1" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240627000" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="WinUICommunity.Components" Version="6.9.0" />
     <PackageReference Include="WinUIEx" Version="2.3.4" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
@@ -81,7 +82,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Views\Window\SmallWindow.xaml">
+    <Page Update="Views\Window\CompactWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
