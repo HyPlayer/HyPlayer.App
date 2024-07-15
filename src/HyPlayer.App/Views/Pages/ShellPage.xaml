@@ -3,96 +3,104 @@
     x:Class="HyPlayer.Views.Pages.ShellPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:community="using:WinUICommunity"
     xmlns:controls="using:HyPlayer.Views.Controls.App"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:HyPlayer.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:search="using:HyPlayer.Views.Controls.Search"
     mc:Ignorable="d">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="TitleBarDefinition" Height="48" />
+            <RowDefinition x:Name="NavigationViewDefinition" Height="*" />
+        </Grid.RowDefinitions>
 
-    <NavigationView
-        x:Name="NavView"
-        BackRequested="{x:Bind ViewModel.GoBack}"
-        IsBackButtonVisible="{x:Bind contentFrame.CanGoBack, Mode=OneWay, Converter={StaticResource BooleanToNavButtonVisibleConverter}}"
-        IsBackEnabled="True"
-        IsPaneToggleButtonVisible="True"
-        ItemInvoked="{x:Bind NavView_ItemInvoked}"
-        Loaded="NavView_Loaded"
-        Style="{StaticResource LeftNavViewDefaultStyle}">
+        <NavigationView
+            x:Name="NavView"
+            Grid.Row="1"
+            BackRequested="{x:Bind ViewModel.GoBack}"
+            IsBackButtonVisible="{x:Bind contentFrame.CanGoBack, Mode=OneWay, Converter={StaticResource BooleanToNavButtonVisibleConverter}}"
+            IsBackEnabled="True"
+            IsPaneToggleButtonVisible="True"
+            ItemInvoked="{x:Bind NavView_ItemInvoked}"
+            Loaded="NavView_Loaded"
+            Style="{StaticResource LeftNavViewDefaultStyle}">
 
-        <Frame x:Name="contentFrame" />
+            <Frame x:Name="contentFrame" />
 
-        <NavigationView.MenuItems>
-            <NavigationViewItemHeader x:Uid="MainNav_Header_Discover" Margin="0,3,3,3" />
-            <NavigationViewItem
-                x:Name="Home"
-                x:Uid="MainNav_Item_Home"
-                Tag="HomePage">
-                <NavigationViewItem.Icon>
-                    <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE80F;" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItem
-                x:Name="NavItemDailyRcmd"
-                x:Uid="MainNav_Item_DailyRcmd"
-                x:FieldModifier="public"
-                Tag="DailyRcmd">
-                <NavigationViewItem.Icon>
-                    <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE8BF;" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItem
-                x:Name="PersonalFM"
-                x:Uid="MainNav_Item_PersonalFm"
-                Tag="PrivateFMPage">
-                <NavigationViewItem.Icon>
-                    <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE77B;" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItem
-                x:Uid="MainNav_Item_HeartBeatMode"
-                SelectsOnInvoked="False"
-                Tag="HeartBeat">
-                <NavigationViewItem.Icon>
-                    <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xF4A5;" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItem
-                x:Uid="MainNav_Item_MyLibrary"
-                SelectsOnInvoked="False"
-                Tag="PageFavorite">
-                <NavigationViewItem.Icon>
-                    <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE728;" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItemHeader x:Uid="MainNav_Header_Songlist" Margin="0,3,3,3" />
-            <NavigationViewItem
-                x:Name="NavItemsAddPlaylist"
-                x:Uid="MainNav_Item_CreatePlaylist"
-                Icon="Add"
-                SelectsOnInvoked="False"
-                Tag="SonglistCreate" />
-            <NavigationViewItem
-                x:Name="NavItemsMyLovedPlaylist"
-                x:Uid="MainNav_Item_MyLovedPlaylist"
-                x:FieldModifier="public"
-                Tag="SonglistMyLike">
-                <NavigationViewItem.Icon>
-                    <FontIcon Glyph="&#xE006;" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItem
-                x:Name="NavItemsMyList"
-                x:Uid="MainNav_Item_MyCreatedPlaylist"
-                x:FieldModifier="public"
-                Icon="List"
-                IsExpanded="True" />
-            <NavigationViewItem
-                x:Name="NavItemsLikeList"
-                x:Uid="MainNav_Item_MyStoredPlaylist"
-                x:FieldModifier="public"
-                Icon="List"
-                IsExpanded="True" />
-
-        </NavigationView.MenuItems>
-    </NavigationView>
+            <NavigationView.MenuItems>
+                <NavigationViewItemHeader x:Uid="MainNav_Header_Discover" Margin="0,3,3,3" />
+                <NavigationViewItem
+                    x:Name="Home"
+                    x:Uid="MainNav_Item_Home"
+                    Tag="HomePage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE80F;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem
+                    x:Name="NavItemDailyRcmd"
+                    x:Uid="MainNav_Item_DailyRcmd"
+                    x:FieldModifier="public"
+                    Tag="DailyRcmd">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE8BF;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem
+                    x:Name="PersonalFM"
+                    x:Uid="MainNav_Item_PersonalFm"
+                    Tag="PrivateFMPage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE77B;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem
+                    x:Uid="MainNav_Item_HeartBeatMode"
+                    SelectsOnInvoked="False"
+                    Tag="HeartBeat">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xF4A5;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem
+                    x:Uid="MainNav_Item_MyLibrary"
+                    SelectsOnInvoked="False"
+                    Tag="PageFavorite">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE728;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItemHeader x:Uid="MainNav_Header_Songlist" Margin="0,3,3,3" />
+                <NavigationViewItem
+                    x:Name="NavItemsAddPlaylist"
+                    x:Uid="MainNav_Item_CreatePlaylist"
+                    Icon="Add"
+                    SelectsOnInvoked="False"
+                    Tag="SonglistCreate" />
+                <NavigationViewItem
+                    x:Name="NavItemsMyLovedPlaylist"
+                    x:Uid="MainNav_Item_MyLovedPlaylist"
+                    x:FieldModifier="public"
+                    Tag="SonglistMyLike">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE006;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem
+                    x:Name="NavItemsMyList"
+                    x:Uid="MainNav_Item_MyCreatedPlaylist"
+                    x:FieldModifier="public"
+                    Icon="List"
+                    IsExpanded="True" />
+                <NavigationViewItem
+                    x:Name="NavItemsLikeList"
+                    x:Uid="MainNav_Item_MyStoredPlaylist"
+                    x:FieldModifier="public"
+                    Icon="List"
+                    IsExpanded="True" />
+            </NavigationView.MenuItems>
+        </NavigationView>
+    </Grid>
 </local:ShellPageBase>

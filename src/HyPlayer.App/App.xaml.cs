@@ -7,6 +7,7 @@ using HyPlayer.Interfaces.Services;
 using HyPlayer.PlayCore;
 using HyPlayer.PlayCore.Abstraction;
 using HyPlayer.Services;
+using HyPlayer.Views.Window;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
@@ -15,8 +16,6 @@ using DispatcherQueue = Windows.System.DispatcherQueue;
 using Pages = HyPlayer.Views.Pages;
 using XamlWindow = Microsoft.UI.Xaml.Window;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace HyPlayer
 {
@@ -60,6 +59,12 @@ namespace HyPlayer
         public App()
         {
             this.InitializeComponent();
+            
+            DispatcherQueue = DispatcherQueue.GetForCurrentThread();
+            Depository = DepositoryFactory.CreateNew();
+            Depository?.AddMvvm();
+            Depository?.AddSingleton<INavigationService, NavigationService>();
+            Depository?.AddSingleton<IPageService, PageService>();
         }
 
         /// <summary>
@@ -68,24 +73,15 @@ namespace HyPlayer
         /// <param name="args">Details about the launch request and process.</param>
         protected override async void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            DispatcherQueue = DispatcherQueue.GetForCurrentThread();
-            Depository = DepositoryFactory.CreateNew();
-            ConfigureServices();
+            base.OnLaunched(args);
             await ConfigurePlayCore();
-            window = WindowHelper.CreateWindow();
+            window = MainWindow.Current;
             if (window != null)
             {
                 NavigateToRootPage(args);
 
                 window?.Activate();
             }
-        }
-
-        private void ConfigureServices()
-        {
-            Depository?.AddMvvm();
-            Depository?.AddSingleton<INavigationService, NavigationService>();
-            Depository?.AddSingleton<IPageService, PageService>();
         }
 
         private async Task ConfigurePlayCore()
