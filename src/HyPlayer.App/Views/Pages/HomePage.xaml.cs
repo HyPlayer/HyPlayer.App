@@ -61,7 +61,7 @@ namespace HyPlayer.Views.Pages
         {
             // Debug.WriteLine($"Clicking on {(e.ClickedItem as ProvidableItemBase)?.Name}");
 
-            App.GetService<INavigationService>().NavigateTo(typeof(PlaylistPage), (e.ClickedItem as NeteasePlaylist));
+            App.GetService<INavigationService>().NavigateTo("PlaylistPage", (e.ClickedItem as NeteasePlaylist));
         }
 
         private void HomePageTopChart_OnClick(object sender, RoutedEventArgs e)
@@ -70,7 +70,7 @@ namespace HyPlayer.Views.Pages
             if (button == null) return;
             var playlist = button.CommandParameter as NeteasePlaylist;
             Debug.WriteLine($"Clicking on {playlist!.Name}");
-            App.GetService<INavigationService>().NavigateTo(typeof(PlaylistPage), playlist);
+            App.GetService<INavigationService>().NavigateTo("PlaylistPage", playlist);
 
         }
     }
