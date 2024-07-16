@@ -97,7 +97,7 @@ namespace HyPlayer
 
         private void NavigateToRootPage(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            GetService<INavigationService>().NavigateTo(GetService<IPageService>().GetPageType("HomePage"));
+            GetService<INavigationService>().NavigateTo("HomePage", args);
         }
 
     }

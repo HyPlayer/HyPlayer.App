@@ -14,6 +14,10 @@ namespace HyPlayer.Services
         public PageService()
         {
             Configure<HomePage>();
+            Configure<PlaylistPage>();
+            Configure<SearchPage>();
+            Configure<UserPage>();
+            Configure<ErrorPage>();
         }
 
         public Type GetPageType(string key)

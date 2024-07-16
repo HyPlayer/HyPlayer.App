@@ -17,7 +17,7 @@ namespace HyPlayer.Views.Controls.Search
         {
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
-                HyPlayer.App.GetService<INavigationService>().NavigateTo(typeof(SearchPage), AppSearchBox.Text);
+                HyPlayer.App.GetService<INavigationService>().NavigateTo("SearchPage", AppSearchBox.Text);
             }
         }
     }

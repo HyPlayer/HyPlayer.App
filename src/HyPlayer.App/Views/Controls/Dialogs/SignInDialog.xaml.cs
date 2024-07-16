@@ -46,7 +46,7 @@ namespace HyPlayer.Views.Controls.Dialogs
                 LoginFailedInfoBar.IsOpen = true;
                 return;
             }
-            HyPlayer.App.GetService<INavigationService>().NavigateTo(typeof(Pages.HomePage));
+            HyPlayer.App.GetService<INavigationService>().NavigateTo("HomePage");
             Hide();
         }
 

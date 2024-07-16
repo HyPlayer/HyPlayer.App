@@ -25,18 +25,14 @@ namespace HyPlayer.Views.Pages
         {
             InitializeComponent();
 
-            App.contentFrame = contentFrame;
+            App.GetService<INavigationService>().RegisterFrameEvents(contentFrame);
         }
 
         private void NavView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
         {
             var invokedItem = (args.InvokedItemContainer as NavigationViewItem)?.Tag?.ToString();
-            if (invokedItem == null) return;
-            var invokedItemTag = HyPlayer.App.GetService<IPageService>().GetPageType(invokedItem);
-            var invokedItemName = (args.InvokedItemContainer as NavigationViewItem)?.Content?.ToString();
 
-
-            HyPlayer.App.GetService<INavigationService>().NavigateTo(invokedItemTag);
+            HyPlayer.App.GetService<INavigationService>().NavigateTo(invokedItem);
             // NavView.Header = invokedItemName;        
         }
 
