@@ -6,46 +6,106 @@ using System;
 
 namespace HyPlayer.Services
 {
-    internal class NavigationService : INavigationService
+    public class NavigationService : INavigationService
     {
-        public bool CanGoBack => App.contentFrame!.CanGoBack;
-
-        public Frame? Frame => App.contentFrame;
+        private readonly IPageService _pageService;
+        private object? _lastParameterUsed;
+        private Frame? _frame;
 
         public event NavigatedEventHandler? Navigated;
+
+        public Frame? Frame
+        {
+            get
+            {
+                return _frame;
+            }
+
+
+        }
+
+        [MemberNotNullWhen(true, nameof(Frame), nameof(_frame))]
+        public bool CanGoBack => Frame != null && Frame.CanGoBack;
+
+        public NavigationService(IPageService pageService)
+        {
+            _pageService = pageService;
+        }
+
+        private void RegisterFrameEvents(Frame frame)
+        {
+            _frame = frame;
+            if (_frame != null)
+            {
+                _frame.Navigated += OnNavigated;
+            }
+        }
+
+        private void UnregisterFrameEvents()
+        {
+            if (_frame != null)
+            {
+                _frame.Navigated -= OnNavigated;
+            }
+        }
 
         public bool GoBack()
         {
             if (CanGoBack)
             {
-                Frame?.GoBack();
+                var vmBeforeNavigation = _frame.GetPageViewModel();
+                _frame.GoBack();
+                if (vmBeforeNavigation is INavigationAware navigationAware)
+                {
+                    navigationAware.OnNavigatedFrom();
+                }
+
                 return true;
             }
-            else return false;
+
+            return false;
         }
 
-        public bool NavigateTo(Type Page, object? parameter)
+        public bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false)
         {
-            if (Frame != null)
+            var pageType = _pageService.GetPageType(pageKey);
+
+            if (_frame != null && (_frame.Content?.GetType() != pageType || (parameter != null && !parameter.Equals(_lastParameterUsed))))
             {
-                return Frame.Navigate(Page, parameter, new SlideNavigationTransitionInfo { Effect = SlideNavigationTransitionEffect.FromRight });
+                _frame.Tag = clearNavigation;
+                var vmBeforeNavigation = _frame.GetPageViewModel();
+                var navigated = _frame.Navigate(pageType, parameter);
+                if (navigated)
+                {
+                    _lastParameterUsed = parameter;
+                    if (vmBeforeNavigation is INavigationAware navigationAware)
+                    {
+                        navigationAware.OnNavigatedFrom();
+                    }
+                }
+
+                return navigated;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
-        public bool NavigateTo(Page Page, object? parameter)
+        private void OnNavigated(object sender, NavigationEventArgs e)
         {
-            if (Frame != null)
+            if (sender is Frame frame)
             {
-                return Frame.Navigate(typeof(Page), parameter, new SlideNavigationTransitionInfo { Effect = SlideNavigationTransitionEffect.FromRight });
+                var clearNavigation = (bool)frame.Tag;
+                if (clearNavigation)
+                {
+                    frame.BackStack.Clear();
+                }
 
-            }
-            else
-            {
-                return false;
+                if (frame.GetPageViewModel() is INavigationAware navigationAware)
+                {
+                    navigationAware.OnNavigatedTo(e.Parameter);
+                }
+
+                Navigated?.Invoke(sender, e);
             }
         }
     }
