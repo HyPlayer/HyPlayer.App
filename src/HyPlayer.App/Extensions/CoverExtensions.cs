@@ -1,18 +1,18 @@
 using HyPlayer.NeteaseProvider.Models;
 using HyPlayer.PlayCore.Abstraction.Interfaces.ProvidableItem;
 using HyPlayer.PlayCore.Abstraction.Models;
-using HyPlayer.PlayCore.Abstraction.Models.Resources;
+using System;
 
 namespace HyPlayer.Extensions;
 
 public static class CoverExtensions
 {
-    public static string? GetCoverUrl(this IHasCover item, int pixelX, int pixelY)
+    public static Uri? GetCoverUrl(this IHasCover item, int pixelX, int pixelY)
     {
-        var coverResource = item.GetCoverAsync(new ImageResourceQualityTag(pixelX, pixelY)).GetAwaiter().GetResult();
-        if (coverResource is not IResourceResultOf<string> resourceResult)
+        var coverResource = item.GetCoverAsync(new NeteaseImageResourceQualityTag(pixelX, pixelY)).GetAwaiter().GetResult();
+        if (coverResource is not NeteaseImageResourceResult neteaseResourceResult)
             return null;
-        return resourceResult
+        return neteaseResourceResult
                            .GetResourceAsync()
                            .GetAwaiter().GetResult();
     }

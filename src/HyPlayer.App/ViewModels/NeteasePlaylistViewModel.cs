@@ -2,7 +2,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HyPlayer.Interfaces.ViewModels;
 using HyPlayer.NeteaseProvider.Models;
-using HyPlayer.PlayCore.Abstraction.Models.SingleItems;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -12,8 +11,8 @@ namespace HyPlayer.ViewModels;
 
 public partial class NeteasePlaylistViewModel : ObservableObject, IScrollableViewModel, IConnectedViewModel, IScopedViewModel
 {
-    public double? ScrollValue { get; set ; }
-    public int? ConnectedItemIndex { get ; set; }
+    public double? ScrollValue { get; set; }
+    public int? ConnectedItemIndex { get; set; }
     public string? ConnectedElementName { get; set; }
 
     private readonly NeteaseProvider.NeteaseProvider _provider;
@@ -28,33 +27,36 @@ public partial class NeteasePlaylistViewModel : ObservableObject, IScrollableVie
     public ObservableCollection<NeteaseSong>? _songsList;
     public int SortOrder = 0; // 0: 不排序, 1: 升序, 2: 降序
     public string SortTypes = "SongName";
-    private ObservableCollection<NeteaseSong> tempSong;
+    private ObservableCollection<NeteaseSong>? tempSong;
 
     public NeteasePlaylistViewModel(NeteaseProvider.NeteaseProvider provider)
     {
-        _provider = provider;   
+        _provider = provider;
     }
 
     [RelayCommand]
     public async Task GetSongsAsync()
     {
-        if(PlayList is not null)
+        if (PlayList is not null)
         {
-            SongsList = new ObservableCollection<NeteaseSong>((await PlayList.GetAllItemsAsync())?.Select(t => (NeteaseSong)t));
-            tempSong = SongsList;
+            if ((await PlayList.GetAllItemsAsync())?.Select(t => (NeteaseSong)t) is IEnumerable<NeteaseSong> songs)
+            {
+                SongsList = new ObservableCollection<NeteaseSong>(songs);
+                tempSong = SongsList;
+            }
         }
     }
 
     [RelayCommand]
     public async Task SubscribePlaylistAsync()
     {
-        if (PlayList.Subscribed==false)
+        if (PlayList?.Subscribed == false)
         {
             await _provider.LikeProvidableItemAsync($"pl{PlayList.ActualId}", null);
         }
         else
         {
-            await _provider.UnlikeProvidableItemAsync($"pl{PlayList.ActualId}", null);
+            await _provider.UnlikeProvidableItemAsync($"pl{PlayList?.ActualId}", null);
         }
         OnPropertyChanged(nameof(PlayList));
     }
@@ -70,7 +72,7 @@ public partial class NeteasePlaylistViewModel : ObservableObject, IScrollableVie
     {
         if (SortOrder == 0)
         {
-            if(!reload) return;
+            if (!reload) return;
             SongsList = tempSong;
             OnPropertyChanged(nameof(SongsList));
             return;
@@ -78,13 +80,13 @@ public partial class NeteasePlaylistViewModel : ObservableObject, IScrollableVie
         switch (SortTypes)
         {
             case "SongName":
-                SongsList = new ObservableCollection<NeteaseSong>(SortOrder == 1 ? SongsList.OrderBy(song => song.Name) : SongsList.OrderByDescending(song => song.Name));
+                SongsList = new ObservableCollection<NeteaseSong>(SortOrder == 1 ? SongsList!.OrderBy(song => song!.Name) : SongsList!.OrderByDescending(song => song.Name));
                 break;
             case "Artist":
-                SongsList = new ObservableCollection<NeteaseSong>(SortOrder == 1 ? SongsList.OrderBy(song => song.Artists.FirstOrDefault()?.Name) : SongsList.OrderByDescending(song => song.Artists.FirstOrDefault()?.Name));
+                SongsList = new ObservableCollection<NeteaseSong>(SortOrder == 1 ? SongsList!.OrderBy(song => song!.Artists?.FirstOrDefault()?.Name) : SongsList!.OrderByDescending(song => song!.Artists?.FirstOrDefault()?.Name));
                 break;
             case "Album":
-                SongsList = new ObservableCollection<NeteaseSong>(SortOrder == 1 ? SongsList.OrderBy(song => song.Album?.Name) : SongsList.OrderByDescending(song => song.Album?.Name));
+                SongsList = new ObservableCollection<NeteaseSong>(SortOrder == 1 ? SongsList!.OrderBy(song => song!.Album?.Name) : SongsList!.OrderByDescending(song => song.Album?.Name));
                 break;
             default:
                 SongsList = tempSong;

@@ -1,6 +1,6 @@
-﻿using System;
-using Microsoft.UI.Xaml.Controls;
+﻿using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using System;
 
 namespace HyPlayer.Interfaces.Views;
 
@@ -15,7 +15,7 @@ public interface INavigationService
 
     Frame? Frame
     {
-        get; 
+        get;
     }
 
     bool NavigateTo(Type Page, object? parameter = null);

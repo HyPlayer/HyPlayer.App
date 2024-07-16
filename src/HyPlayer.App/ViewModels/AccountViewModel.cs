@@ -1,13 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Security.Principal;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
 using HyPlayer.Interfaces.ViewModels;
 using HyPlayer.NeteaseProvider.Models;
-using HyPlayer.PlayCore.Abstraction.Models.Containers;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 
 namespace HyPlayer.ViewModels
@@ -17,7 +12,7 @@ namespace HyPlayer.ViewModels
 
         private readonly NeteaseProvider.NeteaseProvider _provider;
         public AccountViewModel(NeteaseProvider.NeteaseProvider provider)
-        { 
+        {
             _provider = provider;
         }
 
@@ -25,7 +20,7 @@ namespace HyPlayer.ViewModels
         [ObservableProperty] private NeteaseUser? _user;
 
 
-        public async Task SignInAsync(string usr,  string pwd)
+        public async Task SignInAsync(string usr, string pwd)
         {
             bool isPhone = Regex.Match(usr, "^[0-9]+$").Success;
             if (isPhone)

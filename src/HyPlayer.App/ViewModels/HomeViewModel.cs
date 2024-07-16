@@ -1,19 +1,11 @@
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using HyPlayer.Interfaces.ViewModels;
+using HyPlayer.NeteaseProvider.Models;
+using HyPlayer.PlayCore.Abstraction.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using HyPlayer.Interfaces;
-using HyPlayer.Interfaces.ViewModels;
-using HyPlayer.NeteaseApi;
-using HyPlayer.NeteaseApi.ApiContracts;
-using HyPlayer.NeteaseProvider.Mappers;
-using HyPlayer.NeteaseProvider.Models;
-using HyPlayer.PlayCore.Abstraction;
-using HyPlayer.PlayCore.Abstraction.Models;
-using HyPlayer.PlayCore.Abstraction.Models.Containers;
-using HyPlayer.PlayCore.Abstraction.Models.Resources;
-using HyPlayer.NeteaseApi.Models.ResponseModels;
 
 namespace HyPlayer.ViewModels;
 
@@ -48,35 +40,41 @@ public partial class HomeViewModel
         // 仅在登录后加载
         if (AccountViewModel.IsLogin)
         {
-            if((await ((await _provider.GetRecommendationAsync("pl")) as NeteaseActionGettableContainer)?.GetAllItemsAsync()) is not null)
+            var recommendPlayLists = await _provider.GetRecommendationAsync("pl") as NeteaseActionGettableContainer;
+            if (recommendPlayLists != null)
             {
-                // 推荐歌单
-                PlayLists =
-                    (await ((await _provider.GetRecommendationAsync("pl")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
-                    .Select(t => (NeteasePlaylist)t).ToList();
+                if (await recommendPlayLists.GetAllItemsAsync() is List<ProvidableItemBase> providableItems)
+                {
+                    // 推荐歌单
+                    PlayLists = providableItems.Select(t => (NeteasePlaylist)t).ToList();
+
+                }
             }
-            
-            
-            if((await ((await _provider.GetRecommendationAsync("sg")) as NeteaseActionGettableContainer)?.GetAllItemsAsync()) is not null)
+
+
+            var recommendedSongs = await _provider.GetRecommendationAsync("sg") as NeteaseActionGettableContainer;
+            if (recommendedSongs != null)
             {
-                // 推荐歌曲
-                RecommendedSongs =
-                    (await ((await _provider.GetRecommendationAsync("sg")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())
-                    .Select(t => (NeteaseSong)t).ToList();
+                if (await recommendedSongs.GetAllItemsAsync() is List<ProvidableItemBase> providableItems)
+                {
+                    // 推荐歌曲
+                    RecommendedSongs = providableItems.Select(t => (NeteaseSong)t).ToList();
+                }
             }
-            
-            
+
+
         }
 
         // 不登录加载
 
         // 排行榜
-        if((await ((await _provider.GetRecommendationAsync("ct")) as NeteaseActionGettableContainer)?.GetAllItemsAsync()) is not null)
+        var topLists = await _provider.GetRecommendationAsync("ct") as NeteaseActionGettableContainer;
+        if (topLists != null)
         {
-            TopLists =
-                (await ((await _provider?.GetRecommendationAsync("ct")) as NeteaseActionGettableContainer)?.GetAllItemsAsync())?
-                .Select(t => (NeteasePlaylist)t).ToList();
+            if (await topLists.GetAllItemsAsync() is List<ProvidableItemBase> providableItems)
+            {
+                TopLists = providableItems.Select(t => (NeteasePlaylist)t).ToList();
+            }
         }
-        
     }
 }
