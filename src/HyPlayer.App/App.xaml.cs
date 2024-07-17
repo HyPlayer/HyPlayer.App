@@ -77,6 +77,7 @@ namespace HyPlayer
             base.OnLaunched(args);
             await ConfigurePlayCore();
             window = MainWindow.Current;
+            TitleBarHelper.InitializeTitleBarForWindow(window);
             if (window != null)
             {
                 NavigateToRootPage(args);

@@ -15,6 +15,48 @@
     mc:Ignorable="d">
 
     <ex:WindowEx.WindowContent>
-        <pages:ShellPage />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TitleBar
+                x:Name="AppTitleBar"
+                Title="HyPlayer"
+                Grid.Row="0"
+                Height="48"
+                VerticalAlignment="Top"
+                Subtitle="Preview"
+                IsBackButtonVisible="{x:Bind _ShellViewModel.CanBack}"
+                BackRequested="{x:Bind _ShellViewModel.GoBack}">
+                <TitleBar.Content>
+                    <search:SearchBox
+                        x:Name="SearchBox"
+                        Grid.Column="4"
+                        Width="400"
+                        Height="36"
+                        MaxWidth="550"
+                        VerticalAlignment="Center"
+                        BorderThickness="1" />
+                </TitleBar.Content>
+                <TitleBar.Footer>
+                    <Button
+                        x:Name="UserButton"
+                        Click="UserButton_Click"
+                        Grid.Column="6"
+                        Width="40"
+                        Height="40"
+                        Margin="0,0,10,0"
+                        VerticalAlignment="Center"
+                        Style="{ThemeResource TitleBarButtonStyle}">
+                        <PersonPicture Width="30" Height="30" />
+                    </Button>
+
+                </TitleBar.Footer>
+            </TitleBar>
+            <pages:ShellPage Grid.Row="1"/>
+        </Grid>
+
     </ex:WindowEx.WindowContent>
 </ex:WindowEx>

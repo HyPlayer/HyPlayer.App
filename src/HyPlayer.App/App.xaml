@@ -10,6 +10,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <ResourceDictionary Source="/Resources/Styles/Styles.Overwrite.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/Styles.Dimensions.xaml" />
                 <ResourceDictionary Source="/Resources/Styles/Thickness.xaml" />
                 <ResourceDictionary Source="/Resources/Styles/Textblock.xaml" />
                 <ResourceDictionary Source="/Resources/Styles/FontSizes.xaml" />
