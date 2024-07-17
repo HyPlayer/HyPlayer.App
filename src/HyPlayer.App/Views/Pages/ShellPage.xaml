@@ -11,10 +11,7 @@
     xmlns:search="using:HyPlayer.Views.Controls.Search"
     mc:Ignorable="d">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition x:Name="TitleBarDefinition" Height="48" />
-            <RowDefinition x:Name="NavigationViewDefinition" Height="*" />
-        </Grid.RowDefinitions>
+        
 
         <NavigationView
             x:Name="NavView"

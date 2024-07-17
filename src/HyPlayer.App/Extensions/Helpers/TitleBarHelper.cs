@@ -1,6 +1,8 @@
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI;
+using System.Runtime.InteropServices;
+using System;
 
 
 namespace HyPlayer.Extensions.Helpers
@@ -35,6 +37,34 @@ namespace HyPlayer.Extensions.Helpers
                     titleBar.PreferredHeightOption = TitleBarHeightOption.Standard;
                 }
             }
+            UpdateTitleBarContextMenu(ElementTheme.Default);
+        }
+
+        private enum PreferredAppMode
+        {
+            Default,
+            AllowDark,
+            ForceDark,
+            ForceLight,
+            Max
+        };
+
+        [DllImport("uxtheme.dll", EntryPoint = "#135")]
+        private static extern IntPtr SetPreferredAppMode(PreferredAppMode preferredAppMode);
+
+        [DllImport("uxtheme.dll", EntryPoint = "#136")]
+        private static extern IntPtr FlushMenuThemes();
+
+        public static void UpdateTitleBarContextMenu(Microsoft.UI.Xaml.ElementTheme theme)
+        {
+            var mode = theme switch
+            {
+                ElementTheme.Light => PreferredAppMode.ForceLight,
+                ElementTheme.Dark => PreferredAppMode.ForceDark,
+                _ => PreferredAppMode.AllowDark,
+            };
+            SetPreferredAppMode(mode);
+            FlushMenuThemes();
         }
     }
 }

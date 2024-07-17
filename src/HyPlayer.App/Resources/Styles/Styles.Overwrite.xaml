@@ -11,7 +11,7 @@
     <MicaBackdrop x:Key="DefaultMicaSystemBackdrop" Kind="Base" />
 
     <Thickness x:Key="NavigationViewHeaderMargin">0,0,0,0</Thickness>
-    <Thickness x:Key="NavigationViewContentMargin">0,48,0,96</Thickness>
+    <Thickness x:Key="NavigationViewContentMargin">0,0,0,96</Thickness>
     <Thickness x:Key="NavigationViewContentGridBorderThickness">1,1,0,0</Thickness>
     <CornerRadius x:Key="NavigationViewContentGridCornerRadius">8,0,0,8</CornerRadius>
     <SolidColorBrush x:Key="NavigationViewTopPaneBackground" Color="Transparent" />

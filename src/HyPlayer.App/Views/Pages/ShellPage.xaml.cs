@@ -7,10 +7,19 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Windowing;
 using System;
-using Windows.ApplicationModel;
+
 using Microsoft.UI.Input;
 using Microsoft.UI.Xaml.Media;
 using Windows.Foundation;
+using Depository.Core;
+using Depository.Extensions;
+using WinUICommunity;
+using Microsoft.UI;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using WinRT.Interop;
+using Depository.Abstraction.Interfaces;
+
 
 
 namespace HyPlayer.Views.Pages
@@ -20,6 +29,8 @@ namespace HyPlayer.Views.Pages
     /// </summary>
     public sealed partial class ShellPage : ShellPageBase
     {
+        private AppWindow appWindow => MainWindow.Current.AppWindow;
+        private Microsoft.UI.Xaml.Window currentWindow => MainWindow.Current;
 
         public ShellPage()
         {
@@ -40,6 +51,7 @@ namespace HyPlayer.Views.Pages
         {
             NavView.SelectedItem = Home;
         }
+
 
         
     }
