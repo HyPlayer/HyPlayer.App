@@ -599,7 +599,7 @@
                                 <StackPanel Grid.Row="1" Margin="0,12,0,0">
                                     <TextBlock
                                         FontSize="16"
-                                        Text="歌单名称11111111111111"
+                                        Text="歌单名称"
                                         TextTrimming="CharacterEllipsis" />
                                     <TextBlock
                                         Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
@@ -658,11 +658,11 @@
                             ItemHeight="112"
                             ItemTemplate="{StaticResource HomePageRecommendSongItemTemplate}"
                             ItemsSource="{x:Bind ViewModel.RecommendedSongs, Mode=OneWay}"
-                            ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                            ScrollViewer.HorizontalScrollMode="Disabled"
+                            ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                            ScrollViewer.HorizontalScrollMode="Enabled"
                             ScrollViewer.VerticalScrollBarVisibility="Hidden"
                             ScrollViewer.VerticalScrollMode="Disabled"
-                            SelectionMode="None">
+                            SelectionMode="Extended">
                             <controls:AdaptiveGridView.Resources>
                                 <Style BasedOn="{StaticResource DefaultGridViewItemStyle}" TargetType="GridViewItem">
                                     <Setter Property="Margin" Value="8" />
