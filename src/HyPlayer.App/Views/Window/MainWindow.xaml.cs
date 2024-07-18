@@ -27,6 +27,8 @@ namespace HyPlayer.Views.Window
         private readonly IDepositoryResolveScope _scope;
         private readonly ShellViewModel _ShellViewModel;
 
+        private bool CanGoBack => App.GetService<INavigationService>().CanGoBack;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -46,6 +48,11 @@ namespace HyPlayer.Views.Window
             {
                 App.GetService<INavigationService>().NavigateTo("UserPage", _ShellViewModel.AccountViewModel.User);
             }
+        }
+
+        private void AppTitleBar_BackRequested(Microsoft.UI.Xaml.Controls.TitleBar sender, object args)
+        {
+            App.GetService<INavigationService>().GoBack();
         }
     }
 }

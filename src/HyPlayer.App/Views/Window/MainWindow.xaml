@@ -28,8 +28,9 @@
                 Height="48"
                 VerticalAlignment="Top"
                 Subtitle="Preview"
-                IsBackButtonVisible="{x:Bind _ShellViewModel.CanBack}"
-                BackRequested="{x:Bind _ShellViewModel.GoBack}">
+                IsBackButtonVisible="True"
+                IsBackEnabled="{x:Bind CanGoBack, Mode=OneWay}"
+                BackRequested="AppTitleBar_BackRequested">
                 <TitleBar.Content>
                     <search:SearchBox
                         x:Name="SearchBox"
