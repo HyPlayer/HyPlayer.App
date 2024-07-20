@@ -18,6 +18,7 @@ namespace HyPlayer.Services
             Configure<SearchPage>();
             Configure<UserPage>();
             Configure<ErrorPage>();
+            Configure<SettingsPage>();
         }
 
         public Type GetPageType(string key)

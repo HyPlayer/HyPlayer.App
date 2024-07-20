@@ -36,6 +36,7 @@
     <None Remove="Views\Pages\HomePage.xaml" />
     <None Remove="Views\Pages\PlaylistPage.xaml" />
     <None Remove="Views\Pages\SearchPage.xaml" />
+    <None Remove="Views\Pages\SettingsPage.xaml" />
     <None Remove="Views\Pages\ShellPage.xaml" />
     <None Remove="Views\Pages\UserPage.xaml" />
     <None Remove="Views\Window\CompactWindow.xaml" />
@@ -110,6 +111,9 @@
     <None Update="Controls\App\SelectableTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <Page Update="Views\Pages\SettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Resources\Styles\FontSizes.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
