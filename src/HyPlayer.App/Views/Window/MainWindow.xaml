@@ -29,7 +29,7 @@
                 VerticalAlignment="Top"
                 Subtitle="Preview"
                 IsBackButtonVisible="True"
-                IsBackEnabled="{x:Bind CanGoBack, Mode=OneWay}"
+                IsBackEnabled="{x:Bind _ShellViewModel.CanBack, Mode=OneWay}"
                 BackRequested="AppTitleBar_BackRequested">
                 <TitleBar.Content>
                     <search:SearchBox

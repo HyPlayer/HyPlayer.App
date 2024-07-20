@@ -9,6 +9,7 @@
     xmlns:local="using:HyPlayer.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:search="using:HyPlayer.Views.Controls.Search"
+    xmlns:helpers="using:HyPlayer.Extensions.Helpers"
     mc:Ignorable="d">
     <Grid>
         
@@ -20,8 +21,7 @@
             IsBackButtonVisible="Collapsed"
             IsBackEnabled="True"
             IsPaneToggleButtonVisible="False"
-            ItemInvoked="{x:Bind NavView_ItemInvoked}"
-            Loaded="NavView_Loaded"
+            IsSettingsVisible="True"
             Style="{StaticResource LeftNavViewDefaultStyle}">
 
             <Frame x:Name="contentFrame" />
@@ -31,7 +31,7 @@
                 <NavigationViewItem
                     x:Name="Home"
                     x:Uid="MainNav_Item_Home"
-                    Tag="HomePage">
+                    helpers:NavigationHelper.NavigateTo="HomePage">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE80F;" />
                     </NavigationViewItem.Icon>

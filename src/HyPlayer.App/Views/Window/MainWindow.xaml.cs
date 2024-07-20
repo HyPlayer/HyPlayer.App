@@ -27,7 +27,6 @@ namespace HyPlayer.Views.Window
         private readonly IDepositoryResolveScope _scope;
         private readonly ShellViewModel _ShellViewModel;
 
-        private bool CanGoBack => App.GetService<INavigationService>().CanGoBack;
 
         public MainWindow()
         {

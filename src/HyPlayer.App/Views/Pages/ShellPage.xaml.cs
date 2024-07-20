@@ -37,23 +37,8 @@ namespace HyPlayer.Views.Pages
             InitializeComponent();
 
             App.GetService<INavigationService>().RegisterFrameEvents(contentFrame);
+            App.GetService<INavigationViewService>().Initialize(NavView);
         }
-
-        private void NavView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
-        {
-            var invokedItem = (args.InvokedItemContainer as NavigationViewItem)?.Tag?.ToString();
-
-            HyPlayer.App.GetService<INavigationService>().NavigateTo(invokedItem);
-            // NavView.Header = invokedItemName;        
-        }
-
-        private void NavView_Loaded(object sender, RoutedEventArgs e)
-        {
-            NavView.SelectedItem = Home;
-        }
-
-
-        
     }
 
     public class ShellPageBase : AppPageWithScopedViewModelBase<ShellViewModel>
