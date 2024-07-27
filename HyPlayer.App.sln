@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.33808.371
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NeteaseProvider", "NeteaseProvider", "{927339DD-BB50-4F1F-8D59-EC1742822C28}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App", "src\HyPlayer.App\App.csproj", "{BF29D788-1F10-4325-9E48-A580EF8063AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HyPlayer.App", "src\HyPlayer.App\HyPlayer.App.csproj", "{BF29D788-1F10-4325-9E48-A580EF8063AD}"
 EndProject
 Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "HyPlayer.Package", "src\HyPlayer.Package\HyPlayer.Package.wapproj", "{07470380-3B29-4B67-A63D-F12BFE9286F1}"
 EndProject

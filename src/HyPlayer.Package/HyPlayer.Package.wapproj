@@ -56,7 +56,7 @@
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
     <NoWarn>$(NoWarn);NU1702</NoWarn>
-    <EntryPointProjectUniqueName>..\HyPlayer.App\App.csproj</EntryPointProjectUniqueName>
+    <EntryPointProjectUniqueName>..\HyPlayer.App\HyPlayer.App.csproj</EntryPointProjectUniqueName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
     <OutputPath>bin\ARM\Debug\</OutputPath>
@@ -100,7 +100,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HyPlayer.App\App.csproj" />
+    <ProjectReference Include="..\HyPlayer.App\HyPlayer.App.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Images\BackgroundImage.png" />
