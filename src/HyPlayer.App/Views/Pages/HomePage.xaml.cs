@@ -20,6 +20,7 @@ namespace HyPlayer.Views.Pages
         public HomePage()
         {
             InitializeComponent();
+            App.NavView.SelectedItem = App.GetService<INavigationViewService>().MenuItems[1];
         }
 
         [SuppressMessage("ReSharper", "ResourceItemNotResolved")]

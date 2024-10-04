@@ -9,7 +9,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:HyPlayer.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:media="using:CommunityToolkit.WinUI.UI.Media"
+    xmlns:media="using:CommunityToolkit.WinUI.Media"
     xmlns:models="using:HyPlayer.NeteaseProvider.Models"
     xmlns:ui="using:CommunityToolkit.WinUI.UI"
     xmlns:viewmodels="using:HyPlayer.ViewModels"

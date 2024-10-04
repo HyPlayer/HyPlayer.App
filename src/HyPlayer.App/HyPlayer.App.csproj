@@ -1,171 +1,183 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
-    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
-    <RootNamespace>HyPlayer</RootNamespace>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-    <Platforms>x64;ARM64</Platforms>
-    <UseRidGraph>true</UseRidGraph>
-    <PublishProfile>win-$(Platform).pubxml</PublishProfile>
-    <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
-    <UseWinUI>true</UseWinUI>
-	  <EnableMsixTooling>true</EnableMsixTooling>
-    <LangVersion>default</LangVersion>
-    <Nullable>enable</Nullable>
-    <PackageId>HyPlayer</PackageId>
-    <Authors>HyPlayer Team</Authors>
-    <Company>HyPlayer Team</Company>
-    <Product>HyPlayer</Product>
-    <UserSecretsId>3e757a82-9759-482b-851c-170ec2aa99dc</UserSecretsId>
-    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
-	<WindowsSdkPackageVersion>10.0.22621.35-preview</WindowsSdkPackageVersion>
-  </PropertyGroup>
-  
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
+        <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+        <RootNamespace>HyPlayer</RootNamespace>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <Platforms>x64;ARM64</Platforms>
+        <UseRidGraph>true</UseRidGraph>
+        <PublishProfile>win-$(Platform).pubxml</PublishProfile>
+        <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+        <UseWinUI>true</UseWinUI>
+	    <EnableMsixTooling>true</EnableMsixTooling>
+        <LangVersion>default</LangVersion>
+        <Nullable>enable</Nullable>
+        <PackageId>HyPlayer</PackageId>
+        <Authors>HyPlayer Team</Authors>
+        <Company>HyPlayer Team</Company>
+        <Product>HyPlayer</Product>
+        <UserSecretsId>3e757a82-9759-482b-851c-170ec2aa99dc</UserSecretsId>
+        <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+	    <WindowsSdkPackageVersion>10.0.22621.38</WindowsSdkPackageVersion>
+    </PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' != 'Publish'">
+		<PublishAot>true</PublishAot>
+		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+		<CsWinRTAotOptimizerEnabled>true</CsWinRTAotOptimizerEnabled>
+		<IsAotCompatible>true</IsAotCompatible>
+	</PropertyGroup>
  
-  <ItemGroup>
-    <None Remove="Controls\Dialogs\SignInDialog.xaml" />
-    <None Remove="Resources\Styles\FontSizes.xaml" />
-    <None Remove="Resources\Styles\TextBlock.xaml" />
-    <None Remove="Resources\Styles\Thickness.xaml" />
-    <None Remove="Styles\Styles.Overwrite.xaml" />
-    <None Remove="Views\Controls\App\HomePageHeaderImage.xaml" />
-    <None Remove="Views\Controls\Netease\SongListView\SongListView.xaml" />
-    <None Remove="Views\Controls\Search\SearchBox.xaml" />
-    <None Remove="Views\Pages\ErrorPage.xaml" />
-    <None Remove="Views\Pages\HomePage.xaml" />
-    <None Remove="Views\Pages\PlaylistPage.xaml" />
-    <None Remove="Views\Pages\SearchPage.xaml" />
-    <None Remove="Views\Pages\SettingsPage.xaml" />
-    <None Remove="Views\Pages\ShellPage.xaml" />
-    <None Remove="Views\Pages\UserPage.xaml" />
-    <None Remove="Views\Window\CompactWindow.xaml" />
-    <None Remove="Views\Window\MainWindow.xaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Remove="Controls\App\SelectableTextBox.xaml" />
-    <Page Remove="Controls\App\PivotExtensions\PivotExHeaderView.xaml" />
-    <Page Remove="resources\Dark.xaml" />
-    <Page Remove="resources\Light.xaml" />
-    <Page Remove="resources\Theme.xaml" />
-    <Page Remove="Views\Controls\App\RedirectVisualView.xaml" />
-  </ItemGroup>
+    <ItemGroup>
+        <None Remove="Controls\Dialogs\SignInDialog.xaml" />
+        <None Remove="Resources\Styles\FontSizes.xaml" />
+        <None Remove="Resources\Styles\TextBlock.xaml" />
+        <None Remove="Resources\Styles\Thickness.xaml" />
+        <None Remove="Styles\Styles.Overwrite.xaml" />
+        <None Remove="Views\Controls\App\HomePageHeaderImage.xaml" />
+        <None Remove="Views\Controls\Netease\SongListView\SongListView.xaml" />
+        <None Remove="Views\Controls\Search\SearchBox.xaml" />
+        <None Remove="Views\Pages\ErrorPage.xaml" />
+        <None Remove="Views\Pages\HomePage.xaml" />
+        <None Remove="Views\Pages\PlaylistPage.xaml" />
+        <None Remove="Views\Pages\SearchPage.xaml" />
+        <None Remove="Views\Pages\SettingsPage.xaml" />
+        <None Remove="Views\Pages\ShellPage.xaml" />
+        <None Remove="Views\Pages\UserPage.xaml" />
+        <None Remove="Views\Window\CompactWindow.xaml" />
+        <None Remove="Views\Window\MainWindow.xaml" />
+      </ItemGroup>
+      <ItemGroup>
+        <Page Remove="Controls\App\SelectableTextBox.xaml" />
+        <Page Remove="Controls\App\PivotExtensions\PivotExHeaderView.xaml" />
+        <Page Remove="resources\Dark.xaml" />
+        <Page Remove="resources\Light.xaml" />
+        <Page Remove="resources\Theme.xaml" />
+        <Page Remove="Views\Controls\App\RedirectVisualView.xaml" />
+      </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="AsyncAwaitBestPractices" Version="8.0.0" />
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-    <PackageReference Include="CommunityToolkit.WinUI.Behaviors" Version="8.1.240606-rc" />
-    <PackageReference Include="CommunityToolkit.WinUI.Notifications" Version="7.1.2" />
-    <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2" />
-    <PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.1.2" />
-    <PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
-    <PackageReference Include="CommunityToolkit.WinUI.UI.Media" Version="7.1.2" />
-    <PackageReference Include="Depository" Version="2.1.0" />
-    <PackageReference Include="Humanizer" Version="2.14.1" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240701003-experimental2" />
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1" />
-    <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="WinUICommunity.Components" Version="6.9.0" />
-    <PackageReference Include="WinUIEx" Version="2.3.4" />
-    <Manifest Include="$(ApplicationManifest)" />
-  </ItemGroup>
+      <ItemGroup>
+        <PackageReference Include="AsyncAwaitBestPractices" Version="8.0.0" />
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
+        <PackageReference Include="CommunityToolkit.WinUI.Animations" Version="8.1.240916" />
+        <PackageReference Include="CommunityToolkit.WinUI.Behaviors" Version="8.1.240916" />
+        <PackageReference Include="CommunityToolkit.WinUI.Controls.Primitives" Version="8.1.240916" />
+        <PackageReference Include="CommunityToolkit.WinUI.Controls.Segmented" Version="8.1.240916" />
+        <PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" Version="8.1.240916" />
+        <PackageReference Include="CommunityToolkit.WinUI.Controls.Sizers" Version="8.1.240916" />
+        <PackageReference Include="CommunityToolkit.WinUI.Converters" Version="8.1.240916" />
+        <PackageReference Include="CommunityToolkit.WinUI.Helpers" Version="8.1.240916" />
+        <PackageReference Include="CommunityToolkit.WinUI.Media" Version="8.1.240916" />
+        <PackageReference Include="CommunityToolkit.WinUI.Notifications" Version="7.1.2" />
+        <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2" />
+        <PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
+        <PackageReference Include="Depository" Version="2.1.0" />
+        <PackageReference Include="Humanizer" Version="2.14.1" />
+        <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240923002" />
+        <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" />
+        <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="WinUICommunity.Components" Version="6.9.0" />
+        <PackageReference Include="WinUIEx" Version="2.4.2" />
+        <Manifest Include="$(ApplicationManifest)" />
+      </ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Views\Pages\ErrorPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+      <ItemGroup>
+        <Page Update="Views\Pages\ErrorPage.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </Page>
+      </ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Views\Pages\HomePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+      <ItemGroup>
+        <Page Update="Views\Pages\HomePage.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </Page>
+      </ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Views\Window\CompactWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+      <ItemGroup>
+        <Page Update="Views\Window\CompactWindow.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </Page>
+      </ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Views\Window\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+      <ItemGroup>
+        <Page Update="Views\Window\MainWindow.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </Page>
+      </ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Styles\Styles.Overwrite.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+      <ItemGroup>
+        <Page Update="Styles\Styles.Overwrite.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </Page>
+      </ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Controls\Dialogs\SignInDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+      <ItemGroup>
+        <Page Update="Controls\Dialogs\SignInDialog.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </Page>
+      </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Controls\App\SelectableTextBox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <Page Update="Views\Pages\SettingsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Resources\Styles\FontSizes.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Resources\Styles\TextBlock.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Resources\Styles\Thickness.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <None Update="Resources\Styles\Themes.Dark.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="Resources\Styles\Themes.Light.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="Resources\Theme.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="Views\Controls\CoolControls\RedirectVisualView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <Page Update="Views\Pages\UserPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Pages\SearchPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Controls\Netease\SongListView\SongListView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Pages\PlaylistPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Controls\App\HomePageHeaderImage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Controls\Search\SearchBox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+      <ItemGroup>
+        <None Update="Controls\App\SelectableTextBox.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </None>
+        <Page Update="Views\Pages\SettingsPage.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </Page>
+        <Page Update="Resources\Styles\FontSizes.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </Page>
+        <Page Update="Resources\Styles\TextBlock.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </Page>
+        <Page Update="Resources\Styles\Thickness.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </Page>
+        <None Update="Resources\Styles\Themes.Dark.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </None>
+        <None Update="Resources\Styles\Themes.Light.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </None>
+        <None Update="Resources\Theme.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </None>
+        <None Update="Views\Controls\CoolControls\RedirectVisualView.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </None>
+        <Page Update="Views\Pages\UserPage.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </Page>
+        <Page Update="Views\Pages\SearchPage.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </Page>
+        <Page Update="Views\Controls\Netease\SongListView\SongListView.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </Page>
+        <Page Update="Views\Pages\PlaylistPage.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </Page>
+        <Page Update="Views\Controls\App\HomePageHeaderImage.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </Page>
+        <Page Update="Views\Controls\Search\SearchBox.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </Page>
+      </ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="Contract\Services\IPageService.cs" />
-    <Compile Remove="Helpers\UIHelper.cs" />
-    <Compile Remove="Controls\App\PivotExtensions\PivotEx.cs" />
-  </ItemGroup>
+      <ItemGroup>
+        <Compile Remove="Contract\Services\IPageService.cs" />
+        <Compile Remove="Helpers\UIHelper.cs" />
+        <Compile Remove="Controls\App\PivotExtensions\PivotEx.cs" />
+      </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\refs\HyPlayer.NeteaseProvider\HyPlayer.NeteaseApi\HyPlayer.NeteaseApi.csproj" />
-    <ProjectReference Include="..\..\refs\HyPlayer.NeteaseProvider\HyPlayer.NeteaseProvider\HyPlayer.NeteaseProvider.csproj" />
-    <ProjectReference Include="..\..\refs\HyPlayer.PlayCore\HyPlayer.PlayCore.Abstraction\HyPlayer.PlayCore.Abstraction.csproj" />
-    <ProjectReference Include="..\..\refs\HyPlayer.PlayCore\HyPlayer.PlayCore\HyPlayer.PlayCore.csproj" />
-  </ItemGroup>
+      <ItemGroup>
+        <ProjectReference Include="..\..\refs\HyPlayer.NeteaseProvider\HyPlayer.NeteaseApi\HyPlayer.NeteaseApi.csproj" />
+        <ProjectReference Include="..\..\refs\HyPlayer.NeteaseProvider\HyPlayer.NeteaseProvider\HyPlayer.NeteaseProvider.csproj" />
+        <ProjectReference Include="..\..\refs\HyPlayer.PlayCore\HyPlayer.PlayCore.Abstraction\HyPlayer.PlayCore.Abstraction.csproj" />
+        <ProjectReference Include="..\..\refs\HyPlayer.PlayCore\HyPlayer.PlayCore\HyPlayer.PlayCore.csproj" />
+      </ItemGroup>
   
-</Project>
+    </Project>

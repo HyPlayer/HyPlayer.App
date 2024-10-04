@@ -25,6 +25,7 @@ namespace HyPlayer
     /// </summary>
     public partial class App : Application
     {
+        public static NavigationView NavView;
         public static Frame? contentFrame;
         private XamlWindow? window;
 

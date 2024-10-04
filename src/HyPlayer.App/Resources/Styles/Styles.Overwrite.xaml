@@ -5,7 +5,7 @@
     xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
     xmlns:controls1="using:HyPlayer.Views.Controls.App"
     xmlns:ex="using:WinUIEx"
-    xmlns:media="using:CommunityToolkit.WinUI.UI.Media"
+    xmlns:media="using:CommunityToolkit.WinUI.Media"
     xmlns:ui="using:CommunityToolkit.WinUI.UI">
 
     <MicaBackdrop x:Key="DefaultMicaSystemBackdrop" Kind="Base" />

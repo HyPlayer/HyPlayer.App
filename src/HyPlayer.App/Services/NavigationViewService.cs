@@ -23,6 +23,8 @@ public class NavigationViewService : INavigationViewService
 
     public object? SettingsItem => _navigationView?.SettingsItem;
 
+    
+
     public NavigationViewService(INavigationService navigationService, IPageService pageService)
     {
         _navigationService = navigationService;
@@ -32,6 +34,7 @@ public class NavigationViewService : INavigationViewService
     [MemberNotNull(nameof(_navigationView))]
     public void Initialize(NavigationView navigationView)
     {
+        App.NavView = navigationView;
         _navigationView = navigationView;
         _navigationView.BackRequested += OnBackRequested;
         _navigationView.ItemInvoked += OnItemInvoked;

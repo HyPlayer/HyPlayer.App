@@ -7,7 +7,7 @@
     xmlns:local="using:HyPlayer.Views.Window"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="using:HyPlayer.Views.Pages"
-    xmlns:search="using:HyPlayer.Views.Controls.Search"
+    xmlns:search="using:HyPlayer.Views.Controls.Search" xmlns:winuicommunity="using:WinUICommunity"
     Title="HyPlayer"
     MinWidth="500"
     MinHeight="300"
@@ -21,7 +21,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <TitleBar
+            <ex:TitleBar
                 x:Name="AppTitleBar"
                 Title="HyPlayer"
                 Grid.Row="0"
@@ -30,8 +30,8 @@
                 Subtitle="Preview"
                 IsBackButtonVisible="True"
                 IsBackEnabled="{x:Bind _ShellViewModel.CanBack, Mode=OneWay}"
-                BackRequested="AppTitleBar_BackRequested">
-                <TitleBar.Content>
+                BackRequested="{x:Bind AppTitleBar_BackRequested}">
+                <ex:TitleBar.Content>
                     <search:SearchBox
                         x:Name="SearchBox"
                         Grid.Column="4"
@@ -40,8 +40,8 @@
                         MaxWidth="550"
                         VerticalAlignment="Center"
                         BorderThickness="1" />
-                </TitleBar.Content>
-                <TitleBar.Footer>
+                </ex:TitleBar.Content>
+                <ex:TitleBar.Footer>
                     <Button
                         x:Name="UserButton"
                         Click="UserButton_Click"
@@ -54,8 +54,8 @@
                         <PersonPicture Width="30" Height="30" />
                     </Button>
 
-                </TitleBar.Footer>
-            </TitleBar>
+                </ex:TitleBar.Footer>
+            </ex:TitleBar>
             <pages:ShellPage Grid.Row="1"/>
         </Grid>
 

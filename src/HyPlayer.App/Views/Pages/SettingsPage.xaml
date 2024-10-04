@@ -6,10 +6,9 @@
     xmlns:local="using:HyPlayer.Views.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
-    <Grid>
-
+    <Grid x:Name="ContentArea" Margin="36,0">
+        <TextBlock x:Name="Title" x:Uid="SettingsPage_Title" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,40,0,36" />
     </Grid>
 </local:SettingsPageBase>

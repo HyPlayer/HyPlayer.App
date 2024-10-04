@@ -1,6 +1,6 @@
 using CommunityToolkit.WinUI.UI;
-using CommunityToolkit.WinUI.UI.Animations;
-using CommunityToolkit.WinUI.UI.Animations.Expressions;
+using CommunityToolkit.WinUI.Animations;
+using CommunityToolkit.WinUI.Animations.Expressions;
 using Microsoft.Graphics.Canvas.Effects;
 using Microsoft.UI;
 using Microsoft.UI.Composition;

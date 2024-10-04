@@ -49,7 +49,7 @@ namespace HyPlayer.Views.Window
             }
         }
 
-        private void AppTitleBar_BackRequested(Microsoft.UI.Xaml.Controls.TitleBar sender, object args)
+        private void AppTitleBar_BackRequested(WinUIEx.TitleBar sender, object args)
         {
             App.GetService<INavigationService>().GoBack();
         }
