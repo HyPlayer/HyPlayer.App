@@ -67,7 +67,7 @@
     <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="WinUICommunity.Components" Version="6.9.0" />
-    <PackageReference Include="WinUIEx" Version="2.3.4" />
+    <PackageReference Include="WinUIEx" Version="2.4.2" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
